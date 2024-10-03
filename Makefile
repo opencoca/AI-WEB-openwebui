@@ -21,7 +21,19 @@ help:
 
 
 it_run:
-	docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui .
+	docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name ai-web-openwebui ai-web-openwebui
+
+it_build:
+	docker build -t ai-web-openwebui .
+
+it_build_n_run:
+	docker build -t ai-web-openwebui . && docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name ai-web-openwebui ai-web-openwebui
+
+it_build_no_cache:
+	docker build --no-cache -t ai-web-openwebui .
+
+it_build_n_run_no_cache:
+	docker build --no-cache -t ai-web-openwebui . && docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name ai-web-openwebui ai-web-openwebui
 
 it_install:
 	$(DOCKER_COMPOSE) up -d
