@@ -257,12 +257,16 @@
 							<button
 								class=" flex items-center gap-2 text-xs px-3 py-0.5 rounded-lg 
 								{user.role === 'admin' && 'text-sky-600 dark:text-sky-200 bg-sky-200/30'}
-								{user.role === 'teacher' && 'text-yellow-600 dark:text-yellow-200 bg-yellow-200/30'}
-								{user.role === 'student' && 'text-blue-600 dark:text-blue-200 bg-blue-200/30'}
+								{user.role === 'teacher' && 'text-yellow-400 dark:text-yellow-200 bg-yellow-200/30'}
+								{user.role === 'student' && 'text-cyan-400 dark:text-cyan-200 bg-blue-200/30'}
 								{user.role === 'user' && 'text-green-600 dark:text-green-200 bg-green-200/30'} 
 								{user.role === 'pending' && 'text-gray-600 dark:text-gray-200 bg-gray-200/30'}"
 								on:click={() => {
 									if (user.role === 'user') {
+										updateRoleHandler(user.id, 'student');
+									} else if (user.role === 'student') {
+										updateRoleHandler(user.id, 'teacher');
+									} else if (user.role === 'teacher') {
 										updateRoleHandler(user.id, 'admin');
 									} else if (user.role === 'pending') {
 										updateRoleHandler(user.id, 'user');
