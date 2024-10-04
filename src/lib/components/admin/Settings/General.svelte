@@ -63,6 +63,8 @@
 							placeholder="Select a role"
 						>
 							<option value="pending">{$i18n.t('pending')}</option>
+							<option value="teacher">{$i18n.t('teacher')}</option>
+							<option value="student">{$i18n.t('student')}</option>
 							<option value="user">{$i18n.t('user')}</option>
 							<option value="admin">{$i18n.t('admin')}</option>
 						</select>

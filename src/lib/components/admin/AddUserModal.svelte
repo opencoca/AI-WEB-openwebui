@@ -75,7 +75,7 @@
 						if (idx > 0) {
 							if (
 								columns.length === 4 &&
-								['admin', 'user', 'pending'].includes(columns[3].toLowerCase())
+								['admin', 'teacher', 'student', 'user', 'pending'].includes(columns[3].toLowerCase())
 							) {
 								const res = await addUser(
 									localStorage.token,
@@ -177,6 +177,8 @@
 										required
 									>
 										<option value="pending"> {$i18n.t('pending')} </option>
+										<option value="teacher"> {$i18n.t('teacher')} </option>
+										<option value="student"> {$i18n.t('student')} </option>
 										<option value="user"> {$i18n.t('user')} </option>
 										<option value="admin"> {$i18n.t('admin')} </option>
 									</select>
@@ -238,7 +240,7 @@
 										type="file"
 										accept=".csv"
 									/>
-
+									<p>This is my test content for the add user modal</p>
 									<button
 										class="w-full text-sm font-medium py-3 bg-transparent hover:bg-gray-100 border border-dashed dark:border-gray-800 dark:hover:bg-gray-850 text-center rounded-xl"
 										type="button"
@@ -256,7 +258,7 @@
 
 								<div class=" text-xs text-gray-500">
 									ⓘ {$i18n.t(
-										'Ensure your CSV file includes 4 columns in this order: Name, Email, Password, Role.'
+										'Ensure your CSV file includes 4 or more columns in this order: Name, Email, Password, Role. Optional columns can be added after Role eg class.'
 									)}
 									<a
 										class="underline dark:text-gray-200"
