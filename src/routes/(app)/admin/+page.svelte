@@ -270,7 +270,7 @@
 								class=" flex items-center gap-2 text-xs px-3 py-0.5 rounded-lg
 								{user.role === 'admin' && 'text-sky-600 dark:text-sky-200 bg-sky-200/30'}
 								{user.role === 'teacher' && 'text-yellow-400 dark:text-yellow-200 bg-yellow-200/30'}
-								{user.role === 'student' && 'text-cyan-400 dark:text-cyan-200 bg-blue-200/30'}
+								{user.role === 'student' && 'text-cyan-400 dark:text-cyan-400 bg-purple-200/30'}
 								{user.role === 'user' && 'text-green-600 dark:text-green-200 bg-green-200/30'} 
 								{user.role === 'pending' && 'text-gray-600 dark:text-gray-200 bg-gray-200/30'}"
 								on:click={() => {
@@ -291,7 +291,7 @@
 									class="w-1 h-1 rounded-full
 									{user.role === 'admin' && 'bg-sky-600 dark:bg-sky-300'}
 									{user.role === 'teacher' && 'bg-yellow-600 dark:bg-yellow-300'}
-									{user.role === 'student' && 'bg-blue-600 dark:bg-blue-300'}
+									{user.role === 'student' && 'bg-cyan-600 dark:bg-cyan-300'}
 									{user.role === 'user' && 'bg-green-600 dark:bg-green-300'} 
 									{user.role === 'pending' && 'bg-gray-600 dark:bg-gray-300'}"
 								/>
