@@ -186,6 +186,18 @@
 					<th
 						scope="col"
 						class="px-3 py-2 cursor-pointer select-none"
+						on:click={() => setSortKey('class_list')}
+					>
+						{$i18n.t('Class List')}
+						{#if sortKey === 'class_list'}
+							{sortOrder === 'asc' ? '▲' : '▼'}
+						{:else}
+							<span class="invisible">▲</span>
+						{/if}
+					</th>
+					<th
+						scope="col"
+						class="px-3 py-2 cursor-pointer select-none"
 						on:click={() => setSortKey('email')}
 					>
 						{$i18n.t('Email')}
@@ -255,7 +267,7 @@
 					<tr class="bg-white border-b dark:bg-gray-900 dark:border-gray-850 text-xs">
 						<td class="px-3 py-2 min-w-[7rem] w-28">
 							<button
-								class=" flex items-center gap-2 text-xs px-3 py-0.5 rounded-lg 
+								class=" flex items-center gap-2 text-xs px-3 py-0.5 rounded-lg
 								{user.role === 'admin' && 'text-sky-600 dark:text-sky-200 bg-sky-200/30'}
 								{user.role === 'teacher' && 'text-yellow-400 dark:text-yellow-200 bg-yellow-200/30'}
 								{user.role === 'student' && 'text-cyan-400 dark:text-cyan-200 bg-blue-200/30'}
@@ -276,7 +288,7 @@
 								}}
 							>
 								<div
-									class="w-1 h-1 rounded-full 
+									class="w-1 h-1 rounded-full
 									{user.role === 'admin' && 'bg-sky-600 dark:bg-sky-300'}
 									{user.role === 'teacher' && 'bg-yellow-600 dark:bg-yellow-300'}
 									{user.role === 'student' && 'bg-blue-600 dark:bg-blue-300'}
@@ -301,6 +313,9 @@
 								<div class=" font-medium self-center">{user.name}</div>
 							</div>
 						</td>
+
+						<td class=" px-3 py-2"> {user.class_list} </td>
+
 						<td class=" px-3 py-2"> {user.email} </td>
 
 						<td class=" px-3 py-2"> {user.oauth_sub ?? ''} </td>
