@@ -94,6 +94,7 @@
 					<hr class=" dark:border-gray-800 my-3 w-full" />
 
 					<div class=" flex flex-col space-y-1.5">
+						<!-- Email -->
 						<div class="flex flex-col w-full">
 							<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Email')}</div>
 
@@ -108,7 +109,7 @@
 								/>
 							</div>
 						</div>
-
+						<!-- Name -->
 						<div class="flex flex-col w-full">
 							<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Name')}</div>
 
@@ -122,28 +123,44 @@
 								/>
 							</div>
 						</div>
-
+						<!-- Class list (allow for a comma separated list of classes a user is a member of) -->
 						<div class="flex flex-col w-full">
-							<div class=" mb-1 text-xs text-gray-500">{$i18n.t('New Password')}</div>
+							<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Class List')}</div>
 
 							<div class="flex-1">
 								<input
 									class="w-full rounded py-2 px-4 text-sm dark:text-gray-300 dark:bg-gray-800 outline-none"
-									type="password"
-									bind:value={_user.password}
-									autocomplete="new-password"
+									type="text"
+									bind:value={_user.class_list}
+									autocomplete="off"
+									required
 								/>
 							</div>
-						</div>
-					</div>
+						
 
-					<div class="flex justify-end pt-3 text-sm font-medium">
-						<button
-							class=" px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-gray-100 transition rounded-lg"
-							type="submit"
-						>
-							{$i18n.t('Save')}
-						</button>
+							<!-- New Password -->
+							<div class="flex flex-col w-full">
+								<div class=" mb-1 text-xs text-gray-500">{$i18n.t('New Password')}</div>
+
+								<div class="flex-1">
+									<input
+										class="w-full rounded py-2 px-4 text-sm dark:text-gray-300 dark:bg-gray-800 outline-none"
+										type="password"
+										bind:value={_user.password}
+										autocomplete="new-password"
+									/>
+								</div>
+							</div>
+						</div>
+
+						<div class="flex justify-end pt-3 text-sm font-medium">
+							<button
+								class=" px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-gray-100 transition rounded-lg"
+								type="submit"
+							>
+								{$i18n.t('Save')}
+							</button>
+						</div>
 					</div>
 				</form>
 			</div>
