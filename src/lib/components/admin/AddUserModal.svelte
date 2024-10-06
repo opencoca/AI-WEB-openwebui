@@ -75,7 +75,9 @@
 						if (idx > 0) {
 							if (
 								columns.length === 4 &&
-								['admin', 'teacher', 'student', 'user', 'pending'].includes(columns[3].toLowerCase())
+								['admin', 'teacher', 'student', 'user', 'pending'].includes(
+									columns[3].toLowerCase()
+								)
 							) {
 								const res = await addUser(
 									localStorage.token,
@@ -217,6 +219,23 @@
 								</div>
 							</div>
 
+							<!-- Class list (allow for a comma separated list of classes a user is a member of) -->
+							<div class="flex flex-col w-full">
+								<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Class List')}</div>
+
+								<div class="flex-1">
+									<input
+										class="w-full rounded py-2 px-4 text-sm dark:text-gray-300 dark:bg-gray-800 outline-none"
+										type="text"
+										bind:value={_user.class_list}
+										autocomplete="off"
+										required
+									/>
+								</div>
+							</div>
+							<hr class=" dark:border-gray-800 my-3 w-full" />
+							<!-- New Password -->
+
 							<div class="flex flex-col w-full mt-2">
 								<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Password')}</div>
 
@@ -240,7 +259,7 @@
 										type="file"
 										accept=".csv"
 									/>
-									<p>This is my test content for the add user modal</p>
+									<p></p>
 									<button
 										class="w-full text-sm font-medium py-3 bg-transparent hover:bg-gray-100 border border-dashed dark:border-gray-800 dark:hover:bg-gray-850 text-center rounded-xl"
 										type="button"
