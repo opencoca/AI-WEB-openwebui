@@ -410,7 +410,7 @@
 
 					<input
 						class="chat-search w-full rounded-r-xl py-1.5 pl-2.5 pr-4 text-sm bg-transparent dark:text-gray-300 outline-none"
-						style="--m: 0 0 0 0.8rem;"
+						style="--m: 0 0.8rem 0 0.8rem;"
 						placeholder={$i18n.t('Search')}
 						bind:value={search}
 						on:focus={async () => {
