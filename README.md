@@ -1,4 +1,6 @@
-# Open WebUI (Formerly Ollama WebUI) 👋
+# Sage : Open WebUI (Formerly Ollama WebUI) 👋
+
+v0.3.31 
 
 ![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/open-webui/open-webui?style=social)
@@ -15,7 +17,7 @@ Open WebUI is an [extensible](https://github.com/open-webui/pipelines), feature-
 
 ![Open WebUI Demo](./demo.gif)
 
-## Key Features of Open WebUI ⭐
+## Key Features of Sage : Open WebUI ⭐
 
 - 🚀 **Effortless Setup**: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both `:ollama` and `:cuda` tagged images.
 
