@@ -851,7 +851,9 @@
 				{/if}
 
 				<div class="mt-1.5 text-xs text-gray-500 text-center line-clamp-1">
-					{$i18n.t('LLMs can make mistakes. Verify important information.')}
+					{$i18n.t('Powered by')} 
+					<a href="https://startr.cloud" target="_blank">💡💡💡 Startr.Cloud</a>'s 
+					<a href="https://sage.education" target="_blank">Sage.Education 💡💡💡</a>.	
 				</div>
 			</div>
 		</div>
