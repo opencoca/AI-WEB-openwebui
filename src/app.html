@@ -94,6 +94,7 @@
 			</style>
 
 			<img id="logo" style="
+					--br: 2rem;
 					position: absolute;
 					width: auto;
 					height: 6rem;
@@ -114,7 +115,7 @@
 					flex-direction: column;
 					align-items: center;
 				">
-				<img id="logo-her" style="width: auto; height: 13rem" src="/static/splash.png"
+				<img id="logo-her" style="--br: 2rem; width: auto; height: 13rem" src="/static/splash.png"
 					class="animate-pulse-fast" />
 
 				<div style="position: relative; width: 24rem; margin-top: 0.5rem">
@@ -159,7 +160,7 @@
 	}
 
 	html.dark #splash-screen img {
-		filter: invert(1);
+	/*	filter: invert(1);*/
 	}
 
 	html.her #splash-screen {
@@ -184,7 +185,7 @@
 
 	html.her #logo-her {
 		display: block;
-		filter: invert(1);
+	/*	filter: invert(1);*/
 	}
 
 	html.her #progress-background {
