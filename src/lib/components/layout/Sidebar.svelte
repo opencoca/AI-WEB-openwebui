@@ -409,7 +409,8 @@
 					</div>
 
 					<input
-						class="w-full rounded-r-xl py-1.5 pl-2.5 pr-4 text-sm bg-transparent dark:text-gray-300 outline-none"
+						class="chat-search w-full rounded-r-xl py-1.5 pl-2.5 pr-4 text-sm bg-transparent dark:text-gray-300 outline-none"
+						style="--m: 0 0 0 0.8rem;"
 						placeholder={$i18n.t('Search')}
 						bind:value={search}
 						on:focus={async () => {
@@ -561,9 +562,7 @@
 			</div>
 		</div>
 
-		<div class="px-2.5 pb-safe-bottom">
-			<!-- <hr class=" border-gray-900 mb-1 w-full" /> -->
-
+		<div class="px-2.5 pb-safe-bottom user-menu">
 			<div class="flex flex-col font-primary">
 				{#if $user !== undefined}
 					<UserMenu
@@ -575,7 +574,10 @@
 						}}
 					>
 						<button
-							class=" flex rounded-xl py-3 px-3.5 w-full hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+							class=""
+							style=" --w: 100%;
+									--p: 0.2em 0.6em;
+									--d: flex;"
 							on:click={() => {
 								showDropdown = !showDropdown;
 							}}
