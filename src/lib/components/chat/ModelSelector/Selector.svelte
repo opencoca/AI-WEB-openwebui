@@ -284,7 +284,8 @@
 				<hr class="border-gray-100 dark:border-gray-800" />
 			{/if}
 
-			<div class="px-3 my-2 max-h-64 overflow-y-auto scrollbar-hidden group">
+			<div class="px-3 my-2 max-h-64 overflow-y-auto scrollbar-hidden group model-list" 
+			style="--d: flex; --fd:column; gap:0.2rem; --w: 100%">
 				{#each filteredItems as item, index}
 					<button
 						aria-label="model-item"
