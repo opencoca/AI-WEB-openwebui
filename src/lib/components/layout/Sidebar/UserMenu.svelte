@@ -35,6 +35,11 @@
 			side="bottom"
 			align="start"
 			transition={(e) => fade(e, { duration: 100 })}
+			style="
+			    --d: flex;
+				--fd: column;
+				gap: 0.2em;
+				"
 		>
 			<button
 				class="flex rounded-md py-2 px-3 w-full hover:bg-gray-50 dark:hover:bg-gray-800 transition"
