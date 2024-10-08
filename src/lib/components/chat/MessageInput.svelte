@@ -818,8 +818,8 @@
 
 				<div class="mt-1.5 text-xs text-gray-500 text-center line-clamp-1">
 					<a href="https://startr.cloud" target="_blank">💡💡💡{$i18n.t('Powered by')}</a>
-					<a href="https://startr.cloud" style="--c:lavender" target="_blank">☁️ Startr.Cloud ☁️</a> &nbsp;and&nbsp; 
-					<a href="https://sage.education" style="--c:lavender" target="_blank">📚 Sage.Education 📚&nbsp; 💡💡💡</a>
+					<a href="https://startr.cloud" style="--c:var(--pink)" target="_blank">☁️ Startr.Cloud ☁️</a> &nbsp;and&nbsp; 
+					<a href="https://sage.education" style="--c:var(--pink)" target="_blank">📚 Sage.Education 📚&nbsp; 💡💡💡</a>
 				</div>
 			</div>
 		</div>
