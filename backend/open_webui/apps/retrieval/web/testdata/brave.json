@@ -858,7 +858,7 @@
 				"extra_snippets": [
 					"Why are python.exe and python3.exe listed as App Installer? I assume that App Installer refers to installation of Microsoft Store / UWP apps, but if that's the case, then why are they called python.exe and python3.exe? Or are python.exe and python3.exe simply serving as aliases / pointers pointing to App Installer, which is itself a Microsoft Store App?",
 					"Or are python.exe and python3.exe simply serving as aliases / pointers pointing to App Installer, which is itself a Microsoft Store App? I wish to soon install Python, along with an integrated development editor (IDE), on my machine, so that I can code in Python.",
-					"I wish to soon install Python, along with an integrated development editor (IDE), on my machine, so that I can code in Python. But is a Python interpreter already on my computer as suggested, if obliquely, by the presence of python.exe and python3.exe? I kind of doubt it."
+					"I wish to soon install Python, along with an integrated development editor (IDE), on my machine, so that I can code in Python. But is a Python interpreter already on my computer as Suggestions, if obliquely, by the presence of python.exe and python3.exe? I kind of doubt it."
 				]
 			},
 			{
