@@ -116,7 +116,7 @@
 										.join(', ')}
 									placement="top"
 								>
-									<button
+									<button style="--br:50%"
 										on:click={() => {
 											selectedModelIdx = modelIdx;
 										}}

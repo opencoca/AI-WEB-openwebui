@@ -285,7 +285,7 @@
 						<div class="overflow-hidden w-full">
 							<div class="max-w-full">
 								<Selector
-									placeholder={$i18n.t('Select a model')}
+									placeholder={$i18n.t('select an Assistant')}
 									items={$models.map((model) => ({
 										value: model.id,
 										label: model.name,

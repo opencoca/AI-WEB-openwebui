@@ -224,7 +224,7 @@
 					bind:value={defaultModelId}
 					placeholder="Select a model"
 				>
-					<option value="" disabled selected>{$i18n.t('Select a model')}</option>
+					<option value="" disabled selected>{$i18n.t('select an Assistant')}</option>
 					{#each $models.filter((model) => model.id) as model}
 						<option value={model.id} class="bg-gray-100 dark:bg-gray-700">{model.name}</option>
 					{/each}

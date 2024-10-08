@@ -40,7 +40,7 @@
 			<div class="overflow-hidden w-full">
 				<div class="mr-1 max-w-full">
 					<Selector
-						placeholder={$i18n.t('Select a model')}
+						placeholder={$i18n.t('select an Assistant')}
 						items={$models.map((model) => ({
 							value: model.id,
 							label: model.name,
@@ -113,6 +113,8 @@
 
 {#if showSetDefault}
 	<div class=" absolute text-left mt-[1px] ml-1 text-[0.7rem] text-gray-500 font-primary">
-		<button on:click={saveDefaultModel}> {$i18n.t('Set as default')}</button>
+		<button on:click={saveDefaultModel} 
+			style="--b:none"
+		> {$i18n.t('Set as default')}</button>
 	</div>
 {/if}

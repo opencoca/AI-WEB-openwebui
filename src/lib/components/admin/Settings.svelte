@@ -138,7 +138,7 @@
 					/>
 				</svg>
 			</div>
-			<div class=" self-center">{$i18n.t('Models')}</div>
+			<div class=" self-center">{$i18n.t('AI Assistants')}</div>
 		</button>
 
 		<button

@@ -20,7 +20,7 @@
 
 <svelte:head>
 	<title>
-		{$i18n.t('Workspace')} | {$WEBUI_NAME}
+		{$i18n.t('Workshop')} | {$WEBUI_NAME}
 	</title>
 </svelte:head>
 
@@ -46,7 +46,7 @@
 						</div>
 					</button>
 				</div>
-				<div class="flex items-center text-xl font-semibold">{$i18n.t('Workspace')}</div>
+				<div class="flex items-center text-xl font-semibold">{$i18n.t('Workshop')}</div>
 			</div>
 		</div>
 
@@ -58,7 +58,7 @@
 					class="min-w-fit rounded-lg p-1.5 px-3 {$page.url.pathname.includes('/workspace/models')
 						? 'bg-gray-50 dark:bg-gray-850'
 						: ''} transition"
-					href="/workspace/models">{$i18n.t('Models')}</a
+					href="/workspace/models">{$i18n.t('AI Assistants')}</a
 				>
 
 				<a

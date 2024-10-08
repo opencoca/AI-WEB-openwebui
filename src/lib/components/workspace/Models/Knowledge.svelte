@@ -15,7 +15,7 @@
 	</div>
 
 	<div class=" text-xs dark:text-gray-500">
-		{$i18n.t('To attach knowledge base here, add them to the "Knowledge" workspace first.')}
+		{$i18n.t('To attach knowledge base here, add them to the "Knowledge" Workshop first.')}
 	</div>
 
 	<div class="flex flex-col">

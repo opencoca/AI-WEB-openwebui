@@ -382,7 +382,7 @@
 
 <!-- <div class=" text-gray-500 text-xs mt-1 mb-2">
 	ⓘ {$i18n.t(
-		'Admins have access to all tools at all times; users need tools assigned per model in the workspace.'
+		'Admins have access to all tools at all times; users need tools assigned per model in the Workshop.'
 	)}
 </div> -->
 
@@ -463,7 +463,7 @@
 
 <div class=" my-16">
 	<div class=" text-lg font-semibold mb-3 line-clamp-1">
-		{$i18n.t('Made by OpenWebUI Community')}
+		{$i18n.t('Made by our Community')}
 	</div>
 
 	<a
@@ -473,7 +473,7 @@
 	>
 		<div class=" self-center w-10 flex-shrink-0">
 			<div
-				class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
+				style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6">
 					<path

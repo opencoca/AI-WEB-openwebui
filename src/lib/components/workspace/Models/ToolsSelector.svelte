@@ -28,7 +28,7 @@
 	</div>
 
 	<div class=" text-xs dark:text-gray-500">
-		{$i18n.t('To select toolkits here, add them to the "Tools" workspace first.')}
+		{$i18n.t('To select toolkits here, add them to the "Tools" Workshop first.')}
 	</div>
 
 	<div class="flex flex-col">
