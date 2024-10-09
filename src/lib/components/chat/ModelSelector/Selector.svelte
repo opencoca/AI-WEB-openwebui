@@ -230,7 +230,7 @@
 	closeFocus={false}
 >
 	<DropdownMenu.Trigger class="relative w-full font-primary" aria-label={placeholder}>
-		<div
+		<div style="--shadow:none"
 			class="flex w-full text-left px-0.5 outline-none bg-transparent truncate text-lg font-medium placeholder-gray-400 focus:outline-none"
 		>
 			{#if selectedModel}

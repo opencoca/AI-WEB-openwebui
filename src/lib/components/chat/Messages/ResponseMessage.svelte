@@ -524,11 +524,12 @@
 				{#if !edit}
 					{#if message.done || siblings.length > 1}
 						<div
-							class=" flex justify-start overflow-x-auto buttons text-gray-600 dark:text-gray-500 mt-0.5"
+							class="message-actions"
+							style="--d:flex;--mt:0.1rem; gap:0.1rem; "
 						>
 							{#if siblings.length > 1}
 								<div class="flex self-center min-w-fit" dir="ltr">
-									<button
+									<button style="--b:none; --shadow:none; --p:0.1rem;"
 										class="self-center p-1 hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
 										on:click={() => {
 											showPreviousMessage(message);
@@ -556,7 +557,7 @@
 										{siblings.indexOf(message.id) + 1}/{siblings.length}
 									</div>
 
-									<button
+									<button  style="--b:none; --shadow:none; --p:0.1rem;"
 										class="self-center p-1 hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
 										on:click={() => {
 											showNextMessage(message);
