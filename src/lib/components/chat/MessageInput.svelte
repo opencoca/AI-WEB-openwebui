@@ -449,8 +449,8 @@
 								</div>
 							{/if}
 
-							<div class=" flex">
-								<div class=" ml-0.5 self-end mb-1.5 flex space-x-1">
+							<div class="chat--input" style="--d:flex; --fd:row; --ai: center;">
+								<div class=" ml-0.5 mb-1.5 flex space-x-1">
 									<InputMenu
 										bind:webSearchEnabled
 										bind:selectedToolIds
@@ -664,12 +664,12 @@
 									}}
 								/>
 
-								<div class="self-end mb-2 flex space-x-1 mr-1">
+								<div>
 									{#if !history?.currentId || history.messages[history.currentId]?.done == true}
 										<Tooltip content={$i18n.t('Record voice')}>
 											<button
 												id="voice-input-button"
-												class=" text-gray-600 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-850 transition rounded-full p-1.5 mr-0.5 self-center"
+												style="    --m: 0.2rem; --br: 50%; --w: 2.6em; --h: 2.6em; --ta: center; --d: flex; display: flex; --jc: center; --ai: center;"
 												type="button"
 												on:click={async () => {
 													try {
@@ -716,7 +716,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="flex items-end w-10">
+						<div id="message--submit" style="--d:flex">
 							{#if !history.currentId || history.messages[history.currentId]?.done == true}
 								{#if prompt === ''}
 									<div class=" flex items-center mb-1">
@@ -819,8 +819,13 @@
 
 				<div class="mt-1.5 text-xs text-gray-500 text-center line-clamp-1">
 					<a href="https://startr.cloud" target="_blank">💡💡💡{$i18n.t('Powered by')}</a>
-					<a href="https://startr.cloud" style="--c:var(--pink)" target="_blank">☁️ Startr.Cloud ☁️</a> &nbsp;and&nbsp; 
-					<a href="https://sage.education" style="--c:var(--pink)" target="_blank">📚 Sage.Education 📚&nbsp; 💡💡💡</a>
+					<a href="https://startr.cloud" style="--c:var(--pink)" target="_blank"
+						>☁️ Startr.Cloud ☁️</a
+					>
+					&nbsp;and&nbsp;
+					<a href="https://sage.education" style="--c:var(--pink)" target="_blank"
+						>📚 Sage.Education 📚&nbsp; 💡💡💡</a
+					>
 				</div>
 			</div>
 		</div>
