@@ -323,7 +323,7 @@
 		<input
 			class=" w-full text-sm pr-4 py-1 rounded-r-xl outline-none bg-transparent"
 			bind:value={searchValue}
-			placeholder={$i18n.t('Search Models')}
+			placeholder={$i18n.t('Search for an assistant')}
 		/>
 	</div>
 
@@ -691,7 +691,7 @@
 		</div>
 
 		<div class=" self-center">
-			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover a model')}</div>
+			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover new AI Assistant models')}</div>
 			<div class=" text-sm line-clamp-1">
 				{$i18n.t('Discover, download, and explore model presets')}
 			</div>
