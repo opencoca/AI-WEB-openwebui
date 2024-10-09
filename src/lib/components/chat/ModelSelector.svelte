@@ -40,6 +40,7 @@
 			<div class="overflow-hidden w-full">
 				<div class="mr-1 max-w-full">
 					<Selector
+						id='model-selector'
 						placeholder={$i18n.t('select an Assistant')}
 						items={$models.map((model) => ({
 							value: model.id,
