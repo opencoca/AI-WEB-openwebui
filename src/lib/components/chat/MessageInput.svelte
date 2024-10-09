@@ -450,7 +450,8 @@
 							{/if}
 
 							<div class="chat--input" style="--d:flex; --fd:row; --ai: center;">
-								<div class=" ml-0.5 mb-1.5 flex space-x-1">
+								<div style="--d: flex; --m:auto"
+								class=" ml-0.5 mb-1.5 flex space-x-1">
 									<InputMenu
 										bind:webSearchEnabled
 										bind:selectedToolIds
