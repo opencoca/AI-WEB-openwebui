@@ -88,7 +88,7 @@
 						<div class=" text-sm font-medium dark:text-gray-300">
 							{$i18n.t('Content')}
 						</div>
-						<pre class="text-sm dark:text-gray-400 whitespace-pre-line">
+						<pre style="--bg: var(--background); --c: var(--text-main);">
 							{document.document}
 						</pre>
 					</div>
