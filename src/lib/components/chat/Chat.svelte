@@ -586,7 +586,7 @@
 	const createMessagePair = async (userPrompt) => {
 		prompt = '';
 		if (selectedModels.length === 0) {
-			toast.error($i18n.t('Model not selected'));
+			toast.error($i18n.t('No assistant selected. Choose one or more.'));
 		} else {
 			const modelId = selectedModels[0];
 			const model = $models.filter((m) => m.id === modelId).at(0);
@@ -657,7 +657,7 @@
 		);
 
 		if (selectedModels.includes('')) {
-			toast.error($i18n.t('Model not selected'));
+			toast.error($i18n.t('No assistant selected. Choose one or more.'));
 		} else if (messages.length != 0 && messages.at(-1).done != true) {
 			// Response not done
 			console.log('wait');
