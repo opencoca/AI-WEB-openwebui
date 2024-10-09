@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "Velg en Ollama-instans",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Velg modell",
+	"Select an AI Assistant": "Velg modell",
 	"Select only one model to call": "Velg kun én modell å kalle",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Valgte modell(er) støtter ikke bildeforslag",

@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "एक Ollama Instance चुनें",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "मॉडल चुनें",
+	"Select an AI Assistant": "मॉडल चुनें",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "चयनित मॉडल छवि इनपुट का समर्थन नहीं करते हैं",

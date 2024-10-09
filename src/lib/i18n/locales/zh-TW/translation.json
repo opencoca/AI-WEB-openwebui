@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "選擇 Ollama 執行個體",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "選擇模型",
+	"Select an AI Assistant": "選擇模型",
 	"Select only one model to call": "僅選擇一個模型來呼叫",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "選取的模型不支援圖片輸入",

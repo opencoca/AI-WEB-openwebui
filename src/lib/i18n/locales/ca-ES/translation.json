@@ -597,7 +597,7 @@
 	"Select an Ollama instance": "Seleccionar una instància d'Ollama",
 	"Select Engine": "Seleccionar el motor",
 	"Select Knowledge": "Seleccionar coneixement",
-	"Select model": "Seleccionar un model",
+	"Select an AI Assistant": "Seleccionar un model",
 	"Select only one model to call": "Seleccionar només un model per trucar",
 	"Select/Add Files": "Seleccionar/Afegir arxius",
 	"Selected model(s) do not support image inputs": "El(s) model(s) seleccionats no admeten l'entrada d'imatges",

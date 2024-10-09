@@ -598,7 +598,7 @@
 	"Select an Ollama instance": "Wybierz instancję Ollama",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Wybierz model",
+	"Select an AI Assistant": "Wybierz model",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Wybrane modele nie obsługują danych wejściowych obrazu",

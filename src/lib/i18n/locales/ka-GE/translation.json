@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "Ollama ინსტანსის არჩევა",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "მოდელის არჩევა",
+	"Select an AI Assistant": "მოდელის არჩევა",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "შერჩეული მოდელი (ებ) ი არ უჭერს მხარს გამოსახულების შეყვანას",

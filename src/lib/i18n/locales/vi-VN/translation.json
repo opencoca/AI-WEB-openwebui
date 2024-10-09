@@ -595,7 +595,7 @@
 	"Select an Ollama instance": "Chọn một thực thể Ollama",
 	"Select Engine": "Chọn Engine",
 	"Select Knowledge": "",
-	"Select model": "Chọn model",
+	"Select an AI Assistant": "Chọn model",
 	"Select only one model to call": "Chọn model để gọi",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Model được lựa chọn không hỗ trợ đầu vào là hình ảnh",

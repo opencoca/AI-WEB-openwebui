@@ -597,7 +597,7 @@
 	"Select an Ollama instance": "Odaberite Ollama instancu",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Odaberite model",
+	"Select an AI Assistant": "Odaberite model",
 	"Select only one model to call": "Odaberite samo jedan model za poziv",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Odabrani modeli ne podržavaju unose slika",

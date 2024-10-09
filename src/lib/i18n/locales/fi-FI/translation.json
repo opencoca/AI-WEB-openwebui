@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "Valitse Ollama-instanssi",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Valitse malli",
+	"Select an AI Assistant": "Valitse malli",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Valitut mallit eivät tue kuvasyötteitä",

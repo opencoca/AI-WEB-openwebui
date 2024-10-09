@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "Roghnaigh sampla Ollama",
 	"Select Engine": "Roghnaigh Inneall",
 	"Select Knowledge": "",
-	"Select model": "Roghnaigh samhail",
+	"Select an AI Assistant": "Roghnaigh samhail",
 	"Select only one model to call": "Roghnaigh ach samhail amháin le glaoch",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Ní thacaíonn samhail(í) roghnaithe le hionchur íomhá",

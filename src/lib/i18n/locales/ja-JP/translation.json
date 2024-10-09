@@ -595,7 +595,7 @@
 	"Select an Ollama instance": "Ollama インスタンスを選択",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "モデルを選択",
+	"Select an AI Assistant": "モデルを選択",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "一部のモデルは画像入力をサポートしていません",

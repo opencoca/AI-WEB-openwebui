@@ -597,7 +597,7 @@
 	"Select an Ollama instance": "בחר מופע של Ollama",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "בחר מודל",
+	"Select an AI Assistant": "בחר מודל",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "דגמים נבחרים אינם תומכים בקלט תמונה",

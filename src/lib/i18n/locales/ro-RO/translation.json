@@ -597,7 +597,7 @@
 	"Select an Ollama instance": "Selectează o instanță Ollama",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Selectează model",
+	"Select an AI Assistant": "Selectează model",
 	"Select only one model to call": "Selectează doar un singur model pentru apel",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Modelul(e) selectat(e) nu suportă intrări de imagine",

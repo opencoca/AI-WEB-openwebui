@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "انتخاب یک نمونه از اولاما",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "انتخاب یک مدل",
+	"Select an AI Assistant": "انتخاب یک مدل",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "مدل) های (انتخاب شده ورودیهای تصویر را پشتیبانی نمیکند",

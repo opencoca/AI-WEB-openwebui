@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "Ollama 인스턴스 선택",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "모델 선택",
+	"Select an AI Assistant": "모델 선택",
 	"Select only one model to call": "콜을 위해서는 모델을 하나만 선택해야 합니다.",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "선택한 모델은 이미지 입력을 지원하지 않습니다.",

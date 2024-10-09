@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "Pagpili usa ka pananglitan sa Ollama",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Pagpili og modelo",
+	"Select an AI Assistant": "Pagpili og modelo",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "",

@@ -598,7 +598,7 @@
 	"Select an Ollama instance": "Выберите экземпляр Ollama",
 	"Select Engine": "Выберите движок",
 	"Select Knowledge": "",
-	"Select model": "Выберите модель",
+	"Select an AI Assistant": "Выберите модель",
 	"Select only one model to call": "Выберите только одну модель для вызова",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Выбранные модели не поддерживают ввод изображений",

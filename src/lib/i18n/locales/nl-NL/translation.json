@@ -596,7 +596,7 @@
 	"Select an Ollama instance": "Selecteer een Ollama instantie",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Selecteer een model",
+	"Select an AI Assistant": "Selecteer een model",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Geselecteerde modellen ondersteunen geen beeldinvoer",

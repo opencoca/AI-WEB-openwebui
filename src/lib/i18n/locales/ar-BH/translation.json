@@ -600,7 +600,7 @@
 	"Select an Ollama instance": "أختار سيرفر ",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": " أختار موديل",
+	"Select an AI Assistant": " أختار موديل",
 	"Select only one model to call": "",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "النموذج (النماذج) المحددة لا تدعم مدخلات الصور",

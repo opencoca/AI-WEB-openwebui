@@ -598,7 +598,7 @@
 	"Select an Ollama instance": "Pasirinkti Ollama instanciją",
 	"Select Engine": "",
 	"Select Knowledge": "",
-	"Select model": "Pasirinkti modelį",
+	"Select an AI Assistant": "Pasirinkti modelį",
 	"Select only one model to call": "Pasirinkite vieną modelį",
 	"Select/Add Files": "",
 	"Selected model(s) do not support image inputs": "Pasirinkti modeliai nepalaiko vaizdinių užklausų",
