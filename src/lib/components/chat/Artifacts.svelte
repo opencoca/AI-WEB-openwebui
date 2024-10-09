@@ -257,7 +257,7 @@
 						})}
 					</div>
 
-					<button
+					<button  style="--b:none; --shadow:none; --p:0.1rem;"
 						class="self-center p-1 hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition disabled:cursor-not-allowed"
 						on:click={() => navigateContent('next')}
 						disabled={contents.length <= 1}
