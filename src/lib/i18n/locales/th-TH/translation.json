@@ -40,7 +40,7 @@
 	"Admin": "ผู้ดูแลระบบ",
 	"Admin Panel": "แผงผู้ดูแลระบบ",
 	"Admin Settings": "การตั้งค่าผู้ดูแลระบบ",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "ผู้ดูแลระบบสามารถเข้าถึงเครื่องมือทั้งหมดได้ตลอดเวลา; ผู้ใช้ต้องการเครื่องมือที่กำหนดต่อโมเดลในพื้นที่ทำงาน",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "ผู้ดูแลระบบสามารถเข้าถึงเครื่องมือทั้งหมดได้ตลอดเวลา; ผู้ใช้ต้องการเครื่องมือที่กำหนดต่อโมเดลในพื้นที่ทำงาน",
 	"Advanced Parameters": "พารามิเตอร์ขั้นสูง",
 	"Advanced Params": "พารามิเตอร์ขั้นสูง",
 	"all": "ทั้งหมด",

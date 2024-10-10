@@ -40,7 +40,7 @@
 	"Admin": "管理員",
 	"Admin Panel": "管理員控制台",
 	"Admin Settings": "管理員設定",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "管理員可以隨時使用所有工具；使用者需要在工作區中為每個模型分配工具。",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "管理員可以隨時使用所有工具；使用者需要在工作區中為每個模型分配工具。",
 	"Advanced Parameters": "進階參數",
 	"Advanced Params": "進階參數",
 	"all": "全部",

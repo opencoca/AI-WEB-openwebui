@@ -40,7 +40,7 @@
 	"Admin": "Admin",
 	"Admin Panel": "Administrationspanel",
 	"Admin Settings": "Administratörsinställningar",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "Administratörer har tillgång till alla verktyg hela tiden, medan användare behöver verktyg som tilldelas per modell i arbetsytan.",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "Administratörer har tillgång till alla verktyg hela tiden, medan användare behöver verktyg som tilldelas per modell i arbetsytan.",
 	"Advanced Parameters": "Avancerade parametrar",
 	"Advanced Params": "Avancerade parametrar",
 	"all": "alla",

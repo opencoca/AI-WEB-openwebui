@@ -40,7 +40,7 @@
 	"Admin": "Administrator",
 	"Admin Panel": "Panoul de Administrare",
 	"Admin Settings": "Setări de Administrator",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "Administratorii au acces la toate instrumentele în orice moment; utilizatorii au nevoie de instrumente asignate pe model în spațiul de lucru.",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "Administratorii au acces la toate instrumentele în orice moment; utilizatorii au nevoie de instrumente asignate pe model în spațiul de lucru.",
 	"Advanced Parameters": "Parametri Avansați",
 	"Advanced Params": "Parametri Avansați",
 	"all": "toate",

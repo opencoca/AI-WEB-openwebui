@@ -40,7 +40,7 @@
 	"Admin": "Quản trị",
 	"Admin Panel": "Trang Quản trị",
 	"Admin Settings": "Cài đặt hệ thống",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "Quản trị viên luôn có quyền truy cập vào tất cả các tool; người dùng cần các tools được chỉ định cho mỗi mô hình trong Workshop.",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "Quản trị viên luôn có quyền truy cập vào tất cả các tool; người dùng cần các tools được chỉ định cho mỗi mô hình trong Workshop.",
 	"Advanced Parameters": "Các tham số Nâng cao",
 	"Advanced Params": "Các tham số Nâng cao",
 	"all": "tất cả",

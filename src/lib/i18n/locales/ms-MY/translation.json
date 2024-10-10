@@ -40,7 +40,7 @@
 	"Admin": "Pentadbir",
 	"Admin Panel": "Panel Pentadbir",
 	"Admin Settings": "Tetapan Pentadbir",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "Pentadbir mempunyai akses kepada semua alat pada setiap masa; pengguna memerlukan alat yang ditetapkan mengikut model dalam ruang kerja.",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "Pentadbir mempunyai akses kepada semua alat pada setiap masa; pengguna memerlukan alat yang ditetapkan mengikut model dalam ruang kerja.",
 	"Advanced Parameters": "Parameter Lanjutan",
 	"Advanced Params": "Parameter Lanjutan",
 	"all": "semua",

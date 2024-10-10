@@ -40,7 +40,7 @@
 	"Admin": "관리자",
 	"Admin Panel": "관리자 패널",
 	"Admin Settings": "관리자 설정",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "관리자는 항상 모든 도구에 접근할 수 있지만, 사용자는 워크스페이스에서 모델마다 도구를 할당받아야 합니다.",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "관리자는 항상 모든 도구에 접근할 수 있지만, 사용자는 워크스페이스에서 모델마다 도구를 할당받아야 합니다.",
 	"Advanced Parameters": "고급 파라미터",
 	"Advanced Params": "고급 파라미터",
 	"all": "모두",

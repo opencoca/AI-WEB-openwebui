@@ -40,7 +40,7 @@
 	"Admin": "Administratorius",
 	"Admin Panel": "Administratorių panelė",
 	"Admin Settings": "Administratorių nustatymai",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "Administratoriai visada turi visus įrankius. Naudotojai turi tuėti prieigą prie dokumentų per modelių nuostatas",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "Administratoriai visada turi visus įrankius. Naudotojai turi tuėti prieigą prie dokumentų per modelių nuostatas",
 	"Advanced Parameters": "Pažengę nustatymai",
 	"Advanced Params": "Pažengę nustatymai",
 	"all": "visi",

@@ -40,7 +40,7 @@
 	"Admin": "",
 	"Admin Panel": "管理者パネル",
 	"Admin Settings": "管理者設定",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "",
 	"Advanced Parameters": "詳細パラメーター",
 	"Advanced Params": "高度なパラメータ",
 	"all": "すべて",

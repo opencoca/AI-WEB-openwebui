@@ -40,7 +40,7 @@
 	"Admin": "Administrador",
 	"Admin Panel": "Panell d'administració",
 	"Admin Settings": "Preferències d'administració",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "Els administradors tenen accés a totes les eines en tot moment; els usuaris necessiten eines assignades per model a l'espai de treball.",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "Els administradors tenen accés a totes les eines en tot moment; els usuaris necessiten eines assignades per model a l'espai de treball.",
 	"Advanced Parameters": "Paràmetres avançats",
 	"Advanced Params": "Paràmetres avançats",
 	"all": "tots",

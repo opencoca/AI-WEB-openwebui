@@ -40,7 +40,7 @@
 	"Admin": "Yönetici",
 	"Admin Panel": "Yönetici Paneli",
 	"Admin Settings": "Yönetici Ayarları",
-	"Admins have access to all tools at all times; users need tools assigned per model in the Workshop.": "Yöneticiler her zaman tüm araçlara erişebilir; kullanıcıların çalışma alanındaki model başına atanmış araçlara ihtiyacı vardır.",
+	"Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.": "Yöneticiler her zaman tüm araçlara erişebilir; kullanıcıların çalışma alanındaki model başına atanmış araçlara ihtiyacı vardır.",
 	"Advanced Parameters": "Gelişmiş Parametreler",
 	"Advanced Params": "Gelişmiş Parametreler",
 	"all": "tümü",
