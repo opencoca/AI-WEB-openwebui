@@ -337,7 +337,7 @@
 
 <div class=" text-gray-500 text-xs mt-1 mb-2">
 	ⓘ {$i18n.t(
-		'Admins have access to all tools at all times; users need tools assigned per model in the Workshop.'
+		'Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.'
 	)}
 </div>
 
