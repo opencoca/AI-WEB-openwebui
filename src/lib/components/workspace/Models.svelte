@@ -283,7 +283,7 @@
 
 <svelte:head>
 	<title>
-		{$i18n.t('Models')} | {$WEBUI_NAME}
+		{$i18n.t('AI Assistants')} | {$WEBUI_NAME}
 	</title>
 </svelte:head>
 
@@ -297,7 +297,7 @@
 <div class="mb-3">
 	<div class="flex justify-between items-center">
 		<div class="flex md:self-center text-lg font-medium px-0.5">
-			{$i18n.t('Models')}
+			{$i18n.t('AI Assistants')}
 			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-200 dark:bg-gray-700" />
 			<span class="text-lg font-medium text-gray-500 dark:text-gray-300">{$models.length}</span>
 		</div>
@@ -323,7 +323,7 @@
 		<input
 			class=" w-full text-sm pr-4 py-1 rounded-r-xl outline-none bg-transparent"
 			bind:value={searchValue}
-			placeholder={$i18n.t('Search Models')}
+			placeholder={$i18n.t('Search for an assistant')}
 		/>
 	</div>
 
@@ -351,7 +351,7 @@
 <a class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-1" href="/workspace/models/create">
 	<div class=" self-center w-10 flex-shrink-0">
 		<div
-			class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
+			style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6">
 				<path
@@ -364,8 +364,8 @@
 	</div>
 
 	<div class=" self-center">
-		<div class=" font-semibold line-clamp-1">{$i18n.t('Create a model')}</div>
-		<div class=" text-sm line-clamp-1">{$i18n.t('Customize models for a specific purpose')}</div>
+		<div class=" font-semibold line-clamp-1">{$i18n.t('Create an agent')}</div>
+		<div class=" text-sm line-clamp-1">{$i18n.t('Customize AI models for a specific purpose')}</div>
 	</div>
 </a>
 
@@ -668,7 +668,7 @@
 
 <div class=" my-16">
 	<div class=" text-lg font-semibold mb-3 line-clamp-1">
-		{$i18n.t('Made by OpenWebUI Community')}
+		{$i18n.t('Made by our Community')}
 	</div>
 
 	<a
@@ -678,7 +678,7 @@
 	>
 		<div class=" self-center w-10 flex-shrink-0">
 			<div
-				class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
+				style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6">
 					<path
@@ -691,7 +691,7 @@
 		</div>
 
 		<div class=" self-center">
-			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover a model')}</div>
+			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover new AI Assistant models')}</div>
 			<div class=" text-sm line-clamp-1">
 				{$i18n.t('Discover, download, and explore model presets')}
 			</div>

@@ -26,9 +26,9 @@
 	const dispatch = createEventDispatcher();
 
 	export let value = '';
-	export let placeholder = 'Select a model';
+	export let placeholder = 'select an Assistant';
 	export let searchEnabled = true;
-	export let searchPlaceholder = $i18n.t('Search a model');
+	export let searchPlaceholder = $i18n.t('Search for an assistant');
 
 	export let showTemporaryChatControl = false;
 
@@ -230,7 +230,7 @@
 	closeFocus={false}
 >
 	<DropdownMenu.Trigger class="relative w-full font-primary" aria-label={placeholder}>
-		<div
+		<div style="--shadow:none"
 			class="flex w-full text-left px-0.5 outline-none bg-transparent truncate text-lg font-medium placeholder-gray-400 focus:outline-none"
 		>
 			{#if selectedModel}

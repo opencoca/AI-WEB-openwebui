@@ -84,7 +84,7 @@ class ChatTable:
                     "title": (
                         form_data.chat["title"]
                         if "title" in form_data.chat
-                        else "New Chat"
+                        else "Start New Chat"
                     ),
                     "chat": json.dumps(form_data.chat),
                     "created_at": int(time.time()),
@@ -103,7 +103,7 @@ class ChatTable:
             with get_db() as db:
                 chat_obj = db.get(Chat, id)
                 chat_obj.chat = json.dumps(chat)
-                chat_obj.title = chat["title"] if "title" in chat else "New Chat"
+                chat_obj.title = chat["title"] if "title" in chat else "Start New Chat"
                 chat_obj.updated_at = int(time.time())
                 db.commit()
                 db.refresh(chat_obj)

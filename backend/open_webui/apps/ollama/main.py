@@ -238,7 +238,7 @@ async def get_ollama_tags(
         models = await get_all_models()
 
         if app.state.config.ENABLE_MODEL_FILTER:
-            if user.role == "user":
+            if user.role == "user" or user.role == "student" or user.role == "teacher":
                 models["models"] = list(
                     filter(
                         lambda model: model["name"]
@@ -910,7 +910,7 @@ async def get_openai_models(
         models = await get_all_models()
 
         if app.state.config.ENABLE_MODEL_FILTER:
-            if user.role == "user":
+            if user.role == "user" or user.role == "student" or user.role == "teacher":
                 models["models"] = list(
                     filter(
                         lambda model: model["name"]

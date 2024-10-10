@@ -161,12 +161,10 @@
 	}
 
 	html.dark #splash-screen img {
-	/*	filter: invert(1);*/
+		/*	filter: invert(1);*/
 	}
 
-	html.her #splash-screen {
-		background: #983724;
-	}
+
 
 	#logo-her {
 		display: none;
@@ -186,7 +184,7 @@
 
 	html.her #logo-her {
 		display: block;
-	/*	filter: invert(1);*/
+		/*	filter: invert(1);*/
 	}
 
 	html.her #progress-background {
@@ -216,4 +214,21 @@
 	.animate-pulse-fast {
 		animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
 	}
+
+	button {
+		border-radius: 0.6rem !important;
+	}
+
+	button[aria-controls] {
+		border: none;
+		box-shadow: none;
+	}
+
+	a[href="https://svelteflow.dev"] {
+    display: none;
+}
+
+svelte-flow__controls{
+	gap:0.2rem;
+}
 </style>

@@ -28,7 +28,7 @@
 	</div>
 
 	<div class=" text-xs dark:text-gray-500">
-		{$i18n.t('To select actions here, add them to the "Functions" workspace first.')}
+		{$i18n.t('To select actions here, add them to the "Functions" Workshop first.')}
 	</div>
 
 	<div class="flex flex-col">

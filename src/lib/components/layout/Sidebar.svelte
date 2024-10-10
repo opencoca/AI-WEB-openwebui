@@ -306,7 +306,7 @@
 					/>
 				</div>
 				<div class=" self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
-					{$i18n.t('New Chat')}
+					{$i18n.t('Start New Chat')}
 				</div>
 				<div class="self-center ml-auto">
 					<svg
@@ -354,7 +354,7 @@
 			<div class="px-2.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
 					class="flex-grow flex space-x-3 rounded-xl px-2.5 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
-					href="/workspace"
+					href="/workspace/models"
 					on:click={() => {
 						selectedChatId = null;
 						chatId.set('');
@@ -383,7 +383,7 @@
 					</div>
 
 					<div class="flex self-center">
-						<div class=" self-center font-medium text-sm font-primary">{$i18n.t('Workspace')}</div>
+						<div class=" self-center font-medium text-sm font-primary">{$i18n.t('Workshop')}</div>
 					</div>
 				</a>
 			</div>

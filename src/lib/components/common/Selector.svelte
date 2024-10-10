@@ -11,9 +11,9 @@
 	const dispatch = createEventDispatcher();
 
 	export let value = '';
-	export let placeholder = 'Select a model';
+	export let placeholder = 'select an Assistant';
 	export let searchEnabled = true;
-	export let searchPlaceholder = 'Search a model';
+	export let searchPlaceholder = 'Search for an assistant';
 
 	export let items = [
 		{ value: 'mango', label: 'Mango' },

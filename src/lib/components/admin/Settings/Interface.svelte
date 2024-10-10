@@ -89,7 +89,7 @@
 					<select
 						class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
 						bind:value={taskConfig.TASK_MODEL}
-						placeholder={$i18n.t('Select a model')}
+						placeholder={$i18n.t('select an Assistant')}
 					>
 						<option value="" selected>{$i18n.t('Current Model')}</option>
 						{#each $models.filter((m) => m.owned_by === 'ollama') as model}
@@ -105,7 +105,7 @@
 					<select
 						class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
 						bind:value={taskConfig.TASK_MODEL_EXTERNAL}
-						placeholder={$i18n.t('Select a model')}
+						placeholder={$i18n.t('select an Assistant')}
 					>
 						<option value="" selected>{$i18n.t('Current Model')}</option>
 						{#each $models as model}

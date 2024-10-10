@@ -1057,7 +1057,7 @@ async def get_models(user=Depends(get_verified_user)):
     ]
 
     if app.state.config.ENABLE_MODEL_FILTER:
-        if user.role == "user":
+        if user.role == "user" or user.role == "student" or user.role == "teacher":
             models = list(
                 filter(
                     lambda model: model["id"] in app.state.config.MODEL_FILTER_LIST,

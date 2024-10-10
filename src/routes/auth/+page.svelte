@@ -235,7 +235,7 @@
 											? $i18n.t("Don't have an account?")
 											: $i18n.t('Already have an account?')}
 
-										<button
+										<button id="signup" style="--b: none; --shadow: none"
 											class=" font-medium underline"
 											type="button"
 											on:click={() => {

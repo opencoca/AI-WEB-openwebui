@@ -742,10 +742,10 @@
 									<select
 										class="w-full rounded-lg py-2 px-4 text-sm dark:text-gray-300 dark:bg-gray-850 outline-none"
 										bind:value={deleteModelTag}
-										placeholder={$i18n.t('Select a model')}
+										placeholder={$i18n.t('select an Assistant')}
 									>
 										{#if !deleteModelTag}
-											<option value="" disabled selected>{$i18n.t('Select a model')}</option>
+											<option value="" disabled selected>{$i18n.t('select an Assistant')}</option>
 										{/if}
 										{#each $models.filter((m) => !(m?.preset ?? false) && m.owned_by === 'ollama' && (selectedOllamaUrlIdx === null ? true : (m?.ollama?.urls ?? []).includes(selectedOllamaUrlIdx))) as model}
 											<option value={model.name} class="bg-gray-100 dark:bg-gray-700"

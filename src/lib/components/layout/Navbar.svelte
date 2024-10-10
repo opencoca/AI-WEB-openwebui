@@ -72,7 +72,7 @@
 				{/if}
 			</div>
 
-			<div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
+			<div style="gap:0.1em" class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
 				<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
 
 				{#if shareEnabled && chat && chat.id}
@@ -110,7 +110,7 @@
 					</Menu>
 				{/if}
 
-				{#if !$mobile}
+				{#if !$mobile && $user.role === 'admin'}
 					<Tooltip content={$i18n.t('Controls')}>
 						<button
 							class=" flex cursor-pointer px-2 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-850 transition"
@@ -135,7 +135,7 @@
 						on:click={() => {
 							initNewChat();
 						}}
-						aria-label="New Chat"
+						aria-label="Start New Chat"
 					>
 						<div class=" m-auto self-center">
 							<svg

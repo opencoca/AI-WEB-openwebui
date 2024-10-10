@@ -247,7 +247,7 @@
 
 					<div class="w-full flex justify-between items-center">
 						<div class=" text-sm">
-							{$i18n.t('Select model')}
+							{$i18n.t('Select an AI Assistant')}
 						</div>
 
 						<div class="flex space-x-1 text-xs">
