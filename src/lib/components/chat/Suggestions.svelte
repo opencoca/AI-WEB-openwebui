@@ -16,16 +16,16 @@
 </script>
 
 {#if prompts.length > 0}
-	<div class="mb-1 flex gap-1 text-sm font-medium items-center text-gray-400 dark:text-gray-600">
+	<div id="suggestions-header" 
+	class="mb-1 flex gap-1 text-sm font-medium items-center text-gray-400 dark:text-gray-600">
 		<Bolt />
 		{$i18n.t('Suggestions')}
 	</div>
 {/if}
 
-<div class="{className}" style="--h:100%">
+<div class="{className}" style="--h: 0; --minh: 200%; --of: scroll;">
 	{#each prompts as prompt, promptIdx}
-		<button
-			class="flex flex-col flex-1 shrink-0 w-full justify-between px-3 py-2 rounded-xl bg-transparent hover:bg-black/5 dark:hover:bg-white/5 transition group"
+		<div class="prompt" style=" --shadow: 6; --levitate-hvr:8; --br: 1rem; --p: 1em; --m:0.6em; --d: flex;"
 			on:click={() => {
 				dispatch('select', prompt.content);
 			}}
@@ -33,21 +33,21 @@
 			<div class="flex flex-col text-left">
 				{#if prompt.title && prompt.title[0] !== ''}
 					<div
-						class="  font-medium dark:text-gray-300 dark:group-hover:text-gray-200 transition line-clamp-1"
+						style="--line-clamp:4;"
 					>
 						{prompt.title[0]}
 					</div>
-					<div class="text-xs text-gray-500 font-normal line-clamp-1">{prompt.title[1]}</div>
+					<div style="--line-clamp:4;">{prompt.title[1]}</div>
 				{:else}
 					<div
-						class="  font-medium dark:text-gray-300 dark:group-hover:text-gray-200 transition line-clamp-1"
+						style="--line-clamp:4;"
 					>
 						{prompt.content}
 					</div>
 
-					<div class="text-xs text-gray-500 font-normal line-clamp-1">Prompt</div>
+					<div class="tag">Prompt</div>
 				{/if}
 			</div>
-		</button>
+		</div>
 	{/each}
 </div>
