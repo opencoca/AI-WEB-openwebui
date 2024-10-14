@@ -351,7 +351,8 @@
 <a class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-1" href="/workspace/models/create">
 	<div class=" self-center w-10 flex-shrink-0">
 		<div
-			style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
+			style="--d:flex; --ai:center"
+			class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6">
 				<path
@@ -371,7 +372,7 @@
 
 <hr class=" border-gray-50 dark:border-gray-850 my-2.5" />
 
-<div class=" my-2 mb-5" id="model-list">
+<div id="model-list">
 	{#each _models.filter((m) => searchValue === '' || m.name
 				.toLowerCase()
 				.includes(searchValue.toLowerCase())) as model}
@@ -379,10 +380,7 @@
 			class=" flex space-x-4 cursor-pointer w-full px-3 py-2 dark:hover:bg-white/5 hover:bg-black/5 rounded-xl"
 			id="model-item-{model.id}"
 		>
-			<a
-				class=" flex flex-1 space-x-3.5 cursor-pointer w-full"
-				href={`/?models=${encodeURIComponent(model.id)}`}
-			>
+			<a title="Chat with this assistant" href={`/?models=${encodeURIComponent(model.id)}`}>
 				<div class=" self-start w-8 pt-0.5">
 					<div
 						class=" rounded-full object-cover {(model?.info?.meta?.hidden ?? false)
@@ -396,22 +394,14 @@
 						/>
 					</div>
 				</div>
-
+			</a>
+			<a title="Workshop this assistant" style="--fg:1" href="{`/workspace/models/edit?id=${encodeURIComponent(model.id)}`}">
 				<div
-					class=" flex-1 self-center {(model?.info?.meta?.hidden ?? false) ? 'text-gray-500' : ''}"
+					class="{(model?.info?.meta?.hidden ?? false) ? 'text-gray-500' : ''}"
 				>
-					<Tooltip
-						content={marked.parse(
-							model?.ollama?.digest
-								? `${model?.ollama?.digest} *(${model?.ollama?.modified_at})*`
-								: ''
-						)}
-						className=" w-fit"
-						placement="top-start"
-					>
-						<div class="  font-semibold line-clamp-1">{model.name}</div>
-					</Tooltip>
-					<div class=" text-xs overflow-hidden text-ellipsis line-clamp-1 text-gray-500">
+					<div style="--line-clamp:1" class="font-semibold">{model.name}</div>
+
+					<div style="--line-clamp:1" class=" text-xs overflow-hidden text-ellipsis text-gray-500">
 						{!!model?.info?.meta?.description
 							? model?.info?.meta?.description
 							: (model?.ollama?.digest ?? model.id)}
@@ -678,7 +668,8 @@
 	>
 		<div class=" self-center w-10 flex-shrink-0">
 			<div
-				style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
+				style="--d:flex; --ai:center"
+				class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6">
 					<path

@@ -1,14 +1,16 @@
 # Sage : Open WebUI (Formerly Ollama WebUI) 👋
 
-v0.3.32.3
+v0.3.33
+
+[![GitHub license](https://img.shields.io/github/license/opencoca/AI-WEB-openwebui)](
 
 ![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
-![GitHub forks](https://img.shields.io/github/forks/open-webui/open-webui?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/open-webui/open-webui?style=social)
-![GitHub repo size](https://img.shields.io/github/repo-size/open-webui/open-webui)
-![GitHub language count](https://img.shields.io/github/languages/count/open-webui/open-webui)
-![GitHub top language](https://img.shields.io/github/languages/top/open-webui/open-webui)
-![GitHub last commit](https://img.shields.io/github/last-commit/open-webui/open-webui?color=red)
+![GitHub forks](https://img.shields.io/github/forks/opencoca/AI-WEB-openwebui?style=social)
+![GitHub watchers](https://img.shields.io/github/watchers/opencoca/AI-WEB-openwebui?style=social)
+![GitHub repo size](https://img.shields.io/github/repo-size/opencoca/AI-WEB-openwebui)
+![GitHub language count](https://img.shields.io/github/languages/count/opencoca/AI-WEB-openwebui)
+![GitHub top language](https://img.shields.io/github/languages/top/opencoca/AI-WEB-openwebui)
+![GitHub last commit](https://img.shields.io/github/last-commit/opencoca/AI-WEB-openwebui?color=red)
 ![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Follama-webui%2Follama-wbui&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=hits&edge_flat=false)
 [![Discord](https://img.shields.io/badge/Discord-Open_WebUI-blue?logo=discord&logoColor=white)](https://discord.gg/5rJgQTnV4s)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/tjbck)
@@ -97,16 +99,9 @@ This will start the Open WebUI server, which you can access at [http://localhost
 - **If Ollama is on your computer**, use this command:
 
   ```bash
-  docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+ make it_run 
   ```
 
-- **If Ollama is on a Different Server**, use this command:
-
-  To connect to Ollama on another server, change the `OLLAMA_BASE_URL` to the server's URL:
-
-  ```bash
-  docker run -d -p 3000:8080 -e OLLAMA_BASE_URL=https://example.com -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
-  ```
 
 - **To run Open WebUI with Nvidia GPU support**, use this command:
 

@@ -414,7 +414,7 @@
 
 				<div>
 					<input
-						class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
+						
 						placeholder={$i18n.t('Name your model')}
 						bind:value={name}
 						required
@@ -427,7 +427,7 @@
 
 				<div>
 					<input
-						class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
+						
 						placeholder={$i18n.t('Add a model id')}
 						bind:value={id}
 						required
@@ -441,7 +441,7 @@
 
 			<div>
 				<select
-					class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
+					
 					placeholder="Select a base model (e.g. llama3, gpt-4o)"
 					bind:value={info.base_model_id}
 					on:change={(e) => {
@@ -482,7 +482,7 @@
 
 			{#if info.meta.description !== null}
 				<textarea
-					class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
+					
 					placeholder={$i18n.t('Add a short description about what this model does')}
 					bind:value={info.meta.description}
 					row="3"
@@ -707,7 +707,7 @@
 			{#if showPreview}
 				<div>
 					<textarea
-						class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
+						
 						rows="10"
 						value={JSON.stringify(info, null, 2)}
 						disabled
