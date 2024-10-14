@@ -38,6 +38,32 @@ it_build_n_run_no_cache:
 it_install:
 	$(DOCKER_COMPOSE) up -d
 
+minor_release:
+	# Start a minor release with incremented minor version
+	git flow release start $$(git tag --sort=-v:refname | sed 's/^v//' | head -n 1 | awk -F'.' '{print $$1"."$$2+1".0"}')
+
+patch_release:
+	# Start a patch release with incremented patch version
+	git flow release start $$(git tag --sort=-v:refname | sed 's/^v//' | head -n 1 | awk -F'.' '{print $$1"."$$2"."$$3+1}')
+
+major_release:
+	# Start a major release with incremented major version
+	git flow release start $$(git tag --sort=-v:refname | sed 's/^v//' | head -n 1 | awk -F'.' '{print $$1+1".0.0"}')
+
+hotfix:
+	# Start a hotfix with incremented patch version
+	git flow hotfix start $$(git tag --sort=-v:refname | sed 's/^v//' | head -n 1 | awk -F'.' '{print $$1"."$$2"."$$3+1}')
+
+release_finish:
+	git flow release finish "$$(git branch --show-current | sed 's/release\///')" && git push origin develop && git push origin master && git push --tags && git checkout develop
+
+hotfix_finish:
+	git flow hotfix finish "$$(git branch --show-current | sed 's/hotfix\///')" && git push origin develop && git push origin master && git push --tags && git checkout develop
+
+things_clean:
+	git clean --exclude=!.env -Xdf
+
+
 remove:
 	@chmod +x confirm_remove.sh
 	@./confirm_remove.sh
