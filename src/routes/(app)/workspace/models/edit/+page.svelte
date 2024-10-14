@@ -358,12 +358,8 @@
 					<div class=" text-sm font-semibold mb-1">{$i18n.t('Name')}*</div>
 
 					<div>
-						<input
-							class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
-							placeholder={$i18n.t('Name your model')}
-							bind:value={name}
-							required
-						/>
+						<input placeholder={$i18n.t('Name your model')} 
+						bind:value={name} required />
 					</div>
 				</div>
 
@@ -371,13 +367,8 @@
 					<div class=" text-sm font-semibold mb-1">{$i18n.t('Model ID')}*</div>
 
 					<div>
-						<input
-							class="px-3 py-1.5 text-sm w-full bg-transparent disabled:text-gray-500 border dark:border-gray-600 outline-none rounded-lg"
-							placeholder={$i18n.t('Add a model id')}
-							value={id}
-							disabled
-							required
-						/>
+						<input placeholder={$i18n.t('Add a model id')} 
+						value={id} disabled required />
 					</div>
 				</div>
 			</div>
@@ -388,7 +379,6 @@
 
 					<div>
 						<select
-							class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
 							placeholder="Select a base model (e.g. llama3, gpt-4o)"
 							bind:value={info.base_model_id}
 							required
@@ -407,13 +397,17 @@
 					<div class=" self-center text-sm font-semibold">{$i18n.t('Description')}</div>
 
 					<button
-						class="p-1 text-xs flex rounded transition"
+						tooltip="Toggle description"
+						style="--b: none; --shadow: none;"
 						type="button"
 						on:click={() => {
-							if (info.meta.description === null) {
-								info.meta.description = '';
-							} else {
-								info.meta.description = null;
+							// Add a are you sure alert using html dialog
+							if ( confirm('Are you sure  we should toggle this description?')) {
+								if (info.meta.description === null) {
+									info.meta.description = '';
+								} else {
+									info.meta.description = null;
+								}
 							}
 						}}
 					>
@@ -653,13 +647,9 @@
 
 				{#if showPreview}
 					<div>
-						<textarea
-							class="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none rounded-lg"
-							rows="10"
-							value={JSON.stringify(info, null, 2)}
-							disabled
-							readonly
-						/>
+						<textarea rows="10" value={JSON.stringify(info, null, 2)} 
+						disabled 
+						readonly />
 					</div>
 				{/if}
 			</div>
