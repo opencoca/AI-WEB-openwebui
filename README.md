@@ -1,6 +1,6 @@
 # Sage : Open WebUI (Formerly Ollama WebUI) 👋
 
-v0.3.32.2
+v0.3.32.3
 
 ![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/open-webui/open-webui?style=social)
