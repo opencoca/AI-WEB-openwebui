@@ -6,19 +6,20 @@ else
 endif
 
 help: 
-	# 
-	# Sage.Education/AI by Startr.Cloud and Open WebUI
-	#
-	# This is the default make command. 
-	# This command lists available make commands.
-	# 
-	# Usage example:
-	#     make it_run
-	# 
-	# Available make commands:
-	#
+	@echo "================================================"
+	@echo "Sage.Education/AI by Startr.Cloud and Open WebUI"
+	@echo "================================================"
+	@echo ""
+	@echo 'This is the default make command.' 
+	@echo "This command lists available make commands."
+	@echo ""
+	@echo "Usage example:"
+	@echo "    make it_run"
+	@echo ""
+	@echo "Available make commands:"
+	@echo ""
 	@LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
-
+	@echo ""	
 
 it_run:
 	docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name ai-web-openwebui ai-web-openwebui
