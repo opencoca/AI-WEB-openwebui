@@ -18,23 +18,71 @@ help:
 	@echo ""
 	@echo "Available make commands:"
 	@echo ""
-	@LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null | awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
+	@LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null \
+		| awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
 	@echo ""	
 
 it_run:
-	docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name ai-web-openwebui ai-web-openwebui
+	docker run --rm -p 3000:8080 \
+		--add-host=host.docker.internal:host-gateway \
+		-v open-webui:/app/backend/data \
+		--name ai-web-openwebui startr/ai-web-openwebui
 
 it_build:
-	docker build -t ai-web-openwebui .
+	docker build -t startr/ai-web-openwebui .
 
 it_build_n_run:
-	docker build -t ai-web-openwebui . && docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name ai-web-openwebui ai-web-openwebui
+	docker build -t startr/ai-web-openwebui . \
+		&& docker run --rm -p 3000:8080 \
+			--add-host=host.docker.internal:host-gateway \
+			-v open-webui:/app/backend/data \
+			--name ai-web-openwebui ai-web-openwebui
 
 it_build_no_cache:
-	docker build --no-cache -t ai-web-openwebui .
+	docker build --no-cache -t startr/ai-web-openwebui .
 
 it_build_n_run_no_cache:
-	docker build --no-cache -t ai-web-openwebui . && docker run --rm -p 3000:8080 --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name ai-web-openwebui ai-web-openwebui
+	docker build --no-cache -t startr/ai-web-openwebui . \
+		&& docker run --rm -p 3000:8080 \
+			--add-host=host.docker.internal:host-gateway \
+			-v open-webui:/app/backend/data \
+			--name ai-web-openwebui startr/ai-web-openwebui
+
+it_build_multi_arch_push_docker_hub:
+	echo "Deleting old manifest" \
+		&& docker manifest rm startr/ai-web-openwebui:latest \
+		&&
+	echo "Building multi arch for amd64"\
+		&& docker buildx build --platform linux/amd64 -t startr/ai-web-openwebui:manifest-amd64 --build-arg ARCH=amd64 . \
+			&& echo "Pushing amd64 to Docker Hub" \
+			&& docker push startr/ai-web-openwebui:manifest-amd64 \
+	&& echo "Building multi arch for arm64" \
+		&& docker buildx build --platform linux/arm64 -t startr/ai-web-openwebui:manifest-arm64 --build-arg ARCH=arm64 . \
+			&& echo "Pushing arm64 to Docker Hub" \
+			&& docker push startr/ai-web-openwebui:manifest-arm64 \
+		&& docker manifest create \
+			startr/ai-web-openwebui:latest \
+			startr/ai-web-openwebui:manifest-amd64 \
+			startr/ai-web-openwebui:manifest-arm64 \
+		&& docker manifest push startr/ai-web-openwebui:latest
+
+it_build_multi_arch_push_GHCR:
+	echo "Deleting old manifest" \
+		&& docker manifest rm ghcr.io/startr/ai-web-openwebui:latest \
+		&&
+	echo "Building for amd64" \
+		&& docker buildx build --platform linux/amd64 -t ghcr.io/startr/ai-web-openwebui:manifest-amd64 --build-arg ARCH=amd64 . \
+			&& echo "Pushing amd64 to GHCR" \
+			&& docker push ghcr.io/startr/ai-web-openwebui:manifest-amd64 \
+	&& echo "Building for arm64" \
+		&& docker buildx build --platform linux/arm64 -t ghcr.io/startr/ai-web-openwebui:manifest-arm64 --build-arg ARCH=arm64 . \
+			&& echo "Pushing arm64 to GHCR" \
+			&& docker push ghcr.io/startr/ai-web-openwebui:manifest-arm64 \ 
+		&& docker manifest create \
+			ghcr.io/startr/ai-web-openwebui:manifest-amd64 \
+			ghcr.io/startr/ai-web-openwebui:manifest-arm64 \
+		&& docker manifest push ghcr.io/startr/ai-web-openwebui:latest
+
 
 it_install:
 	$(DOCKER_COMPOSE) up -d
