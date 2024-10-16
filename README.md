@@ -1,6 +1,8 @@
 # Sage : Open WebUI (Formerly Ollama WebUI) 👋
 
-v0.3.33
+v0.3.34
+
+Now with simple multi arch deployment to docker :D
 
 [![GitHub license](https://img.shields.io/github/license/opencoca/AI-WEB-openwebui)](
 
