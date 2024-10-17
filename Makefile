@@ -22,76 +22,132 @@ help:
 	@LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null \
 		| awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
 	@echo ""	
+# Configuration variables
+IMAGE_NAME := startr/ai-web-openwebui
+GHCR_IMAGE_NAME := ghcr.io/$(IMAGE_NAME)
+GIT_TAG := $(shell git tag --sort=-v:refname | sed 's/^v//' | head -n 1)
+IMAGE_TAG := $(if $(GIT_TAG),$(GIT_TAG),latest)
+CONTAINER_NAME := ai-web-openwebui
+PORT_MAPPING := 3000:8080
+VOLUME_DATA := sage-open-webui:/app/backend/data
+ENV_FILE := $$(pwd)/.env:/app/.env
 
-it_run:
-	docker run --rm -p 3000:8080 \
-		--add-host=host.docker.internal:host-gateway \
-		-v sage-open-webui:/app/backend/data \
-		-v $$(pwd)/.env:/app/.env \
-		--name ai-web-openwebui startr/ai-web-openwebui:latest
+# Architectures to build for
+ARCHITECTURES := amd64 arm64
 
+# Common docker run arguments
+DOCKER_RUN_ARGS := --rm -p $(PORT_MAPPING) \
+	--add-host=host.docker.internal:host-gateway \
+	-v $(VOLUME_DATA) \
+	-v $(ENV_FILE) \
+	--name $(CONTAINER_NAME)
+
+# Build targets
 it_build:
-	docker build -t startr/ai-web-openwebui .
-
-it_build_n_run:
-	docker build -t startr/ai-web-openwebui:latest . \
-		&& docker run --rm -p 3000:8080 \
-			--add-host=host.docker.internal:host-gateway \
-			-v sage-open-webui:/app/backend/data \
-			-v $$(pwd)/.env:/app/.env \
-			--name ai-web-openwebui startr/ai-web-openwebui:latest
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
 
 it_build_no_cache:
-	docker build --no-cache -t startr/ai-web-openwebui .
+	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
 
-it_build_n_run_no_cache:
-	docker build --no-cache -t startr/ai-web-openwebui:latest . \
-		&& docker run --rm -p 3000:8080 \
-			--add-host=host.docker.internal:host-gateway \
-			-v sage-open-webui:/app/backend/data \
-			--name ai-web-openwebui startr/ai-web-openwebui:latest
+# Run targets
+it_run:
+	docker run $(DOCKER_RUN_ARGS) $(IMAGE_NAME):$(IMAGE_TAG)
 
-it_build_multi_arch_push_docker_hub:
-	echo "Deleting old manifest" \
-		&& docker manifest rm startr/ai-web-openwebui:latest \
-		&& \
-	echo "Building multi arch for amd64"\
-		&& docker buildx build --platform linux/arm64 \
-			-t startr/ai-web-openwebui:manifest-amd64 \
-			--build-arg ARCH=amd64 \
-			--load . \
-			&& echo "Pushing amd64 to Docker Hub" \
-			&& docker push startr/ai-web-openwebui:manifest-amd64 \
-	&& echo "Building multi arch for arm64" \
-		&& docker buildx build --platform linux/arm64 \
-			-t startr/ai-web-openwebui:manifest-arm64 \
-			--build-arg ARCH=arm64 \
-			--load . \
-			&& echo "Pushing arm64 to Docker Hub" \
-			&& docker push startr/ai-web-openwebui:manifest-arm64 \
-		&& docker manifest create \
-			startr/ai-web-openwebui:latest \
-			startr/ai-web-openwebui:manifest-amd64 \
-			startr/ai-web-openwebui:manifest-arm64 \
-		&& docker manifest push startr/ai-web-openwebui:latest
+# Combined build and run targets
+it_build_n_run: it_build
+	@make it_run
 
-it_build_multi_arch_push_GHCR:
-	echo "Deleting old manifest" \
-		&& docker manifest rm ghcr.io/startr/ai-web-openwebui:latest \
-		&& \
-	echo "Building for amd64" \
-		&& docker buildx build --platform linux/amd64 -t ghcr.io/startr/ai-web-openwebui:manifest-amd64 --build-arg ARCH=amd64 . \
-			&& echo "Pushing amd64 to GHCR" \
-			&& docker push ghcr.io/startr/ai-web-openwebui:manifest-amd64 \
-	&& echo "Building for arm64" \
-		&& docker buildx build --platform linux/arm64 -t ghcr.io/startr/ai-web-openwebui:manifest-arm64 --build-arg ARCH=arm64 . \
-			&& echo "Pushing arm64 to GHCR" \
-			&& docker push ghcr.io/startr/ai-web-openwebui:manifest-arm64 \ 
-		&& docker manifest create \
-			ghcr.io/startr/ai-web-openwebui:manifest-amd64 \
-			ghcr.io/startr/ai-web-openwebui:manifest-arm64 \
-		&& docker manifest push ghcr.io/startr/ai-web-openwebui:latest
+it_build_n_run_no_cache: it_build_no_cache
+	@make it_run
 
+# Multi-architecture build helpers
+define build_arch
+	docker buildx build --platform linux/$(1) \
+		-t $(2):$(1)-$(IMAGE_TAG) \
+		-t $(2):$(1)-latest \
+		--build-arg ARCH=$(1) \
+		--load . && \
+	docker push $(2):$(1)-$(IMAGE_TAG) && \
+	docker push $(2):$(1)-latest
+endef
+
+# Clean old manifests
+clean-manifests-dockerhub:
+	docker manifest rm $(IMAGE_NAME):$(IMAGE_TAG) || true
+	docker manifest rm $(IMAGE_NAME):latest || true
+
+clean-manifests-ghcr:
+	docker manifest rm $(GHCR_IMAGE_NAME):$(IMAGE_TAG) || true
+	docker manifest rm $(GHCR_IMAGE_NAME):latest || true
+
+# Build individual architectures for Docker Hub
+build-amd64-dockerhub:
+	@echo "Building AMD64 for Docker Hub"
+	$(call build_arch,amd64,$(IMAGE_NAME))
+
+build-arm64-dockerhub:
+	@echo "Building ARM64 for Docker Hub"
+	$(call build_arch,arm64,$(IMAGE_NAME))
+
+# Build individual architectures for GHCR
+build-amd64-ghcr:
+	@echo "Building AMD64 for GHCR"
+	$(call build_arch,amd64,$(GHCR_IMAGE_NAME))
+
+build-arm64-ghcr:
+	@echo "Building ARM64 for GHCR"
+	$(call build_arch,arm64,$(GHCR_IMAGE_NAME))
+
+# Create and push manifests for Docker Hub
+create-manifest-dockerhub: build-amd64-dockerhub build-arm64-dockerhub
+	@echo "Creating Docker Hub manifests for version $(IMAGE_TAG)"
+	docker manifest create \
+		$(IMAGE_NAME):$(IMAGE_TAG) \
+		$(IMAGE_NAME):amd64-$(IMAGE_TAG) \
+		$(IMAGE_NAME):arm64-$(IMAGE_TAG)
+	docker manifest push $(IMAGE_NAME):$(IMAGE_TAG)
+	docker manifest create \
+		$(IMAGE_NAME):latest \
+		$(IMAGE_NAME):amd64-latest \
+		$(IMAGE_NAME):arm64-latest
+	docker manifest push $(IMAGE_NAME):latest
+
+# Create and push manifests for GHCR
+create-manifest-ghcr: build-amd64-ghcr build-arm64-ghcr
+	@echo "Creating GHCR manifests for version $(IMAGE_TAG)"
+	docker manifest create \
+		$(GHCR_IMAGE_NAME):$(IMAGE_TAG) \
+		$(GHCR_IMAGE_NAME):amd64-$(IMAGE_TAG) \
+		$(GHCR_IMAGE_NAME):arm64-$(IMAGE_TAG)
+	docker manifest push $(GHCR_IMAGE_NAME):$(IMAGE_TAG)
+	docker manifest create \
+		$(GHCR_IMAGE_NAME):latest \
+		$(GHCR_IMAGE_NAME):amd64-latest \
+		$(GHCR_IMAGE_NAME):arm64-latest
+	docker manifest push $(GHCR_IMAGE_NAME):latest
+
+# Main multi-arch build targets
+it_build_multi_arch_push_docker_hub: clean-manifests-dockerhub create-manifest-dockerhub
+	@echo "Completed Docker Hub multi-arch build and push for version $(IMAGE_TAG)"
+
+it_build_multi_arch_push_GHCR: clean-manifests-ghcr create-manifest-ghcr
+	@echo "Completed GHCR multi-arch build and push for version $(IMAGE_TAG)"
+
+# Build both registries
+it_build_multi_arch_all: it_build_multi_arch_push_docker_hub it_build_multi_arch_push_GHCR
+	@echo "Completed all multi-arch builds and pushes for version $(IMAGE_TAG)"
+
+# Utility target to show current version
+show-version:
+	@echo "Current version: $(IMAGE_TAG)"
+
+.PHONY: it_build it_build_no_cache it_run it_build_n_run it_build_n_run_no_cache \
+	clean-manifests-dockerhub clean-manifests-ghcr \
+	build-amd64-dockerhub build-arm64-dockerhub \
+	build-amd64-ghcr build-arm64-ghcr \
+	create-manifest-dockerhub create-manifest-ghcr \
+	it_build_multi_arch_push_docker_hub it_build_multi_arch_push_GHCR \
+	it_build_multi_arch_all show-version
 
 it_install:
 	$(DOCKER_COMPOSE) up -d
