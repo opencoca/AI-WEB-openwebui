@@ -5,8 +5,6 @@ else
     DOCKER_COMPOSE := docker compose
 endif
 
-# what is our full path? put in varable FULL_PATH
-FULL_PATH := $(realpath $(lastword $(MAKEFILE_LIST)))
 
 help: 
 	@echo "================================================"
