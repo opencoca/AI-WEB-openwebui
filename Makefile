@@ -33,7 +33,7 @@ VOLUME_DATA := sage-open-webui:/app/backend/data
 ENV_FILE := $$(pwd)/.env:/app/.env
 
 # Architectures to build for
-ARCHITECTURES := amd64 arm64
+ARCHITECTURES := amd64 arm64 # Not used at the moment
 
 # Common docker run arguments
 DOCKER_RUN_ARGS := --rm -p $(PORT_MAPPING) \
