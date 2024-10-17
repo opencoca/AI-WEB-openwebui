@@ -5,6 +5,7 @@ else
     DOCKER_COMPOSE := docker compose
 endif
 
+
 help: 
 	@echo "================================================"
 	@echo "Sage.Education/AI by Startr.Cloud and Open WebUI"
@@ -25,28 +26,30 @@ help:
 it_run:
 	docker run --rm -p 3000:8080 \
 		--add-host=host.docker.internal:host-gateway \
-		-v open-webui:/app/backend/data \
-		--name ai-web-openwebui startr/ai-web-openwebui
+		-v sage-open-webui:/app/backend/data \
+		-v $$(pwd)/.env:/app/.env \
+		--name ai-web-openwebui startr/ai-web-openwebui:latest
 
 it_build:
 	docker build -t startr/ai-web-openwebui .
 
 it_build_n_run:
-	docker build -t startr/ai-web-openwebui . \
+	docker build -t startr/ai-web-openwebui:latest . \
 		&& docker run --rm -p 3000:8080 \
 			--add-host=host.docker.internal:host-gateway \
-			-v open-webui:/app/backend/data \
-			--name ai-web-openwebui ai-web-openwebui
+			-v sage-open-webui:/app/backend/data \
+			-v $$(pwd)/.env:/app/.env \
+			--name ai-web-openwebui startr/ai-web-openwebui:latest
 
 it_build_no_cache:
 	docker build --no-cache -t startr/ai-web-openwebui .
 
 it_build_n_run_no_cache:
-	docker build --no-cache -t startr/ai-web-openwebui . \
+	docker build --no-cache -t startr/ai-web-openwebui:latest . \
 		&& docker run --rm -p 3000:8080 \
 			--add-host=host.docker.internal:host-gateway \
-			-v open-webui:/app/backend/data \
-			--name ai-web-openwebui startr/ai-web-openwebui
+			-v sage-open-webui:/app/backend/data \
+			--name ai-web-openwebui startr/ai-web-openwebui:latest
 
 it_build_multi_arch_push_docker_hub:
 	echo "Deleting old manifest" \
