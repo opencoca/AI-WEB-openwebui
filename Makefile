@@ -54,13 +54,19 @@ it_build_n_run_no_cache:
 it_build_multi_arch_push_docker_hub:
 	echo "Deleting old manifest" \
 		&& docker manifest rm startr/ai-web-openwebui:latest \
-		&&
+		&& \
 	echo "Building multi arch for amd64"\
-		&& docker buildx build --platform linux/amd64 -t startr/ai-web-openwebui:manifest-amd64 --build-arg ARCH=amd64 . \
+		&& docker buildx build --platform linux/arm64 \
+			-t startr/ai-web-openwebui:manifest-amd64 \
+			--build-arg ARCH=amd64 \
+			--load . \
 			&& echo "Pushing amd64 to Docker Hub" \
 			&& docker push startr/ai-web-openwebui:manifest-amd64 \
 	&& echo "Building multi arch for arm64" \
-		&& docker buildx build --platform linux/arm64 -t startr/ai-web-openwebui:manifest-arm64 --build-arg ARCH=arm64 . \
+		&& docker buildx build --platform linux/arm64 \
+			-t startr/ai-web-openwebui:manifest-arm64 \
+			--build-arg ARCH=arm64 \
+			--load . \
 			&& echo "Pushing arm64 to Docker Hub" \
 			&& docker push startr/ai-web-openwebui:manifest-arm64 \
 		&& docker manifest create \
@@ -72,7 +78,7 @@ it_build_multi_arch_push_docker_hub:
 it_build_multi_arch_push_GHCR:
 	echo "Deleting old manifest" \
 		&& docker manifest rm ghcr.io/startr/ai-web-openwebui:latest \
-		&&
+		&& \
 	echo "Building for amd64" \
 		&& docker buildx build --platform linux/amd64 -t ghcr.io/startr/ai-web-openwebui:manifest-amd64 --build-arg ARCH=amd64 . \
 			&& echo "Pushing amd64 to GHCR" \
