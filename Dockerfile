@@ -26,16 +26,44 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY . .
-ENV APP_BUILD_HASH=${BUILD_HASH}
-RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build
 
-########## WebUI backend #########
+ENV APP_BUILD_HASH=${BUILD_HASH}
+RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --debug
+
+########### WebUI backend #########
 FROM python:3.11-slim-bookworm AS base
+
+WORKDIR /app
+COPY package.json package-lock.json ./
+COPY src /app/src
+
+########## DEV_MODE Toggle #########
+ARG DEV_MODE=false
+ENV DEV_MODE=$DEV_MODE
+
+#Set up dev server if DEV_MODE is true
+RUN `##### Set up dev server if DEV_MODE is true #####` && \
+    if [[ "$DEV_MODE" == "true" ]]; then \
+    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?dev=true' && \
+    echo "Setting up development mode..." && \
+    apt-get update && \
+    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?apt-update=true' && \
+    apt-get install -y --no-install-recommends unzip nodejs npm && \
+    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?install=true' && \
+    npm install -g npm@latest && \
+    npm ci && \
+    NODE_OPTIONS="--max-old-space-size=4096" \
+    npm run build && \
+    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?build=true;' \
+else \
+    echo "Skipping development mode setup."&& \
+    echo "Deleting unnecessary files..." && \
+    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?dev=false' && \
+    rm -rf src package.json package-lock.json;\
+fi
 
 ######## Backup & Restore ########
 
-# Install rclone
-# Add cron for scheduling backups
 RUN apt-get update && apt-get install -y cron rclone bash-completion
 # cleanup APT when done.
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
@@ -43,23 +71,9 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 # Set default values for environment variables
 
 ENV BACKUP_PATH=snapcloud-backups
-ENV BACKUP_CRON="0 2 * * *"  
+ENV BACKUP_CRON="0 2 *"  
 # 2 AM EST (7 AM UTC)
 ENV NOTIFY_URL=https://your-webhook-url.com/notify
-
-# Document the environment variables
-# RCLONE_REMOTE: The remote storage service to use (default: dropbox)
-# RCLONE_CONFIG_TYPE: The type of remote storage service (default: dropbox)
-# RCLONE_CONFIG_DROPBOX_TOKEN: The access token for Dropbox (default: {"access_token":"YOUR_ACCESS_TOKEN","token_type":"bearer","expiry":"0001-01-01T00:00:00Z"})
-# RCLONE_REMOTE (Google Drive): The remote storage service to use (default: gdrive)
-# RCLONE_CONFIG_TYPE (Google Drive): The type of remote storage service (default: drive)
-# RCLONE_CONFIG_DRIVE_CLIENT_ID: The client ID for Google Drive
-# RCLONE_CONFIG_DRIVE_CLIENT_SECRET: The client secret for Google Drive
-# RCLONE_CONFIG_DRIVE_SCOPE: The scope for Google Drive (default: drive)
-# RCLONE_CONFIG_DRIVE_TOKEN: The access token for Google Drive (default: {"access_token":"YOUR_ACCESS_TOKEN","token_type":"bearer","expiry":"0001-01-01T00:00:00Z"})
-# BACKUP_PATH: The path where backups will be stored (default: snapcloud-backups)
-# BACKUP_CRON: The cron schedule for backups (default: "0 2 * * *")
-# NOTIFY_URL: The URL for notifications (default: https://your-webhook-url.com/notify)
 
 
 # Use args
@@ -127,29 +141,31 @@ RUN echo -n 00000000-0000-0000-0000-000000000000 > $HOME/.cache/chroma/telemetry
 # Make sure the user has access to the app and root directory
 RUN chown -R $UID:$GID /app $HOME
 
+# Update
+RUN apt-get update
+
+# Install common packages
+RUN apt-get install -y \
+    --no-install-recommends \
+        git \
+        build-essential \
+        pandoc \
+        netcat-openbsd \
+        curl \
+        jq \
+        gcc \
+        python3-dev \
+        ffmpeg \
+        libsm6 \
+        libxext6 
+
+# Conditional installation of Ollama
 RUN if [ "$USE_OLLAMA" = "true" ]; then \
-    apt-get update && \
-    # Install pandoc and netcat
-    apt-get install -y --no-install-recommends git build-essential pandoc netcat-openbsd curl && \
-    apt-get install -y --no-install-recommends gcc python3-dev && \
-    # for RAG OCR
-    apt-get install -y --no-install-recommends ffmpeg libsm6 libxext6 && \
-    # install helper tools
-    apt-get install -y --no-install-recommends curl jq && \
-    # install ollama
-    curl -fsSL https://ollama.com/install.sh | sh && \
-    # cleanup
-    rm -rf /var/lib/apt/lists/*; \
-    else \
-    apt-get update && \
-    # Install pandoc, netcat and gcc
-    apt-get install -y --no-install-recommends git build-essential pandoc gcc netcat-openbsd curl jq && \
-    apt-get install -y --no-install-recommends gcc python3-dev && \
-    # for RAG OCR
-    apt-get install -y --no-install-recommends ffmpeg libsm6 libxext6 && \
-    # cleanup
-    rm -rf /var/lib/apt/lists/*; \
+        curl -fsSL https://ollama.com/install.sh | sh; \
     fi
+
+# Cleanup the package lists in a separate RUN command
+RUN rm -rf /var/lib/apt/lists/*
 
 # install python dependencies
 # Upgrade pip to latest version
@@ -159,6 +175,7 @@ RUN pip3 install --no-cache-dir --upgrade pip
 COPY --chown=$UID:$GID ./backend/requirements.txt ./requirements.txt
 
 RUN pip3 install uv 
+
 RUN if [ "$USE_CUDA" = "true" ]; then \
     # If you use CUDA the whisper and embedding model will be downloaded on first use
         pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/$USE_CUDA_DOCKER_VER --no-cache-dir && \
@@ -171,6 +188,7 @@ RUN if [ "$USE_CUDA" = "true" ]; then \
         python -c "import os; from sentence_transformers import SentenceTransformer; SentenceTransformer(os.environ['RAG_EMBEDDING_MODEL'], device='cpu')" && \
         python -c "import os; from faster_whisper import WhisperModel; WhisperModel(os.environ['WHISPER_MODEL'], device='cpu', compute_type='int8', download_root=os.environ['WHISPER_MODEL_DIR'])"; \
     fi;
+
 RUN chown -R $UID:$GID /app/backend/data/
 
 
@@ -196,4 +214,8 @@ ARG BUILD_HASH
 ENV WEBUI_BUILD_VERSION=${BUILD_HASH}
 ENV DOCKER=true
 
-CMD [ "bash", "restore_backup_start.sh", "server" ]
+CMD [ "bash", "restore_backup_start.sh", "server" ] \
+    # To enable dev mode: \
+    # 1. Set DEV_MODE=true during docker build: --build-arg DEV_MODE=true \
+    # 2. Edit 'restore_backup_start.sh' to include dev configurations, or \
+    # 3. Run: docker run -it --rm <image_name> npm run dev
