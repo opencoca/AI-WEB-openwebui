@@ -20,7 +20,7 @@ help:
 	@echo "Available make commands:"
 	@echo ""
 	@LC_ALL=C $(MAKE) -pRrq -f $(firstword $(MAKEFILE_LIST)) : 2>/dev/null \
-		| awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$@$$'
+		| awk -v RS= -F: '/(^|\n)# Files(\n|$$)/,/(^|\n)# Finished Make data base/ {if ($$1 !~ "^[#.]") {print $$1}}' | sort | grep -E -v -e '^[^[:alnum:]]' -e '^$$@$$'
 	@echo ""	
 # Configuration variables
 IMAGE_NAME := startr/ai-web-openwebui
@@ -46,12 +46,24 @@ DOCKER_RUN_ARGS := --rm -p $(PORT_MAPPING) \
 it_build:
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
 
+dev_build:
+	docker build --build-arg DEV_MODE=true -t $(IMAGE_NAME):$(IMAGE_TAG)-DEV_MODE -t $(IMAGE_NAME):latest-DEV_MODE .
+
 it_build_no_cache:
 	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
+
+dev_run:
+	docker run $(DOCKER_RUN_ARGS) $(IMAGE_NAME):$(IMAGE_TAG)-DEV_MODE bash restore_backup_start.sh dev
 
 # Run targets
 it_run:
 	docker run $(DOCKER_RUN_ARGS) $(IMAGE_NAME):$(IMAGE_TAG)
+
+# Combine build and dev run targets
+it_build_n_dev_run: it_build
+	@make dev_run
+dev_build_n_dev_run: dev_build
+	@make dev_run
 
 # Combined build and run targets
 it_build_n_run: it_build
@@ -141,7 +153,7 @@ it_build_multi_arch_all: it_build_multi_arch_push_docker_hub it_build_multi_arch
 show-version:
 	@echo "Current version: $(IMAGE_TAG)"
 
-.PHONY: it_build it_build_no_cache it_run it_build_n_run it_build_n_run_no_cache \
+.PHONY: it_build it_build_no_cache dev_build dev_build_n_dev_run dev_run it_run it_build_n_run it_build_n_run_no_cache \
 	clean-manifests-dockerhub clean-manifests-ghcr \
 	build-amd64-dockerhub build-arm64-dockerhub \
 	build-amd64-ghcr build-arm64-ghcr \
@@ -200,4 +212,3 @@ update:
 	@docker stop open-webui || true
 	$(DOCKER_COMPOSE) up --build -d
 	$(DOCKER_COMPOSE) start
-
