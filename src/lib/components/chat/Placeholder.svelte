@@ -141,7 +141,7 @@
 						{#if models[selectedModelIdx]?.info}
 							{models[selectedModelIdx]?.info?.name}
 						{:else}
-							{$i18n.t('Hello, {{name}}', { name: $user.name })}
+							{$i18n.t('Hello {{name}}', { name: $user.name })}
 						{/if}
 					</div>
 				</div>
