@@ -17,3 +17,8 @@ uploads
 .ipynb_checkpoints
 **/*.db
 _test
+
+README.md
+#CHANGELOG.md
+
+Makefile
