@@ -343,7 +343,7 @@
 	"h:mm a": "h: mm a",
 	"Haptic Feedback": "Aiseolas Haptic",
 	"has no conversations.": "níl aon chomhráite aige.",
-	"Hello, {{name}}": "Dia duit, {{name}}",
+	"Hello {{name}}": "Dia duit {{name}}",
 	"Help": "Cabhair",
 	"Hide": "Folaigh",
 	"Hide Model": "Folaigh Múnla",

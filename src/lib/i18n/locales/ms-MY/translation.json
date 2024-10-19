@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "tidak mempunyai perbualan.",
-	"Hello, {{name}}": "Hello, {{name}}",
+	"Hello {{name}}": "Hello {{name}}",
 	"Help": "Bantuan",
 	"Hide": "Sembunyi",
 	"Hide Model": "Sembunyikan Model",

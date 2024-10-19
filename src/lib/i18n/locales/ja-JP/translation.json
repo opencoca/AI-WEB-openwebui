@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "対話はありません。",
-	"Hello, {{name}}": "こんにちは、{{name}} さん",
+	"Hello {{name}}": "こんにちは、{{name}} さん",
 	"Help": "ヘルプ",
 	"Hide": "非表示",
 	"Hide Model": "",

@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "אין שיחות.",
-	"Hello, {{name}}": "שלום, {{name}}",
+	"Hello {{name}}": "שלום {{name}}",
 	"Help": "עזרה",
 	"Hide": "הסתר",
 	"Hide Model": "",

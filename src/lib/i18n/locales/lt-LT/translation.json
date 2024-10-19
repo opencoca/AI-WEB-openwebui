@@ -343,7 +343,7 @@
 	"h:mm a": "valanda:mėnesis:metai",
 	"Haptic Feedback": "",
 	"has no conversations.": "neturi pokalbių",
-	"Hello, {{name}}": "Sveiki, {{name}}",
+	"Hello {{name}}": "Sveiki {{name}}",
 	"Help": "Pagalba",
 	"Hide": "Paslėpti",
 	"Hide Model": "Paslėpti modelį",

@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "ei ole keskusteluja.",
-	"Hello, {{name}}": "Terve, {{name}}",
+	"Hello {{name}}": "Terve {{name}}",
 	"Help": "Apua",
 	"Hide": "Piilota",
 	"Hide Model": "",

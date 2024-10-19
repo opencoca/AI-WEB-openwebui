@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "heeft geen gesprekken.",
-	"Hello, {{name}}": "Hallo, {{name}}",
+	"Hello {{name}}": "Hallo {{name}}",
 	"Help": "Help",
 	"Hide": "Verberg",
 	"Hide Model": "",

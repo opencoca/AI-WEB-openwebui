@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "არა უფლება ჩაწერა",
-	"Hello, {{name}}": "გამარჯობა, {{name}}",
+	"Hello {{name}}": "გამარჯობა {{name}}",
 	"Help": "დახმარება",
 	"Hide": "დამალვა",
 	"Hide Model": "",

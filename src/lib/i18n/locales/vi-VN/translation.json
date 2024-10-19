@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "Phản hồi xúc giác",
 	"has no conversations.": "không có hội thoại",
-	"Hello, {{name}}": "Xin chào {{name}}",
+	"Hello {{name}}": "Xin chào {{name}}",
 	"Help": "Trợ giúp",
 	"Hide": "Ẩn",
 	"Hide Model": "Ẩn mô hình",
