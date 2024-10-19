@@ -42,6 +42,10 @@ DOCKER_RUN_ARGS := --rm -p $(PORT_MAPPING) \
 	-v $(ENV_FILE) \
 	--name $(CONTAINER_NAME)
 
+it_stop:
+	docker stop $(CONTAINER_NAME)
+	docker rm $(CONTAINER_NAME)
+
 # Build targets
 it_build:
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
@@ -62,8 +66,12 @@ it_run:
 # Combine build and dev run targets
 it_build_n_dev_run: it_build
 	@make dev_run
+	@make it_stop
+
 dev_build_n_dev_run: dev_build
 	@make dev_run
+	@make it_stop
+
 
 # Combined build and run targets
 it_build_n_run: it_build
