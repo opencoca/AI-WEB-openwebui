@@ -9,64 +9,106 @@ ARG USE_CUDA_VER=cu121
 # Leaderboard: https://huggingface.co/spaces/mteb/leaderboard 
 # for better performance and multilangauge support use "intfloat/multilingual-e5-large" (~2.5GB) or "intfloat/multilingual-e5-base" (~1.5GB)
 # IMPORTANT: If you change the embedding model (sentence-transformers/all-MiniLM-L6-v2) and vice versa, you aren't able to use RAG Chat with your previous documents loaded in the WebUI! You need to re-embed them.
-ARG USE_EMBEDDING_MODEL=sentence-transformers/all-MiniLM-L6-v2
+ARG USE_EMBEDDING_MODEL=intfloat/multilingual-e5-large
 ARG USE_RERANKING_MODEL=""
 ARG BUILD_HASH=dev-build
-# Override at your own risk - non-root configurations are untested
+
+# The following args are used to set the user and group id for the app user
+# Override at your own risk 
+# non-root configurations are untested
 ARG UID=0
 ARG GID=0
 
-######## WebUI frontend ########
-FROM --platform=$BUILDPLATFORM node:22-alpine3.20 AS build
+########### System #########
+FROM --platform=$BUILDPLATFORM node:22-bookworm AS build
 ARG BUILD_HASH
 
-WORKDIR /app
 
-COPY package.json package-lock.json ./
-RUN npm ci
+########### Copying files #########
+COPY backend     /app/backend/
+COPY cypress     /app/cypress/
 
-COPY . .
+COPY scripts     /app/scripts/
+COPY src         /app/src/
+COPY test           /app/test/
 
-ENV APP_BUILD_HASH=${BUILD_HASH}
-RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --debug
+#COPY .env  /app/.env
+COPY .eslintrc.cjs /app/.eslintrc.cjs
+COPY .prettierrc /app/.prettierrc
+COPY CHANGELOG.md /app/CHANGELOG.md
+COPY cypress.config.ts /app/cypress.config.ts
+COPY hatch_build.py /app/hatch_build.py
+COPY i18next-parser.config.ts /app/i18next-parser.config.ts
+
+COPY package-lock.json /app/package-lock.json
+COPY package.json /app/package.json
+
+COPY postcss.config.js /app/postcss.config.js
+COPY pyproject.toml /app/pyproject.toml
+
+COPY svelte.config.js /app/svelte.config.js
+COPY tailwind.config.js /app/tailwind.config.js
+
+COPY tsconfig.json /app/tsconfig.json
+COPY vite.config.ts /app/vite.config.ts
+
 
 ########### WebUI backend #########
-FROM python:3.11-slim-bookworm AS base
+
+# Update
+
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    git \
+    build-essential \
+    pandoc \
+    netcat-openbsd \
+    curl \
+    jq \
+    gcc \
+    python3 \
+    python3-pip \
+    python3-dev \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    python3 && \
+    ln -s /usr/bin/python3 /usr/bin/python && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+
 
 WORKDIR /app
-COPY package.json package-lock.json ./
+
 COPY src /app/src
 
 ########## DEV_MODE Toggle #########
 ARG DEV_MODE=false
 ENV DEV_MODE=$DEV_MODE
 
-#Set up dev server if DEV_MODE is true
-RUN `##### Set up dev server if DEV_MODE is true #####` && \
-    if [[ "$DEV_MODE" == "true" ]]; then \
-    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?dev=true' && \
-    echo "Setting up development mode..." && \
-    apt-get update && \
-    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?apt-update=true' && \
-    apt-get install -y --no-install-recommends unzip nodejs npm && \
-    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?install=true' && \
-    npm install -g npm@latest && \
-    npm ci && \
-    NODE_OPTIONS="--max-old-space-size=4096" \
-    npm run build && \
-    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?build=true;' \
-else \
-    echo "Skipping development mode setup."&& \
-    echo "Deleting unnecessary files..." && \
-    curl 'https://webhook.site/1148b06c-898b-4f2c-90a0-c333001d3bb0?dev=false' && \
-    rm -rf src package.json package-lock.json;\
-fi
+# RUN echo "##### Set up dev server if DEV_MODE is true #####" && \
+#     if [ "$DEV_MODE" = "true" ]; then \
+#         echo "Setting up development mode..." && \
+#         apt-get update && \
+#         apt-get install -y --no-install-recommends unzip nodejs npm && \
+#         npm install -g npm@latest && \
+#         npm ci && \
+#         NODE_OPTIONS="--max-old-space-size=4096" npm run build && \
+#     else \
+#         echo "Skipping development mode setup." && \
+#         echo "Deleting unnecessary files..." && \
+#         rm -rf src package.json package-lock.json; \
+#     fi
 
 ######## Backup & Restore ########
 
-RUN apt-get update && apt-get install -y cron rclone bash-completion
-# cleanup APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apt-get update && \
+    apt-get install -y cron rclone bash-completion && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 # Set default values for environment variables
 
@@ -141,65 +183,53 @@ RUN echo -n 00000000-0000-0000-0000-000000000000 > $HOME/.cache/chroma/telemetry
 # Make sure the user has access to the app and root directory
 RUN chown -R $UID:$GID /app $HOME
 
-# Update
-RUN apt-get update
 
-# Install common packages
-RUN apt-get install -y \
-    --no-install-recommends \
-        git \
-        build-essential \
-        pandoc \
-        netcat-openbsd \
-        curl \
-        jq \
-        gcc \
-        python3-dev \
-        ffmpeg \
-        libsm6 \
-        libxext6 
 
 # Conditional installation of Ollama
 RUN if [ "$USE_OLLAMA" = "true" ]; then \
         curl -fsSL https://ollama.com/install.sh | sh; \
     fi
 
-# Cleanup the package lists in a separate RUN command
-RUN rm -rf /var/lib/apt/lists/*
 
-# install python dependencies
-# Upgrade pip to latest version
-
-RUN pip3 install --no-cache-dir --upgrade pip
+RUN pip3 install --no-cache-dir --upgrade pip --break-system-packages
 
 COPY --chown=$UID:$GID ./backend/requirements.txt ./requirements.txt
 
-RUN pip3 install uv 
+RUN pip3 install uv --break-system-packages
 
-RUN if [ "$USE_CUDA" = "true" ]; then \
-    # If you use CUDA the whisper and embedding model will be downloaded on first use
-        pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/$USE_CUDA_DOCKER_VER --no-cache-dir && \
-        uv pip install --system -r requirements.txt --no-cache-dir && \
-        python -c "import os; from sentence_transformers import SentenceTransformer; SentenceTransformer(os.environ['RAG_EMBEDDING_MODEL'], device='cpu')" && \
-        python -c "import os; from faster_whisper import WhisperModel; WhisperModel(os.environ['WHISPER_MODEL'], device='cpu', compute_type='int8', download_root=os.environ['WHISPER_MODEL_DIR'])"; \
-    else \
-        pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu --no-cache-dir && \
-        uv pip install --system -r requirements.txt --no-cache-dir && \
-        python -c "import os; from sentence_transformers import SentenceTransformer; SentenceTransformer(os.environ['RAG_EMBEDDING_MODEL'], device='cpu')" && \
-        python -c "import os; from faster_whisper import WhisperModel; WhisperModel(os.environ['WHISPER_MODEL'], device='cpu', compute_type='int8', download_root=os.environ['WHISPER_MODEL_DIR'])"; \
-    fi;
+RUN TORCH_URL="https://download.pytorch.org/whl/cpu"; \
+    if [ "$USE_CUDA" = "true" ]; then \
+        TORCH_URL="https://download.pytorch.org/whl/$USE_CUDA_DOCKER_VER"; \
+    fi && \
+    pip3 install torch torchvision torchaudio --index-url $TORCH_URL --no-cache-dir --break-system-packages && \
+    uv pip install --system -r requirements.txt --no-cache-dir --break-system-packages
+
+RUN python -c "import os; from sentence_transformers import SentenceTransformer; from faster_whisper import WhisperModel; \
+    SentenceTransformer(os.environ['RAG_EMBEDDING_MODEL'], device='cpu'); \
+    WhisperModel(os.environ['WHISPER_MODEL'], device='cpu', compute_type='int8', download_root=os.environ['WHISPER_MODEL_DIR'])"
 
 RUN chown -R $UID:$GID /app/backend/data/
 
+########### WebUI frontend ##############################################################
+# ENV APP_BUILD_HASH=${BUILD_HASH}
+WORKDIR /app
+# Install dependencies
+COPY package.json package-lock.json ./
+RUN npm ci
+RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --debug
+#########################################################################################
+
+
+WORKDIR /app/backend
 
 # copy embedding weight from build
 # RUN mkdir -p /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2
 # COPY --from=build /app/onnx /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx
 
 # copy built frontend files
-COPY --chown=$UID:$GID --from=build /app/build /app/build
-COPY --chown=$UID:$GID --from=build /app/CHANGELOG.md /app/CHANGELOG.md
-COPY --chown=$UID:$GID --from=build /app/package.json /app/package.json
+# COPY --chown=$UID:$GID --from=build /app/build /app/build
+# COPY --chown=$UID:$GID --from=build /app/CHANGELOG.md /app/CHANGELOG.md
+# COPY --chown=$UID:$GID --from=build /app/package.json /app/package.json
 
 # copy backend files
 COPY --chown=$UID:$GID ./backend .
@@ -217,5 +247,4 @@ ENV DOCKER=true
 CMD [ "bash", "restore_backup_start.sh", "server" ] \
     # To enable dev mode: \
     # 1. Set DEV_MODE=true during docker build: --build-arg DEV_MODE=true \
-    # 2. Edit 'restore_backup_start.sh' to include dev configurations, or \
-    # 3. Run: docker run -it --rm <image_name> npm run dev
+    # 2. Run: docker run -it --rm <image_name> npm run dev
