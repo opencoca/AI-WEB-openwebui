@@ -19,7 +19,7 @@
 	<div id="suggestions-header" 
 	class="mb-1 flex gap-1 text-sm font-medium items-center text-gray-400 dark:text-gray-600">
 		<Bolt />
-		{$i18n.t('Search')} {$i18n.t('Suggestions')}
+		{$i18n.t('Search')} {$i18n.t('Suggestions')} :
 	</div>
 {/if}
 
@@ -45,8 +45,6 @@
 					<div>
 						{prompt.content}
 					</div>
-
-					<div class="tag">Prompt</div>
 				{/if}
 			</div>
 		</div>
