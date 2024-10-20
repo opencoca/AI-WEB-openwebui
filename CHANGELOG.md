@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.36]
+
+### Added 
+
+- **🔧 Startr.Styling**: Migrating to admin controlled styles 
+- **🔧 Faster Docker Builds**: Now we can rebuild and release faster allowing for smoother user experience.
+ 
+
+### Added
+
+- **🔧 Enhanced Tools & Functions**: Improved the Tools & Functions feature with better error handling and more robust execution, ensuring a smoother user experience.
+
+### Now with RCLONE support for cloud storage and more! :D
+
 ## [0.3.32] - 2024-10-06
 
 ### Added
