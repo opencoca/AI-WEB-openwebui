@@ -23,13 +23,36 @@ ARG GID=0
 FROM --platform=$BUILDPLATFORM node:22-bookworm AS build
 ARG BUILD_HASH
 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+    ca-certificates 
+    
+RUN apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    build-essential \
+    pandoc \
+    netcat-openbsd \
+    curl \
+    jq \
+    gcc \
+    python3 \
+    python3-pip \
+    python3-dev \
+    ffmpeg \
+    libsm6 \
+    libxext6 \
+    python3 && \
+    ln -s /usr/bin/python3 /usr/bin/python && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
 
 ########### Copying files #########
 COPY backend     /app/backend/
 COPY cypress     /app/cypress/
 
 COPY scripts     /app/scripts/
-COPY src         /app/src/
 COPY test           /app/test/
 
 #COPY .env  /app/.env
@@ -57,33 +80,12 @@ COPY vite.config.ts /app/vite.config.ts
 
 # Update
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    ca-certificates \
-    curl \
-    git \
-    build-essential \
-    pandoc \
-    netcat-openbsd \
-    curl \
-    jq \
-    gcc \
-    python3 \
-    python3-pip \
-    python3-dev \
-    ffmpeg \
-    libsm6 \
-    libxext6 \
-    python3 && \
-    ln -s /usr/bin/python3 /usr/bin/python && \
-    apt-get clean && \
-    rm -rf /var/lib/apt/lists/*
 
 
 
 WORKDIR /app
 
-COPY src /app/src
+
 
 ########## DEV_MODE Toggle #########
 ARG DEV_MODE=false
@@ -184,12 +186,10 @@ RUN echo -n 00000000-0000-0000-0000-000000000000 > $HOME/.cache/chroma/telemetry
 RUN chown -R $UID:$GID /app $HOME
 
 
-
 # Conditional installation of Ollama
 RUN if [ "$USE_OLLAMA" = "true" ]; then \
         curl -fsSL https://ollama.com/install.sh | sh; \
     fi
-
 
 RUN pip3 install --no-cache-dir --upgrade pip --break-system-packages
 
@@ -214,6 +214,9 @@ RUN chown -R $UID:$GID /app/backend/data/
 # ENV APP_BUILD_HASH=${BUILD_HASH}
 WORKDIR /app
 # Install dependencies
+
+COPY src /app/src
+
 COPY package.json package-lock.json ./
 RUN npm ci
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --debug
