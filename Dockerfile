@@ -215,10 +215,10 @@ RUN chown -R $UID:$GID /app/backend/data/
 WORKDIR /app
 # Install dependencies
 
-COPY src /app/src
-
 COPY package.json package-lock.json ./
 RUN npm ci
+
+COPY src /app/src
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --debug
 #########################################################################################
 
