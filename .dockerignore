@@ -1,11 +1,12 @@
 .github
+.git
 .DS_Store
 docs
 kubernetes
 node_modules
 /.svelte-kit
 /package
-.env
+#.env
 .env.*
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
@@ -19,6 +20,6 @@ uploads
 _test
 
 README.md
-#CHANGELOG.md
-
+LICENSE
+Dockerfile
 Makefile
