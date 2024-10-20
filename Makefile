@@ -52,13 +52,17 @@ DEV_RUN_ARGS := --rm -p $(PORT_MAPPING) \
 	--name $(CONTAINER_NAME)
 
 it_stop:
-	docker stop $(CONTAINER_NAME)
-	docker rm $(CONTAINER_NAME)
+	docker rm -f $(CONTAINER_NAME)
 
 # Build targets
 it_build:
 	export DOCKER_BUILDKIT=1
-	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest \
+		. 
+
+it_build_no_cache:
+	export DOCKER_BUILDKIT=1
+	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest . 
 
 build_slim:
 	# Build a slim version of the image from the Dockerimage
@@ -70,16 +74,9 @@ it_run_slim:
 	# Run the slim version of the image
 	docker run $(DOCKER_RUN_ARGS) $(IMAGE_NAME).slim:latest
 
-dev_build:
-	export DOCKER_BUILDKIT=1
-	docker build --build-arg DEV_MODE=true -t $(IMAGE_NAME):$(IMAGE_TAG)-DEV_MODE -t $(IMAGE_NAME):latest-DEV_MODE .
-
-it_build_no_cache:
-	export DOCKER_BUILDKIT=1
-	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
 
 dev_run:
-	docker run $(DEV_RUN_ARGS) $(IMAGE_NAME):$(IMAGE_TAG) 
+	docker run $(DEV_RUN_ARGS) $(IMAGE_NAME):$(IMAGE_TAG) bash -c "/app/backend/restore_backup_start.sh dev" 
 
 # Run targets
 it_run:
@@ -90,17 +87,15 @@ it_build_n_dev_run: it_build
 	@make dev_run
 	@make it_stop
 
-dev_build_n_dev_run: dev_build
-	@make dev_run
-	@make it_stop
-
 
 # Combined build and run targets
 it_build_n_run: it_build
 	@make it_run
+	@make it_stop
 
 it_build_n_run_no_cache: it_build_no_cache
 	@make it_run
+	@make it_stop
 
 # Multi-architecture build helpers
 define build_arch
