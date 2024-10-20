@@ -39,7 +39,7 @@
 
 <div class="w-full max-h-full">
 	<button
-		class="flex space-x-1"
+		style=" --p: 0 0.6em; --d:flex; --br:1em"
 		on:click={() => {
 			goto('/workspace/knowledge');
 		}}

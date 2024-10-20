@@ -106,7 +106,7 @@
 
 		<hr class=" dark:border-gray-850" />
 
-		<div class="flex space-x-1">
+		<div style=" --p: 0 0.6em; --d:flex; --br:1em">
 			<a href="https://discord.gg/5rJgQTnV4s" target="_blank">
 				<img
 					alt="Discord"

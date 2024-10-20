@@ -156,7 +156,9 @@
 	</div>
 </div>
 
-<div class=" flex w-full space-x-2">
+<div style="
+    --ai: center;
+    --d: flex;">
 	<div class="flex flex-1">
 		<div class=" self-center ml-1 mr-3">
 			<svg

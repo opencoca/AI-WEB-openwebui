@@ -296,7 +296,7 @@ class Pipe:
 		>
 			<div class="mb-2.5">
 				<button
-					class="flex space-x-1"
+					style=" --p: 0 0.6em; --d:flex; --br:1em"
 					on:click={() => {
 						goto('/workspace/functions');
 					}}
