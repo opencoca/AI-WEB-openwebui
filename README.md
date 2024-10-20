@@ -1,5 +1,7 @@
 # Sage : Open WebUI (Formerly Ollama WebUI) 👋
 
+v0.3.36 - Now with cleaner styles and faster Docker Builds :D
+
 v0.3.35 - Now with RCLONE support for cloud storage and more! :D
 
 v0.3.34 - Now with simple multi arch deployment to docker :D
