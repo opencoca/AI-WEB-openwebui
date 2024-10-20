@@ -193,7 +193,7 @@ RUN if [ "$USE_OLLAMA" = "true" ]; then \
 
 RUN pip3 install --no-cache-dir --upgrade pip --break-system-packages
 
-COPY --chown=$UID:$GID ./backend/requirements.txt ./requirements.txt
+#COPY --chown=$UID:$GID ./backend/requirements.txt ./requirements.txt
 
 RUN pip3 install uv --break-system-packages
 
