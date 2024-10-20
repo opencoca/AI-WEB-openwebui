@@ -191,7 +191,6 @@ server)
   start_app
   ;;
 dev)
-
   setup_rclone
   # disable auto backup
   export AUTO_BACKUP=false
