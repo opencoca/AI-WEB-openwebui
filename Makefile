@@ -31,6 +31,8 @@ CONTAINER_NAME := ai-web-openwebui
 PORT_MAPPING := 3000:8080
 VOLUME_DATA := sage-open-webui:/app/backend/data
 ENV_FILE := $$(pwd)/.env:/app/.env
+FRONTEND_SRC := $$(pwd)/src/:/app/src/
+
 
 # Architectures to build for
 ARCHITECTURES := amd64 arm64 # Not used at the moment
@@ -42,22 +44,42 @@ DOCKER_RUN_ARGS := --rm -p $(PORT_MAPPING) \
 	-v $(ENV_FILE) \
 	--name $(CONTAINER_NAME)
 
+DEV_RUN_ARGS := --rm -p $(PORT_MAPPING) \
+	--add-host=host.docker.internal:host-gateway \
+	-v $(VOLUME_DATA) \
+	-v $(ENV_FILE) \
+	-v $(FRONTEND_SRC) \
+	--name $(CONTAINER_NAME)
+
 it_stop:
 	docker stop $(CONTAINER_NAME)
 	docker rm $(CONTAINER_NAME)
 
 # Build targets
 it_build:
+	export DOCKER_BUILDKIT=1
 	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
 
+build_slim:
+	# Build a slim version of the image from the Dockerimage
+	# Note at the moment manual use of the site is required to build the slim version
+	# we need to add selenium automation to the build process to automate this
+	slim build --http-probe  --include-path /app/backend --include-path /app/static --continue-after=160  startr/ai-web-openwebui
+
+it_run_slim:
+	# Run the slim version of the image
+	docker run $(DOCKER_RUN_ARGS) $(IMAGE_NAME).slim:latest
+
 dev_build:
+	export DOCKER_BUILDKIT=1
 	docker build --build-arg DEV_MODE=true -t $(IMAGE_NAME):$(IMAGE_TAG)-DEV_MODE -t $(IMAGE_NAME):latest-DEV_MODE .
 
 it_build_no_cache:
+	export DOCKER_BUILDKIT=1
 	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest .
 
 dev_run:
-	docker run $(DOCKER_RUN_ARGS) $(IMAGE_NAME):$(IMAGE_TAG)-DEV_MODE bash restore_backup_start.sh dev
+	docker run $(DEV_RUN_ARGS) $(IMAGE_NAME):$(IMAGE_TAG) 
 
 # Run targets
 it_run:
