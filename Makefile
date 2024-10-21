@@ -99,6 +99,7 @@ it_build_n_run_no_cache: it_build_no_cache
 
 # Multi-architecture build helpers
 define build_arch
+	docker builder prune
 	docker buildx build --platform linux/$(1) \
 		-t $(2):$(1)-$(IMAGE_TAG) \
 		-t $(2):$(1)-latest \
