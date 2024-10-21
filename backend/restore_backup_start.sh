@@ -170,7 +170,7 @@ start_app() {
 # Function to start the application in development mode
 start_dev() {
   echo "Starting application in development mode..."
-  start_common "npm run dev"
+  start_common "./dev.sh"
 }
 
 # Main execution logic
