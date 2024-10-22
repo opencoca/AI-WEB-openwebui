@@ -219,7 +219,7 @@ COPY package.json package-lock.json ./
 RUN npm ci
 
 COPY src /app/src
-RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build -- --debug
+RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build 
 #########################################################################################
 
 
