@@ -277,7 +277,7 @@
 									?.profile_image_url ??
 									($i18n.language === 'dg-DG'
 										? `/doge.png`
-										: `${WEBUI_BASE_URL}/static/favicon.png`)}
+										: `/static/favicon.png`)}
 							/>
 							<div>
 								Talking to <span class=" font-medium">{atSelectedModel.name}</span>
@@ -818,12 +818,12 @@
 					</form>
 				{/if}
 
-				<div class="mt-1.5 text-xs text-gray-500 text-center line-clamp-1">
+				<div style="--w:100%; --ta:center;--size:0.6em">
 					<a href="https://startr.cloud" target="_blank">💡💡💡{$i18n.t('Powered by')}</a>
 					<a href="https://startr.cloud" style="--c:var(--pink)" target="_blank"
 						>☁️ Startr.Cloud ☁️</a
 					>
-					&nbsp;and&nbsp;
+					and
 					<a href="https://sage.education" style="--c:var(--pink)" target="_blank"
 						>📚 Sage.Education 📚&nbsp; 💡💡💡</a
 					>

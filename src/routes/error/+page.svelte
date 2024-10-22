@@ -17,43 +17,46 @@
 </script>
 
 {#if loaded}
-	<div class="absolute w-full h-full flex z-50">
-		<div class="absolute rounded-xl w-full h-full backdrop-blur flex justify-center">
-			<div class="m-auto pb-44 flex flex-col justify-center">
-				<div class="max-w-md">
-					<div class="text-center text-2xl font-medium z-50">
-						{$i18n.t('{{webUIName}} Backend Required', { webUIName: $WEBUI_NAME })}
-					</div>
+	<div style="
+			--d:flex;
+			--fd:column;
+			--ai:center;
+			--jc:center;
+			--minh:80vh;
+			--maxw:30em;
+			--m:auto;
+			--ta:center"
+		>
+		<div>
+			<h1 style="--size:2em">{$i18n.t('Unable to connect')}</h1>
+			<div class="">
+				{$i18n.t(
+					"Unable to connect to API server. Please "
+				)}
+				<br class=" " />
+				<a
+					class=" font-semibold underline"
+					href="https://github.com/startr/open-webui#how-to-install-"
+					target="_blank">{$i18n.t('See readme.md for instructions')}</a>
+				
+			</div>
 
-					<div class=" mt-4 text-center text-sm w-full">
-						{$i18n.t(
-							"Oops! You're using an unsupported method (frontend only). Please serve the WebUI from the backend."
-						)}
+			<div style="--mt:1em; --ta:center">
+				<button
+					style="--p:0.5em 1em; --bg:var(--color-primary); --c:var(--color-primary-text); --br:0.5em"
+					on:click={() => {
+						location.href = '/';
+					}}
+				>
+					{$i18n.t('Check Again')} 
+				</button>
 
-						<br class=" " />
-						<br class=" " />
-						<a
-							class=" font-semibold underline"
-							href="https://github.com/open-webui/open-webui#how-to-install-"
-							target="_blank">{$i18n.t('See readme.md for instructions')}</a
-						>
-						{$i18n.t('or')}
-						<a class=" font-semibold underline" href="https://discord.gg/5rJgQTnV4s" target="_blank"
-							>{$i18n.t('join our Discord for help.')}</a
-						>
-					</div>
+				or our
 
-					<div class=" mt-6 mx-auto relative group w-fit">
-						<button
-							class="relative z-20 flex px-5 py-2 rounded-full bg-gray-100 hover:bg-gray-200 transition font-medium text-sm"
-							on:click={() => {
-								location.href = '/';
-							}}
-						>
-							{$i18n.t('Check Again')}
-						</button>
-					</div>
-				</div>
+				<a
+					
+					href="mailto:admin@sage.education"
+					target="_blank">{$i18n.t('support team.')}</a>
 			</div>
 		</div>
 	</div>

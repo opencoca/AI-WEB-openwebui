@@ -339,7 +339,7 @@
 	>
 		<ProfileImage
 			src={model?.info?.meta?.profile_image_url ??
-				($i18n.language === 'dg-DG' ? `/doge.png` : `${WEBUI_BASE_URL}/static/favicon.png`)}
+				($i18n.language === 'dg-DG' ? `/doge.png` : `/static/favicon.png`)}
 		/>
 
 		<div class="flex-auto w-0 pl-1">

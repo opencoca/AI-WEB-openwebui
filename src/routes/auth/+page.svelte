@@ -193,7 +193,7 @@
 									{#if showPassword}
 										<input
 											bind:value={password}
-											style="--m:0"
+											style="--m:0; --c:slategray"
 											type="text"
 											placeholder={$i18n.t('Enter Your Password')}
 											autocomplete="current-password"

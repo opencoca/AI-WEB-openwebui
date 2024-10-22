@@ -311,7 +311,7 @@
 						--br: 50%
 							"
 						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
+						src="/static/favicon.png"
 						alt="logo"
 					/>
 				</div>
