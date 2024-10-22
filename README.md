@@ -1,5 +1,7 @@
 # Sage : Open WebUI (Formerly Ollama WebUI) 👋
 
+v0.3.38 - Now with so much more :D See the [CHANGELOG](./CHANGELOG.md) for more details.
+
 v0.3.37 - Markdown fix
 
 v0.3.36 - Now with cleaner styles and faster Docker Builds :D

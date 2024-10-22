@@ -5,6 +5,25 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.38] - 2024-10-22
+
+### Added
+
+- **👀 Password Visibility Toggle**: added password visibility toggle feature for enhanced user experience.
+
+### Changed
+
+- **🔧 Dockerfile Cleanup**: refactored Dockerfile by updating paths and adding Docker cleanup commands.
+- **🎨 Chat and Message Components Update**: updated image paths in Chat and Message components for consistency and aesthetic.
+- **🖇️ Improve Search Functionality**: improved search functionality in Suggestions component for better user experience.
+- **📝 Dev Script Update**: updated dev.sh and package.json scripts for improved user workflow.
+- **📦 Port Mapping Refactor**: refactored Makefile to include additional port mapping for development environment.
+
+### Refactored
+- **🔧 Makefile Cleanup**: simplified and updated Makefile with Docker cleanup commands.
+- **🔧 Docker Cleanup**: removed debug flag from build command in Dockerfile for efficient workflow.
+
+
 ## [0.3.37] - 2024-10-21
 
 ### Added
