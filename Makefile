@@ -55,6 +55,10 @@ DEV_RUN_ARGS := --rm -p $(PORT_MAPPING) \
 it_stop:
 	docker rm -f $(CONTAINER_NAME)
 
+it_clean:
+	docker system prune -f
+	docker builder prune --force
+
 # Build targets
 it_build:
 	export DOCKER_BUILDKIT=1
@@ -86,17 +90,13 @@ it_run:
 # Combine build and dev run targets
 it_build_n_dev_run: it_build
 	@make dev_run
-	@make it_stop
-
 
 # Combined build and run targets
 it_build_n_run: it_build
 	@make it_run
-	@make it_stop
 
 it_build_n_run_no_cache: it_build_no_cache
 	@make it_run
-	@make it_stop
 
 # Multi-architecture build helpers
 define build_arch
