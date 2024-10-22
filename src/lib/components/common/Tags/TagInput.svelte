@@ -25,9 +25,8 @@
 <div class="px-0.5 flex {showTagInput ? 'flex-row-reverse' : ''}">
 	{#if showTagInput}
 		<div class="flex items-center">
-			<input
+			<input style="--x:80; --ml:0.6em;"
 				bind:value={tagName}
-				class=" px-2 cursor-pointer self-center text-xs h-fit bg-transparent outline-none line-clamp-1 w-[6.5rem]"
 				placeholder={$i18n.t('Add a tag')}
 				list="tagOptions"
 				on:keydown={(event) => {

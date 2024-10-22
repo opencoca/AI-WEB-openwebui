@@ -9,28 +9,45 @@
 	export let className = '';
 
 	let prompts = [];
+	let searchQuery = '';
+	let filteredPrompts = [];
 
 	$: prompts = (suggestionPrompts ?? [])
 		.reduce((acc, current) => [...acc, ...[current]], [])
 		.sort(() => Math.random() - 0.5);
+
+	$: filteredPrompts = searchQuery
+		? prompts.filter((prompt) => prompt.content.toLowerCase().includes(searchQuery.toLowerCase()))
+		: prompts.slice(0, 3);
 </script>
 
-{#if prompts.length > 0}
-	<div id="suggestions-header" 
-	class="mb-1 flex gap-1 text-sm font-medium items-center text-gray-400 dark:text-gray-600">
-		<Bolt />
-		{$i18n.t('Search')} {$i18n.t('Suggestions')} :
-	</div>
+<div style="--d:flex; --ai:center">
+	<Bolt />
+	<input
+		type="text"
+		placeholder={$i18n.t('Search')}{$i18n.t('Suggestions')} :
+		bind:value={searchQuery}
+		class="w-full p-2 border rounded mb-2 text-sm"
+	/>
+</div>
+
+{#if filteredPrompts.length > 0}
+	<div
+		id="suggestions-header"
+		class="mb-1 flex gap-1 text-sm font-medium items-center text-gray-400 dark:text-gray-600"
+	></div>
 {/if}
 
-<div class="{className}" style="--minh: 200%; --of: scroll;">
-	{#each prompts as prompt, promptIdx}
-		<div class="prompt" style=" --shadow: 6; 
-									--levitate-hvr:8; 
-									--br: 1rem; 
-									--p: 1em; 
-									--m:0.6em; 
-									--d: flex;"
+<div class={className} style="--h: 17rem">
+	{#each filteredPrompts as prompt, promptIdx}
+		<div
+			class="prompt"
+			style=" --shadow: 6; 
+										--levitate-hvr:8; 
+										--br: 1rem; 
+										--p: 1em; 
+										--m: 1em -0.2em 0 -0.8em;
+										--d: flex;"
 			on:click={() => {
 				dispatch('select', prompt.content);
 			}}
