@@ -64,7 +64,7 @@ COPY test           /app/test/
 #COPY .env  /app/.env
 COPY .eslintrc.cjs /app/.eslintrc.cjs
 COPY .prettierrc /app/.prettierrc
-COPY CHANGELOG.md /app/CHANGELOG.md
+
 COPY cypress.config.ts /app/cypress.config.ts
 COPY hatch_build.py /app/hatch_build.py
 COPY i18next-parser.config.ts /app/i18next-parser.config.ts
@@ -242,6 +242,8 @@ USER $UID:$GID
 ARG BUILD_HASH
 ENV WEBUI_BUILD_VERSION=${BUILD_HASH}
 ENV DOCKER=true
+
+COPY CHANGELOG.md /app/CHANGELOG.md
 
 CMD [ "bash", "restore_backup_start.sh", "server" ] \
     # To enable dev mode: \
