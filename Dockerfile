@@ -23,6 +23,12 @@ ARG GID=0
 FROM --platform=$BUILDPLATFORM node:22-bookworm AS build
 ARG BUILD_HASH
 
+WORKDIR /app
+# Install dependencies
+
+COPY package.json package-lock.json ./
+RUN NODE_OPTIONS="--max-old-space-size=4096" npm install --loglevel verbose
+
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     ca-certificates 
@@ -63,30 +69,9 @@ COPY cypress.config.ts /app/cypress.config.ts
 COPY hatch_build.py /app/hatch_build.py
 COPY i18next-parser.config.ts /app/i18next-parser.config.ts
 
-COPY package-lock.json /app/package-lock.json
-COPY package.json /app/package.json
-
-COPY postcss.config.js /app/postcss.config.js
-COPY pyproject.toml /app/pyproject.toml
-
-COPY svelte.config.js /app/svelte.config.js
-COPY tailwind.config.js /app/tailwind.config.js
-
-COPY tsconfig.json /app/tsconfig.json
-COPY vite.config.ts /app/vite.config.ts
 
 
 ########### WebUI backend #########
-
-# Update
-
-
-
-
-WORKDIR /app
-
-
-
 ########## DEV_MODE Toggle #########
 ARG DEV_MODE=false
 ENV DEV_MODE=$DEV_MODE
@@ -212,11 +197,22 @@ RUN chown -R $UID:$GID /app/backend/data/
 
 ########### WebUI frontend ##############################################################
 # ENV APP_BUILD_HASH=${BUILD_HASH}
+
+
+
+
+COPY postcss.config.js /app/postcss.config.js
+COPY pyproject.toml /app/pyproject.toml
+
+COPY svelte.config.js /app/svelte.config.js
+COPY tailwind.config.js /app/tailwind.config.js
+
+COPY tsconfig.json /app/tsconfig.json
+COPY vite.config.ts /app/vite.config.ts
+
 WORKDIR /app
 # Install dependencies
 
-COPY package.json package-lock.json ./
-RUN npm ci
 
 COPY src /app/src
 RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build 

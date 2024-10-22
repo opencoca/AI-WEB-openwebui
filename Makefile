@@ -28,7 +28,7 @@ GHCR_IMAGE_NAME := ghcr.io/$(IMAGE_NAME)
 GIT_TAG := $(shell git tag --sort=-v:refname | sed 's/^v//' | head -n 1)
 IMAGE_TAG := $(if $(GIT_TAG),$(GIT_TAG),latest)
 CONTAINER_NAME := ai-web-openwebui
-PORT_MAPPING := 3000:8080
+PORT_MAPPING := 8080:8080
 VOLUME_DATA := sage-open-webui:/app/backend/data
 ENV_FILE := $$(pwd)/.env:/app/.env
 FRONTEND_SRC := $$(pwd)/src/:/app/src/
