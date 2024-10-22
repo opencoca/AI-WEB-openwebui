@@ -1410,7 +1410,7 @@
 					chat_id: $chatId,
 					id: responseMessageId
 				},
-				`${WEBUI_BASE_URL}/api`
+				`/api`
 			);
 
 			// Wait until history/message have been updated
