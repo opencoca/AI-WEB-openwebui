@@ -31,7 +31,7 @@
 {/if}
 
 <button
-	class="relative group p-1.5 {className} flex items-center {colorClassName} rounded-2xl text-left"
+	style="--d:flex; --b:none"
 	type="button"
 	on:click={async () => {
 		if (item?.file?.data?.content) {

@@ -118,28 +118,59 @@ schedule_backups() {
   done
 }
 
-# Function to start the application
-start_app() {
-  # if $AUTO_RESTORE is set to true, restore the backup
+# Function to restore a backup if AUTO_RESTORE is set to true
+restore_if_needed() {
   if [ "$AUTO_RESTORE" = "true" ]; then
     echo "AUTO_RESTORE is set to true. Restoring backup..."
     restore_backup
   fi
-
-  # Start the application
-  ./start.sh &
-
-  # Schedule backups
-  if [ -z "$BACKUP_HOOK" ]; then
-    BACKUP_CRON="${BACKUP_CRON:-0 5 *}" # Default to '0 5 *' (5:00 AM every day)
-    schedule_backups &
+}
+# Function to enable auto backup if AUTO_BACKUP is set to true
+enable_auto_backup_if_needed() {
+  if [ "$AUTO_BACKUP" = "true" ]; then
+    echo "AUTO_BACKUP is set to true. Scheduling backups..."
+    # Function to schedule backups or run a custom backup hook
+    schedule_or_hook() {
+      if [ -z "$BACKUP_HOOK" ]; then
+        BACKUP_CRON="${BACKUP_CRON:-0 5 *}" # Default to '0 5 *' (5:00 AM every day)
+        schedule_backups &
+      else
+        # Run custom backup hook if provided
+        eval "$BACKUP_HOOK"
+      fi
+    }
   else
-    # Run custom backup hook if provided
-    eval "$BACKUP_HOOK"
+    echo "AUTO_BACKUP is set to false. Not scheduling backups."
   fi
+}
+
+# Common function to start the application with a given command
+start_common() {
+  local start_command=$1
+
+  # Restore backup if needed
+  restore_if_needed
+
+  # Start the application using the provided command
+  $start_command &
+
+  # Schedule backups if needed
+  enable_auto_backup_if_needed
 
   # Infinite sleep to keep the container running
   sleep infinity
+}
+
+# Function to start the application in production mode
+start_app() {
+  echo "Starting application in production mode..."
+  start_common "./start.sh"
+}
+
+# Function to start the application in development mode
+start_dev() {
+  echo "Starting application in development mode..."
+  start_common "./dev.sh"
 }
 
 # Main execution logic
@@ -155,7 +186,15 @@ setup_rclone)
   ;;
 server)
   setup_rclone
+  # enable auto backup
+  export AUTO_BACKUP=true
   start_app
+  ;;
+dev)
+  setup_rclone
+  # disable auto backup
+  export AUTO_BACKUP=false
+  start_dev
   ;;
 *)
   # Dynamically generate usage options by parsing the case statement

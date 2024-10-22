@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "nu are conversații.",
-	"Hello, {{name}}": "Salut, {{name}}",
+	"Hello {{name}}": "Salut {{name}}",
 	"Help": "Ajutor",
 	"Hide": "Ascunde",
 	"Hide Model": "Ascunde Modelul",

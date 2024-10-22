@@ -304,7 +304,9 @@
 	</div>
 </div>
 
-<div class=" flex w-full space-x-2">
+<div style="
+    --ai: center;
+    --d: flex;">
 	<div class="flex flex-1">
 		<div class=" self-center ml-1 mr-3">
 			<svg
@@ -531,7 +533,7 @@
 </div>
 
 <div class=" flex justify-end w-full mb-3">
-	<div class="flex space-x-1">
+	<div style=" --p: 0 0.6em; --d:flex; --br:1em">
 		<input
 			id="models-import-input"
 			bind:this={modelsImportInputElement}
@@ -624,7 +626,7 @@
 				{localModelfiles.length} Local Modelfiles Detected
 			</div>
 
-			<div class="flex space-x-1">
+			<div style=" --p: 0 0.6em; --d:flex; --br:1em">
 				<button
 					class="self-center w-fit text-sm p-1.5 border dark:border-gray-600 rounded-xl flex"
 					on:click={async () => {

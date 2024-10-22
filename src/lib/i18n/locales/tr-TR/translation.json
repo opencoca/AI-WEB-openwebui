@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "Dokunsal Geri Bildirim",
 	"has no conversations.": "hiç konuşması yok.",
-	"Hello, {{name}}": "Merhaba, {{name}}",
+	"Hello {{name}}": "Merhaba {{name}}",
 	"Help": "Yardım",
 	"Hide": "Gizle",
 	"Hide Model": "Modeli Gizle",

@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "nema razgovora.",
-	"Hello, {{name}}": "Bok, {{name}}",
+	"Hello {{name}}": "Bok {{name}}",
 	"Help": "Pomoć",
 	"Hide": "Sakrij",
 	"Hide Model": "",

@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "Тактильная обратная связь",
 	"has no conversations.": "не имеет разговоров.",
-	"Hello, {{name}}": "Привет, {{name}}",
+	"Hello {{name}}": "Привет {{name}}",
 	"Help": "Помощь",
 	"Hide": "Скрыть",
 	"Hide Model": "Скрыть модель",

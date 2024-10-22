@@ -4,6 +4,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "npm run pyodide:fetch && vite dev --host",
+		"docker-dev": "npm run pyodide:fetch && NODE_OPTIONS='--max-old-space-size=4096' vite build --watch",
 		"build": "npm run pyodide:fetch && vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

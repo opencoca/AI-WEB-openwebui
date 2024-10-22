@@ -279,10 +279,16 @@
 			? ''
 			: 'invisible'}"
 	>
-		<div class="px-2.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
+		<div style="
+		--d: flex;
+		--ai:center
+		--jc:space-around;">
 			<a
 				id="sidebar-new-chat-button"
-				class="flex flex-1 justify-between rounded-xl px-2 h-full hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+				style="
+				--d: flex;
+				--w: 100%;
+				"
 				href="/"
 				draggable="false"
 				on:click={async () => {
@@ -298,17 +304,25 @@
 				}}
 			>
 				<div class="self-center mx-1.5">
-					<img
+					<img 
+						style="
+						--h: 2em;
+						--h: 2em;
+						--br: 50%
+							"
 						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class=" size-6 -translate-x-1.5 rounded-full"
+						src="/static/favicon.png"
 						alt="logo"
 					/>
 				</div>
 				<div class=" self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
-					{$i18n.t('Start New Chat')}
+					{$i18n.t('Start New Sage Chat')}
 				</div>
-				<div class="self-center ml-auto">
+				<div class="self-center"
+					style="
+						--ml:auto;
+						--mr:0.2rem;
+					">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"

@@ -74,7 +74,9 @@
 	</div>
 </div>
 
-<div class=" flex w-full space-x-2">
+<div style="
+    --ai: center;
+    --d: flex;">
 	<div class="flex flex-1">
 		<div class=" self-center ml-1 mr-3">
 			<svg
@@ -288,7 +290,7 @@
 
 	<a
 		class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-2"
-		href="https://openwebui.com/#open-webui-community"
+		href="https://sage.education/#community-prompts"
 		target="_blank"
 	>
 		<div class=" self-center w-10 flex-shrink-0">

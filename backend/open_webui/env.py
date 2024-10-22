@@ -335,7 +335,11 @@ WEBUI_SESSION_COOKIE_SECURE = os.environ.get(
 )
 
 if WEBUI_AUTH and WEBUI_SECRET_KEY == "":
-    raise ValueError(ERROR_MESSAGES.ENV_VAR_NOT_FOUND)
+        if WEBUI_AUTH == "":
+            raise ValueError("ERROR_MESSAGES WEBUI_AUTH_NOT_SET")
+        if WEBUI_SECRET_KEY == "":
+            raise ValueError(ERROR_MESSAGES.WEBUI_SECRET_KEY_NOT_SET)
+
 
 ENABLE_WEBSOCKET_SUPPORT = (
     os.environ.get("ENABLE_WEBSOCKET_SUPPORT", "True").lower() == "true"

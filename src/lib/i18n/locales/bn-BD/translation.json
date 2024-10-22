@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "কোন কনভার্সেশন আছে না।",
-	"Hello, {{name}}": "হ্যালো, {{name}}",
+	"Hello {{name}}": "হ্যালো {{name}}",
 	"Help": "সহায়তা",
 	"Hide": "লুকান",
 	"Hide Model": "",

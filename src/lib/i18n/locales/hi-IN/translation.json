@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "कोई बातचीत नहीं है",
-	"Hello, {{name}}": "नमस्ते, {{name}}",
+	"Hello {{name}}": "नमस्ते {{name}}",
 	"Help": "मदद",
 	"Hide": "छुपाएं",
 	"Hide Model": "",

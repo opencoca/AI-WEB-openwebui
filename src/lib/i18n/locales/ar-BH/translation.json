@@ -343,7 +343,7 @@
 	"h:mm a": "الساعة:الدقائق صباحا/مساء",
 	"Haptic Feedback": "",
 	"has no conversations.": "ليس لديه محادثات.",
-	"Hello, {{name}}": " {{name}} مرحبا",
+	"Hello {{name}}": " {{name}} مرحبا",
 	"Help": "مساعدة",
 	"Hide": "أخفاء",
 	"Hide Model": "",

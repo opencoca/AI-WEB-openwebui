@@ -343,7 +343,7 @@
 	"h:mm a": "h:mm a",
 	"Haptic Feedback": "",
 	"has no conversations.": "ندارد.",
-	"Hello, {{name}}": "سلام، {{name}}",
+	"Hello {{name}}": "سلام، {{name}}",
 	"Help": "کمک",
 	"Hide": "پنهان",
 	"Hide Model": "",

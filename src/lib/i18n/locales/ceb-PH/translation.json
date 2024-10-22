@@ -343,7 +343,7 @@
 	"h:mm a": "",
 	"Haptic Feedback": "",
 	"has no conversations.": "",
-	"Hello, {{name}}": "Maayong buntag, {{name}}",
+	"Hello {{name}}": "Maayong buntag {{name}}",
 	"Help": "",
 	"Hide": "Tagoa",
 	"Hide Model": "",
