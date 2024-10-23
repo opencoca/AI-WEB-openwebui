@@ -158,7 +158,7 @@
 		>
 			<div class=" w-full">
 				<div class="flex items-center justify-between -mt-1">
-					<div style="--fw:bold">{item.name}</div>
+					<div style="--weight:bold">{item.name}</div>
 
 					<div class=" flex self-center">
 						<ItemMenu
