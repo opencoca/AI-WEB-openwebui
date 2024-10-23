@@ -46,12 +46,11 @@
 					width:100%;
 					min-width: 18ch;
 					display:flex;
-					height:2rem
+					height:2.4rem
 				}
 			}
 		</style>
 		<button
-			style="--w:100%; --h:2em;"
 			class="{selectedTab ===
 			'general'
 				? 'bg-gray-100 dark:bg-gray-800'
