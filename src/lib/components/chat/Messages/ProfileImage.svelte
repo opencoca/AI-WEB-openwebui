@@ -6,6 +6,6 @@
 	export let src = '';
 </script>
 
-<div class={`flex-shrink-0 ${($settings?.chatDirection ?? 'LTR') === 'LTR' ? 'mr-3' : 'ml-3'}`}>
+<profile-image class="flex-shrink-0 {` ${($settings?.chatDirection ?? 'LTR') === 'LTR' ? 'mr-3' : 'ml-3'}`}">
 	<ProfileImageBase {src} {className} />
-</div>
+</profile-image>
