@@ -34,11 +34,12 @@
 	}
 </script>
 
-<div class="flex flex-col w-full items-start">
+<model-selector class="flex flex-col w-full items-start">
 	{#each selectedModels as selectedModel, selectedModelIdx}
 		<div class="flex w-full max-w-fit">
 			<div class="overflow-hidden w-full">
-				<div class="mr-1 max-w-full">
+				<div style="--d:flex">
+					
 					<Selector
 						id='model-selector'
 						placeholder={$i18n.t('select an Assistant')}
@@ -110,7 +111,7 @@
 			{/if}
 		</div>
 	{/each}
-</div>
+</model-selector>
 
 {#if showSetDefault}
 	<div class=" absolute text-left mt-[1px] ml-1 text-[0.7rem] text-gray-500 font-primary">

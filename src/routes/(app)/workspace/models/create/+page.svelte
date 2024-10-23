@@ -459,7 +459,7 @@
 
 		<div class="my-1">
 			<div class="flex w-full justify-between items-center mb-1">
-				<div class=" self-center text-sm font-semibold">{$i18n.t('Description')}</div>
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Description')}</div>
 
 				<button
 					class="p-1 text-xs flex rounded transition"
@@ -473,9 +473,9 @@
 					}}
 				>
 					{#if info.meta.description === null}
-						<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 					{/if}
 				</button>
 			</div>
@@ -494,7 +494,7 @@
 
 		<div class="my-2">
 			<div class="flex w-full justify-between">
-				<div class=" self-center text-sm font-semibold">{$i18n.t('Model Params')}</div>
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Model Params')}</div>
 			</div>
 
 			<div class="mt-2">
@@ -511,7 +511,7 @@
 				</div>
 
 				<div class="flex w-full justify-between">
-					<div class=" self-center text-xs font-semibold">
+					<div style="--ff: 'Cormorant', serif; --weight: 600;">
 						{$i18n.t('Advanced Params')}
 					</div>
 
@@ -523,9 +523,9 @@
 						}}
 					>
 						{#if showAdvanced}
-							<span class="ml-2 self-center">{$i18n.t('Hide')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Hide')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Show')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Show')}</span>
 						{/if}
 					</button>
 				</div>
@@ -549,7 +549,7 @@
 		<div class="my-1">
 			<div class="flex w-full justify-between items-center">
 				<div class="flex w-full justify-between items-center">
-					<div class=" self-center text-sm font-semibold">{$i18n.t('Prompt suggestions')}</div>
+					<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Prompt suggestions')}</div>
 
 					<button
 						class="p-1 text-xs flex rounded transition"
@@ -563,9 +563,9 @@
 						}}
 					>
 						{#if info.meta.suggestion_prompts === null}
-							<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 						{/if}
 					</button>
 				</div>
@@ -601,7 +601,7 @@
 				<div class="flex flex-col space-y-1 mt-2">
 					{#if info.meta.suggestion_prompts.length > 0}
 						{#each info.meta.suggestion_prompts as prompt, promptIdx}
-							<div class=" flex border dark:border-gray-600 rounded-lg">
+							<div style="--d:flex;">
 								<input
 									class="px-3 py-1.5 text-sm w-full bg-transparent outline-none border-r dark:border-gray-600"
 									placeholder={$i18n.t('Write a prompt suggestion (e.g. Who are you?)')}
@@ -664,7 +664,7 @@
 
 		<div class="my-1">
 			<div class="flex w-full justify-between items-center">
-				<div class=" self-center text-sm font-semibold">{$i18n.t('Tags')}</div>
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Tags')}</div>
 			</div>
 
 			<div class="mt-2">
@@ -687,7 +687,7 @@
 
 		<div class="my-2 text-gray-300 dark:text-gray-700">
 			<div class="flex w-full justify-between mb-2">
-				<div class=" self-center text-sm font-semibold">{$i18n.t('JSON Preview')}</div>
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('JSON Preview')}</div>
 
 				<button
 					class="p-1 px-3 text-xs flex rounded transition"
@@ -697,9 +697,9 @@
 					}}
 				>
 					{#if showPreview}
-						<span class="ml-2 self-center">{$i18n.t('Hide')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Hide')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Show')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Show')}</span>
 					{/if}
 				</button>
 			</div>

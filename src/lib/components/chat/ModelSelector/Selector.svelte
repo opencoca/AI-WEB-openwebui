@@ -230,9 +230,14 @@
 	closeFocus={false}
 >
 	<DropdownMenu.Trigger class="relative w-full font-primary" aria-label={placeholder}>
-		<div style="--shadow:none"
-			class="flex w-full text-left px-0.5 outline-none bg-transparent truncate text-lg font-medium placeholder-gray-400 focus:outline-none"
+		<div style="--d:flex; --shadow:none; --ff:Cormorant, serif;--weight:bold; --tt:capitalize"
+			
 		>
+		<img
+		src={selectedModel.model?.info?.meta?.profile_image_url ?? '/static/favicon.png'}
+		alt="Model"
+		class="rounded-full size-5 flex items-center mr-2"
+	/>
 			{#if selectedModel}
 				{selectedModel.label}
 			{:else}

@@ -1,9 +1,14 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+## [0.3.39] - 2024-10-23
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+### Changed
+
+- **🎨 UI Refactoring**: improved styling and layout for various components, including Settings, Documents, Interface, SensitiveInput, and Navbar.
+- **🔧 Dockerfile Update**:refactored Dockerfile to update paths and add Docker cleanup commands.
+- **🎨 Font Styles Update**:updated font styles and added Google Fonts preconnect with Cormorant font.
+- **📝 Chat and Message Components Update**:improved message input styling and updated assistant disclaimer.
+- **🔧 Development Environment Update**:updated Dev scripts and package.json for improved user workflow.
 
 ## [0.3.38] - 2024-10-22
 

@@ -346,9 +346,9 @@
 					type="button"
 				>
 					{#if querySettings.hybrid === true}
-						<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						<span style="--weight: 400;">{$i18n.t('On')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+						<span style="--weight: 400;">{$i18n.t('Off')}</span>
 					{/if}
 				</button>
 			</div>
@@ -727,11 +727,11 @@
 					<div class=" text-xs font-medium">{$i18n.t('PDF Extract Images (OCR)')}</div>
 
 					<button
-						class=" text-xs font-medium text-gray-500"
+						style="--p: 0.6em 1em; --d: flex; --br:1em; --b:none"	
 						type="button"
 						on:click={() => {
 							pdfExtractImages = !pdfExtractImages;
-						}}>{pdfExtractImages ? $i18n.t('On') : $i18n.t('Off')}</button
+						}}><span style="--weight: 400;">{pdfExtractImages ? $i18n.t('On') : $i18n.t('Off')}</span></button
 					>
 				</div>
 			</div>

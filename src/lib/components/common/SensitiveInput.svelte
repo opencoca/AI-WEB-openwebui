@@ -6,13 +6,14 @@
 	export let outerClassName = 'flex flex-1';
 	export let inputClassName =
 		'w-full rounded-l-lg py-2 pl-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none';
-	export let showButtonClassName = 'px-2 transition rounded-r-lg bg-gray-50 dark:bg-gray-850';
+	export let showButtonClassName = '';
 
 	let show = false;
 </script>
 
 <div class={outerClassName}>
 	<input
+		style="--m:0.6em"
 		class={`${inputClassName} ${show ? '' : 'password'}`}
 		{placeholder}
 		bind:value
@@ -22,6 +23,7 @@
 		type="text"
 	/>
 	<button
+		style="--shadow:0; --b:none"
 		class={showButtonClassName}
 		on:click={(e) => {
 			e.preventDefault();

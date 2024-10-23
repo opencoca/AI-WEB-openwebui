@@ -131,9 +131,9 @@
 					type="button"
 				>
 					{#if speechAutoSend === true}
-						<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 					{/if}
 				</button>
 			</div>
@@ -153,9 +153,9 @@
 					type="button"
 				>
 					{#if responseAutoPlayback === true}
-						<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 					{/if}
 				</button>
 			</div>

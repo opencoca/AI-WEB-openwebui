@@ -75,7 +75,7 @@
 								d="M11.5 1A3.5 3.5 0 0 0 8 4.5V7H2.5A1.5 1.5 0 0 0 1 8.5v5A1.5 1.5 0 0 0 2.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 9.5 7V4.5a2 2 0 1 1 4 0v1.75a.75.75 0 0 0 1.5 0V4.5A3.5 3.5 0 0 0 11.5 1Z"
 							/>
 						</svg>
-						<span class="ml-2 self-center">{$i18n.t('Allow')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Allow')}</span>
 					{:else}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -90,7 +90,7 @@
 							/>
 						</svg>
 
-						<span class="ml-2 self-center">{$i18n.t("Don't Allow")}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t("Don't Allow")}</span>
 					{/if}
 				</button>
 			</div>
@@ -116,7 +116,7 @@
 								d="M11.5 1A3.5 3.5 0 0 0 8 4.5V7H2.5A1.5 1.5 0 0 0 1 8.5v5A1.5 1.5 0 0 0 2.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 9.5 7V4.5a2 2 0 1 1 4 0v1.75a.75.75 0 0 0 1.5 0V4.5A3.5 3.5 0 0 0 11.5 1Z"
 							/>
 						</svg>
-						<span class="ml-2 self-center">{$i18n.t('Allow')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Allow')}</span>
 					{:else}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -131,7 +131,7 @@
 							/>
 						</svg>
 
-						<span class="ml-2 self-center">{$i18n.t("Don't Allow")}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t("Don't Allow")}</span>
 					{/if}
 				</button>
 			</div>
@@ -157,7 +157,7 @@
 								d="M11.5 1A3.5 3.5 0 0 0 8 4.5V7H2.5A1.5 1.5 0 0 0 1 8.5v5A1.5 1.5 0 0 0 2.5 15h7a1.5 1.5 0 0 0 1.5-1.5v-5A1.5 1.5 0 0 0 9.5 7V4.5a2 2 0 1 1 4 0v1.75a.75.75 0 0 0 1.5 0V4.5A3.5 3.5 0 0 0 11.5 1Z"
 							/>
 						</svg>
-						<span class="ml-2 self-center">{$i18n.t('Allow')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Allow')}</span>
 					{:else}
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
@@ -172,7 +172,7 @@
 							/>
 						</svg>
 
-						<span class="ml-2 self-center">{$i18n.t("Don't Allow")}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t("Don't Allow")}</span>
 					{/if}
 				</button>
 			</div>

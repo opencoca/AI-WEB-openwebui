@@ -884,9 +884,9 @@
 										type="button"
 									>
 										{#if modelUploadMode === 'file'}
-											<span class="ml-2 self-center">{$i18n.t('File Mode')}</span>
+											<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('File Mode')}</span>
 										{:else}
-											<span class="ml-2 self-center">{$i18n.t('URL Mode')}</span>
+											<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('URL Mode')}</span>
 										{/if}
 									</button>
 								</div>

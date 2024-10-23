@@ -248,9 +248,9 @@
 						type="button"
 					>
 						{#if landingPageMode === ''}
-							<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Chat')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Chat')}</span>
 						{/if}
 					</button>
 				</div>
@@ -268,9 +268,9 @@
 						type="button"
 					>
 						{#if chatBubble === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -291,9 +291,9 @@
 							type="button"
 						>
 							{#if showUsername === true}
-								<span class="ml-2 self-center">{$i18n.t('On')}</span>
+								<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 							{:else}
-								<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+								<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 							{/if}
 						</button>
 					</div>
@@ -312,9 +312,9 @@
 						type="button"
 					>
 						{#if widescreenMode === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -330,9 +330,9 @@
 						type="button"
 					>
 						{#if chatDirection === 'LTR'}
-							<span class="ml-2 self-center">{$i18n.t('LTR')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('LTR')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('RTL')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('RTL')}</span>
 						{/if}
 					</button>
 				</div>
@@ -352,9 +352,9 @@
 						type="button"
 					>
 						{#if splitLargeChunks === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -374,9 +374,9 @@
 						type="button"
 					>
 						{#if scrollOnBranchChange === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -401,9 +401,9 @@
 						type="button"
 					>
 						{#if backgroundImageUrl !== null}
-							<span class="ml-2 self-center">{$i18n.t('Reset')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Reset')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Upload')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Upload')}</span>
 						{/if}
 					</button>
 				</div>
@@ -423,9 +423,9 @@
 						type="button"
 					>
 						{#if titleAutoGenerate === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -445,9 +445,9 @@
 						type="button"
 					>
 						{#if responseAutoCopy === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -465,9 +465,9 @@
 						type="button"
 					>
 						{#if userLocation === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -485,9 +485,9 @@
 						type="button"
 					>
 						{#if hapticFeedback === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -507,9 +507,9 @@
 						type="button"
 					>
 						{#if voiceInterruption === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -527,9 +527,9 @@
 						type="button"
 					>
 						{#if showEmojiInCall === true}
-							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>

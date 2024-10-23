@@ -46,7 +46,7 @@
 						</div>
 					</button>
 				</div>
-				<div class="flex items-center text-xl font-semibold">{$i18n.t('Admin Panel')}</div>
+				<div style="--ff:'Cormorant', serif; --weight:700; --size:1.2em">{$i18n.t('Admin Panel')}</div>
 			</div>
 		</div>
 

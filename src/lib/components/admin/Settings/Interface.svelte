@@ -168,7 +168,7 @@
 
 		<div class=" space-y-3 {banners.length > 0 ? ' mb-3' : ''}">
 			<div class="flex w-full justify-between">
-				<div class=" self-center text-sm font-semibold">
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">
 					{$i18n.t('Banners')}
 				</div>
 
@@ -262,7 +262,7 @@
 		{#if $user.role === 'admin'}
 			<div class=" space-y-3">
 				<div class="flex w-full justify-between mb-2">
-					<div class=" self-center text-sm font-semibold">
+					<div style="--ff: 'Cormorant', serif; --weight: 700;">
 						{$i18n.t('Default Prompt Suggestions')}
 					</div>
 
@@ -289,52 +289,60 @@
 				</div>
 				<div class="grid lg:grid-cols-2 flex-col gap-1.5">
 					{#each promptSuggestions as prompt, promptIdx}
-						<div
-							class=" flex border border-gray-100 dark:border-none dark:bg-gray-850 rounded-xl py-1.5"
-						>
+						<promt-suggestion
+							style="--p:0.2em">
 							<div class="flex flex-col flex-1 pl-1">
-								<div class="flex border-b border-gray-100 dark:border-gray-800 w-full">
+								<div
+									style="--d: flex;
+										--ai: center;
+										--jc: space-around;" >
 									<input
-										class="px-3 py-1.5 text-xs w-full bg-transparent outline-none border-r border-gray-100 dark:border-gray-800"
+										
 										placeholder={$i18n.t('Title (e.g. Tell me a fun fact)')}
 										bind:value={prompt.title[0]}
 									/>
 
 									<input
-										class="px-3 py-1.5 text-xs w-full bg-transparent outline-none border-r border-gray-100 dark:border-gray-800"
+										
 										placeholder={$i18n.t('Subtitle (e.g. about the Roman Empire)')}
 										bind:value={prompt.title[1]}
 									/>
+
+									<remove-prompt
+									style="--mt: -2em;"
+									class="remove-prompt"
+									type="button"
+									on:click={() => {
+										promptSuggestions.splice(promptIdx, 1);
+										promptSuggestions = promptSuggestions;
+									}}
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 20 20"
+										fill="currentColor"
+										style="width: 1.5em; height: 1.5em;--w: 1em;
+												--h: 1em;
+												--br: 50%;
+												--shadow: 6;"
+									>
+										<path
+											d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
+										/>
+									</svg>
+									</remove-prompt>
 								</div>
 
 								<textarea
-									class="px-3 py-1.5 text-xs w-full bg-transparent outline-none border-r border-gray-100 dark:border-gray-800 resize-none"
+									style="--d:inline-block; --w:calc(100% - 0.3em);"
 									placeholder={$i18n.t('Prompt (e.g. Tell me a fun fact about the Roman Empire)')}
 									rows="3"
 									bind:value={prompt.content}
 								/>
 							</div>
 
-							<button
-								class="px-3"
-								type="button"
-								on:click={() => {
-									promptSuggestions.splice(promptIdx, 1);
-									promptSuggestions = promptSuggestions;
-								}}
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 20 20"
-									fill="currentColor"
-									class="w-4 h-4"
-								>
-									<path
-										d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-									/>
-								</svg>
-							</button>
-						</div>
+
+						</promt-suggestion>
 					{/each}
 				</div>
 

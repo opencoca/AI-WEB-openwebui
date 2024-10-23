@@ -152,7 +152,7 @@
 
 		<div class="my-2">
 			<div class="flex w-full justify-between">
-				<div class=" self-center text-sm font-semibold">{$i18n.t('Prompt Content')}*</div>
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Prompt Content')}*</div>
 			</div>
 
 			<div class="mt-2">

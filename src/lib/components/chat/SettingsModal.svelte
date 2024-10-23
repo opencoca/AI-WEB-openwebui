@@ -102,7 +102,7 @@
 						selectedTab = 'general';
 					}}
 				>
-					<div class=" self-center mr-2">
+					<div style="--as:center; --m:0.6em">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 20 20"
@@ -128,7 +128,7 @@
 						selectedTab = 'interface';
 					}}
 				>
-					<div class=" self-center mr-2">
+					<div style="--as:center; --m:0.6em">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 16 16"
@@ -154,7 +154,7 @@
 						selectedTab = 'personalization';
 					}}
 				>
-					<div class=" self-center mr-2">
+					<div style="--as:center; --m:0.6em">
 						<User />
 					</div>
 					<div class=" self-center">{$i18n.t('Personalization')}</div>
@@ -169,7 +169,7 @@
 						selectedTab = 'audio';
 					}}
 				>
-					<div class=" self-center mr-2">
+					<div style="--as:center; --m:0.6em">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 16 16"
@@ -196,7 +196,7 @@
 						selectedTab = 'chats';
 					}}
 				>
-					<div class=" self-center mr-2">
+					<div style="--as:center; --m:0.6em">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 16 16"
@@ -222,7 +222,7 @@
 						selectedTab = 'account';
 					}}
 				>
-					<div class=" self-center mr-2">
+					<div style="--as:center; --m:0.6em">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 16 16"
@@ -250,7 +250,7 @@
 							show = false;
 						}}
 					>
-						<div class=" self-center mr-2">
+						<div style="--as:center; --m:0.6em">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 24 24"
@@ -277,7 +277,7 @@
 						selectedTab = 'about';
 					}}
 				>
-					<div class=" self-center mr-2">
+					<div style="--as:center; --m:0.6em">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							viewBox="0 0 20 20"

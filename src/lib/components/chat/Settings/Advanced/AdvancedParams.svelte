@@ -62,11 +62,11 @@
 				type="button"
 			>
 				{#if params.stream_response === true}
-					<span class="ml-2 self-center">{$i18n.t('On')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 				{:else if params.stream_response === false}
-					<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{/if}
 			</button>
 		</div>
@@ -84,9 +84,9 @@
 				}}
 			>
 				{#if (params?.seed ?? null) === null}
-					<span class="ml-2 self-center"> {$i18n.t('Default')} </span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Default')} </span>
 				{:else}
-					<span class="ml-2 self-center"> {$i18n.t('Custom')} </span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Custom')} </span>
 				{/if}
 			</button>
 		</div>
@@ -119,9 +119,9 @@
 				}}
 			>
 				{#if (params?.stop ?? null) === null}
-					<span class="ml-2 self-center"> {$i18n.t('Default')} </span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Default')} </span>
 				{:else}
-					<span class="ml-2 self-center"> {$i18n.t('Custom')} </span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Custom')} </span>
 				{/if}
 			</button>
 		</div>
@@ -153,9 +153,9 @@
 				}}
 			>
 				{#if (params?.temperature ?? null) === null}
-					<span class="ml-2 self-center"> {$i18n.t('Default')} </span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Default')} </span>
 				{:else}
-					<span class="ml-2 self-center"> {$i18n.t('Custom')} </span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Custom')} </span>
 				{/if}
 			</button>
 		</div>
@@ -199,9 +199,9 @@
 				}}
 			>
 				{#if (params?.mirostat ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -245,9 +245,9 @@
 				}}
 			>
 				{#if (params?.mirostat_eta ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -291,9 +291,9 @@
 				}}
 			>
 				{#if (params?.mirostat_tau ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -337,9 +337,9 @@
 				}}
 			>
 				{#if (params?.top_k ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -383,9 +383,9 @@
 				}}
 			>
 				{#if (params?.top_p ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -429,9 +429,9 @@
 				}}
 			>
 				{#if (params?.min_p ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -475,9 +475,9 @@
 				}}
 			>
 				{#if (params?.frequency_penalty ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -521,9 +521,9 @@
 				}}
 			>
 				{#if (params?.repeat_last_n ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -567,9 +567,9 @@
 				}}
 			>
 				{#if (params?.tfs_z ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -613,9 +613,9 @@
 				}}
 			>
 				{#if (params?.num_ctx ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -658,9 +658,9 @@
 				}}
 			>
 				{#if (params?.num_batch ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -705,9 +705,9 @@
 				}}
 			>
 				{#if (params?.num_keep ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -750,9 +750,9 @@
 				}}
 			>
 				{#if (params?.max_tokens ?? null) === null}
-					<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 				{:else}
-					<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+					<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 				{/if}
 			</button>
 		</div>
@@ -796,9 +796,9 @@
 					}}
 				>
 					{#if (params?.use_mmap ?? null) === null}
-						<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 					{/if}
 				</button>
 			</div>
@@ -828,9 +828,9 @@
 					}}
 				>
 					{#if (params?.use_mlock ?? null) === null}
-						<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 					{/if}
 				</button>
 			</div>
@@ -860,9 +860,9 @@
 					}}
 				>
 					{#if (params?.num_thread ?? null) === null}
-						<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 					{/if}
 				</button>
 			</div>
@@ -906,9 +906,9 @@
 					}}
 				>
 					{#if (params?.num_gpu ?? null) === null}
-						<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 					{/if}
 				</button>
 			</div>
@@ -952,9 +952,9 @@
 					}}
 				>
 					{#if (params?.template ?? null) === null}
-						<span class="ml-2 self-center">{$i18n.t('Default')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
 					{:else}
-						<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
 					{/if}
 				</button>
 			</div>
