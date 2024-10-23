@@ -35,7 +35,11 @@ export default defineConfig({
 			'/assets': {  // Proxy the assets folder
 				target: 'http://localhost:8080',
 				changeOrigin: true
-			}
+			},
+			'manifest.json': {  // Proxy the manifest.json file
+				target: 'http://localhost:8080',
+				changeOrigin: true
+			},
 		},
 		// Optimize hot reload
 		watch: {
