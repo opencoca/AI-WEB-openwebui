@@ -359,7 +359,10 @@
 						}}
 					/>
 				{:else}
-					<form
+					<chat-message-form
+						style="--p: 1em;
+								--br: 3em;
+								--shadow: 6;"
 						class="w-full flex gap-1.5"
 						on:submit|preventDefault={() => {
 							// check if selectedModels support image input
@@ -815,7 +818,7 @@
 								</div>
 							{/if}
 						</div>
-					</form>
+					</chat-message-form>
 				{/if}
 
 				<div style="--w:100%; --ta:center;--size:0.6em">

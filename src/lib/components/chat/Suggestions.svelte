@@ -1,6 +1,7 @@
 <script lang="ts">
 	import Bolt from '$lib/components/icons/Bolt.svelte';
 	import { onMount, getContext, createEventDispatcher } from 'svelte';
+	import Suggestions from './MessageInput/Suggestions.svelte';
 
 	const i18n = getContext('i18n');
 	const dispatch = createEventDispatcher();
@@ -21,15 +22,16 @@
 		: prompts.slice(0, 3);
 </script>
 
-<div style="--d:flex; --ai:center">
-	<Bolt />
+<chat-suggestion-search
+ style="--d:flex; --ai:center; --ml:-0.8em">
+	
 	<input
 		type="text"
-		placeholder={$i18n.t('Search')}{$i18n.t('Suggestions')} :
+		placeholder="{$i18n.t('Search')} {$i18n.t('Suggestions')}" :
 		bind:value={searchQuery}
 		class="w-full p-2 border rounded mb-2 text-sm"
 	/>
-</div>
+</chat-suggestion-search>
 
 {#if filteredPrompts.length > 0}
 	<div
@@ -40,14 +42,9 @@
 
 <div class={className} style="--h: 17rem">
 	{#each filteredPrompts as prompt, promptIdx}
-		<div
+		<chat-suggestion
 			class="prompt"
-			style=" --shadow: 6; 
-										--levitate-hvr:8; 
-										--br: 1rem; 
-										--p: 1em; 
-										--m: 1em -0.2em 0 -0.8em;
-										--d: flex;"
+			style=" --shadow: 6; --levitate-hvr:8;--br: 1rem; --p: 1em; --m: 1em -0.2em 0 -0.8em;--d: flex;"
 			on:click={() => {
 				dispatch('select', prompt.content);
 			}}
@@ -64,6 +61,6 @@
 					</div>
 				{/if}
 			</div>
-		</div>
+		</chat-suggestion>
 	{/each}
 </div>
