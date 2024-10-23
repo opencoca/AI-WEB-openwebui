@@ -21,7 +21,7 @@
 
 <div>
 	<div class="flex w-full justify-between mb-1">
-		<div class=" self-center text-sm font-semibold">{$i18n.t('Capabilities')}</div>
+		<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Capabilities')}</div>
 	</div>
 	<div class="flex flex-col">
 		{#each Object.keys(capabilities) as capability}

@@ -118,7 +118,8 @@
 
 {#if loaded}
 	<div class="mt-0.5 mb-3 gap-1 flex flex-col md:flex-row justify-between">
-		<div class="flex md:self-center text-lg font-medium px-0.5">
+		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
+--size: 1.2em;">
 			{$i18n.t('All Users')}
 			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-200 dark:bg-gray-700" />
 			<span class="text-lg font-medium text-gray-500 dark:text-gray-300">{users.length}</span>

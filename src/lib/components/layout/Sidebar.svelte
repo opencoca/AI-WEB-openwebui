@@ -282,7 +282,8 @@
 		<div style="
 		--d: flex;
 		--ai:center
-		--jc:space-around;">
+		--jc:space-around;
+		--mr:0.2em">
 			<a
 				id="sidebar-new-chat-button"
 				style="

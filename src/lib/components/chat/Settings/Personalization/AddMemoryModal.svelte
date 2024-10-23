@@ -91,7 +91,7 @@
 							{$i18n.t('Add')}
 
 							{#if loading}
-								<div class="ml-2 self-center">
+								<div style="--ff: 'Cormorant', serif; --weight: 400;">
 									<svg
 										class=" w-4 h-4"
 										viewBox="0 0 24 24"

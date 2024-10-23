@@ -176,7 +176,8 @@
 
 <div class="mb-3">
 	<div class="flex justify-between items-center">
-		<div class="flex md:self-center text-lg font-medium px-0.5">
+		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
+--size: 1.2em;">
 			{$i18n.t('Functions')}
 			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-200 dark:bg-gray-700" />
 			<span class="text-lg font-medium text-gray-500 dark:text-gray-300">{$functions.length}</span>
@@ -229,7 +230,7 @@
 </div>
 <hr class=" border-gray-50 dark:border-gray-850 my-2.5" />
 
-<div class="my-3 mb-5">
+<div class="">
 	{#each $functions.filter((f) => query === '' || f.name
 				.toLowerCase()
 				.includes(query.toLowerCase()) || f.id.toLowerCase().includes(query.toLowerCase())) as func}
@@ -382,7 +383,12 @@
 	{/each}
 </div>
 
-<!-- <div class=" text-gray-500 text-xs mt-1 mb-2">
+<!-- <div style="--mb: 1em;
+    --ff: Cormorant;
+    --mt: 0;
+    --size: 0.8em;
+    --c: var(--dark-grey);
+    --ta: right;">
 	ⓘ {$i18n.t(
 		'Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.'
 	)}
@@ -464,13 +470,13 @@
 </div>
 
 <div class=" my-16">
-	<div class=" text-lg font-semibold mb-3 line-clamp-1">
+	<div style="--ff: Cormorant">
 		{$i18n.t('Made by our Community')}
 	</div>
 
 	<a
 		class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-2"
-		href="https://sage/education/#open-webui-community"
+		href="https://sage.education/functions"
 		target="_blank"
 	>
 		<div class=" self-center w-10 flex-shrink-0">
@@ -488,7 +494,7 @@
 		</div>
 
 		<div class=" self-center">
-			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover a function')}</div>
+			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover Functions')}</div>
 			<div class=" text-sm line-clamp-1">
 				{$i18n.t('Discover, download, and explore custom functions')}
 			</div>

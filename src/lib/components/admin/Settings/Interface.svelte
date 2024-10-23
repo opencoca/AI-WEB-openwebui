@@ -168,7 +168,7 @@
 
 		<div class=" space-y-3 {banners.length > 0 ? ' mb-3' : ''}">
 			<div class="flex w-full justify-between">
-				<div class=" self-center text-sm font-semibold">
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">
 					{$i18n.t('Banners')}
 				</div>
 
@@ -262,7 +262,7 @@
 		{#if $user.role === 'admin'}
 			<div class=" space-y-3">
 				<div class="flex w-full justify-between mb-2">
-					<div class=" self-center text-sm font-semibold">
+					<div style="--ff: 'Cormorant', serif; --weight: 700;">
 						{$i18n.t('Default Prompt Suggestions')}
 					</div>
 
@@ -295,20 +295,20 @@
 							<div class="flex flex-col flex-1 pl-1">
 								<div class="flex border-b border-gray-100 dark:border-gray-800 w-full">
 									<input
-										class="px-3 py-1.5 text-xs w-full bg-transparent outline-none border-r border-gray-100 dark:border-gray-800"
+										
 										placeholder={$i18n.t('Title (e.g. Tell me a fun fact)')}
 										bind:value={prompt.title[0]}
 									/>
 
 									<input
-										class="px-3 py-1.5 text-xs w-full bg-transparent outline-none border-r border-gray-100 dark:border-gray-800"
+										
 										placeholder={$i18n.t('Subtitle (e.g. about the Roman Empire)')}
 										bind:value={prompt.title[1]}
 									/>
 								</div>
 
 								<textarea
-									class="px-3 py-1.5 text-xs w-full bg-transparent outline-none border-r border-gray-100 dark:border-gray-800 resize-none"
+									style="--p:0.6em"
 									placeholder={$i18n.t('Prompt (e.g. Tell me a fun fact about the Roman Empire)')}
 									rows="3"
 									bind:value={prompt.content}

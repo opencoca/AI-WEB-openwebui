@@ -135,7 +135,7 @@
 						<div class="self-center">
 							<img
 								crossorigin="anonymous"
-								src="{WEBUI_BASE_URL}/static/favicon.png"
+								src="/static/favicon.png"
 								style="--br: 50%; --h: 10em; --w: 10em;"
 								alt="logo"
 							/>

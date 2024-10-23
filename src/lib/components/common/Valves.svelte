@@ -34,7 +34,7 @@
 					}}
 				>
 					{#if (valves[property] ?? null) === null}
-						<span class="ml-2 self-center">
+						<span style="--ff: 'Cormorant', serif; --weight: 400;">
 							{#if (valvesSpec?.required ?? []).includes(property)}
 								{$i18n.t('None')}
 							{:else}
@@ -42,7 +42,7 @@
 							{/if}
 						</span>
 					{:else}
-						<span class="ml-2 self-center"> {$i18n.t('Custom')} </span>
+						<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Custom')} </span>
 					{/if}
 				</button>
 			</div>

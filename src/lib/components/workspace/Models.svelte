@@ -296,7 +296,8 @@
 
 <div class="mb-3">
 	<div class="flex justify-between items-center">
-		<div class="flex md:self-center text-lg font-medium px-0.5">
+		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
+--size: 1.2em;">
 			{$i18n.t('AI Assistants')}
 			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-200 dark:bg-gray-700" />
 			<span class="text-lg font-medium text-gray-500 dark:text-gray-300">{$models.length}</span>
@@ -659,13 +660,13 @@
 </div>
 
 <div class=" my-16">
-	<div class=" text-lg font-semibold mb-3 line-clamp-1">
+	<div style="--ff: Cormorant">
 		{$i18n.t('Made by our Community')}
 	</div>
 
 	<a
 		class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-2"
-		href="https://sage/education/#open-webui-community"
+		href="https://Sage.Education/Models"
 		target="_blank"
 	>
 		<div class=" self-center w-10 flex-shrink-0">

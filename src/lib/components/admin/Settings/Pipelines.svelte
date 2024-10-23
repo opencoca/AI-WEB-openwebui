@@ -204,7 +204,7 @@
 	<div class="overflow-y-scroll scrollbar-hidden h-full">
 		{#if PIPELINES_LIST !== null}
 			<div class="flex w-full justify-between mb-2">
-				<div class=" self-center text-sm font-semibold">
+				<div style="--ff: 'Cormorant', serif; --weight: 700;">
 					{$i18n.t('Manage Pipelines')}
 				</div>
 			</div>
@@ -403,7 +403,7 @@
 				{#if pipelines !== null}
 					{#if pipelines.length > 0}
 						<div class="flex w-full justify-between mb-2">
-							<div class=" self-center text-sm font-semibold">
+							<div style="--ff: 'Cormorant', serif; --weight: 700;">
 								{$i18n.t('Pipelines Valves')}
 							</div>
 						</div>
@@ -469,9 +469,9 @@
 														}}
 													>
 														{#if (valves[property] ?? null) === null}
-															<span class="ml-2 self-center"> {$i18n.t('None')} </span>
+															<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('None')} </span>
 														{:else}
-															<span class="ml-2 self-center"> {$i18n.t('Custom')} </span>
+															<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Custom')} </span>
 														{/if}
 													</button>
 												</div>

@@ -215,7 +215,8 @@
 
 <div class="mb-3">
 	<div class="flex justify-between items-center">
-		<div class="flex md:self-center text-lg font-medium px-0.5">
+		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
+--size: 1.2em;">
 			{$i18n.t('Documents')}
 			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-200 dark:bg-gray-700" />
 			<span class="text-lg font-medium text-gray-500 dark:text-gray-300">{$documents.length}</span>
@@ -369,7 +370,7 @@
 	</div>
 {/if}
 
-<div class="my-3 mb-5">
+<div class="">
 	{#each filteredDocs as doc}
 		<button
 			class=" flex space-x-4 cursor-pointer text-left w-full px-3 py-2 dark:hover:bg-white/5 hover:bg-black/5 rounded-xl"
@@ -529,7 +530,12 @@
 	{/each}
 </div>
 
-<div class=" text-gray-500 text-xs mt-1 mb-2">
+<div style="--mb: 1em;
+    --ff: Cormorant;
+    --mt: 0;
+    --size: 0.8em;
+    --c: var(--dark-grey);
+    --ta: right;">
 	ⓘ {$i18n.t("Use '#' in the prompt input to load and select your documents.")}
 </div>
 
