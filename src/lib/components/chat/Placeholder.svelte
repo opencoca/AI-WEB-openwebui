@@ -105,8 +105,9 @@
 		<div
 			class="w-full text-3xl text-gray-800 dark:text-gray-100 font-medium text-center flex items-center gap-4 font-primary"
 		>
-			<div class="w-full flex flex-col justify-center items-center">
-				<div class="flex flex-col md:flex-row justify-center gap-2 md:gap-3.5 w-fit">
+			<div style="--w:100%; --d:flex; --fd:column; --ai:center">
+				<div style="--d: flex;	gap: 0.2em; --fd-md:column;	--ai: center;"
+									>
 					<div class="flex flex-shrink-0 justify-center">
 						<div class="flex -space-x-4 mb-0.5" in:fade={{ duration: 100 }}>
 							{#each models as model, modelIdx}
@@ -116,7 +117,8 @@
 										.join(', ')}
 									placement="top"
 								>
-									<button style="--br:50%"
+									<button
+										style="--br:50%"
 										on:click={() => {
 											selectedModelIdx = modelIdx;
 										}}
@@ -124,10 +126,8 @@
 										<img
 											crossorigin="anonymous"
 											src={model?.info?.meta?.profile_image_url ??
-												($i18n.language === 'dg-DG'
-													? `/doge.png`
-													: `/static/favicon.png`)}
-											class=" size-[2.5rem] rounded-full border-[1px] border-gray-200 dark:border-none"
+												($i18n.language === 'dg-DG' ? `/doge.png` : `/static/favicon.png`)}
+											style="--w:2rem;--h:2rem;--w-md: 10rem; --h-md: 10rem; --br: 50%"
 											alt="logo"
 											draggable="false"
 										/>
@@ -137,7 +137,7 @@
 						</div>
 					</div>
 
-					<div class=" capitalize line-clamp-1 text-3xl md:text-4xl" in:fade={{ duration: 100 }}>
+					<div style="" in:fade={{ duration: 100 }}>
 						{#if models[selectedModelIdx]?.info}
 							{models[selectedModelIdx]?.info?.name}
 						{:else}
