@@ -139,7 +139,7 @@
 							<img
 								crossorigin="anonymous"
 								src="/static/favicon.png"
-								style="--br: 50%; --h: 10em; --w: 10em;"
+								style="--br: 10%; --h: 10em; --w: 10em;"
 								alt="logo"
 							/>
 						</div>
