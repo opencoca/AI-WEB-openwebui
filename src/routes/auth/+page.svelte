@@ -10,6 +10,9 @@
 	import { page } from '$app/stores';
 	import { getBackendConfig } from '$lib/apis';
 
+	$: currentUrl = $page.url.host; // Extracts the hostname without protocol or path
+
+
 	const i18n = getContext('i18n');
 
 	let loaded = false;
@@ -122,7 +125,7 @@
 						class="flex items-center justify-center gap-3 text-xl sm:text-2xl text-center font-semibold dark:text-gray-200"
 					>
 						<div>
-							{$i18n.t('Signing in to {{WEBUI_NAME}}', { WEBUI_NAME: $WEBUI_NAME })}
+							{$i18n.t('Signing in to {{$currentUrl}}', { WEBUI_NAME: $WEBUI_NAME })}
 						</div>
 						<div>
 							<Spinner />
@@ -141,12 +144,15 @@
 							/>
 						</div>
 
-						<div style="--size:1.2em; --p:0.2em">
+						<div style="--size:1.8em; --p:0.2em">
 							{#if mode === 'signin'}
-								{$i18n.t(`Sign in to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
+							  {$i18n.t(`Sign in to {{CURRENT_URL}}`, { WEBUI_NAME: $WEBUI_NAME, CURRENT_URL: currentUrl })}
 							{:else}
-								{$i18n.t(`Sign up to {{WEBUI_NAME}}`, { WEBUI_NAME: $WEBUI_NAME })}
+							  {$i18n.t(`Sign up to {{CURRENT_URL}}`, { WEBUI_NAME: $WEBUI_NAME, CURRENT_URL: currentUrl })}
 							{/if}
+						</div>
+						<div style="--size:1em; --p:0.2em">
+							Powered by <a style="--c: var(--links);" href="https://sage.education/ai">{$i18n.t('{{WEBUI_NAME}}', { WEBUI_NAME: $WEBUI_NAME })}</a>
 						</div>
 
 						{#if mode === 'signup'}
