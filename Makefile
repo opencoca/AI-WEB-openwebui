@@ -98,9 +98,14 @@ it_build_n_run: it_build
 it_build_n_run_no_cache: it_build_no_cache
 	@make it_run
 
+# Ensure builder target
+ensure_builder:
+	@docker buildx inspect multi-arch-builder >/dev/null 2>&1 || docker buildx create --name multi-arch-builder --use
+
 # Multi-architecture build helpers
 define build_arch
-	@make it_clean	
+	@make it_clean
+	@make ensure_builder	
 	docker buildx build --platform linux/$(1) \
 		-t $(2):$(1)-$(IMAGE_TAG) \
 		-t $(2):$(1)-latest \
