@@ -20,7 +20,8 @@ ARG UID=0
 ARG GID=0
 
 ########### System #########
-FROM --platform=$BUILDPLATFORM node:22-bookworm AS build
+#FROM --platform=$BUILDPLATFORM node:22-bookworm AS build
+FROM node:22-bookworm AS build
 ARG BUILD_HASH
 
 WORKDIR /app
