@@ -144,7 +144,7 @@
 							/>
 						</div>
 
-						<div style="--size:1.8em; --p:0.2em">
+						<div style="--size:1.6em; --p:0.2em">
 							{#if mode === 'signin'}
 							  {$i18n.t(`Sign in to {{CURRENT_URL}}`, { WEBUI_NAME: $WEBUI_NAME, CURRENT_URL: currentUrl })}
 							{:else}
