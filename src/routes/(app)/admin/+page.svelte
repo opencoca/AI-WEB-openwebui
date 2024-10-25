@@ -118,8 +118,10 @@
 
 {#if loaded}
 	<div class="mt-0.5 mb-3 gap-1 flex flex-col md:flex-row justify-between">
-		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
---size: 1.2em;">
+		<div
+			style="--d: flex; --ff: Cormorant;    --weight: 500;
+--size: 1.2em;"
+		>
 			{$i18n.t('All Users')}
 			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-200 dark:bg-gray-700" />
 			<span class="text-lg font-medium text-gray-500 dark:text-gray-300">{users.length}</span>
@@ -302,12 +304,13 @@
 						<td class="px-3 py-2 font-medium text-gray-900 dark:text-white w-max">
 							<div class="flex flex-row w-max">
 								<img
-									class=" rounded-full w-6 h-6 object-cover mr-2.5"
-									src={user.profile_image_url.startsWith(WEBUI_BASE_URL) ||
-									user.profile_image_url.startsWith('https://www.gravatar.com/avatar/') ||
-									user.profile_image_url.startsWith('data:')
+									class="rounded-full w-6 h-6 object-cover mr-2.5"
+									src={user.profile_image_url &&
+									(user.profile_image_url.startsWith(WEBUI_BASE_URL) ||
+										user.profile_image_url.startsWith('https://www.gravatar.com/avatar/') ||
+										user.profile_image_url.startsWith('data:'))
 										? user.profile_image_url
-										: `/user.png`}
+										: `/static/favicon.png`}
 									alt="user"
 								/>
 
