@@ -22,12 +22,12 @@
 		})}
 
 		<a
-			href="https://github.com/open-webui/open-webui/releases/tag/v{version.latest}"
+			href="https://sage.education/releases/tag/v{version.latest}"
 			target="_blank"
 			class="underline"
 		>
 			<!--{$i18n.t('Update for the latest features and improvements.')}-->
-			{$i18n.t('Learn about the new latest features and improvements.')}
+			{$i18n.t('Learn about the new features and improvements.')}
 			</a
 		>
 	</div>
