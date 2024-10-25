@@ -317,7 +317,7 @@
 					/>
 				</div>
 				<div class=" self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
-					{$i18n.t('Start New Sage Chat')}
+					{$i18n.t('Start New Chat')}
 				</div>
 				<div class="self-center"
 					style="

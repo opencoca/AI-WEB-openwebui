@@ -104,7 +104,7 @@
 
 <svelte:head>
 	<title>
-		{`${$WEBUI_NAME}`}
+		The Study's Rosie powered by {`${$WEBUI_NAME}`}
 	</title>
 	<link
 		rel="stylesheet"
@@ -138,8 +138,8 @@
 						<div class="self-center">
 							<img
 								crossorigin="anonymous"
-								src="/static/favicon.png"
-								style="--br: 50%; --h: 10em; --w: 10em;"
+								src="/static/study-logo.jpg"
+								style="--br: 10%; --h: 10em; --w: 11.7em;"
 								alt="logo"
 							/>
 						</div>
@@ -152,7 +152,7 @@
 							{/if}
 						</div>
 						<div style="--size:1em; --p:0.2em">
-							Powered by <a style="--c: var(--links);" href="https://sage.education/ai">{$i18n.t('{{WEBUI_NAME}}', { WEBUI_NAME: $WEBUI_NAME })}</a>
+							Powered by <a style="--c: var(--links);" href="https://sage.education/ai">Sage.education/ai</a>
 						</div>
 
 						{#if mode === 'signup'}

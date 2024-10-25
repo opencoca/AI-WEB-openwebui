@@ -28,7 +28,7 @@ GHCR_IMAGE_NAME := ghcr.io/$(IMAGE_NAME)
 GIT_TAG := $(shell git tag --sort=-v:refname | sed 's/^v//' | head -n 1)
 IMAGE_TAG := $(if $(GIT_TAG),$(GIT_TAG),latest)
 CONTAINER_NAME := ai-web-openwebui
-PORT_MAPPING := 8080:8080
+PORT_MAPPING := 80:8080
 VOLUME_DATA := sage-open-webui:/app/backend/data
 ENV_FILE := $$(pwd)/.env:/app/.env
 FRONTEND_SRC := $$(pwd)/src/:/app/src/
@@ -38,15 +38,16 @@ FRONTEND_SRC := $$(pwd)/src/:/app/src/
 ARCHITECTURES := amd64 arm64 # Not used at the moment
 
 # Common docker run arguments
-DOCKER_RUN_ARGS := --rm -p $(PORT_MAPPING) \
+DOCKER_RUN_ARGS :=  -p $(PORT_MAPPING) \
 	--add-host=host.docker.internal:host-gateway \
 	-v $(VOLUME_DATA) \
 	-v $(ENV_FILE) \
 	--name $(CONTAINER_NAME)
 
-DEV_RUN_ARGS := --rm -p $(PORT_MAPPING) \
+DEV_RUN_ARGS :=  -p $(PORT_MAPPING) \
 	--add-host=host.docker.internal:host-gateway \
 	-p 5173:5173 \
+	-p 8080:8080 \
 	-v $(VOLUME_DATA) \
 	-v $(ENV_FILE) \
 	-v $(FRONTEND_SRC) \
