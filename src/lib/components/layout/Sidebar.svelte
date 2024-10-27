@@ -396,7 +396,7 @@
 
 {#if $showSidebar}
 	<div
-		class=" fixed md:hidden z-40 top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center overflow-hidden overscroll-contain"
+		class=" fixed hidden z-40 top-0 right-0 left-0 bottom-0 bg-black/60 w-full min-h-screen h-screen flex justify-center overflow-hidden overscroll-contain"
 		on:mousedown={() => {
 			showSidebar.set(!$showSidebar);
 		}}
@@ -416,7 +416,9 @@ style="
 --d: flex;
 --ai:center
 --jc:space-around;
---mr:0.2em"
+--mr:0.2em;
+--pt: 2ch;
+--pr: 0.8em;"
 >
 <a
 	id="sidebar-new-chat-button"
@@ -502,7 +504,7 @@ style="
 </sidebar-new-chat>
 
 	<sidebar-user-chats
-		style="--d: flex; --fd: column; --jc: flex-start; --maxh:calc(100vh - 8ch)"
+		style="--d: flex; --fd: column; --jc: flex-start; --maxh:calc(100vh - 10ch)"
 		class="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 {$showSidebar
 			? ''
 			: 'invisible'}"

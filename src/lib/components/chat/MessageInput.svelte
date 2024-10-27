@@ -330,8 +330,8 @@
 		</div>
 	</div>
 
-	<div class="{transparentBackground ? 'bg-transparent' : 'bg-white dark:bg-gray-900'} ">
-		<div class="max-w-6xl px-4 mx-auto inset-x-0">
+
+		<message-input style=" --pl:1rem; --pr:1rem; --ml:auto; --mr:auto; --left:0; --right:0;">
 			<div class="">
 				<input
 					bind:this={filesInputElement}
@@ -376,7 +376,7 @@
 					/>
 				{:else}
 					<chat-message-form
-						style="--p: 1em;
+						style="--p: 0.6em; --p-sm:1em;
 								--br: 3em;
 								--shadow: 6;"
 						class="w-full flex gap-1.5"
@@ -848,6 +848,6 @@
 					>
 				</div>
 			</div>
-		</div>
-	</div>
+		</message-input>
+
 </div>
