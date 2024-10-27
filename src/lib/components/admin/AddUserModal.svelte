@@ -141,7 +141,7 @@
 			</button>
 		</div>
 
-		<div class="flex flex-col md:flex-row w-full px-5 pb-4 md:space-x-4 dark:text-gray-200">
+		<div class="flex flex-col md:flex-row w-full px-4 pb-3 md:space-x-4 dark:text-gray-200">
 			<div class=" flex flex-col w-full sm:flex-row sm:justify-center sm:space-x-6">
 				<form
 					class="flex flex-col w-full"
@@ -149,9 +149,9 @@
 						submitHandler();
 					}}
 				>
-					<div class="flex text-center text-sm font-medium rounded-xl bg-transparent/10 p-1 mb-2">
+					<div class="flex text-center text-sm font-medium rounded-full bg-transparent/10 p-1 mb-2">
 						<button
-							class="w-full rounded-lg p-1.5 {tab === '' ? 'bg-gray-50 dark:bg-gray-850' : ''}"
+							class="w-full rounded-full p-1.5 {tab === '' ? 'bg-gray-50 dark:bg-gray-850' : ''}"
 							type="button"
 							on:click={() => {
 								tab = '';
@@ -159,7 +159,9 @@
 						>
 
 						<button
-							class="w-full rounded-lg p-1 {tab === 'import' ? 'bg-gray-50 dark:bg-gray-850' : ''}"
+							class="w-full rounded-full p-1 {tab === 'import'
+								? 'bg-gray-50 dark:bg-gray-850'
+								: ''}"
 							type="button"
 							on:click={() => {
 								tab = 'import';
@@ -187,7 +189,7 @@
 								</div>
 							</div>
 
-							<div class="flex flex-col w-full mt-2">
+							<div class="flex flex-col w-full mt-1">
 								<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Name')}</div>
 
 								<div class="flex-1">
@@ -202,7 +204,7 @@
 								</div>
 							</div>
 
-							<hr class=" dark:border-gray-800 my-3 w-full" />
+							<hr class=" border-gray-50 dark:border-gray-850 my-2.5 w-full" />
 
 							<div class="flex flex-col w-full">
 								<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Email')}</div>
@@ -219,24 +221,7 @@
 								</div>
 							</div>
 
-							<!-- Class list (allow for a comma separated list of classes a user is a member of) -->
-							<div class="flex flex-col w-full">
-								<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Class List')}</div>
-
-								<div class="flex-1">
-									<input
-										class="w-full rounded py-2 px-4 text-sm dark:text-gray-300 dark:bg-gray-800 outline-none"
-										type="text"
-										bind:value={_user.class_list}
-										autocomplete="off"
-										required
-									/>
-								</div>
-							</div>
-							<hr class=" dark:border-gray-800 my-3 w-full" />
-							<!-- New Password -->
-
-							<div class="flex flex-col w-full mt-2">
+							<div class="flex flex-col w-full mt-1">
 								<div class=" mb-1 text-xs text-gray-500">{$i18n.t('Password')}</div>
 
 								<div class="flex-1">
@@ -292,13 +277,13 @@
 
 					<div class="flex justify-end pt-3 text-sm font-medium">
 						<button
-							class=" px-4 py-2 bg-emerald-700 hover:bg-emerald-800 text-gray-100 transition rounded-lg flex flex-row space-x-1 items-center {loading
+							class="px-3.5 py-1.5 text-sm font-medium bg-black hover:bg-gray-900 text-white dark:bg-white dark:text-black dark:hover:bg-gray-100 transition rounded-full flex flex-row space-x-1 items-center {loading
 								? ' cursor-not-allowed'
 								: ''}"
 							type="submit"
 							disabled={loading}
 						>
-							{$i18n.t('Submit')}
+							{$i18n.t('Save')}
 
 							{#if loading}
 								<div style="--ff: 'Cormorant', serif; --weight: 400;">

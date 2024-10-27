@@ -41,7 +41,7 @@
 				<div style="--d:flex">
 					
 					<Selector
-						id='model-selector'
+						id={`${selectedModelIdx}`}
 						placeholder={$i18n.t('select an Assistant')}
 						items={$models.map((model) => ({
 							value: model.id,
