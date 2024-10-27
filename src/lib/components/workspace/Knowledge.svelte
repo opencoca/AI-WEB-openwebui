@@ -21,6 +21,7 @@
 	import Pencil from '../icons/Pencil.svelte';
 	import DeleteConfirmDialog from '../common/ConfirmDialog.svelte';
 	import ItemMenu from './Knowledge/ItemMenu.svelte';
+	import Badge from '../common/Badge.svelte';
 
 	let query = '';
 	let selectedItem = null;
@@ -130,6 +131,17 @@
 	</div>
 </div>
 
+<div class="mb-3.5">
+	<div class="flex justify-between items-center">
+		<div class="flex md:self-center text-base font-medium px-0.5">
+			{$i18n.t('Knowledge')}
+			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-50 dark:bg-gray-850" />
+			<span class="text-base font-medium text-gray-500 dark:text-gray-300"
+				>{filteredItems.length}</span
+			>
+		</div>
+	</div>
+</div>
 
 <div style="--mb: 1em;
     --ff: Cormorant;
@@ -139,11 +151,11 @@
     --ta: right;">
 	ⓘ {$i18n.t("Use '#' in the prompt input to load and include your knowledge.")}
 </div>
-<hr class=" border-gray-50 dark:border-gray-850 my-2.5" />
-<div class=" grid lg:grid-cols-2 xl:grid-cols-3 gap-2">
+
+<div class="my-3 mb-5 grid md:grid-cols-2 lg:grid-cols-3 gap-2">
 	{#each filteredItems as item}
 		<button
-			class=" flex space-x-4 cursor-pointer text-left w-full px-4 py-3 border border-gray-50 dark:border-gray-850 hover:bg-gray-50 dark:hover:bg-gray-850 transition rounded-xl"
+			class=" flex space-x-4 cursor-pointer text-left w-full px-4 py-3 border border-gray-50 dark:border-gray-850 dark:hover:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-850 transition rounded-xl"
 			on:click={() => {
 				if (item?.meta?.document) {
 					toast.error(
@@ -178,21 +190,14 @@
 					<div class="mt-5 flex justify-between">
 						<div>
 							{#if item?.meta?.document}
-								<div
-									class="bg-gray-500/20 text-gray-700 dark:text-gray-200 rounded uppercase text-xs font-bold px-1"
-								>
-									{$i18n.t('Document')}
-								</div>
+								<Badge type="muted" content={$i18n.t('Document')} />
 							{:else}
-								<div
-									class="bg-green-500/20 text-green-700 dark:text-green-200 rounded uppercase text-xs font-bold px-1"
-								>
-									{$i18n.t('Collection')}
-								</div>
+								<Badge type="success" content={$i18n.t('Collection')} />
 							{/if}
 						</div>
-						<div class=" text-xs text-gray-500">
-							Updated {dayjs(item.updated_at * 1000).fromNow()}
+						<div class=" text-xs text-gray-500 line-clamp-1">
+							{$i18n.t('Updated')}
+							{dayjs(item.updated_at * 1000).fromNow()}
 						</div>
 					</div>
 				</div>

@@ -17,6 +17,9 @@
 	import WebSearch from './Settings/WebSearch.svelte';
 	import { config } from '$lib/stores';
 	import { getBackendConfig } from '$lib/apis';
+	import ChartBar from '../icons/ChartBar.svelte';
+	import DocumentChartBar from '../icons/DocumentChartBar.svelte';
+	import Evaluations from './Settings/Evaluations.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -367,6 +370,8 @@
 			/>
 		{:else if selectedTab === 'models'}
 			<Models />
+		{:else if selectedTab === 'evaluations'}
+			<Evaluations />
 		{:else if selectedTab === 'documents'}
 			<Documents
 				on:save={async () => {

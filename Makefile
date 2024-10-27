@@ -27,6 +27,12 @@ IMAGE_NAME := startr/ai-web-openwebui
 GHCR_IMAGE_NAME := ghcr.io/$(IMAGE_NAME)
 GIT_TAG := $(shell git tag --sort=-v:refname | sed 's/^v//' | head -n 1)
 IMAGE_TAG := $(if $(GIT_TAG),$(GIT_TAG),latest)
+GIT_BRANCH := $(shell git rev-parse --abbrev-ref HEAD)
+ifeq ($(GIT_BRANCH),HEAD)
+    GIT_BRANCH := $(shell git describe --tags --exact-match 2>/dev/null || git rev-parse --short HEAD)
+endif
+SAFE_GIT_BRANCH := $(subst /,-,$(GIT_BRANCH))
+SAFE_GIT_BRANCH := $(shell echo $(SAFE_GIT_BRANCH) | tr '[:upper:]' '[:lower:]')
 CONTAINER_NAME := ai-web-openwebui
 PORT_MAPPING := 8080:8080
 VOLUME_DATA := sage-open-webui:/app/backend/data
@@ -59,21 +65,32 @@ it_clean:
 	docker system prune -f
 	docker builder prune --force
 
-# Build targets
+# Build Docker Image with Branch Name
 it_build:
-	export DOCKER_BUILDKIT=1
-	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest \
-		. 
+	@echo "Building Docker image with BuildKit enabled..."
+	@export DOCKER_BUILDKIT=1 && \
+	docker build -t $(IMAGE_NAME):$(IMAGE_TAG) \
+	            -t $(IMAGE_NAME):latest \
+	            -t $(IMAGE_NAME):$(IMAGE_TAG)-$(SAFE_GIT_BRANCH) \
+	            -t $(IMAGE_NAME):$(SAFE_GIT_BRANCH) \
+	            .
 
+# Build Docker Image without Cache and with Branch Name
 it_build_no_cache:
-	export DOCKER_BUILDKIT=1
-	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_TAG) -t $(IMAGE_NAME):latest . 
+	@echo "Building Docker image without cache and with BuildKit enabled..."
+	@export DOCKER_BUILDKIT=1 && \
+	docker build --no-cache -t $(IMAGE_NAME):$(IMAGE_TAG) \
+	                     -t $(IMAGE_NAME):latest \
+	                     -t $(IMAGE_NAME):$(IMAGE_TAG)-$(SAFE_GIT_BRANCH) \
+	                     -t $(IMAGE_NAME):$(SAFE_GIT_BRANCH) \
+	                     .
+
 
 build_slim:
 	# Build a slim version of the image from the Dockerimage
 	# Note at the moment manual use of the site is required to build the slim version
 	# we need to add selenium automation to the build process to automate this
-	slim build --http-probe  --include-path /app/backend --include-path /app/static --continue-after=160  startr/ai-web-openwebui
+	slim build --http-probe  --include-path /app/backend --include-path /app/static --continue-after=160  $(IMAGE_NAME)
 
 it_run_slim:
 	# Run the slim version of the image

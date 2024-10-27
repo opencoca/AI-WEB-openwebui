@@ -25,6 +25,7 @@
 	const i18n = getContext('i18n');
 	const dispatch = createEventDispatcher();
 
+	export let id = '';
 	export let value = '';
 	export let placeholder = 'select an Assistant';
 	export let searchEnabled = true;
@@ -41,6 +42,7 @@
 	}[] = [];
 
 	export let className = 'w-[32rem]';
+	export let triggerClassName = 'text-lg';
 
 	let show = false;
 
@@ -231,7 +233,7 @@
 >
 	<DropdownMenu.Trigger class="relative w-full font-primary" aria-label={placeholder}>
 		<div style="--d:flex; --shadow:none; --ff:Cormorant, serif;--weight:bold; --tt:capitalize"
-			
+			class="{triggerClassName}"	
 		>
 		<img
 		src={selectedModel.model?.info?.meta?.profile_image_url ?? '/static/favicon.png'}
@@ -250,10 +252,10 @@
 	<DropdownMenu.Content
 		class=" z-40 {$mobile
 			? `w-full`
-			: `${className}`} max-w-[calc(100vw-1rem)] justify-start rounded-xl  bg-white dark:bg-gray-850 dark:text-white shadow-lg border border-gray-300/30 dark:border-gray-700/40  outline-none"
+			: `${className}`} max-w-[calc(100vw-1rem)] justify-start rounded-xl  bg-white dark:bg-gray-850 dark:text-white shadow-lg  outline-none"
 		transition={flyAndScale}
 		side={$mobile ? 'bottom' : 'bottom-start'}
-		sideOffset={4}
+		sideOffset={3}
 	>
 		<slot>
 			{#if searchEnabled}
@@ -286,7 +288,7 @@
 					/>
 				</div>
 
-				<hr class="border-gray-100 dark:border-gray-800" />
+				<hr class="border-gray-50 dark:border-gray-800" />
 			{/if}
 
 			<div class="px-3 my-2 max-h-64 overflow-y-auto scrollbar-hidden group model-list" 
@@ -480,10 +482,16 @@
 							</div>
 
 							<div class="flex flex-col self-start">
-								<div class="line-clamp-1">
-									Downloading "{model}" {'pullProgress' in $MODEL_DOWNLOAD_POOL[model]
-										? `(${$MODEL_DOWNLOAD_POOL[model].pullProgress}%)`
-										: ''}
+								<div class="flex gap-1">
+									<div class="line-clamp-1">
+										Downloading "{model}"
+									</div>
+
+									<div class="flex-shrink-0">
+										{'pullProgress' in $MODEL_DOWNLOAD_POOL[model]
+											? `(${$MODEL_DOWNLOAD_POOL[model].pullProgress}%)`
+											: ''}
+									</div>
 								</div>
 
 								{#if 'digest' in $MODEL_DOWNLOAD_POOL[model] && $MODEL_DOWNLOAD_POOL[model].digest}
@@ -494,7 +502,7 @@
 							</div>
 						</div>
 
-						<div class="mr-2 translate-y-0.5">
+						<div class="mr-2 ml-1 translate-y-0.5">
 							<Tooltip content={$i18n.t('Cancel')}>
 								<button
 									class="text-gray-800 dark:text-gray-100"
@@ -527,7 +535,7 @@
 			</div>
 
 			{#if showTemporaryChatControl}
-				<hr class="border-gray-100 dark:border-gray-800" />
+				<hr class="border-gray-50 dark:border-gray-800" />
 
 				<div class="flex items-center mx-2 my-2">
 					<button
