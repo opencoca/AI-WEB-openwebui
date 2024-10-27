@@ -18,7 +18,7 @@
 		currentChatPage,
 		temporaryChatEnabled
 	} from '$lib/stores';
-	
+
 	import { onMount, getContext, tick, onDestroy } from 'svelte';
 
 	const i18n = getContext('i18n');
@@ -412,15 +412,18 @@
 	data-state={$showSidebar}
 >
 	<div
+		style="--d: flex; --fd: column; --jc: flex-start;"
 		class="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 {$showSidebar
 			? ''
 			: 'invisible'}"
 	>
-		<div style="
+		<div
+			style="
 		--d: flex;
 		--ai:center
 		--jc:space-around;
-		--mr:0.2em">
+		--mr:0.2em"
+		>
 			<a
 				id="sidebar-new-chat-button"
 				style="
@@ -442,7 +445,7 @@
 				}}
 			>
 				<div class="self-center mx-1.5">
-					<img 
+					<img
 						style="
 						--h: 2em;
 						--h: 2em;
@@ -456,11 +459,13 @@
 				<div class=" self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
 					{$i18n.t('Start New Sage Chat')}
 				</div>
-				<div class="self-center"
+				<div
+					class="self-center"
 					style="
 						--ml:auto;
 						--mr:0.2rem;
-					">
+					"
+				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						viewBox="0 0 20 20"
@@ -546,19 +551,6 @@
 				<div class="absolute z-40 w-full h-full flex justify-center"></div>
 			{/if}
 
-			<div class="absolute z-40 right-4 top-1">
-				<Tooltip content={$i18n.t('New folder')}>
-					<button
-						class="p-1 rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-950 dark:hover:bg-gray-900 transition"
-						on:click={() => {
-							createFolder();
-						}}
-					>
-						<Plus />
-					</button>
-				</Tooltip>
-			</div>
-
 			<SearchInput
 				bind:value={search}
 				on:input={searchDebounceHandler}
@@ -566,11 +558,23 @@
 			/>
 		</div>
 
-		<div
-			class="relative flex flex-col flex-1 overflow-y-auto {$temporaryChatEnabled
-				? 'opacity-20'
-				: ''}"
+		<chat-folders
+			style="--pt: 0.6em;--d: flex; --fd: column;"
+			class=" {$temporaryChatEnabled ? 'opacity-20' : ''}"
 		>
+			<chat-folder-new style="--ml: auto; --mb: -2em; --mr: 1em; --bg: white; --z: 100; --br: 50%;">
+				<Tooltip content={$i18n.t('New folder')}>
+					<button
+						class="dark:hover:bg-gray-900 transition"
+						on:click={() => {
+							createFolder();
+						}}
+					>
+						<Plus />
+					</button>
+				</Tooltip>
+			</chat-folder-new>
+
 			{#if $temporaryChatEnabled}
 				<div class="absolute z-40 w-full h-full flex justify-center"></div>
 			{/if}
@@ -652,7 +656,7 @@
 				</div>
 			{/if}
 
-			<div class=" flex-1 flex flex-col overflow-y-auto scrollbar-hidden">
+			<div class="flex-1 flex flex-col">
 				{#if !search && folders}
 					<Folders
 						{folders}
@@ -802,7 +806,7 @@
 					</div>
 				</Folder>
 			</div>
-		</div>
+		</chat-folders>
 
 		<div class="px-2">
 			<div class="flex flex-col font-primary">

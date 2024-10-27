@@ -245,7 +245,7 @@
 
 <sage-app>
 	<sage-layout
-	style="--d:flex; --fw:wrap"
+	style="--d:flex"
 	>
 		{#if loaded}
 			{#if !['user', 'student', 'teacher', 'admin'].includes($user.role)}

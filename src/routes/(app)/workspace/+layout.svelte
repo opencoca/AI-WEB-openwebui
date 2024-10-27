@@ -25,8 +25,9 @@
 </svelte:head>
 
 {#if loaded}
-	<div
-		class=" relative flex flex-col w-full min-h-screen max-h-screen {$showSidebar
+	<sage-content
+		style="--m:0.4em auto; --minw:80%; --maxw-sm:calc(100% - 260px); --p:0 0.4em"
+		class="content {$showSidebar
 			? 'md:max-w-[calc(100%-260px)]'
 			: ''}"
 	>
@@ -114,5 +115,5 @@
 		<div class=" pb-1 px-[18px] flex-1 max-h-full overflow-y-auto">
 			<slot />
 		</div>
-	</div>
+	</sage-content>
 {/if}

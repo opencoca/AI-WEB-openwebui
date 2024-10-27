@@ -388,7 +388,7 @@
 	</div>
 
 	<div class=" self-center">
-		<div class=" font-semibold line-clamp-1">{$i18n.t('Create an agent')}</div>
+		<div class=" font-semibold line-clamp-1">{$i18n.t('Create an Assistant')}</div>
 		<div class=" text-sm line-clamp-1">{$i18n.t('Customize AI models for a specific purpose')}</div>
 	</div>
 </a>
