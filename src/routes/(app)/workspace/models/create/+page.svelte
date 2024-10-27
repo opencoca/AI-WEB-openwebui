@@ -223,7 +223,7 @@
 	onMount(async () => {
 		window.addEventListener('message', async (event) => {
 			if (
-				!['https://openwebui.com', 'https://www.openwebui.com', 'http://localhost:5173'].includes(
+				!['https://Sage.Education', 'https://www.openwebui.com', 'http://localhost:5173'].includes(
 					event.origin
 				)
 			)

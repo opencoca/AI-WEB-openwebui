@@ -25,9 +25,9 @@
 	$: filteredItems = $prompts.filter((p) => query === '' || p.command.includes(query));
 
 	const shareHandler = async (prompt) => {
-		toast.success($i18n.t('Redirecting you to OpenWebUI Community'));
+		toast.success($i18n.t('Redirecting you to Sage.Education Community'));
 
-		const url = 'https://openwebui.com';
+		const url = 'https://Sage.Education';
 
 		const tab = await window.open(`${url}/prompts/create`, '_blank');
 		window.addEventListener(
