@@ -96,7 +96,9 @@
 	});
 </script>
 
-<div bind:this={folderElement} class="relative {className}">
+<sage-folder style="--mt:inherit"
+	bind:this={folderElement} 
+	class="relative {className}">
 	{#if draggedOver}
 		<div
 			class="absolute top-0 left-0 w-full h-full rounded-sm bg-[hsla(260,85%,65%,0.1)] bg-opacity-50 dark:bg-opacity-10 z-50 pointer-events-none touch-none"
@@ -113,7 +115,7 @@
 			}}
 		>
 			<!-- svelte-ignore a11y-no-static-element-interactions -->
-			<div class="w-full">
+			<div class="w-full group">
 				<button
 					class="w-full py-1.5 px-2 rounded-md flex items-center gap-1.5 text-xs text-gray-500 dark:text-gray-500 font-medium hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 				>
@@ -138,4 +140,4 @@
 	{:else}
 		<slot></slot>
 	{/if}
-</div>
+	</sage-folder>
