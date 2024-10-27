@@ -86,9 +86,9 @@
 	};
 
 	const shareModelHandler = async (model) => {
-		toast.success($i18n.t('Redirecting you to OpenWebUI Community'));
+		toast.success($i18n.t('Redirecting you to Sage.Education Community'));
 
-		const url = 'https://openwebui.com';
+		const url = 'https://Sage.Education';
 
 		const tab = await window.open(`${url}/models/create`, '_blank');
 
