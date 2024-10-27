@@ -120,6 +120,7 @@
 										}}
 									>
 										<img
+											style="--h:4rem;--w:4rem;--h-sm:6rem; --w-sm:6rem;--h-md:10rem; --w-md:10rem"
 											crossorigin="anonymous"
 											src={model?.info?.meta?.profile_image_url ??
 												($i18n.language === 'dg-DG'
@@ -168,7 +169,7 @@
 									By
 									{#if models[selectedModelIdx]?.info?.meta?.user.community}
 										<a
-											href="https://openwebui.com/m/{models[selectedModelIdx]?.info?.meta?.user
+											href="https://Sage.Education/m/{models[selectedModelIdx]?.info?.meta?.user
 												.username}"
 											>{models[selectedModelIdx]?.info?.meta?.user.name
 												? models[selectedModelIdx]?.info?.meta?.user.name
