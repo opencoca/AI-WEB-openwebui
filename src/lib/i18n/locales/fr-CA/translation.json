@@ -639,7 +639,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Sélectionnez un modèle",
 	"Select only one model to call": "Sélectionnez seulement un modèle pour appeler",
-	"Selected model(s) do not support image inputs": "Les modèle(s) sélectionné(s) ne prennent pas en charge les entrées d'images",
+	"Selected Assistant(s) do not support image inputs": "Les modèle(s) sélectionné(s) ne prennent pas en charge les entrées d'images",
 	"Semantic distance to query": "",
 	"Send": "Envoyer",
 	"Send a Message": "Envoyer un message",

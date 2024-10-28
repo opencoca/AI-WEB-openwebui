@@ -638,7 +638,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Pilih model",
 	"Select only one model to call": "Pilih hanya satu model untuk dipanggil",
-	"Selected model(s) do not support image inputs": "Model yang dipilih tidak mendukung input gambar",
+	"Selected Assistant(s) do not support image inputs": "Model yang dipilih tidak mendukung input gambar",
 	"Semantic distance to query": "",
 	"Send": "Kirim",
 	"Send a Message": "Kirim Pesan",

@@ -638,7 +638,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "मॉडल चुनें",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "चयनित मॉडल छवि इनपुट का समर्थन नहीं करते हैं",
+	"Selected Assistant(s) do not support image inputs": "चयनित मॉडल छवि इनपुट का समर्थन नहीं करते हैं",
 	"Semantic distance to query": "",
 	"Send": "भेज",
 	"Send a Message": "एक संदेश भेजो",

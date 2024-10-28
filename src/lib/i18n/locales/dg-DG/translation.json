@@ -640,7 +640,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Select an AI Assistant much choice",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "",
+	"Selected Assistant(s) do not support image inputs": "",
 	"Semantic distance to query": "",
 	"Send": "",
 	"Send a Message": "Send a Message much message",

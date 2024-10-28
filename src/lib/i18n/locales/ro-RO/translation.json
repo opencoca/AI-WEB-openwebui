@@ -639,7 +639,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Selectează model",
 	"Select only one model to call": "Selectează doar un singur model pentru apel",
-	"Selected model(s) do not support image inputs": "Modelul(e) selectat(e) nu suportă intrări de imagine",
+	"Selected Assistant(s) do not support image inputs": "Modelul(e) selectat(e) nu suportă intrări de imagine",
 	"Semantic distance to query": "",
 	"Send": "Trimite",
 	"Send a Message": "Trimite un Mesaj",

@@ -639,7 +639,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "בחר מודל",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "דגמים נבחרים אינם תומכים בקלט תמונה",
+	"Selected Assistant(s) do not support image inputs": "דגמים נבחרים אינם תומכים בקלט תמונה",
 	"Semantic distance to query": "",
 	"Send": "שלח",
 	"Send a Message": "שלח הודעה",

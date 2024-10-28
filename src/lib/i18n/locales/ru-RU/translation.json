@@ -640,7 +640,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Выберите модель",
 	"Select only one model to call": "Выберите только одну модель для вызова",
-	"Selected model(s) do not support image inputs": "Выбранные модели не поддерживают ввод изображений",
+	"Selected Assistant(s) do not support image inputs": "Выбранные модели не поддерживают ввод изображений",
 	"Semantic distance to query": "",
 	"Send": "Отправить",
 	"Send a Message": "Отправить сообщение",

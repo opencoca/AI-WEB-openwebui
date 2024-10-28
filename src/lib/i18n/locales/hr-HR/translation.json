@@ -639,7 +639,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Odaberite model",
 	"Select only one model to call": "Odaberite samo jedan model za poziv",
-	"Selected model(s) do not support image inputs": "Odabrani modeli ne podržavaju unose slika",
+	"Selected Assistant(s) do not support image inputs": "Odabrani modeli ne podržavaju unose slika",
 	"Semantic distance to query": "",
 	"Send": "Pošalji",
 	"Send a Message": "Pošaljite poruku",

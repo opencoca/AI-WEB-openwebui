@@ -640,7 +640,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Pasirinkti modelį",
 	"Select only one model to call": "Pasirinkite vieną modelį",
-	"Selected model(s) do not support image inputs": "Pasirinkti modeliai nepalaiko vaizdinių užklausų",
+	"Selected Assistant(s) do not support image inputs": "Pasirinkti modeliai nepalaiko vaizdinių užklausų",
 	"Semantic distance to query": "",
 	"Send": "Siųsti",
 	"Send a Message": "Siųsti žinutę",

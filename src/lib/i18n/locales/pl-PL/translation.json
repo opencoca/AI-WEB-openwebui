@@ -640,7 +640,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Wybierz model",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "Wybrane modele nie obsługują danych wejściowych obrazu",
+	"Selected Assistant(s) do not support image inputs": "Wybrane modele nie obsługują danych wejściowych obrazu",
 	"Semantic distance to query": "",
 	"Send": "Wyślij",
 	"Send a Message": "Wyślij Wiadomość",

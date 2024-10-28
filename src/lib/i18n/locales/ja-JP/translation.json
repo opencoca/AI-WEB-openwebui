@@ -637,7 +637,7 @@
 	"Select Knowledge": "知識の選択",
 	"Select an AI Assistant": "モデルを選択",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "一部のモデルは画像入力をサポートしていません",
+	"Selected Assistant(s) do not support image inputs": "一部のモデルは画像入力をサポートしていません",
 	"Semantic distance to query": "",
 	"Send": "送信",
 	"Send a Message": "メッセージを送信",

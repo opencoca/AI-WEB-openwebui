@@ -634,7 +634,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "মডেল নির্বাচন করুন",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "নির্বাচিত মডেল(গুলি) চিত্র ইনপুট সমর্থন করে না",
+	"Selected Assistant(s) do not support image inputs": "নির্বাচিত মডেল(গুলি) চিত্র ইনপুট সমর্থন করে না",
 	"Semantic distance to query": "",
 	"Send": "পাঠান",
 	"Send a Message": "একটি মেসেজ পাঠান",

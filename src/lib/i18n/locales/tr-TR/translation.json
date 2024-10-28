@@ -638,7 +638,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Model seç",
 	"Select only one model to call": "Arama için sadece bir model seç",
-	"Selected model(s) do not support image inputs": "Seçilen model(ler) görüntü girişlerini desteklemiyor",
+	"Selected Assistant(s) do not support image inputs": "Seçilen model(ler) görüntü girişlerini desteklemiyor",
 	"Semantic distance to query": "",
 	"Send": "Gönder",
 	"Send a Message": "Bir Mesaj Gönder",

@@ -638,7 +638,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "انتخاب یک مدل",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "مدل) های (انتخاب شده ورودیهای تصویر را پشتیبانی نمیکند",
+	"Selected Assistant(s) do not support image inputs": "مدل) های (انتخاب شده ورودیهای تصویر را پشتیبانی نمیکند",
 	"Semantic distance to query": "",
 	"Send": "ارسال",
 	"Send a Message": "ارسال یک پیام",

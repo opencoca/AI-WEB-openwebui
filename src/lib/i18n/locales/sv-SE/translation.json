@@ -638,7 +638,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Välj en modell",
 	"Select only one model to call": "Välj endast en modell att ringa",
-	"Selected model(s) do not support image inputs": "Valda modeller stöder inte bildinmatningar",
+	"Selected Assistant(s) do not support image inputs": "Valda modeller stöder inte bildinmatningar",
 	"Semantic distance to query": "",
 	"Send": "Skicka",
 	"Send a Message": "Skicka ett meddelande",

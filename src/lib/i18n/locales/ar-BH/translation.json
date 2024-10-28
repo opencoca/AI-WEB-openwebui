@@ -642,7 +642,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": " أختار موديل",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "النموذج (النماذج) المحددة لا تدعم مدخلات الصور",
+	"Selected Assistant(s) do not support image inputs": "النموذج (النماذج) المحددة لا تدعم مدخلات الصور",
 	"Semantic distance to query": "",
 	"Send": "تم",
 	"Send a Message": "يُرجى إدخال طلبك هنا",

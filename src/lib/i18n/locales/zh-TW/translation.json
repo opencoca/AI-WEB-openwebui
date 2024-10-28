@@ -638,7 +638,7 @@
 	"Select Knowledge": "選擇知識庫",
 	"Select an AI Assistant": "選擇模型",
 	"Select only one model to call": "僅選擇一個模型來呼叫",
-	"Selected model(s) do not support image inputs": "選取的模型不支援圖片輸入",
+	"Selected Assistant(s) do not support image inputs": "選取的模型不支援圖片輸入",
 	"Semantic distance to query": "",
 	"Send": "傳送",
 	"Send a Message": "傳送訊息",

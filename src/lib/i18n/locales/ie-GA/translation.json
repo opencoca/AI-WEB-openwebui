@@ -638,7 +638,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Roghnaigh samhail",
 	"Select only one model to call": "Roghnaigh ach samhail amháin le glaoch",
-	"Selected model(s) do not support image inputs": "Ní thacaíonn samhail(í) roghnaithe le hionchur íomhá",
+	"Selected Assistant(s) do not support image inputs": "Ní thacaíonn samhail(í) roghnaithe le hionchur íomhá",
 	"Semantic distance to query": "",
 	"Send": "Seol",
 	"Send a Message": "Seol Teachtaireacht",

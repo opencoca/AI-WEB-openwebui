@@ -637,7 +637,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Chọn model",
 	"Select only one model to call": "Chọn model để gọi",
-	"Selected model(s) do not support image inputs": "Model được lựa chọn không hỗ trợ đầu vào là hình ảnh",
+	"Selected Assistant(s) do not support image inputs": "Model được lựa chọn không hỗ trợ đầu vào là hình ảnh",
 	"Semantic distance to query": "",
 	"Send": "Gửi",
 	"Send a Message": "Gửi yêu cầu",

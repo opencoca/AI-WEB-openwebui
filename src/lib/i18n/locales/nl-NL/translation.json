@@ -638,7 +638,7 @@
 	"Select Knowledge": "",
 	"Select an AI Assistant": "Selecteer een model",
 	"Select only one model to call": "",
-	"Selected model(s) do not support image inputs": "Geselecteerde modellen ondersteunen geen beeldinvoer",
+	"Selected Assistant(s) do not support image inputs": "Geselecteerde modellen ondersteunen geen beeldinvoer",
 	"Semantic distance to query": "",
 	"Send": "Verzenden",
 	"Send a Message": "Stuur een Bericht",

@@ -638,7 +638,7 @@
 	"Select Knowledge": "Seleccionar coneixement",
 	"Select an AI Assistant": "Seleccionar un model",
 	"Select only one model to call": "Seleccionar només un model per trucar",
-	"Selected model(s) do not support image inputs": "El(s) model(s) seleccionats no admeten l'entrada d'imatges",
+	"Selected Assistant(s) do not support image inputs": "El(s) Assistant(s) seleccionats no admeten l'entrada d'imatges",
 	"Semantic distance to query": "Distància semàntica a la pregunta",
 	"Send": "Enviar",
 	"Send a Message": "Enviar un missatge",

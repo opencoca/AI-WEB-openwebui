@@ -638,7 +638,7 @@
 	"Select Knowledge": "Vælg viden",
 	"Select model": "Vælg model",
 	"Select only one model to call": "Vælg kun én model at kalde",
-	"Selected model(s) do not support image inputs": "Valgte model(ler) understøtter ikke billedinput",
+	"Selected Assistant(s) do not support image inputs": "Valgte model(ler) understøtter ikke billedinput",
 	"Semantic distance to query": "",
 	"Send": "Send",
 	"Send a Message": "Send en besked",
