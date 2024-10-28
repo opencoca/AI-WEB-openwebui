@@ -26,7 +26,9 @@
 
 {#if loaded}
 	<sage-content
-		style="--m:0.4em auto; --minw:80%; --maxw-sm:calc(100% - 260px); --p:0 0.4em"
+		style="--m:0.4em auto; --minw:80%; --maxw-sm:calc(100% - 260px); --p:0 0.4em;
+		--h: 100vh; --d: flex;
+    --fd: column;"
 		class="content {$showSidebar
 			? 'md:max-w-[calc(100%-260px)]'
 			: ''}"
@@ -112,8 +114,9 @@
 			
 
 
-		<div class=" pb-1 px-[18px] flex-1 max-h-full overflow-y-auto">
+		<sage-content-slot
+			style="--of: auto;">
 			<slot />
-		</div>
+		</sage-content-slot>
 	</sage-content>
 {/if}

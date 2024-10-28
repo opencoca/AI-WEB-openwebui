@@ -345,7 +345,7 @@
 	/>
 
 	<button
-		style=" --p: 0 0.6em; --d:flex; --br:1em"
+		style=" --p: 0 0.6em; --d:flex; --br:1em; --m:1em"
 		on:click={() => {
 			goto('/workspace/models');
 		}}
@@ -364,7 +364,7 @@
 				/>
 			</svg>
 		</div>
-		<div class=" self-center font-medium text-sm">{$i18n.t('Back')}</div>
+		<div>{$i18n.t('Back')}</div>
 	</button>
 	<!-- <hr class="my-3 dark:border-gray-850" /> -->
 

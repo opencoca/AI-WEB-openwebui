@@ -213,7 +213,7 @@
 
 <AddDocModal bind:show={showAddDocModal} {uploadDoc} />
 
-<div class="mb-3">
+<div style="--m:0.8em">
 	<div class="flex justify-between items-center">
 		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
 --size: 1.2em;">
