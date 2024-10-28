@@ -737,7 +737,7 @@
 
 													if ($config.audio.stt.engine === 'web') {
 														toast.error(
-															$i18n.t('Call feature is not supported when using Web STT engine')
+															$i18n.t('Call feature is not yet supported when not using local Voice Engine')
 														);
 
 														return;

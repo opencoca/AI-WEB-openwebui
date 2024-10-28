@@ -310,10 +310,18 @@
 										user.profile_image_url.startsWith('https://www.gravatar.com/avatar/') ||
 										user.profile_image_url.startsWith('data:'))
 										? user.profile_image_url
-										: `/static/favicon.png`}
+										: `/user.png`}
 									alt="user"
 								/>
-
+								<style>
+									img[src*="/user.png"] { visibility: hidden; }
+									img[src*="/user.png"]::before {
+										width: 2em;
+										height: 2em;
+										display: inline-block;
+										content: url(/static/favicon.png);
+									}
+								</style>
 								<div class=" font-medium self-center">{user.name}</div>
 							</div>
 						</td>
