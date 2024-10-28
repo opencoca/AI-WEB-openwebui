@@ -777,6 +777,9 @@
 													: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full p-1.5 m-0.5 self-center"
 												type="submit"
 												disabled={prompt === ''}
+												on:click={() => {
+													dispatch('submit', prompt);
+												}}
 											>
 												<svg
 													xmlns="http://www.w3.org/2000/svg"
