@@ -835,7 +835,7 @@
 			</chat-message-form>
 		{/if}
 
-		<div style="--w:100%; --ta:center; --size:0.8em; --size-sm:0.9em">
+		<div style="--mt:0.2em;--w:100%; --ta:center; --size:0.7em; --size-sm:0.9em">
 			<a href="https://startr.cloud" target="_blank">💡💡{$i18n.t('Powered by')}</a>
 			<a href="https://startr.cloud" style="--c:var(--pink)" target="_blank"
 				>☁️&nbsp;Startr.Cloud&nbsp;☁️</a
