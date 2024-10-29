@@ -22,7 +22,7 @@ class TestAuths(AbstractPostgresTest):
             "name": "John Doe",
             "email": "john.doe@openwebui.com",
             "role": "user",
-            "profile_image_url": "/user.png",
+            "profile_image_url": "/static/favicon.png",
         }
 
     def test_update_profile(self):
@@ -32,7 +32,7 @@ class TestAuths(AbstractPostgresTest):
             email="john.doe@openwebui.com",
             password=get_password_hash("old_password"),
             name="John Doe",
-            profile_image_url="/user.png",
+            profile_image_url="/static/favicon.png",
             role="user",
         )
 
@@ -53,7 +53,7 @@ class TestAuths(AbstractPostgresTest):
             email="john.doe@openwebui.com",
             password=get_password_hash("old_password"),
             name="John Doe",
-            profile_image_url="/user.png",
+            profile_image_url="/static/favicon.png",
             role="user",
         )
 
@@ -80,7 +80,7 @@ class TestAuths(AbstractPostgresTest):
             email="john.doe@openwebui.com",
             password=get_password_hash("password"),
             name="John Doe",
-            profile_image_url="/user.png",
+            profile_image_url="/static/favicon.png",
             role="user",
         )
         response = self.fast_api_client.post(
@@ -93,7 +93,7 @@ class TestAuths(AbstractPostgresTest):
         assert data["name"] == "John Doe"
         assert data["email"] == "john.doe@openwebui.com"
         assert data["role"] == "user"
-        assert data["profile_image_url"] == "/user.png"
+        assert data["profile_image_url"] == "/static/favicon.png"
         assert data["token"] is not None and len(data["token"]) > 0
         assert data["token_type"] == "Bearer"
 
@@ -112,7 +112,7 @@ class TestAuths(AbstractPostgresTest):
         assert data["name"] == "John Doe"
         assert data["email"] == "john.doe@openwebui.com"
         assert data["role"] in ["admin", "user", "pending","student", "teacher"]
-        assert data["profile_image_url"] == "/user.png"
+        assert data["profile_image_url"] == "/static/favicon.png"
         assert data["token"] is not None and len(data["token"]) > 0
         assert data["token_type"] == "Bearer"
 
@@ -133,7 +133,7 @@ class TestAuths(AbstractPostgresTest):
         assert data["name"] == "John Doe 2"
         assert data["email"] == "john.doe2@openwebui.com"
         assert data["role"] == "admin"
-        assert data["profile_image_url"] == "/user.png"
+        assert data["profile_image_url"] == "/static/favicon.png"
         assert data["token"] is not None and len(data["token"]) > 0
         assert data["token_type"] == "Bearer"
 
@@ -142,7 +142,7 @@ class TestAuths(AbstractPostgresTest):
             email="john.doe@openwebui.com",
             password="password",
             name="John Doe",
-            profile_image_url="/user.png",
+            profile_image_url="/static/favicon.png",
             role="admin",
         )
         with mock_webui_user():
@@ -159,7 +159,7 @@ class TestAuths(AbstractPostgresTest):
             email="john.doe@openwebui.com",
             password="password",
             name="John Doe",
-            profile_image_url="/user.png",
+            profile_image_url="/static/favicon.png",
             role="admin",
         )
         with mock_webui_user(id=user.id):
@@ -174,7 +174,7 @@ class TestAuths(AbstractPostgresTest):
             email="john.doe@openwebui.com",
             password="password",
             name="John Doe",
-            profile_image_url="/user.png",
+            profile_image_url="/static/favicon.png",
             role="admin",
         )
         self.users.update_user_api_key_by_id(user.id, "abc")
@@ -190,7 +190,7 @@ class TestAuths(AbstractPostgresTest):
             email="john.doe@openwebui.com",
             password="password",
             name="John Doe",
-            profile_image_url="/user.png",
+            profile_image_url="/static/favicon.png",
             role="admin",
         )
         self.users.update_user_api_key_by_id(user.id, "abc")

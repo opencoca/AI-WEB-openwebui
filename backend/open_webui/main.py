@@ -2310,7 +2310,7 @@ async def oauth_callback(provider: str, request: Request, response: Response):
                     log.error(f"Error downloading profile image '{picture_url}': {e}")
                     picture_url = ""
             if not picture_url:
-                picture_url = "/user.png"
+                picture_url = "/static/favicon.png"
             username_claim = webui_app.state.config.OAUTH_USERNAME_CLAIM
             role = (
                 "admin"
@@ -2365,7 +2365,7 @@ async def get_manifest_json():
     return {
         "name": WEBUI_NAME,
         "short_name": WEBUI_NAME,
-        "description": "Open WebUI is an open, extensible, user-friendly interface for AI that adapts to your workflow.",
+        "description": "Sage.Education is an open, extensible, user-friendly interface for AI that adapts to your workflow.",
         "start_url": "/",
         "display": "standalone",
         "background_color": "#343541",

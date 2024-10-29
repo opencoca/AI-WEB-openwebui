@@ -82,7 +82,7 @@ class SignupForm(BaseModel):
     name: str
     email: str
     password: str
-    profile_image_url: Optional[str] = "/user.png"
+    profile_image_url: Optional[str] = "/static/favicon.png"
 
 
 class AddUserForm(SignupForm):
@@ -95,7 +95,7 @@ class AuthsTable:
         email: str,
         password: str,
         name: str,
-        profile_image_url: str = "/user.png",
+        profile_image_url: str = "/static/favicon.png",
         role: str = "pending",
         oauth_sub: Optional[str] = None,
     ) -> Optional[UserModel]:
