@@ -90,8 +90,8 @@
 	{#if !($settings?.chatBubble ?? true)}
 		<ProfileImage
 			src={message.user
-				? ($models.find((m) => m.id === message.user)?.info?.meta?.profile_image_url ?? '/user.png')
-				: (user?.profile_image_url ?? '/user.png')}
+				? ($models.find((m) => m.id === message.user)?.info?.meta?.profile_image_url ?? '/static/favicon.png')
+				: (user?.profile_image_url ?? '/static/favicon.png')}
 		/>
 	{/if}
 	<div class="w-full w-0 pl-1">

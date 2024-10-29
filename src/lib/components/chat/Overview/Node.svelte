@@ -21,7 +21,7 @@
 		{#if data.message.role === 'user'}
 			<div class="flex w-full">
 				<ProfileImageBase
-					src={data.user?.profile_image_url ?? '/user.png'}
+					src={data.user?.profile_image_url ?? '/static/favicon.png'}
 					className={'size-5 -translate-y-[1px]'}
 				/>
 				<div class="ml-2">

@@ -304,24 +304,16 @@
 						<td class="px-3 py-2 font-medium text-gray-900 dark:text-white w-max">
 							<div class="flex flex-row w-max">
 								<img
-									class="rounded-full w-6 h-6 object-cover mr-2.5"
+									style="--br:50%; --mr:1rem; --h:2.6rem; --w:2.6rem;"
 									src={user.profile_image_url &&
-									(user.profile_image_url.startsWith(WEBUI_BASE_URL) ||
+									(user.profile_image_url.startsWith('http') ||
 										user.profile_image_url.startsWith('https://www.gravatar.com/avatar/') ||
 										user.profile_image_url.startsWith('data:'))
 										? user.profile_image_url
-										: `/user.png`}
+										: `/static/favicon.png`}
 									alt="user"
 								/>
-								<style>
-									img[src*="/user.png"] { visibility: hidden; }
-									img[src*="/user.png"]::before {
-										width: 2em;
-										height: 2em;
-										display: inline-block;
-										content: url(/static/favicon.png);
-									}
-								</style>
+
 								<div class=" font-medium self-center">{user.name}</div>
 							</div>
 						</td>

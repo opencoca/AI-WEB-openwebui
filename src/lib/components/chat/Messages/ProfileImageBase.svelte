@@ -14,7 +14,7 @@
 			  src.startsWith('data:') ||
 			  src.startsWith('/')
 			? src
-			: `/user.png`}
+			: `/static/favicon.png`}
 	class="{className} object-cover"
 	style="--br:50%"
 	alt="profile"
