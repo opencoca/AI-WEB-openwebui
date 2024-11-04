@@ -27,7 +27,7 @@
 {#if loaded}
 	<sage-content
 		style="--m:0.4em auto; --minw:80%; --maxw-sm:calc(100% - 260px); --p:0 0.4em;
-		--h: 100vh; --d: flex;
+		--h: 100dvh; --d: flex;
     --fd: column;"
 		class="content {$showSidebar
 			? 'md:max-w-[calc(100%-260px)]'
@@ -35,7 +35,8 @@
 	>
 		<div class="   px-3.5 my-2 bg-transparent backdrop-blur-xl">
 			<div class=" flex items-center gap-1">
-				<div class="{$showSidebar ? 'md:hidden' : ''} mr-1 self-center flex flex-none items-center">
+				<div style="{$showSidebar ? '--d:none' : ''}" 
+					class="{$showSidebar ? 'hidden' : ''} mr-1 self-center flex flex-none items-center">
 					<button
 						id="sidebar-toggle-button"
 						class="cursor-pointer p-1.5 flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-850 transition"

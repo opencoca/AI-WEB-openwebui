@@ -243,10 +243,15 @@
 	</div>
 {/if}
 
-<sage-app>
+<sage-app
+style="
+	--h: 100dvh;
+	--w: 100dvw;
+	--of: hidden;
+	">
 	<sage-layout
-	style="--d:flex"
-	>
+	style="--d:flex;
+	">
 		{#if loaded}
 			{#if !['user', 'student', 'teacher', 'admin'].includes($user.role)}
 				<AccountPending />

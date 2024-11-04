@@ -537,17 +537,23 @@
 								}}
 								on:input={async (e) => {
 									if (chatInputContainerElement) {
+										/*
 										chatInputContainerElement.style.height = '';
 										chatInputContainerElement.style.height =
-											Math.min(chatInputContainerElement.scrollHeight, 200) + 'px';
+											Math.min(chatInputContainerElement.scrollHeight, 400) + 'px';
+											*/
+										// Scroll to the bottom of the entire page
+										window.scrollTo(0, document.body.scrollHeight);
 									}
 								}}
 								on:focus={async (e) => {
-									if (chatInputContainerElement) {
+										/*
 										chatInputContainerElement.style.height = '';
 										chatInputContainerElement.style.height =
-											Math.min(chatInputContainerElement.scrollHeight, 200) + 'px';
-									}
+											Math.min(chatInputContainerElement.scrollHeight, 400) + 'px';
+											*/
+										// Scroll to the bottom of the entire page
+										window.scrollTo(0, document.body.scrollHeight);
 								}}
 								on:keypress={(e) => {
 									e = e.detail.event;

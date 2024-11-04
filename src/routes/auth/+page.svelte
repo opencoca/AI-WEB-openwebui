@@ -249,7 +249,9 @@
 										class="font-medium underline"
 										type="button"
 										on:click={() => {
-											mode = mode === 'signin' ? 'signup' : 'signin';
+											//mode = mode === 'signin' ? 'signup' : 'signin';
+											// Go to https://sage.education/Sign-up-Now/
+											window.location.href = 'https://sage.education/Sign-up-Now/';
 										}}
 									>
 										{mode === 'signin' ? $i18n.t('Sign up') : $i18n.t('Sign in')}
