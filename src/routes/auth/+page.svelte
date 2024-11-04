@@ -243,7 +243,7 @@
 										? $i18n.t("Don't have an account?")
 										: $i18n.t('Already have an account?')}
 
-									<button
+									<a
 										id="signup"
 										style="--b: none; --shadow: none"
 										class="font-medium underline"
@@ -253,9 +253,10 @@
 											// Go to https://sage.education/Sign-up-Now/
 											window.location.href = 'https://sage.education/Sign-up-Now/';
 										}}
+										href="https://sage.education/Sign-up-Now/"
 									>
 										{mode === 'signin' ? $i18n.t('Sign up') : $i18n.t('Sign in')}
-									</button>
+									</a>
 								</div>
 							{/if}
 						</div>
