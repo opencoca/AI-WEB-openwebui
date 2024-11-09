@@ -79,8 +79,8 @@
 		>
 			<div>
 				<div class=" capitalize line-clamp-1" in:fade={{ duration: 200 }}>
-					{#if models[selectedModelIdx]?.info}
-						{models[selectedModelIdx]?.info?.name}
+					{#if models[selectedModelIdx]?.name}
+						{models[selectedModelIdx]?.name}
 					{:else}
 						{$i18n.t('Hello {{name}}', { name: $user.name })}
 					{/if}
@@ -100,7 +100,7 @@
 								By
 								{#if models[selectedModelIdx]?.info?.meta?.user.community}
 									<a
-										href="https://openwebui.com/m/{models[selectedModelIdx]?.info?.meta?.user
+										href="https://Sage.Education/m/{models[selectedModelIdx]?.info?.meta?.user
 											.username}"
 										>{models[selectedModelIdx]?.info?.meta?.user.name
 											? models[selectedModelIdx]?.info?.meta?.user.name

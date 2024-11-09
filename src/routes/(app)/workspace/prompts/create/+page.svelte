@@ -6,6 +6,7 @@
 	import { onMount, tick, getContext } from 'svelte';
 
 	import { createNewPrompt, getPrompts } from '$lib/apis/prompts';
+	import Textarea from '$lib/components/common/Textarea.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -57,7 +58,7 @@
 	onMount(async () => {
 		window.addEventListener('message', async (event) => {
 			if (
-				!['https://openwebui.com', 'https://www.openwebui.com', 'http://localhost:5173'].includes(
+				!['https://Sage.Education', 'https://www.openwebui.com', 'http://localhost:5173'].includes(
 					event.origin
 				)
 			)
@@ -91,7 +92,7 @@
 
 <div class="w-full max-h-full">
 	<button
-		style=" --p: 0 0.6em; --d:flex; --br:1em"
+		style=" --p: 0 0.6em; --d:flex; --br:1em; --m:1em"
 		on:click={() => {
 			history.back();
 		}}
@@ -110,11 +111,11 @@
 				/>
 			</svg>
 		</div>
-		<div class=" self-center font-medium text-sm">{$i18n.t('Back')}</div>
+		<div>{$i18n.t('Back')}</div>
 	</button>
 
 	<form
-		class="flex flex-col max-w-2xl mx-auto mt-4 mb-10"
+		class="flex flex-col max-w-2xl mx-auto mt-4 mb-10 pb-10"
 		on:submit|preventDefault={() => {
 			submitHandler();
 		}}
@@ -170,23 +171,24 @@
 
 			<div class="mt-2">
 				<div>
-					<textarea
-						
+					<Textarea
+						className="px-3 py-1.5 text-sm w-full bg-transparent border dark:border-gray-600 outline-none overflow-y-hidden rounded-lg resize-none"
 						placeholder={$i18n.t('Write a summary in 50 words that summarizes [topic or keyword].')}
-						rows="6"
 						bind:value={content}
+						rows={6}
 						required
 					/>
 				</div>
 
 				<div class="text-xs text-gray-400 dark:text-gray-500">
-					ⓘ {$i18n.t('Format your variables using square brackets like this:')}&nbsp;<span
-						class=" text-gray-600 dark:text-gray-300 font-medium">[{$i18n.t('variable')}]</span
+					ⓘ {$i18n.t('Format your variables using brackets like this:')}&nbsp;<span
+						class=" text-gray-600 dark:text-gray-300 font-medium"
+						>{'{{'}{$i18n.t('variable')}{'}}'}</span
 					>.
 					{$i18n.t('Make sure to enclose them with')}
-					<span class=" text-gray-600 dark:text-gray-300 font-medium">'['</span>
+					<span class=" text-gray-600 dark:text-gray-300 font-medium">{'{{'}</span>
 					{$i18n.t('and')}
-					<span class=" text-gray-600 dark:text-gray-300 font-medium">']'</span>.
+					<span class=" text-gray-600 dark:text-gray-300 font-medium">{'}}'}</span>.
 				</div>
 
 				<div class="text-xs text-gray-400 dark:text-gray-500">

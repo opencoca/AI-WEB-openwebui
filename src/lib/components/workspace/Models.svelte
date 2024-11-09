@@ -9,7 +9,7 @@
 
 	import { onMount, getContext, tick } from 'svelte';
 
-	import { WEBUI_NAME, mobile, models, settings, user } from '$lib/stores';
+	import { WEBUI_NAME, config, mobile, models, settings, user } from '$lib/stores';
 	import { addNewModel, deleteModelById, getModelInfos, updateModelById } from '$lib/apis/models';
 
 	import { deleteModel } from '$lib/apis/ollama';
@@ -35,7 +35,17 @@
 	let modelsImportInputElement: HTMLInputElement;
 
 	let _models = [];
+
+	let filteredModels = [];
 	let selectedModel = null;
+
+	$: if (_models) {
+		filteredModels = _models
+			.filter((m) => m?.owned_by !== 'arena')
+			.filter(
+				(m) => searchValue === '' || m.name.toLowerCase().includes(searchValue.toLowerCase())
+			);
+	}
 
 	let sortable = null;
 	let searchValue = '';
@@ -76,9 +86,9 @@
 	};
 
 	const shareModelHandler = async (model) => {
-		toast.success($i18n.t('Redirecting you to OpenWebUI Community'));
+		toast.success($i18n.t('Redirecting you to Sage.Education Community'));
 
-		const url = 'https://openwebui.com';
+		const url = 'https://Sage.Education';
 
 		const tab = await window.open(`${url}/models/create`, '_blank');
 
@@ -198,7 +208,7 @@
 		saveAs(blob, `${model.id}-${Date.now()}.json`);
 	};
 
-	const positionChangeHanlder = async () => {
+	const positionChangeHandler = async () => {
 		// Get the new order of the models
 		const modelIds = Array.from(document.getElementById('model-list').children).map((child) =>
 			child.id.replace('model-item-', '')
@@ -248,7 +258,7 @@
 				animation: 150,
 				onUpdate: async (event) => {
 					console.log(event);
-					positionChangeHanlder();
+					positionChangeHandler();
 				}
 			});
 		}
@@ -294,7 +304,7 @@
 	}}
 />
 
-<div class="mb-3">
+<div style="--m:0.8em">
 	<div class="flex justify-between items-center">
 		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
 --size: 1.2em;">
@@ -332,7 +342,7 @@
 
 	<div>
 		<a
-			class=" px-2 py-2 rounded-xl border border-gray-200 dark:border-gray-600 dark:border-0 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 transition font-medium text-sm flex items-center space-x-1"
+			class=" px-2 py-2 rounded-xl border border-gray-200 dark:border-gray-600 dark:border-0 hover:bg-gray-100 dark:bg-gray-850 dark:hover:bg-gray-800 transition font-medium text-sm flex items-center space-x-1"
 			href="/workspace/models/create"
 		>
 			<svg
@@ -349,10 +359,20 @@
 	</div>
 </div>
 
-<hr class=" border-gray-50 dark:border-gray-850 my-2.5" />
+<div class="mb-3.5">
+	<div class="flex justify-between items-center">
+		<div class="flex md:self-center text-base font-medium px-0.5">
+			{$i18n.t('Models')}
+			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-50 dark:bg-gray-850" />
+			<span class="text-base font-medium text-gray-500 dark:text-gray-300"
+				>{filteredModels.length}</span
+			>
+		</div>
+	</div>
+</div>
 
 <a class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-1" href="/workspace/models/create">
-	<div class=" self-center w-10 flex-shrink-0">
+	<div class=" self-center w-8 flex-shrink-0">
 		<div
 			style="--d:flex; --ai:center"
 			class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
@@ -368,17 +388,13 @@
 	</div>
 
 	<div class=" self-center">
-		<div class=" font-semibold line-clamp-1">{$i18n.t('Create an agent')}</div>
+		<div class=" font-semibold line-clamp-1">{$i18n.t('Create an Assistant')}</div>
 		<div class=" text-sm line-clamp-1">{$i18n.t('Customize AI models for a specific purpose')}</div>
 	</div>
 </a>
 
-<hr class=" border-gray-50 dark:border-gray-850 my-2.5" />
-
-<div id="model-list">
-	{#each _models.filter((m) => searchValue === '' || m.name
-				.toLowerCase()
-				.includes(searchValue.toLowerCase())) as model}
+<div class=" my-2 mb-5" id="model-list">
+	{#each filteredModels as model}
 		<div
 			class=" flex space-x-4 cursor-pointer w-full px-3 py-2 dark:hover:bg-white/5 hover:bg-black/5 rounded-xl"
 			id="model-item-{model.id}"
@@ -407,7 +423,9 @@
 					<div style="--line-clamp:1" class=" text-xs overflow-hidden text-ellipsis text-gray-500">
 						{!!model?.info?.meta?.description
 							? model?.info?.meta?.description
-							: (model?.ollama?.digest ?? model.id)}
+							: model?.ollama?.digest
+								? `${model.id} (${model?.ollama?.digest})`
+								: model.id}
 					</div>
 				</div>
 			</a>

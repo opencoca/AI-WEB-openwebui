@@ -22,7 +22,7 @@
 			console.log('Version is lower than required');
 			toast.error(
 				$i18n.t(
-					'Open WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})',
+					'Sage AI WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})',
 					{
 						OPEN_WEBUI_VERSION: WEBUI_VERSION,
 						REQUIRED_VERSION: manifest?.required_open_webui_version ?? '0.0.0'
@@ -53,7 +53,7 @@
 	onMount(() => {
 		window.addEventListener('message', async (event) => {
 			if (
-				!['https://openwebui.com', 'https://www.openwebui.com', 'http://localhost:9999'].includes(
+				!['https://Sage.Education', 'https://www.openwebui.com', 'http://localhost:9999'].includes(
 					event.origin
 				)
 			)

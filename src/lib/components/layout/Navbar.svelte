@@ -10,6 +10,7 @@
 		showArchivedChats,
 		showControls,
 		showSidebar,
+		temporaryChatEnabled,
 		user
 	} from '$lib/stores';
 
@@ -23,6 +24,7 @@
 	import MenuLines from '../icons/MenuLines.svelte';
 	import AdjustmentsHorizontal from '../icons/AdjustmentsHorizontal.svelte';
 	import Map from '../icons/Map.svelte';
+	import { stringify } from 'postcss';
 
 	const i18n = getContext('i18n');
 
@@ -50,7 +52,7 @@
 			<div
 				class="{$showSidebar
 					? 'md:hidden'
-					: ''} mr-3 self-start flex flex-none items-center text-gray-600 dark:text-gray-400"
+					: ''} mr-2 self-start flex flex-none items-center text-gray-600 dark:text-gray-400"
 			>
 				<button
 					id="sidebar-toggle-button"
@@ -74,8 +76,7 @@
 
 			<div style="gap:0.1em" class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
 				<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
-
-				{#if shareEnabled && chat && chat.id}
+				{#if shareEnabled && chat && (chat.id || $temporaryChatEnabled)}
 					<Menu
 						{chat}
 						{shareEnabled}
@@ -129,6 +130,7 @@
 				<Tooltip content={$i18n.t('New Chat')}>
 					<button
 						id="new-chat-button"
+						style="--b:none"
 						class=" flex {$showSidebar
 							? 'md:hidden'
 							: ''} cursor-pointer px-2 py-2 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-850 transition"

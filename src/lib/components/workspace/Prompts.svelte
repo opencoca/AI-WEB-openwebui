@@ -4,7 +4,7 @@
 	const { saveAs } = fileSaver;
 
 	import { onMount, getContext } from 'svelte';
-	import { WEBUI_NAME, prompts } from '$lib/stores';
+	import { WEBUI_NAME, config, prompts } from '$lib/stores';
 	import { createNewPrompt, deletePromptByCommand, getPrompts } from '$lib/apis/prompts';
 	import { error } from '@sveltejs/kit';
 	import { goto } from '$app/navigation';
@@ -21,10 +21,13 @@
 	let showDeleteConfirm = false;
 	let deletePrompt = null;
 
-	const shareHandler = async (prompt) => {
-		toast.success($i18n.t('Redirecting you to OpenWebUI Community'));
+	let filteredItems = [];
+	$: filteredItems = $prompts.filter((p) => query === '' || p.command.includes(query));
 
-		const url = 'https://openwebui.com';
+	const shareHandler = async (prompt) => {
+		toast.success($i18n.t('Redirecting you to Sage.Education Community'));
+
+		const url = 'https://Sage.Education';
 
 		const tab = await window.open(`${url}/prompts/create`, '_blank');
 		window.addEventListener(
@@ -64,16 +67,24 @@
 	</title>
 </svelte:head>
 
-<div class="mb-3">
-	<div class="flex justify-between items-center">
-		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
+<DeleteConfirmDialog
+	bind:show={showDeleteConfirm}
+	title={$i18n.t('Delete prompt?')}
+	on:confirm={() => {
+		deleteHandler(deletePrompt);
+	}}
+>
+	<div class=" text-sm text-gray-500">
+		{$i18n.t('This will delete')} <span class="  font-semibold">{deletePrompt.command}</span>.
+	</div>
+</DeleteConfirmDialog>
+
+<div style="--d: flex; --ff: Cormorant;    --weight: 500;
 --size: 1.2em;">
 			{$i18n.t('Prompts')}
 			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-200 dark:bg-gray-700" />
 			<span class="text-lg font-medium text-gray-500 dark:text-gray-300">{$prompts.length}</span>
 		</div>
-	</div>
-</div>
 
 <div style="
     --ai: center;
@@ -119,16 +130,26 @@
 	</div>
 </div>
 
-<hr class=" border-gray-50 dark:border-gray-850 my-2.5" />
+<div class="mb-3.5">
+	<div class="flex justify-between items-center">
+		<div class="flex md:self-center text-base font-medium px-0.5">
+			{$i18n.t('Prompts')}
+			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-50 dark:bg-gray-850" />
+			<span class="text-base font-medium text-gray-500 dark:text-gray-300"
+				>{filteredItems.length}</span
+			>
+		</div>
+	</div>
+</div>
 
-<div class="">
-	{#each $prompts.filter((p) => query === '' || p.command.includes(query)) as prompt}
+<div class="my-3 mb-5">
+	{#each filteredItems as prompt}
 		<div
 			class=" flex space-x-4 cursor-pointer w-full px-3 py-2 dark:hover:bg-white/5 hover:bg-black/5 rounded-xl"
 		>
 			<div class=" flex flex-1 space-x-4 cursor-pointer w-full">
 				<a href={`/workspace/prompts/edit?command=${encodeURIComponent(prompt.command)}`}>
-					<div class=" flex-1 self-center pl-5">
+					<div class=" flex-1 self-center pl-1.5">
 						<div class=" font-semibold line-clamp-1">{prompt.command}</div>
 						<div class=" text-xs overflow-hidden text-ellipsis line-clamp-1">
 							{prompt.title}
@@ -284,47 +305,43 @@
 	</div>
 </div>
 
-<div class=" my-16">
-	<div style="--ff: Cormorant">
-		{$i18n.t('Made by our Community')}
-	</div>
-
-	<a
-		class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-2"
-		href="https://sage.education/#community-prompts"
-		target="_blank"
-	>
-		<div class=" self-center w-10 flex-shrink-0">
-			<div
-				style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
-			>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6">
-					<path
-						fill-rule="evenodd"
-						d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
-						clip-rule="evenodd"
-					/>
-				</svg>
-			</div>
+{#if $config?.features.enable_community_sharing}
+	<div class=" my-16">
+		<div style="--ff: Cormorant">
+			{$i18n.t('Made by our Community')}
 		</div>
 
-		<div class=" self-center">
-			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover a prompt')}</div>
-			<div class=" text-sm line-clamp-1">
-				{$i18n.t('Discover, download, and explore custom prompts')}
+		<a
+			class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-2"
+			href="https://sage.education/#community-prompts"
+			target="_blank"
+		>
+			<div class=" self-center w-10 flex-shrink-0">
+				<div
+					style="--d:flex; --ai:center"  
+					class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+						class="w-6"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</div>
 			</div>
-		</div>
-	</a>
-</div>
 
-<DeleteConfirmDialog
-	bind:show={showDeleteConfirm}
-	title={$i18n.t('Delete prompt?')}
-	on:confirm={() => {
-		deleteHandler(deletePrompt);
-	}}
->
-	<div class=" text-sm text-gray-500">
-		{$i18n.t('This will delete')} <span class="  font-semibold">{deletePrompt.command}</span>.
+			<div class=" self-center">
+				<div class=" font-semibold line-clamp-1">{$i18n.t('Discover a prompt')}</div>
+				<div class=" text-sm line-clamp-1">
+					{$i18n.t('Discover, download, and explore custom prompts')}
+				</div>
+			</div>
+		</a>
 	</div>
-</DeleteConfirmDialog>
+{/if}

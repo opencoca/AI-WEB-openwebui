@@ -10,6 +10,19 @@
 - **📝 Chat and Message Components Update**:improved message input styling and updated assistant disclaimer.
 - **🔧 Development Environment Update**:updated Dev scripts and package.json for improved user workflow.
 
+## [0.3.35] - 2024-10-26
+
+### Added
+
+- **📁 Robust File Handling**: Enhanced file input handling for chat. If the content extraction fails or is empty, users will now receive a clear warning, preventing silent failures and ensuring you always know what's happening with your uploads.
+- **🌍 New Language Support**: Introduced Hungarian translations and updated French translations, expanding the platform's language accessibility for a more global user base.
+
+### Fixed
+
+- **📚 Knowledge Base Loading Issue**: Resolved a critical bug where the Knowledge Base was not loading, ensuring smooth access to your stored documents and improving information retrieval in RAG-enhanced workflows.
+- **🛠️ Tool Parameters Issue**: Fixed an error where tools were not functioning correctly when required parameters were missing, ensuring reliable tool performance and more efficient task completions.
+- **🔗 Merged Response Loss in Multi-Model Chats**: Addressed an issue where responses in multi-model chat workflows were being deleted after follow-up queries, improving consistency and ensuring smoother interactions across models.
+
 ## [0.3.38] - 2024-10-22
 
 ### Added
@@ -48,6 +61,39 @@
 - **🔧 Enhanced Tools & Functions**: Improved the Tools & Functions feature with better error handling and more robust execution, ensuring a smoother user experience.
 
 ### Now with RCLONE support for cloud storage and more! :D
+
+## [0.3.33] - 2024-10-24
+
+### Added
+
+- **🏆 Evaluation Leaderboard**: Easily track your performance through a new leaderboard system where your ratings contribute to a real-time ranking based on the Elo system. Sibling responses (regenerations, many model chats) are required for your ratings to count in the leaderboard. Additionally, you can opt-in to share your feedback history and be part of the community-wide leaderboard. Expect further improvements as we refine the algorithm—help us build the best community leaderboard!
+- **⚔️ Arena Model Evaluation**: Enable blind A/B testing of models directly from Admin Settings > Evaluation for a true side-by-side comparison. Ideal for pinpointing the best model for your needs.
+- **🎯 Topic-Based Leaderboard**: Discover more accurate rankings with experimental topic-based reranking, which adjusts leaderboard standings based on tag similarity in feedback. Get more relevant insights based on specific topics!
+- **📁 Folders Support for Chats**: Organize your chats better by grouping them into folders. Drag and drop chats between folders and export them seamlessly for easy sharing or analysis.
+- **📤 Easy Chat Import via Drag & Drop**: Save time by simply dragging and dropping chat exports (JSON) directly onto the sidebar to import them into your workspace—streamlined, efficient, and intuitive!
+- **📚 Enhanced Knowledge Collection**: Now, you can reference individual files from a knowledge collection—ideal for more precise Retrieval-Augmented Generations (RAG) queries and document analysis.
+- **🏷️ Enhanced Tagging System**: Tags now take up less space! Utilize the new 'tag:' query system to manage, search, and organize your conversations more effectively without cluttering the interface.
+- **🧠 Auto-Tagging for Chats**: Your conversations are now automatically tagged for improved organization, mirroring the efficiency of auto-generated titles.
+- **🔍 Backend Chat Query System**: Chat filtering has become more efficient, now handled through the backend\*\* instead of your browser, improving search performance and accuracy.
+- **🎮 Revamped Playground**: Experience a refreshed and optimized Playground for smoother testing, tweaks, and experimentation of your models and tools.
+- **🧩 Token-Based Text Splitter**: Introducing token-based text splitting (tiktoken), giving you more precise control over how text is processed. Previously, only character-based splitting was available.
+- **🔢 Ollama Batch Embeddings**: Leverage new batch embedding support for improved efficiency and performance with Ollama embedding models.
+- **🔍 Enhanced Add Text Content Modal**: Enjoy a cleaner, more intuitive workflow for adding and curating knowledge content with an upgraded input modal from our Knowledge workspace.
+- **🖋️ Rich Text Input for Chats**: Make your chat inputs more dynamic with support for rich text formatting. Your conversations just got a lot more polished and professional.
+- **⚡ Faster Whisper Model Configurability**: Customize your local faster whisper model directly from the WebUI.
+- **☁️ Experimental S3 Support**: Enable stateless WebUI instances with S3 support, greatly enhancing scalability and balancing heavy workloads.
+- **🔕 Disable Update Toast**: Now you can streamline your workspace even further—choose to disable update notifications for a more focused experience.
+- **🌟 RAG Citation Relevance Percentage**: Easily assess citation accuracy with the addition of relevance percentages in RAG results.
+- **⚙️ Mermaid Copy Button**: Mermaid diagrams now come with a handy copy button, simplifying the extraction and use of diagram contents directly in your workflow.
+- **🎨 UI Redesign**: Major interface redesign that will make navigation smoother, keep your focus where it matters, and ensure a modern look.
+
+### Fixed
+
+- **🎙️ Voice Note Mic Stopping Issue**: Fixed the issue where the microphone stayed active after ending a voice note recording, ensuring your audio workflow runs smoothly.
+
+### Removed
+
+- **👋 Goodbye Sidebar Tags**: Sidebar tag clutter is gone. We’ve shifted tag buttons to more effective query-based tag filtering for a sleeker, more agile interface.
 
 ## [0.3.32] - 2024-10-06
 
@@ -261,7 +307,7 @@
 ### Changed
 
 - **🌐 Refined Web Search Integration**: Deprecated the Search Query Generation Prompt threshold; introduced a toggle button for "Enable Web Search Query Generation" allowing users to opt-in to using web search more judiciously.
-- **📝 Default Prompt Templates Update**: Emptied environment variable templates for search and title generation now default to the Open WebUI default prompt templates, simplifying configuration efforts.
+- **📝 Default Prompt Templates Update**: Emptied environment variable templates for search and title generation now default to the Sage AI WebUI default prompt templates, simplifying configuration efforts.
 
 ## [0.3.19] - 2024-09-05
 
@@ -318,7 +364,7 @@
 
 ### Added
 
-- **🚀 Config DB Migration**: Migrated configuration handling from config.json to the database, enabling high-availability setups and load balancing across multiple Open WebUI instances.
+- **🚀 Config DB Migration**: Migrated configuration handling from config.json to the database, enabling high-availability setups and load balancing across multiple Sage AI WebUI instances.
 - **🔗 Call Mode Activation via URL**: Added a 'call=true' URL search parameter enabling direct shortcuts to activate call mode, enhancing user interaction on mobile devices.
 - **✨ TTS Content Control**: Added functionality to control how message content is segmented for Text-to-Speech (TTS) generation requests, allowing for more flexible speech output options.
 - **😄 Show Knowledge Search Status**: Enhanced model usage transparency by displaying status when working with knowledge-augmented models, helping users understand the system's state during queries.
@@ -389,7 +435,7 @@
 ### Added
 
 - **🎨 Enhanced Markdown Rendering**: Significant improvements in rendering markdown, ensuring smooth and reliable display of LaTeX and Mermaid charts, enhancing user experience with more robust visual content.
-- **🔄 Auto-Install Tools & Functions Python Dependencies**: For 'Tools' and 'Functions', Open WebUI now automatically install extra python requirements specified in the frontmatter, streamlining setup processes and customization.
+- **🔄 Auto-Install Tools & Functions Python Dependencies**: For 'Tools' and 'Functions', Sage AI WebUI now automatically install extra python requirements specified in the frontmatter, streamlining setup processes and customization.
 - **🌀 OAuth Email Claim Customization**: Introduced an 'OAUTH_EMAIL_CLAIM' variable to allow customization of the default "email" claim within OAuth configurations, providing greater flexibility in authentication processes.
 - **📶 Websocket Reconnection**: Enhanced reliability with the capability to automatically reconnect when a websocket is closed, ensuring consistent and stable communication.
 - **🤳 Haptic Feedback on Support Devices**: Android devices now support haptic feedback for an immersive tactile experience during certain interactions.
@@ -550,7 +596,7 @@
 
 ### Added
 
-- **✨ "Functions" Feature**: You can now utilize "Functions" like filters (middleware) and pipe (model) functions directly within the WebUI. While largely compatible with Pipelines, these native functions can be executed easily within Open WebUI. Example use cases for filter functions include usage monitoring, real-time translation, moderation, and automemory. For pipe functions, the scope ranges from Cohere and Anthropic integration directly within Open WebUI, enabling "Valves" for per-user OpenAI API key usage, and much more. If you encounter issues, SAFE_MODE has been introduced.
+- **✨ "Functions" Feature**: You can now utilize "Functions" like filters (middleware) and pipe (model) functions directly within the WebUI. While largely compatible with Pipelines, these native functions can be executed easily within Sage AI WebUI. Example use cases for filter functions include usage monitoring, real-time translation, moderation, and automemory. For pipe functions, the scope ranges from Cohere and Anthropic integration directly within Sage AI WebUI, enabling "Valves" for per-user OpenAI API key usage, and much more. If you encounter issues, SAFE_MODE has been introduced.
 - **📁 Files API**: Compatible with OpenAI, this feature allows for custom Retrieval-Augmented Generation (RAG) in conjunction with the Filter Function. More examples will be shared on our community platform and official documentation website.
 - **🛠️ Tool Enhancements**: Tools now support citations and "Valves". Documentation will be available shortly.
 - **🔗 Iframe Support via Files API**: Enables rendering HTML directly into your chat interface using functions and tools. Use cases include playing games like DOOM and Snake, displaying a weather applet, and implementing Anthropic "artifacts"-like features. Stay tuned for updates on our community platform and documentation.
@@ -612,7 +658,7 @@
 
 ### Added
 
-- **🛠️ Native Python Function Calling**: Introducing native Python function calling within Open WebUI. We’ve also included a built-in code editor to seamlessly develop and integrate function code within the 'Tools' workspace. With this, you can significantly enhance your LLM’s capabilities by creating custom RAG pipelines, web search tools, and even agent-like features such as sending Discord messages.
+- **🛠️ Native Python Function Calling**: Introducing native Python function calling within Sage AI WebUI. We’ve also included a built-in code editor to seamlessly develop and integrate function code within the 'Tools' workspace. With this, you can significantly enhance your LLM’s capabilities by creating custom RAG pipelines, web search tools, and even agent-like features such as sending Discord messages.
 - **🌐 DuckDuckGo Integration**: Added DuckDuckGo as a web search provider, giving you more search options.
 - **🌏 Enhanced Translations**: Improved translations for Vietnamese and Chinese languages, making the interface more accessible.
 
@@ -663,7 +709,7 @@
 - **📝 Prompt Input Clearing**: Resolved prompt input textarea not being cleared right away, ensuring a clean slate for new inputs.
 - **✨ Various UI Styling Issues**: Fixed numerous user interface styling problems for a more cohesive look.
 - **👥 Active Users Display**: Fixed active users showing active sessions instead of actual users, now reflecting accurate user activity.
-- **🌐 Community Platform Compatibility**: The Community Platform is back online and fully compatible with Open WebUI.
+- **🌐 Community Platform Compatibility**: The Community Platform is back online and fully compatible with Sage AI WebUI.
 
 ### Changed
 
@@ -694,7 +740,7 @@
 
 - **👤 Improved Account Pending Page**: The account pending page now displays admin details by default to avoid confusion. You can disable this feature in the admin settings if needed.
 - **🌐 HTTP Proxy Support**: We have enabled the use of the 'http_proxy' environment variable in OpenAI and Ollama API calls, making it easier to configure network settings.
-- **❓ Quick Access to Documentation**: You can now easily access Open WebUI documents via a question mark button located at the bottom right corner of the screen (available on larger screens like PCs).
+- **❓ Quick Access to Documentation**: You can now easily access Sage AI WebUI documents via a question mark button located at the bottom right corner of the screen (available on larger screens like PCs).
 - **🌍 Enhanced Translation**: Improvements have been made to translations.
 
 ### Fixed
@@ -720,7 +766,7 @@
 
 ### Added
 
-- **🌊 Mermaid Rendering Support**: We've included support for Mermaid rendering. This allows you to create beautiful diagrams and flowcharts directly within Open WebUI.
+- **🌊 Mermaid Rendering Support**: We've included support for Mermaid rendering. This allows you to create beautiful diagrams and flowcharts directly within Sage AI WebUI.
 - **🔄 New Environment Variable 'RESET_CONFIG_ON_START'**: Introducing a new environment variable: 'RESET_CONFIG_ON_START'. Set this variable to reset your configuration settings upon starting the application, making it easier to revert to default settings.
 
 ### Fixed
@@ -748,7 +794,7 @@
 
 ### Added
 
-- **🔧 Pipelines Support**: Open WebUI now includes a plugin framework for enhanced customization and functionality (https://github.com/open-webui/pipelines). Easily add custom logic and integrate Python libraries, from AI agents to home automation APIs.
+- **🔧 Pipelines Support**: Sage AI WebUI now includes a plugin framework for enhanced customization and functionality (https://github.com/sage-webui/pipelines). Easily add custom logic and integrate Python libraries, from AI agents to home automation APIs.
 - **🔗 Function Calling via Pipelines**: Integrate function calling seamlessly through Pipelines.
 - **⚖️ User Rate Limiting via Pipelines**: Implement user-specific rate limits to manage API usage efficiently.
 - **📊 Usage Monitoring with Langfuse**: Track and analyze usage statistics with Langfuse integration through Pipelines.
@@ -812,7 +858,7 @@
 - **🔒 Auth Disable Option**: Introducing the ability to disable authentication. Set 'WEBUI_AUTH' to False to disable authentication. Note: Only applicable for fresh installations without existing users.
 - **📹 Enhanced YouTube RAG Pipeline**: Now supports non-English videos for an enriched experience.
 - **🔊 Specify OpenAI TTS Models**: Customize your TTS experience by specifying OpenAI TTS models.
-- **🔧 Additional Environment Variables**: Discover more environment variables in our comprehensive documentation at Open WebUI Documentation (https://docs.openwebui.com).
+- **🔧 Additional Environment Variables**: Discover more environment variables in our comprehensive documentation at Sage AI WebUI Documentation (https://docs.openwebui.com).
 - **🌐 Language Support**: Arabic, Finnish, and Hindi added; Improved support for German, Vietnamese, and Chinese.
 
 ### Fixed
@@ -823,7 +869,7 @@
 ### Changed
 
 - **📝 Title Generation**: Limited output to 50 tokens.
-- **📦 Helm Charts**: Removed Helm charts, now available in a separate repository (https://github.com/open-webui/helm-charts).
+- **📦 Helm Charts**: Removed Helm charts, now available in a separate repository (https://github.com/sage-webui/helm-charts).
 
 ## [0.1.123] - 2024-05-02
 
@@ -949,7 +995,7 @@
 ### Added
 
 - 🗨️ **Local Chat Sharing**: Share chat links seamlessly between users.
-- 🔑 **API Key Generation Support**: Generate secret keys to leverage Open WebUI with OpenAI libraries.
+- 🔑 **API Key Generation Support**: Generate secret keys to leverage Sage AI WebUI with OpenAI libraries.
 - 📄 **Chat Download as PDF**: Easily download chats in PDF format.
 - 📝 **Improved Logging**: Enhancements to logging functionality.
 - 📧 **Trusted Email Authentication**: Authenticate using a trusted email header.
@@ -1018,7 +1064,7 @@
 
 ### Added
 
-- 🌍 **Localization**: You can now change the UI language in Settings > General. We support Ukrainian, German, Farsi (Persian), Traditional and Simplified Chinese and French translations. You can help us to translate the UI into your language! More info in our [CONTRIBUTION.md](https://github.com/open-webui/open-webui/blob/main/docs/CONTRIBUTING.md#-translations-and-internationalization).
+- 🌍 **Localization**: You can now change the UI language in Settings > General. We support Ukrainian, German, Farsi (Persian), Traditional and Simplified Chinese and French translations. You can help us to translate the UI into your language! More info in our [CONTRIBUTION.md](https://github.com/sage-webui/sage-webui/blob/main/docs/CONTRIBUTING.md#-translations-and-internationalization).
 - 🎨 **System-wide Theme**: Introducing a new system-wide theme for enhanced visual experience.
 
 ### Fixed
@@ -1166,10 +1212,10 @@
 
 ### Added
 
-- **🔗 Built-in LiteLLM Proxy**: Now includes LiteLLM proxy within Open WebUI for enhanced functionality.
+- **🔗 Built-in LiteLLM Proxy**: Now includes LiteLLM proxy within Sage AI WebUI for enhanced functionality.
 
   - Easily integrate existing LiteLLM configurations using `-v /path/to/config.yaml:/app/backend/data/litellm/config.yaml` flag.
-  - When utilizing Docker container to run Open WebUI, ensure connections to localhost use `host.docker.internal`.
+  - When utilizing Docker container to run Sage AI WebUI, ensure connections to localhost use `host.docker.internal`.
 
 - **🖼️ Image Generation Enhancements**: Introducing Advanced Settings with Image Preview Feature.
   - Customize image generation by setting the number of steps; defaults to A1111 value.
@@ -1180,8 +1226,8 @@
 
 ### Changed
 
-- Ollama is no longer required to run Open WebUI.
-- Access our comprehensive documentation at [Open WebUI Documentation](https://docs.openwebui.com/).
+- Ollama is no longer required to run Sage AI WebUI.
+- Access our comprehensive documentation at [Sage AI WebUI Documentation](https://docs.openwebui.com/).
 
 ## [0.1.102] - 2024-02-22
 

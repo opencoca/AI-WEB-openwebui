@@ -22,7 +22,7 @@
 			--fd:column;
 			--ai:center;
 			--jc:center;
-			--minh:80vh;
+			--minh:100dvh;
 			--maxw:30em;
 			--m:auto;
 			--ta:center"

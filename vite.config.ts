@@ -1,6 +1,21 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vite';
 
+// Define the middleware plugin
+/** @type {import('vite').Plugin} */
+const logRequestMiddleware = {
+	name: 'log-request-middleware',
+	configureServer(server) {
+		server.middlewares.use((req, res, next) => {
+			res.setHeader('Access-Control-Allow-Origin', '*');
+			res.setHeader('Access-Control-Allow-Methods', 'GET');
+			res.setHeader('Cross-Origin-Opener-Policy', 'same-origin');
+			res.setHeader('Cross-Origin-Embedder-Policy', 'require-corp');
+			next();
+		});
+	}
+};
+
 export default defineConfig({
 	plugins: [sveltekit()],
 	define: {
@@ -37,7 +52,7 @@ export default defineConfig({
 				changeOrigin: true
 			},
 			'manifest.json': {  // Proxy the manifest.json file
-				target: 'http://localhost:8080',
+				target: 'http://localhost:8080/static/manifest.json',
 				changeOrigin: true
 			},
 		},

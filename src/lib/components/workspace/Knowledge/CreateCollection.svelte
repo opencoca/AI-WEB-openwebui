@@ -39,7 +39,7 @@
 
 <div class="w-full max-h-full">
 	<button
-		style=" --p: 0 0.6em; --d:flex; --br:1em"
+		style=" --p: 0 0.6em; --d:flex; --br:1em; --m:1em"
 		on:click={() => {
 			goto('/workspace/knowledge');
 		}}
@@ -58,7 +58,7 @@
 				/>
 			</svg>
 		</div>
-		<div class=" self-center font-medium text-sm">{$i18n.t('Back')}</div>
+		<div>{$i18n.t('Back')}</div>
 	</button>
 
 	<form

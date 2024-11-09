@@ -4,7 +4,7 @@
 	const { saveAs } = fileSaver;
 
 	import { onMount, getContext } from 'svelte';
-	import { WEBUI_NAME, prompts, tools } from '$lib/stores';
+	import { WEBUI_NAME, config, prompts, tools } from '$lib/stores';
 	import { createNewPrompt, deletePromptByCommand, getPrompts } from '$lib/apis/prompts';
 
 	import { goto } from '$app/navigation';
@@ -42,15 +42,23 @@
 
 	let showDeleteConfirm = false;
 
+	let filteredItems = [];
+	$: filteredItems = $tools.filter(
+		(t) =>
+			query === '' ||
+			t.name.toLowerCase().includes(query.toLowerCase()) ||
+			t.id.toLowerCase().includes(query.toLowerCase())
+	);
+
 	const shareHandler = async (tool) => {
 		const item = await getToolById(localStorage.token, tool.id).catch((error) => {
 			toast.error(error);
 			return null;
 		});
 
-		toast.success($i18n.t('Redirecting you to OpenWebUI Community'));
+		toast.success($i18n.t('Redirecting you to Sage.Education Community'));
 
-		const url = 'https://openwebui.com';
+		const url = 'https://Sage.Education';
 
 		const tab = await window.open(`${url}/tools/create`, '_blank');
 
@@ -146,7 +154,7 @@
 	</title>
 </svelte:head>
 
-<div class="mb-3">
+<div style="--m:0.8em">
 	<div class="flex justify-between items-center">
 		<div style="--d: flex; --ff: Cormorant;    --weight: 500;
 --size: 1.2em;">
@@ -213,11 +221,19 @@
 		'Admins access all tools. Other users need tools assigned by admins to assistants using the AI Model Assitant Workshop.'
 	)}
 </div>
-<hr class=" border-gray-50 dark:border-gray-850 my-2.5" />
+<div class="mb-3.5">
+	<div class="flex justify-between items-center">
+		<div class="flex md:self-center text-base font-medium px-0.5">
+			{$i18n.t('Tools')}
+			<div class="flex self-center w-[1px] h-6 mx-2.5 bg-gray-50 dark:bg-gray-850" />
+			<span class="text-base font-medium text-gray-500 dark:text-gray-300"
+				>{filteredItems.length}</span
+			>
+		</div>
+	</div>
+</div>
 <div class="">
-	{#each $tools.filter((t) => query === '' || t.name
-				.toLowerCase()
-				.includes(query.toLowerCase()) || t.id.toLowerCase().includes(query.toLowerCase())) as tool}
+	{#each filteredItems as tool}
 		<div
 			class=" flex space-x-4 cursor-pointer w-full px-3 py-2 dark:hover:bg-white/5 hover:bg-black/5 rounded-xl"
 		>
@@ -426,38 +442,45 @@
 	</div>
 </div>
 
-<div class=" my-16">
-	<div style="--ff: Cormorant">
-		{$i18n.t('Made by our Community')}
+{#if $config?.features.enable_community_sharing}
+	<div class=" my-16">
+		<div style="--ff: Cormorant">
+			{$i18n.t('Made by our Community')}
+		</div>
+
+		<a
+			class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-2"
+			href="https://Sage.Education/Tools"
+			target="_blank"
+		>
+			<div class=" self-center w-10 flex-shrink-0">
+				<div
+					style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						viewBox="0 0 24 24"
+						fill="currentColor"
+						class="w-6"
+					>
+						<path
+							fill-rule="evenodd"
+							d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
+							clip-rule="evenodd"
+						/>
+					</svg>
+				</div>
+			</div>
+
+			<div class=" self-center">
+				<div class=" font-semibold line-clamp-1">{$i18n.t('Discover a tool')}</div>
+				<div class=" text-sm line-clamp-1">
+					{$i18n.t('Discover, download, and explore custom tools')}
+				</div>
+			</div>
+		</a>
 	</div>
-
-	<a
-		class=" flex space-x-4 cursor-pointer w-full mb-2 px-3 py-2"
-		href="https://Sage.Education/Tools"
-		target="_blank"
-	>
-		<div class=" self-center w-10 flex-shrink-0">
-			<div
-				style="--d:flex; --ai:center"  class="w-full h-10 flex justify-center rounded-full bg-transparent dark:bg-gray-700 border border-dashed border-gray-200"
-			>
-				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6">
-					<path
-						fill-rule="evenodd"
-						d="M12 3.75a.75.75 0 01.75.75v6.75h6.75a.75.75 0 010 1.5h-6.75v6.75a.75.75 0 01-1.5 0v-6.75H4.5a.75.75 0 010-1.5h6.75V4.5a.75.75 0 01.75-.75z"
-						clip-rule="evenodd"
-					/>
-				</svg>
-			</div>
-		</div>
-
-		<div class=" self-center">
-			<div class=" font-semibold line-clamp-1">{$i18n.t('Discover a tool')}</div>
-			<div class=" text-sm line-clamp-1">
-				{$i18n.t('Discover, download, and explore custom tools')}
-			</div>
-		</div>
-	</a>
-</div>
+{/if}
 
 <DeleteConfirmDialog
 	bind:show={showDeleteConfirm}

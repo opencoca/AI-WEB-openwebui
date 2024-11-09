@@ -18,7 +18,10 @@ from open_webui.config import (
     OPENAI_API_KEYS,
     AppConfig,
 )
-from open_webui.env import AIOHTTP_CLIENT_TIMEOUT
+from open_webui.env import (
+    AIOHTTP_CLIENT_TIMEOUT,
+    AIOHTTP_CLIENT_TIMEOUT_OPENAI_MODEL_LIST,
+)
 
 from open_webui.constants import ERROR_MESSAGES
 from open_webui.env import SRC_LOG_LEVELS
@@ -135,8 +138,8 @@ async def speech(request: Request, user=Depends(get_verified_user)):
         headers["Authorization"] = f"Bearer {app.state.config.OPENAI_API_KEYS[idx]}"
         headers["Content-Type"] = "application/json"
         if "openrouter.ai" in app.state.config.OPENAI_API_BASE_URLS[idx]:
-            headers["HTTP-Referer"] = "https://openwebui.com/"
-            headers["X-Title"] = "Open WebUI"
+            headers["HTTP-Referer"] = "https://Sage.Education/"
+            headers["X-Title"] = "Sage Education"
         r = None
         try:
             r = requests.post(
@@ -161,7 +164,7 @@ async def speech(request: Request, user=Depends(get_verified_user)):
 
         except Exception as e:
             log.exception(e)
-            error_detail = "Open WebUI: Server Connection Error"
+            error_detail = "Sage AI WebUI: Server Connection Error"
             if r is not None:
                 try:
                     res = r.json()
@@ -179,7 +182,7 @@ async def speech(request: Request, user=Depends(get_verified_user)):
 
 
 async def fetch_url(url, key):
-    timeout = aiohttp.ClientTimeout(total=3)
+    timeout = aiohttp.ClientTimeout(total=AIOHTTP_CLIENT_TIMEOUT_OPENAI_MODEL_LIST)
     try:
         headers = {"Authorization": f"Bearer {key}"}
         async with aiohttp.ClientSession(timeout=timeout, trust_env=True) as session:
@@ -237,9 +240,7 @@ def merge_models_lists(model_lists):
 
 
 def is_openai_api_disabled():
-    api_keys = app.state.config.OPENAI_API_KEYS
-    no_keys = len(api_keys) == 1 and api_keys[0] == ""
-    return no_keys or not app.state.config.ENABLE_OPENAI_API
+    return not app.state.config.ENABLE_OPENAI_API
 
 
 async def get_all_models_raw() -> list:
@@ -354,7 +355,7 @@ async def get_models(url_idx: Optional[int] = None, user=Depends(get_verified_us
             return response_data
         except Exception as e:
             log.exception(e)
-            error_detail = "Open WebUI: Server Connection Error"
+            error_detail = "Sage AI WebUI: Server Connection Error"
             if r is not None:
                 try:
                     res = r.json()
@@ -434,8 +435,8 @@ async def generate_chat_completion(
     headers["Authorization"] = f"Bearer {key}"
     headers["Content-Type"] = "application/json"
     if "openrouter.ai" in app.state.config.OPENAI_API_BASE_URLS[idx]:
-        headers["HTTP-Referer"] = "https://openwebui.com/"
-        headers["X-Title"] = "Open WebUI"
+        headers["HTTP-Referer"] = "https://Sage.Education/"
+        headers["X-Title"] = "Sage Education"
 
     r = None
     session = None
@@ -475,7 +476,7 @@ async def generate_chat_completion(
             return response
     except Exception as e:
         log.exception(e)
-        error_detail = "Open WebUI: Server Connection Error"
+        error_detail = "Sage AI WebUI: Server Connection Error"
         if isinstance(response, dict):
             if "error" in response:
                 error_detail = f"{response['error']['message'] if 'message' in response['error'] else response['error']}"
@@ -536,7 +537,7 @@ async def proxy(path: str, request: Request, user=Depends(get_verified_user)):
             return response_data
     except Exception as e:
         log.exception(e)
-        error_detail = "Open WebUI: Server Connection Error"
+        error_detail = "Sage AI WebUI: Server Connection Error"
         if r is not None:
             try:
                 res = await r.json()
