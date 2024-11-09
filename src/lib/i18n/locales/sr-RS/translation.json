@@ -515,8 +515,8 @@
 	"Open file": "",
 	"Open in full screen": "",
 	"Open new chat": "Покрени ново ћаскање",
-	"Open WebUI uses faster-whisper internally.": "",
-	"Open WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})": "",
+	"Sage AI WebUI uses faster-whisper internally.": "",
+	"Sage AI WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})": "",
 	"OpenAI": "OpenAI",
 	"OpenAI API": "OpenAI API",
 	"OpenAI API Config": "Подешавање OpenAI API-ја",
@@ -844,7 +844,7 @@
 	"You're a helpful assistant.": "Ти си користан помоћник.",
 	"You're now logged in.": "Сада сте пријављени.",
 	"Your account status is currently pending activation.": "",
-	"Your entire contribution will go directly to the plugin developer; Open WebUI does not take any percentage. However, the chosen funding platform might have its own fees.": "",
+	"Your entire contribution will go directly to the plugin developer; Sage AI WebUI does not take any percentage. However, the chosen funding platform might have its own fees.": "",
 	"Youtube": "Јутјуб",
 	"Youtube Loader Settings": "Подешавања Јутјуб учитавача"
 }
