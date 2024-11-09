@@ -10,6 +10,19 @@
 - **📝 Chat and Message Components Update**:improved message input styling and updated assistant disclaimer.
 - **🔧 Development Environment Update**:updated Dev scripts and package.json for improved user workflow.
 
+## [0.3.35] - 2024-10-26
+
+### Added
+
+- **📁 Robust File Handling**: Enhanced file input handling for chat. If the content extraction fails or is empty, users will now receive a clear warning, preventing silent failures and ensuring you always know what's happening with your uploads.
+- **🌍 New Language Support**: Introduced Hungarian translations and updated French translations, expanding the platform's language accessibility for a more global user base.
+
+### Fixed
+
+- **📚 Knowledge Base Loading Issue**: Resolved a critical bug where the Knowledge Base was not loading, ensuring smooth access to your stored documents and improving information retrieval in RAG-enhanced workflows.
+- **🛠️ Tool Parameters Issue**: Fixed an error where tools were not functioning correctly when required parameters were missing, ensuring reliable tool performance and more efficient task completions.
+- **🔗 Merged Response Loss in Multi-Model Chats**: Addressed an issue where responses in multi-model chat workflows were being deleted after follow-up queries, improving consistency and ensuring smoother interactions across models.
+
 ## [0.3.38] - 2024-10-22
 
 ### Added
