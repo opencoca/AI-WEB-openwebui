@@ -23,3 +23,7 @@ README.md
 LICENSE
 Dockerfile
 Makefile
+# Added by OpenWebUI team to ignore the backend/data folder 
+#this might not be the best way to build the docker image
+# Testing is needed to optimize the docker build process
+backend/data/*

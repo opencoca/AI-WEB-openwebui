@@ -74,7 +74,7 @@
 						/>
 					</svg>
 				</div>
-				<div class=" self-center">{$i18n.t('Settings')}</div>
+				<div class=" self-center truncate">{$i18n.t('Settings')}</div>
 			</button>
 
 			<button
@@ -91,7 +91,7 @@
 				<div class=" self-center mr-3">
 					<ArchiveBox className="size-5" strokeWidth="1.5" />
 				</div>
-				<div class=" self-center">{$i18n.t('Archived Chats')}</div>
+				<div class=" self-center truncate">{$i18n.t('Archived Chats')}</div>
 			</button>
 
 			{#if role === 'admin'}
@@ -122,7 +122,7 @@
 							/>
 						</svg>
 					</div>
-					<div class=" self-center">{$i18n.t('Playground')}</div>
+					<div class=" self-center truncate">{$i18n.t('Playground')}</div>
 				</button>
 
 				<button
@@ -152,7 +152,7 @@
 							/>
 						</svg>
 					</div>
-					<div class=" self-center">{$i18n.t('Admin Panel')}</div>
+					<div class=" self-center truncate">{$i18n.t('Admin Panel')}</div>
 				</button>
 			{/if}
 
@@ -186,7 +186,7 @@
 						/>
 					</svg>
 				</div>
-				<div class=" self-center">{$i18n.t('Sign Out')}</div>
+				<div class=" self-center truncate">{$i18n.t('Sign Out')}</div>
 			</button>
 
 			{#if $activeUserCount}

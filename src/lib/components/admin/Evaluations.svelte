@@ -206,6 +206,25 @@
 	//
 	//////////////////////
 
+	const loadEmbeddingModel = async () => {
+		// Check if the tokenizer and model are already loaded and stored in the window object
+		if (!window.tokenizer) {
+			window.tokenizer = await AutoTokenizer.from_pretrained(EMBEDDING_MODEL);
+		}
+
+		if (!window.model) {
+			window.model = await AutoModel.from_pretrained(EMBEDDING_MODEL);
+		}
+
+		// Use the tokenizer and model from the window object
+		tokenizer = window.tokenizer;
+		model = window.model;
+
+		// Pre-compute embeddings for all unique tags
+		const allTags = new Set(feedbacks.flatMap((feedback) => feedback.data.tags || []));
+		await getTagEmbeddings(Array.from(allTags));
+	};
+
 	const getEmbeddings = async (text: string) => {
 		const tokens = await tokenizer(text);
 		const output = await model(tokens);
@@ -294,26 +313,23 @@
 		window.addEventListener('message', messageHandler, false);
 	};
 
+	const exportHandler = async () => {
+		const _feedbacks = await exportAllFeedbacks(localStorage.token).catch((err) => {
+			toast.error(err);
+			return null;
+		});
+
+		if (_feedbacks) {
+			let blob = new Blob([JSON.stringify(_feedbacks)], {
+				type: 'application/json'
+			});
+			saveAs(blob, `feedback-history-export-${Date.now()}.json`);
+		}
+	};
+
 	onMount(async () => {
 		feedbacks = await getAllFeedbacks(localStorage.token);
 		loaded = true;
-
-		// Check if the tokenizer and model are already loaded and stored in the window object
-		if (!window.tokenizer) {
-			window.tokenizer = await AutoTokenizer.from_pretrained(EMBEDDING_MODEL);
-		}
-
-		if (!window.model) {
-			window.model = await AutoModel.from_pretrained(EMBEDDING_MODEL);
-		}
-
-		// Use the tokenizer and model from the window object
-		tokenizer = window.tokenizer;
-		model = window.model;
-
-		// Pre-compute embeddings for all unique tags
-		const allTags = new Set(feedbacks.flatMap((feedback) => feedback.data.tags || []));
-		await getTagEmbeddings(Array.from(allTags));
 
 		rankHandler();
 	});

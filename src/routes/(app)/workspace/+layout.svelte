@@ -33,7 +33,7 @@
 			? 'md:max-w-[calc(100%-260px)]'
 			: ''}"
 	>
-		<div class="   px-3.5 my-2 bg-transparent backdrop-blur-xl">
+		<div class="   px-2.5 py-1 backdrop-blur-xl">
 			<div class=" flex items-center gap-1">
 				<div style="{$showSidebar ? '--d:none' : ''}" 
 					class="{$showSidebar ? 'hidden' : ''} mr-1 self-center flex flex-none items-center">
@@ -56,54 +56,48 @@
 
 				<div class="">
 					<div
-						class="flex scrollbar-none overflow-x-auto w-fit text-center text-sm font-medium rounded-full bg-transparent/10 backdrop-blur-2xl p-1 touch-auto pointer-events-auto"
+						class="flex gap-1 scrollbar-none overflow-x-auto w-fit text-center text-sm font-medium rounded-full bg-transparent py-1 touch-auto pointer-events-auto"
 					>
 						<a
-							class="min-w-fit rounded-full p-1.5 px-3 {$page.url.pathname.includes(
-								'/workspace/models'
-							)
-								? 'bg-gray-50 dark:bg-gray-850'
-								: ''} transition"
+							class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/workspace/models')
+								? ''
+								: 'text-gray-300 dark:text-gray-600'} transition"
 							href="/workspace/models">{$i18n.t('Models')}</a
 						>
 
 						<a
-							class="min-w-fit rounded-full p-1.5 px-3 {$page.url.pathname.includes(
+							class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes(
 								'/workspace/knowledge'
 							)
-								? 'bg-gray-50 dark:bg-gray-850'
-								: ''} transition"
+								? ''
+								: 'text-gray-300 dark:text-gray-600'} transition"
 							href="/workspace/knowledge"
 						>
 							{$i18n.t('Knowledge')}
 						</a>
 
 						<a
-							class="min-w-fit rounded-full p-1.5 px-3 {$page.url.pathname.includes(
-								'/workspace/prompts'
-							)
-								? 'bg-gray-50 dark:bg-gray-850'
-								: ''} transition"
+							class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/workspace/prompts')
+								? ''
+								: 'text-gray-300 dark:text-gray-600'} transition"
 							href="/workspace/prompts">{$i18n.t('Prompts')}</a
 						>
 
 						<a
-							class="min-w-fit rounded-full p-1.5 px-3 {$page.url.pathname.includes(
-								'/workspace/tools'
-							)
-								? 'bg-gray-50 dark:bg-gray-850'
-								: ''} transition"
+							class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes('/workspace/tools')
+								? ''
+								: 'text-gray-300 dark:text-gray-600'} transition"
 							href="/workspace/tools"
 						>
 							{$i18n.t('Tools')}
 						</a>
 
 						<a
-							class="min-w-fit rounded-full p-1.5 px-3 {$page.url.pathname.includes(
+							class="min-w-fit rounded-full p-1.5 {$page.url.pathname.includes(
 								'/workspace/functions'
 							)
-								? 'bg-gray-50 dark:bg-gray-850'
-								: ''} transition"
+								? ''
+								: 'text-gray-300 dark:text-gray-600'} transition"
 							href="/workspace/functions"
 						>
 							{$i18n.t('Functions')}
@@ -116,7 +110,7 @@
 
 
 		<sage-content-slot
-			style="--of: auto;">
+			style="--of: auto;" id="workspace-container">
 			<slot />
 		</sage-content-slot>
 	</sage-content>

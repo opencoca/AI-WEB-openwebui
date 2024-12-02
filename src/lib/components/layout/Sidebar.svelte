@@ -37,6 +37,7 @@
 		importChat
 	} from '$lib/apis/chats';
 
+	import { createNewFolder, getFolders, updateFolderParentIdById } from '$lib/apis/folders';
 	import { WEBUI_BASE_URL } from '$lib/constants';
 
 	import ArchivedChatsModal from './Sidebar/ArchivedChatsModal.svelte';
@@ -49,7 +50,6 @@
 	import Folder from '../common/Folder.svelte';
 	import Plus from '../icons/Plus.svelte';
 	import Tooltip from '../common/Tooltip.svelte';
-	import { createNewFolder, getFolders, updateFolderParentIdById } from '$lib/apis/folders';
 	import Folders from './Sidebar/Folders.svelte';
 	import Sidebar from '../common/Sidebar.svelte';
 
@@ -512,9 +512,9 @@ style="
 
 
 		{#if $user?.role === 'admin'}
-			<div class="px-2.5 flex justify-center text-gray-800 dark:text-gray-200">
+			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
-					class="flex-grow flex space-x-3 rounded-lg px-2.5 py-2 hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+					class="flex-grow flex space-x-3 rounded-lg px-2 py-[7px] hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 					href="/workspace/models"
 					on:click={() => {
 						selectedChatId = null;
@@ -596,10 +596,15 @@ style="
 							importChatHandler(e.detail, true);
 						}}
 						on:drop={async (e) => {
-							const { type, id } = e.detail;
+							const { type, id, item } = e.detail;
 
 							if (type === 'chat') {
-								const chat = await getChatById(localStorage.token, id);
+								let chat = await getChatById(localStorage.token, id).catch((error) => {
+									return null;
+								});
+								if (!chat && item) {
+									chat = await importChat(localStorage.token, item.chat, item?.meta ?? {});
+								}
 
 								if (chat) {
 									console.log(chat);
@@ -612,19 +617,13 @@ style="
 											toast.error(error);
 											return null;
 										});
-
-										if (res) {
-											initChatList();
-										}
 									}
 
 									if (!chat.pinned) {
-										const res = await toggleChatPinnedStatusById(localStorage.token, id);
-
-										if (res) {
-											initChatList();
-										}
+										const res = await toggleChatPinnedStatusById(localStorage.token, chat.id);
 									}
+
+									initChatList();
 								}
 							}
 						}}
@@ -685,10 +684,15 @@ style="
 						importChatHandler(e.detail);
 					}}
 					on:drop={async (e) => {
-						const { type, id } = e.detail;
+						const { type, id, item } = e.detail;
 
 						if (type === 'chat') {
-							const chat = await getChatById(localStorage.token, id);
+							let chat = await getChatById(localStorage.token, id).catch((error) => {
+								return null;
+							});
+							if (!chat && item) {
+								chat = await importChat(localStorage.token, item.chat, item?.meta ?? {});
+							}
 
 							if (chat) {
 								console.log(chat);
@@ -699,19 +703,13 @@ style="
 											return null;
 										}
 									);
-
-									if (res) {
-										initChatList();
-									}
 								}
 
 								if (chat.pinned) {
-									const res = await toggleChatPinnedStatusById(localStorage.token, id);
-
-									if (res) {
-										initChatList();
-									}
+									const res = await toggleChatPinnedStatusById(localStorage.token, chat, id);
 								}
+
+								initChatList();
 							}
 						} else if (type === 'folder') {
 							if (folders[id].parent_id === null) {

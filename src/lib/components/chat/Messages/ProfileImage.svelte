@@ -1,11 +1,22 @@
 <script lang="ts">
-	import { settings } from '$lib/stores';
-	import ProfileImageBase from './ProfileImageBase.svelte';
+	import { WEBUI_BASE_URL } from '$lib/constants';
 
 	export let className = 'size-8';
-	export let src = '';
+	export let src = `${WEBUI_BASE_URL}/static/favicon.png`;
 </script>
 
-<profile-image class="flex-shrink-0 {` ${($settings?.chatDirection ?? 'LTR') === 'LTR' ? 'mr-3' : 'ml-3'}`}">
-	<ProfileImageBase {src} {className} />
-</profile-image>
+<img
+	crossorigin="anonymous"
+	src={src === ''
+		? `${WEBUI_BASE_URL}/static/favicon.png`
+		: src.startsWith(WEBUI_BASE_URL) ||
+			  src.startsWith('https://www.gravatar.com/avatar/') ||
+			  src.startsWith('data:') ||
+			  src.startsWith('/')
+			? src
+			: `/user.png`}
+	class="{className} object-cover"
+	style="--br:50%"
+	alt="profile"
+	draggable="false"
+/>

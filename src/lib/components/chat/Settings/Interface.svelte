@@ -34,7 +34,10 @@
 	let landingPageMode = '';
 	let chatBubble = true;
 	let chatDirection: 'LTR' | 'RTL' = 'LTR';
+
+	// Admin - Show Update Available Toast
 	let showUpdateToast = true;
+	let showChangelog = true;
 
 	let showEmojiInCall = false;
 	let voiceInterruption = false;
@@ -68,6 +71,11 @@
 	const toggleShowUpdateToast = async () => {
 		showUpdateToast = !showUpdateToast;
 		saveSettings({ showUpdateToast: showUpdateToast });
+	};
+
+	const toggleShowChangelog = async () => {
+		showChangelog = !showChangelog;
+		saveSettings({ showChangelog: showChangelog });
 	};
 
 	const toggleShowUsername = async () => {
@@ -168,6 +176,7 @@
 
 		showUsername = $settings.showUsername ?? false;
 		showUpdateToast = $settings.showUpdateToast ?? true;
+		showChangelog = $settings.showChangelog ?? true;
 
 		showEmojiInCall = $settings.showEmojiInCall ?? false;
 		voiceInterruption = $settings.voiceInterruption ?? false;
@@ -376,13 +385,35 @@
 						</button>
 					</div>
 				</div>
+
+				<div>
+					<div class=" py-0.5 flex w-full justify-between">
+						<div class=" self-center text-xs">
+							{$i18n.t(`Show "What's New" modal on login`)}
+						</div>
+
+						<button
+							class="p-1 px-3 text-xs flex rounded transition"
+							on:click={() => {
+								toggleShowChangelog();
+							}}
+							type="button"
+						>
+							{#if showChangelog === true}
+								<span class="ml-2 self-center">{$i18n.t('On')}</span>
+							{:else}
+								<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+							{/if}
+						</button>
+					</div>
+				</div>
 			{/if}
+
+			<div class=" my-1.5 text-sm font-medium">{$i18n.t('Chat')}</div>
 
 			<div>
 				<div class=" py-0.5 flex w-full justify-between">
-					<div class=" self-center text-xs">
-						{$i18n.t('Fluidly stream large external response chunks')}
-					</div>
+					<div class=" self-center text-xs">{$i18n.t('Title Auto-Generation')}</div>
 
 					<button
 						class="p-1 px-3 text-xs flex rounded transition"
@@ -392,7 +423,7 @@
 						type="button"
 					>
 						{#if splitLargeChunks === true}
-							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
 						{:else}
 							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
 						{/if}
@@ -413,10 +444,32 @@
 						}}
 						type="button"
 					>
-						{#if scrollOnBranchChange === true}
+						{#if responseAutoCopy === true}
 							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
 						{:else}
-							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
+							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			<div>
+				<div class=" py-0.5 flex w-full justify-between">
+					<div class=" self-center text-xs">
+						{$i18n.t('Rich Text Input for Chat')}
+					</div>
+
+					<button
+						class="p-1 px-3 text-xs flex rounded transition"
+						on:click={() => {
+							toggleRichTextInput();
+						}}
+						type="button"
+					>
+						{#if richTextInput === true}
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						{:else}
+							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -545,9 +598,53 @@
 						type="button"
 					>
 						{#if hapticFeedback === true}
-							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
 						{:else}
 							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			<div>
+				<div class=" py-0.5 flex w-full justify-between">
+					<div class=" self-center text-xs">
+						{$i18n.t('Fluidly stream large external response chunks')}
+					</div>
+
+					<button
+						class="p-1 px-3 text-xs flex rounded transition"
+						on:click={() => {
+							toggleSplitLargeChunks();
+						}}
+						type="button"
+					>
+						{#if splitLargeChunks === true}
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						{:else}
+							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			<div>
+				<div class=" py-0.5 flex w-full justify-between">
+					<div class=" self-center text-xs">
+						{$i18n.t('Scroll to bottom when switching between branches')}
+					</div>
+
+					<button
+						class="p-1 px-3 text-xs flex rounded transition"
+						on:click={() => {
+							togglesScrollOnBranchChange();
+						}}
+						type="button"
+					>
+						{#if scrollOnBranchChange === true}
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						{:else}
+							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
