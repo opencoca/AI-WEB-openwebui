@@ -140,6 +140,31 @@
 			align="start"
 			transition={flyAndScale}
 		>
+			<div class="flex p-1">
+				<Tags
+					{chatId}
+					on:add={(e) => {
+						dispatch('tag', {
+							type: 'add',
+							name: e.detail.name
+						});
+
+						show = false;
+					}}
+					on:delete={(e) => {
+						dispatch('tag', {
+							type: 'delete',
+							name: e.detail.name
+						});
+
+						show = false;
+					}}
+					on:close={() => {
+						show = false;
+						onClose();
+					}}
+				/>
+			</div>
 			<DropdownMenu.Item
 				class="flex gap-2 items-center px-3 py-1.5 text-sm  cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md"
 				on:click={() => {
@@ -235,6 +260,9 @@
 					</DropdownMenu.Item>
 				</DropdownMenu.SubContent>
 			</DropdownMenu.Sub>
+
+			<hr />
+			<hr class="border-gray-50 dark:border-gray-850 my-0.5" />
 			<DropdownMenu.Item
 				class="flex  gap-2  items-center px-3 py-1.5 text-sm  cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md"
 				on:click={() => {
@@ -245,33 +273,7 @@
 				<div class="flex items-center">{$i18n.t('Delete')}</div>
 			</DropdownMenu.Item>
 
-			<hr class="border-gray-50 dark:border-gray-850 my-0.5" />
-
-			<div class="flex p-1">
-				<Tags
-					{chatId}
-					on:add={(e) => {
-						dispatch('tag', {
-							type: 'add',
-							name: e.detail.name
-						});
-
-						show = false;
-					}}
-					on:delete={(e) => {
-						dispatch('tag', {
-							type: 'delete',
-							name: e.detail.name
-						});
-
-						show = false;
-					}}
-					on:close={() => {
-						show = false;
-						onClose();
-					}}
-				/>
-			</div>
+			
 		</DropdownMenu.Content>
 	</div>
 </Dropdown>
