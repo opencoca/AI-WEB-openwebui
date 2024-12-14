@@ -132,7 +132,7 @@
 		<slot />
 	</Tooltip>
 
-	<chat-menu slot="content">
+	<div slot="content">
 		<DropdownMenu.Content
 			class="w-full max-w-[200px] rounded-xl px-1 py-1.5 z-50 bg-white dark:bg-gray-850 dark:text-white shadow-lg"
 			sideOffset={-2}
@@ -140,47 +140,6 @@
 			align="start"
 			transition={flyAndScale}
 		>
-			
-
-			<chat-tags class="flex p-1">
-				<style>
-					@scope{
-						/* first div and only first div */
-						div {
-							display: flex;
-							flex-direction: row-reverse;
-							flex-wrap: wrap;
-							gap:0.2em
-						}
-					}
-				</style>
-				<Tags
-					{chatId}
-					on:add={(e) => {
-						dispatch('tag', {
-							type: 'add',
-							name: e.detail.name
-						});
-
-						show = false;
-					}}
-					on:delete={(e) => {
-						dispatch('tag', {
-							type: 'delete',
-							name: e.detail.name
-						});
-
-						show = false;
-					}}
-					on:close={() => {
-						show = false;
-						onClose();
-					}}
-				/>
-			</chat-tags>
-
-			<hr class="border-gray-50 dark:border-gray-850 my-0.5" />
-
 			<DropdownMenu.Item
 				class="flex gap-2 items-center px-3 py-1.5 text-sm  cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-md"
 				on:click={() => {
@@ -285,6 +244,34 @@
 				<GarbageBin strokeWidth="2" />
 				<div class="flex items-center">{$i18n.t('Delete')}</div>
 			</DropdownMenu.Item>
+
+			<hr class="border-gray-50 dark:border-gray-850 my-0.5" />
+
+			<div class="flex p-1">
+				<Tags
+					{chatId}
+					on:add={(e) => {
+						dispatch('tag', {
+							type: 'add',
+							name: e.detail.name
+						});
+
+						show = false;
+					}}
+					on:delete={(e) => {
+						dispatch('tag', {
+							type: 'delete',
+							name: e.detail.name
+						});
+
+						show = false;
+					}}
+					on:close={() => {
+						show = false;
+						onClose();
+					}}
+				/>
+			</div>
 		</DropdownMenu.Content>
-	</chat-menu>
+	</div>
 </Dropdown>

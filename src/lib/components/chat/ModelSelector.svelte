@@ -5,9 +5,7 @@
 	import Selector from './ModelSelector/Selector.svelte';
 	import Tooltip from '../common/Tooltip.svelte';
 
-	import { setDefaultModels } from '$lib/apis/configs';
 	import { updateUserSettings } from '$lib/apis/users';
-
 	const i18n = getContext('i18n');
 
 	export let selectedModels = [''];
@@ -34,22 +32,21 @@
 	}
 </script>
 
-<model-selector class="flex flex-col w-full items-start">
+<div class="flex flex-col w-full items-start">
 	{#each selectedModels as selectedModel, selectedModelIdx}
 		<div class="flex w-full max-w-fit">
 			<div class="overflow-hidden w-full">
-				<div style="--d:flex">
-					
+				<div class="mr-1 max-w-full">
 					<Selector
 						id={`${selectedModelIdx}`}
-						placeholder={$i18n.t('select an Assistant')}
+						placeholder={$i18n.t('Select a model')}
 						items={$models.map((model) => ({
 							value: model.id,
 							label: model.name,
 							model: model
 						}))}
 						showTemporaryChatControl={$user.role === 'user'
-							? ($config?.permissions?.chat?.temporary ?? true)
+							? ($user?.permissions?.chat?.temporary ?? true)
 							: true}
 						bind:value={selectedModel}
 					/>
@@ -111,12 +108,10 @@
 			{/if}
 		</div>
 	{/each}
-</model-selector>
+</div>
 
 {#if showSetDefault}
 	<div class=" absolute text-left mt-[1px] ml-1 text-[0.7rem] text-gray-500 font-primary">
-		<button on:click={saveDefaultModel} 
-			style="--b:none; --shadow:none; --p:0.1rem;"
-		> {$i18n.t('Set as default')}</button>
+		<button on:click={saveDefaultModel}> {$i18n.t('Set as default')}</button>
 	</div>
 {/if}

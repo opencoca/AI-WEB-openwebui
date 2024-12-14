@@ -22,7 +22,7 @@
 			console.log('Version is lower than required');
 			toast.error(
 				$i18n.t(
-					'Sage AI WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})',
+					'Open WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})',
 					{
 						OPEN_WEBUI_VERSION: WEBUI_VERSION,
 						REQUIRED_VERSION: manifest?.required_open_webui_version ?? '0.0.0'
@@ -36,7 +36,8 @@
 			id: data.id,
 			name: data.name,
 			meta: data.meta,
-			content: data.content
+			content: data.content,
+			access_control: data.access_control
 		}).catch((error) => {
 			toast.error(error);
 			return null;
@@ -53,7 +54,7 @@
 	onMount(() => {
 		window.addEventListener('message', async (event) => {
 			if (
-				!['https://Sage.Education', 'https://www.openwebui.com', 'http://localhost:9999'].includes(
+				!['https://openwebui.com', 'https://www.openwebui.com', 'http://localhost:9999'].includes(
 					event.origin
 				)
 			)
@@ -86,6 +87,7 @@
 			name={tool?.name ?? ''}
 			meta={tool?.meta ?? { description: '' }}
 			content={tool?.content ?? ''}
+			access_control={null}
 			{clone}
 			on:save={(e) => {
 				saveHandler(e.detail);

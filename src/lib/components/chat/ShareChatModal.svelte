@@ -30,8 +30,8 @@
 		const _chat = chat.chat;
 		console.log('share', _chat);
 
-		toast.success($i18n.t('Redirecting you to Sage.Education Community'));
-		const url = 'https://Sage.Education';
+		toast.success($i18n.t('Redirecting you to OpenWebUI Community'));
+		const url = 'https://openwebui.com';
 		// const url = 'http://localhost:5173';
 
 		const tab = await window.open(`${url}/chats/upload`, '_blank');
@@ -80,7 +80,7 @@
 	}
 </script>
 
-<Modal bind:show size="sm">
+<Modal bind:show size="md">
 	<div>
 		<div class=" flex justify-between dark:text-gray-300 px-5 pt-4 pb-0.5">
 			<div class=" text-lg font-medium self-center">{$i18n.t('Share Chat')}</div>
@@ -143,7 +143,7 @@
 										show = false;
 									}}
 								>
-									{$i18n.t('Share to Sage.Education Community')}
+									{$i18n.t('Share to OpenWebUI Community')}
 								</button>
 							{/if}
 

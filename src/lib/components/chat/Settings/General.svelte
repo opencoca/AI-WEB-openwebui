@@ -55,6 +55,7 @@
 		mirostat_tau: null,
 		top_k: null,
 		top_p: null,
+		min_p: null,
 		stop: null,
 		tfs_z: null,
 		num_ctx: null,
@@ -156,7 +157,7 @@
 </script>
 
 <div class="flex flex-col h-full justify-between text-sm">
-	<div class="  pr-1.5 overflow-y-scroll max-h-[25rem]">
+	<div class="  overflow-y-scroll max-h-[28rem] lg:max-h-full">
 		<div class="">
 			<div class=" mb-1 text-sm font-medium">{$i18n.t('WebUI Settings')}</div>
 
@@ -173,7 +174,7 @@
 						<option value="dark">🌑 {$i18n.t('Dark')}</option>
 						<option value="oled-dark">🌃 {$i18n.t('OLED Dark')}</option>
 						<option value="light">☀️ {$i18n.t('Light')}</option>
-						
+						<option value="her">🌷 Her</option>
 						<!-- <option value="rose-pine dark">🪻 {$i18n.t('Rosé Pine')}</option>
 						<option value="rose-pine-dawn light">🌷 {$i18n.t('Rosé Pine Dawn')}</option> -->
 					</select>
@@ -205,7 +206,7 @@
 						href="https://github.com/open-webui/open-webui/blob/main/docs/CONTRIBUTING.md#-translations-and-internationalization"
 						target="_blank"
 					>
-						Help us translate Sage AI WebUI!
+						Help us translate Open WebUI!
 					</a>
 				</div>
 			{/if}
@@ -222,9 +223,9 @@
 						type="button"
 					>
 						{#if notificationEnabled === true}
-							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
 						{:else}
-							<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
+							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -270,9 +271,9 @@
 							}}
 						>
 							{#if keepAlive === null}
-								<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Default')} </span>
+								<span class="ml-2 self-center"> {$i18n.t('Default')} </span>
 							{:else}
-								<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Custom')} </span>
+								<span class="ml-2 self-center"> {$i18n.t('Custom')} </span>
 							{/if}
 						</button>
 					</div>
@@ -300,7 +301,7 @@
 							}}
 						>
 							{#if requestFormat === ''}
-								<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('Default')} </span>
+								<span class="ml-2 self-center"> {$i18n.t('Default')} </span>
 							{:else if requestFormat === 'json'}
 								<!-- <svg
                             xmlns="http://www.w3.org/2000/svg"
@@ -312,7 +313,7 @@
                                 d="M10 2a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 2zM10 15a.75.75 0 01.75.75v1.5a.75.75 0 01-1.5 0v-1.5A.75.75 0 0110 15zM10 7a3 3 0 100 6 3 3 0 000-6zM15.657 5.404a.75.75 0 10-1.06-1.06l-1.061 1.06a.75.75 0 001.06 1.06l1.06-1.06zM6.464 14.596a.75.75 0 10-1.06-1.06l-1.06 1.06a.75.75 0 001.06 1.06l1.06-1.06zM18 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 0118 10zM5 10a.75.75 0 01-.75.75h-1.5a.75.75 0 010-1.5h1.5A.75.75 0 015 10zM14.596 15.657a.75.75 0 001.06-1.06l-1.06-1.061a.75.75 0 10-1.06 1.06l1.06 1.06zM5.404 6.464a.75.75 0 001.06-1.06l-1.06-1.06a.75.75 0 10-1.061 1.06l1.06 1.06z"
                             />
                         </svg> -->
-								<span style="--ff: 'Cormorant', serif; --weight: 400;"> {$i18n.t('JSON')} </span>
+								<span class="ml-2 self-center"> {$i18n.t('JSON')} </span>
 							{/if}
 						</button>
 					</div>
@@ -340,6 +341,7 @@
 						mirostat_tau: params.mirostat_tau !== null ? params.mirostat_tau : undefined,
 						top_k: params.top_k !== null ? params.top_k : undefined,
 						top_p: params.top_p !== null ? params.top_p : undefined,
+						min_p: params.min_p !== null ? params.min_p : undefined,
 						tfs_z: params.tfs_z !== null ? params.tfs_z : undefined,
 						num_ctx: params.num_ctx !== null ? params.num_ctx : undefined,
 						num_batch: params.num_batch !== null ? params.num_batch : undefined,

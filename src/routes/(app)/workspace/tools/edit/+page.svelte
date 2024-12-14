@@ -22,7 +22,7 @@
 			console.log('Version is lower than required');
 			toast.error(
 				$i18n.t(
-					'Sage AI WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})',
+					'Open WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})',
 					{
 						OPEN_WEBUI_VERSION: WEBUI_VERSION,
 						REQUIRED_VERSION: manifest?.required_open_webui_version ?? '0.0.0'
@@ -36,7 +36,8 @@
 			id: data.id,
 			name: data.name,
 			meta: data.meta,
-			content: data.content
+			content: data.content,
+			access_control: data.access_control
 		}).catch((error) => {
 			toast.error(error);
 			return null;
@@ -73,6 +74,7 @@
 		name={tool.name}
 		meta={tool.meta}
 		content={tool.content}
+		accessControl={tool.access_control}
 		on:save={(e) => {
 			saveHandler(e.detail);
 		}}

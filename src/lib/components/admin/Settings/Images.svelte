@@ -566,7 +566,7 @@
 
 						<div class="flex gap-2 mb-1">
 							<input
-								class="flex-1 w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
+								class="flex-1 w-full text-sm bg-transparent outline-none"
 								placeholder={$i18n.t('API Base URL')}
 								bind:value={config.openai.OPENAI_API_BASE_URL}
 								required
@@ -657,7 +657,7 @@
 			{$i18n.t('Save')}
 
 			{#if loading}
-				<div style="--ff: 'Cormorant', serif; --weight: 400;">
+				<div class="ml-2 self-center">
 					<svg
 						class=" w-4 h-4"
 						viewBox="0 0 24 24"

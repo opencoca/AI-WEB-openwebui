@@ -11,11 +11,11 @@
 
 <div>
 	<div class="flex w-full justify-between mb-1">
-		<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Knowledge')}</div>
+		<div class=" self-center text-sm font-semibold">{$i18n.t('Knowledge')}</div>
 	</div>
 
 	<div class=" text-xs dark:text-gray-500">
-		{$i18n.t('To attach knowledge base here, add them to the "Knowledge" Workshop first.')}
+		{$i18n.t('To attach knowledge base here, add them to the "Knowledge" workspace first.')}
 	</div>
 
 	<div class="flex flex-col">
@@ -53,7 +53,7 @@
 				}}
 			>
 				<button
-					class=" px-3.5 py-1.5 font-medium hover:bg-black/5 dark:hover:bg-white/5 outline outline-1 outline-gray-300 dark:outline-gray-800 rounded-3xl"
+					class=" px-3.5 py-1.5 font-medium hover:bg-black/5 dark:hover:bg-white/5 outline outline-1 outline-gray-100 dark:outline-gray-850 rounded-3xl"
 					type="button">{$i18n.t('Select Knowledge')}</button
 				>
 			</Selector>

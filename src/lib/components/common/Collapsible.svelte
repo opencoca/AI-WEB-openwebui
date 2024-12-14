@@ -12,7 +12,6 @@
 
 	export let open = false;
 	export let className = '';
-	export let style = '';
 	export let buttonClassName =
 		'w-fit text-gray-500 hover:text-gray-700 dark:hover:text-gray-300 transition';
 	export let title = null;
@@ -23,7 +22,7 @@
 	export let hide = false;
 </script>
 
-<div class={className} style={style}>
+<div class={className}>
 	{#if title !== null}
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
 		<!-- svelte-ignore a11y-click-events-have-key-events -->

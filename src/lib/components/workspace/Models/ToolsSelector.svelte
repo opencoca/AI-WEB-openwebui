@@ -24,11 +24,11 @@
 
 <div>
 	<div class="flex w-full justify-between mb-1">
-		<div style="--ff: 'Cormorant', serif; --weight: 700;">{$i18n.t('Tools')}</div>
+		<div class=" self-center text-sm font-semibold">{$i18n.t('Tools')}</div>
 	</div>
 
 	<div class=" text-xs dark:text-gray-500">
-		{$i18n.t('To select toolkits here, add them to the "Tools" Workshop first.')}
+		{$i18n.t('To select toolkits here, add them to the "Tools" workspace first.')}
 	</div>
 
 	<div class="flex flex-col">

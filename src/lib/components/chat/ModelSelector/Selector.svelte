@@ -27,9 +27,9 @@
 
 	export let id = '';
 	export let value = '';
-	export let placeholder = 'select an Assistant';
+	export let placeholder = 'Select a model';
 	export let searchEnabled = true;
-	export let searchPlaceholder = $i18n.t('Search for an assistant');
+	export let searchPlaceholder = $i18n.t('Search a model');
 
 	export let showTemporaryChatControl = false;
 
@@ -55,20 +55,18 @@
 	let selectedModelIdx = 0;
 
 	const fuse = new Fuse(
-		items
-			.filter((item) => !item.model?.info?.meta?.hidden)
-			.map((item) => {
-				const _item = {
-					...item,
-					modelName: item.model?.name,
-					tags: item.model?.info?.meta?.tags?.map((tag) => tag.name).join(' '),
-					desc: item.model?.info?.meta?.description
-				};
-				return _item;
-			}),
+		items.map((item) => {
+			const _item = {
+				...item,
+				modelName: item.model?.name,
+				tags: item.model?.info?.meta?.tags?.map((tag) => tag.name).join(' '),
+				desc: item.model?.info?.meta?.description
+			};
+			return _item;
+		}),
 		{
 			keys: ['value', 'tags', 'modelName'],
-			threshold: 0.3
+			threshold: 0.4
 		}
 	);
 
@@ -76,7 +74,7 @@
 		? fuse.search(searchValue).map((e) => {
 				return e.item;
 			})
-		: items.filter((item) => !item.model?.info?.meta?.hidden);
+		: items;
 
 	const pullModelHandler = async () => {
 		const sanitizedModelTag = searchValue.trim().replace(/^ollama\s+(run|pull)\s+/, '');
@@ -231,15 +229,14 @@
 	}}
 	closeFocus={false}
 >
-	<DropdownMenu.Trigger class="relative w-full font-primary" aria-label={placeholder}>
-		<div style="--d:flex; --shadow:none; --ff:Cormorant, serif;--weight:bold; --tt:capitalize"
-			class="{triggerClassName}"	
+	<DropdownMenu.Trigger
+		class="relative w-full font-primary"
+		aria-label={placeholder}
+		id="model-selector-{id}-button"
+	>
+		<div
+			class="flex w-full text-left px-0.5 outline-none bg-transparent truncate {triggerClassName} justify-between font-medium placeholder-gray-400 focus:outline-none"
 		>
-		<img
-		src={selectedModel.model?.info?.meta?.profile_image_url ?? '/static/favicon.png'}
-		alt="Model"
-		class="rounded-full size-5 flex items-center mr-2"
-	/>
 			{#if selectedModel}
 				{selectedModel.label}
 			{:else}
@@ -291,8 +288,7 @@
 				<hr class="border-gray-50 dark:border-gray-800" />
 			{/if}
 
-			<div class="px-3 my-2 max-h-64 overflow-y-auto scrollbar-hidden group model-list" 
-			style="--d: flex; --fd:column; gap:0.2rem; --w: 100%">
+			<div class="px-3 my-2 max-h-64 overflow-y-auto scrollbar-hidden group">
 				{#each filteredItems as item, index}
 					<button
 						aria-label="model-item"
@@ -324,12 +320,17 @@
 								<div class="flex items-center min-w-fit">
 									<div class="line-clamp-1">
 										<div class="flex items-center min-w-fit">
-											<img
-												src={item.model?.info?.meta?.profile_image_url ?? '/static/favicon.png'}
-												alt="Model"
-												class="rounded-full size-5 flex items-center mr-2"
-											/>
-											{item.label}
+											<Tooltip
+												content={$user?.role === 'admin' ? (item?.value ?? '') : ''}
+												placement="top-start"
+											>
+												<img
+													src={item.model?.info?.meta?.profile_image_url ?? '/static/favicon.png'}
+													alt="Model"
+													class="rounded-full size-5 flex items-center mr-2"
+												/>
+												{item.label}
+											</Tooltip>
 										</div>
 									</div>
 									{#if item.model.owned_by === 'ollama' && (item.model.ollama?.details?.parameter_size ?? '') !== ''}
@@ -440,14 +441,23 @@
 				{/each}
 
 				{#if !(searchValue.trim() in $MODEL_DOWNLOAD_POOL) && searchValue && ollamaVersion && $user.role === 'admin'}
-					<button
-						class="flex w-full font-medium line-clamp-1 select-none items-center rounded-button py-2 pl-3 pr-1.5 text-sm text-gray-700 dark:text-gray-100 outline-none transition-all duration-75 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer data-[highlighted]:bg-muted"
-						on:click={() => {
-							pullModelHandler();
-						}}
+					<Tooltip
+						content={$i18n.t(`Pull "{{searchValue}}" from Ollama.com`, {
+							searchValue: searchValue
+						})}
+						placement="top-start"
 					>
-						{$i18n.t(`Pull "{{searchValue}}" from Ollama.com`, { searchValue: searchValue })}
-					</button>
+						<button
+							class="flex w-full font-medium line-clamp-1 select-none items-center rounded-button py-2 pl-3 pr-1.5 text-sm text-gray-700 dark:text-gray-100 outline-none transition-all duration-75 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer data-[highlighted]:bg-muted"
+							on:click={() => {
+								pullModelHandler();
+							}}
+						>
+							<div class=" truncate">
+								{$i18n.t(`Pull "{{searchValue}}" from Ollama.com`, { searchValue: searchValue })}
+							</div>
+						</button>
+					</Tooltip>
 				{/if}
 
 				{#each Object.keys($MODEL_DOWNLOAD_POOL) as model}
@@ -576,14 +586,3 @@
 		</slot>
 	</DropdownMenu.Content>
 </DropdownMenu.Root>
-
-<style>
-	.scrollbar-hidden:active::-webkit-scrollbar-thumb,
-	.scrollbar-hidden:focus::-webkit-scrollbar-thumb,
-	.scrollbar-hidden:hover::-webkit-scrollbar-thumb {
-		visibility: visible;
-	}
-	.scrollbar-hidden::-webkit-scrollbar-thumb {
-		visibility: hidden;
-	}
-</style>
