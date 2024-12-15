@@ -26,6 +26,7 @@
 
 {#if loaded}
 	<div
+		style="--w-md:calc(100vw - 260px); --w:100vw;"
 		class=" flex flex-col w-full min-h-screen max-h-screen {$showSidebar
 			? 'md:max-w-[calc(100%-260px)]'
 			: ''}"
