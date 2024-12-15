@@ -50,11 +50,8 @@ class StorageProvider:
             raise RuntimeError("S3 Client is not initialized.")
 
         try:
-            self.s3_client.upload_file(file_path, self.bucket_name, filename)
-            return (
-                open(file_path, "rb").read(),
-                "s3://" + self.bucket_name + "/" + filename,
-            )
+            self.s3_client.upload_fileobj(file, self.bucket_name, filename)
+            return file.read(), f"s3://{self.bucket_name}/{filename}"
         except ClientError as e:
             raise RuntimeError(f"Error uploading file to S3: {e}")
 

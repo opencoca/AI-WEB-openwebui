@@ -38,8 +38,8 @@
 			</div>
 
 			<div class=" flex w-full">
-				<div
-					class="flex gap-1 scrollbar-none overflow-x-auto w-fit text-center text-sm font-medium rounded-full bg-transparent pt-1"
+				<div style="--ff:'Cormorant', serif; --weight:700; --size:1.2em"
+					class="flex gap-1 scrollbar-none overflow-x-auto w-fit text-center text-sm font-medium rounded-full bg-transparent py-1"
 				>
 					<a
 						class="min-w-fit rounded-full p-1.5 {['/playground', '/playground/'].includes(

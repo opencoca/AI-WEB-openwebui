@@ -13,20 +13,25 @@
 	let loaded = false;
 	let feedbacks = [];
 
+	const exportHandler = async () => {
+		const _feedbacks = await exportAllFeedbacks(localStorage.token).catch((err) => {
+			toast.error(err);
+			return null;
+		});
+
+		if (_feedbacks) {
+			let blob = new Blob([JSON.stringify(_feedbacks)], {
+				type: 'application/json'
+			});
+			saveAs(blob, `feedback-history-export-${Date.now()}.json`);
+		}
+	};
+
 	onMount(async () => {
 		feedbacks = await getAllFeedbacks(localStorage.token);
 		loaded = true;
 
-		const containerElement = document.getElementById('users-tabs-container');
-
-		if (containerElement) {
-			containerElement.addEventListener('wheel', function (event) {
-				if (event.deltaY !== 0) {
-					// Adjust horizontal scroll position based on vertical scroll
-					containerElement.scrollLeft += event.deltaY;
-				}
-			});
-		}
+		rankHandler();
 	});
 </script>
 

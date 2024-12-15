@@ -35,6 +35,7 @@
 		updateChatFolderIdById,
 		importChat
 	} from '$lib/apis/chats';
+
 	import { createNewFolder, getFolders, updateFolderParentIdById } from '$lib/apis/folders';
 	import { WEBUI_BASE_URL } from '$lib/constants';
 
@@ -409,67 +410,104 @@
         "
 	data-state={$showSidebar}
 >
-	<div
-		class="py-2 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 {$showSidebar
+	<sidebar-new-chat
+		style="
+--d: flex;
+--ai:center
+--jc:space-around;
+--mr:0.2em;
+--pt: 2ch;
+--pr: 0.8em;"
+	>
+		<a
+			id="sidebar-new-chat-button"
+			style="
+	--d: flex;
+	--w: 100%;
+	"
+			href="/"
+			draggable="false"
+			on:click={async () => {
+				selectedChatId = null;
+				await goto('/');
+				const newChatButton = document.getElementById('new-chat-button');
+				setTimeout(() => {
+					newChatButton?.click();
+					if ($mobile) {
+						showSidebar.set(false);
+					}
+				}, 0);
+			}}
+		>
+			<div class="self-center mx-1.5">
+				<img
+					style="
+			--h: 2em;
+			--h: 2em;
+			--br: 50%
+				"
+					crossorigin="anonymous"
+					src="/static/favicon.png"
+					alt="logo"
+				/>
+			</div>
+			<div class=" self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
+				{$i18n.t('Start New Sage Chat')}
+			</div>
+			<div
+				class="self-center"
+				style="
+			--ml:auto;
+			--mr:0.2rem;
+		"
+			>
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					viewBox="0 0 20 20"
+					fill="currentColor"
+					class="size-5"
+				>
+					<path
+						d="M5.433 13.917l1.262-3.155A4 4 0 017.58 9.42l6.92-6.918a2.121 2.121 0 013 3l-6.92 6.918c-.383.383-.84.685-1.343.886l-3.154 1.262a.5.5 0 01-.65-.65z"
+					/>
+					<path
+						d="M3.5 5.75c0-.69.56-1.25 1.25-1.25H10A.75.75 0 0010 3H4.75A2.75 2.75 0 002 5.75v9.5A2.75 2.75 0 004.75 18h9.5A2.75 2.75 0 0017 15.25V10a.75.75 0 00-1.5 0v5.25c0 .69-.56 1.25-1.25 1.25h-9.5c-.69 0-1.25-.56-1.25-1.25v-9.5z"
+					/>
+				</svg>
+			</div>
+		</a>
+
+		<button
+			class=" cursor-pointer px-2 py-2 flex rounded-lg hover:bg-gray-100 dark:hover:bg-gray-900 transition"
+			on:click={() => {
+				showSidebar.set(!$showSidebar);
+			}}
+		>
+			<div class=" m-auto self-center">
+				<svg
+					xmlns="http://www.w3.org/2000/svg"
+					fill="none"
+					viewBox="0 0 24 24"
+					stroke-width="2"
+					stroke="currentColor"
+					class="size-5"
+				>
+					<path
+						stroke-linecap="round"
+						stroke-linejoin="round"
+						d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
+					/>
+				</svg>
+			</div>
+		</button>
+	</sidebar-new-chat>
+
+	<sidebar-user-chats
+		style="--d: flex; --fd: column; --jc: flex-start; --maxh:calc(100dvh - 10ch)"
+		class="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 {$showSidebar
 			? ''
 			: 'invisible'}"
 	>
-		<div class="px-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
-			<a
-				id="sidebar-new-chat-button"
-				class="flex flex-1 rounded-lg px-2 py-1 h-full hover:bg-gray-100 dark:hover:bg-gray-900 transition"
-				href="/"
-				draggable="false"
-				on:click={async () => {
-					selectedChatId = null;
-					await goto('/');
-					const newChatButton = document.getElementById('new-chat-button');
-					setTimeout(() => {
-						newChatButton?.click();
-						if ($mobile) {
-							showSidebar.set(false);
-						}
-					}, 0);
-				}}
-			>
-				<div class="self-center mx-1.5">
-					<img
-						crossorigin="anonymous"
-						src="{WEBUI_BASE_URL}/static/favicon.png"
-						class=" size-5 -translate-x-1.5 rounded-full"
-						alt="logo"
-					/>
-				</div>
-				<div class=" self-center font-medium text-sm text-gray-850 dark:text-white font-primary">
-					{$i18n.t('New Chat')}
-				</div>
-			</a>
-
-			<button
-				class=" cursor-pointer p-[7px] flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-900 transition"
-				on:click={() => {
-					showSidebar.set(!$showSidebar);
-				}}
-			>
-				<div class=" m-auto self-center">
-					<svg
-						xmlns="http://www.w3.org/2000/svg"
-						fill="none"
-						viewBox="0 0 24 24"
-						stroke-width="2"
-						stroke="currentColor"
-						class="size-5"
-					>
-						<path
-							stroke-linecap="round"
-							stroke-linejoin="round"
-							d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25H12"
-						/>
-					</svg>
-				</div>
-			</button>
-		</div>
-
 		{#if $user?.role === 'admin' || $user?.permissions?.workspace?.models || $user?.permissions?.workspace?.knowledge || $user?.permissions?.workspace?.prompts || $user?.permissions?.workspace?.tools}
 			<div class="px-1.5 flex justify-center text-gray-800 dark:text-gray-200">
 				<a
@@ -800,7 +838,7 @@
 				{/if}
 			</div>
 		</div>
-	</div>
+	</sidebar-user-chats>
 </div>
 
 <style>

@@ -24,13 +24,10 @@
 		TASK_MODEL: '',
 		TASK_MODEL_EXTERNAL: '',
 		TITLE_GENERATION_PROMPT_TEMPLATE: '',
-		ENABLE_AUTOCOMPLETE_GENERATION: true,
-		AUTOCOMPLETE_GENERATION_INPUT_MAX_LENGTH: -1,
-		TAGS_GENERATION_PROMPT_TEMPLATE: '',
+		TAG_GENERATION_PROMPT_TEMPLATE: '',
 		ENABLE_TAGS_GENERATION: true,
-		ENABLE_SEARCH_QUERY_GENERATION: true,
-		ENABLE_RETRIEVAL_QUERY_GENERATION: true,
-		QUERY_GENERATION_PROMPT_TEMPLATE: ''
+		ENABLE_SEARCH_QUERY: true,
+		SEARCH_QUERY_GENERATION_PROMPT_TEMPLATE: ''
 	};
 
 	let promptSuggestions = [];
@@ -142,62 +139,31 @@
 
 				<hr class=" border-gray-50 dark:border-gray-850 my-3" />
 
-				<div class="my-3 flex w-full items-center justify-between">
-					<div class=" self-center text-xs font-medium">
-						{$i18n.t('Autocomplete Generation')}
-					</div>
-
-					<Tooltip content={$i18n.t('Enable autocomplete generation for chat messages')}>
-						<Switch bind:state={taskConfig.ENABLE_AUTOCOMPLETE_GENERATION} />
-					</Tooltip>
+			<div class="my-3 flex w-full items-center justify-between">
+				<div class=" self-center text-xs font-medium">
+					{$i18n.t('Enable Tags Generation')}
 				</div>
 
-				{#if taskConfig.ENABLE_AUTOCOMPLETE_GENERATION}
-					<div class="mt-3">
-						<div class=" mb-2.5 text-xs font-medium">
-							{$i18n.t('Autocomplete Generation Input Max Length')}
-						</div>
-
-						<Tooltip
-							content={$i18n.t('Character limit for autocomplete generation input')}
-							placement="top-start"
-						>
-							<input
-								class="w-full outline-none bg-transparent"
-								bind:value={taskConfig.AUTOCOMPLETE_GENERATION_INPUT_MAX_LENGTH}
-								placeholder={$i18n.t('-1 for no limit, or a positive integer for a specific limit')}
-							/>
-						</Tooltip>
-					</div>
-				{/if}
-
-				<hr class=" border-gray-50 dark:border-gray-850 my-3" />
-
-				<div class="my-3 flex w-full items-center justify-between">
-					<div class=" self-center text-xs font-medium">
-						{$i18n.t('Tags Generation')}
-					</div>
-
-					<Switch bind:state={taskConfig.ENABLE_TAGS_GENERATION} />
-				</div>
+				<Switch bind:state={taskConfig.ENABLE_TAGS_GENERATION} />
+			</div>
 
 				{#if taskConfig.ENABLE_TAGS_GENERATION}
 					<div class="mt-3">
 						<div class=" mb-2.5 text-xs font-medium">{$i18n.t('Tags Generation Prompt')}</div>
 
-						<Tooltip
-							content={$i18n.t('Leave empty to use the default prompt, or enter a custom prompt')}
-							placement="top-start"
-						>
-							<Textarea
-								bind:value={taskConfig.TAGS_GENERATION_PROMPT_TEMPLATE}
-								placeholder={$i18n.t(
-									'Leave empty to use the default prompt, or enter a custom prompt'
-								)}
-							/>
-						</Tooltip>
-					</div>
-				{/if}
+					<Tooltip
+						content={$i18n.t('Leave empty to use the default prompt, or enter a custom prompt')}
+						placement="top-start"
+					>
+						<Textarea
+							bind:value={taskConfig.TAG_GENERATION_PROMPT_TEMPLATE}
+							placeholder={$i18n.t(
+								'Leave empty to use the default prompt, or enter a custom prompt'
+							)}
+						/>
+					</Tooltip>
+				</div>
+			{/if}
 
 				<hr class=" border-gray-50 dark:border-gray-850 my-3" />
 

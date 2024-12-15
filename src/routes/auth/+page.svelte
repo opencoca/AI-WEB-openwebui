@@ -16,9 +16,6 @@
 	import Spinner from '$lib/components/common/Spinner.svelte';
 	import OnBoarding from '$lib/components/OnBoarding.svelte';
 
-	$: currentUrl = $page.url.host; // Extracts the hostname without protocol or path
-
-
 	const i18n = getContext('i18n');
 
 	let loaded = false;
@@ -28,7 +25,6 @@
 	let name = '';
 	let email = '';
 	let password = '';
-	let showPassword = false;
 
 	let ldapUsername = '';
 
@@ -130,10 +126,6 @@
 	<title>
 		{`${$WEBUI_NAME}`}
 	</title>
-	<link
-		rel="stylesheet"
-		href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-	/>
 </svelte:head>
 
 <OnBoarding

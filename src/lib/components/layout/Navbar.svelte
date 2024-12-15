@@ -49,7 +49,7 @@
 		class=" bg-gradient-to-b via-50% from-white via-white to-transparent dark:from-gray-900 dark:via-gray-900 dark:to-transparent pointer-events-none absolute inset-0 -bottom-7 z-[-1] blur"
 	></div>
 
-	<div class=" flex max-w-full w-full mx-auto px-1 pt-0.5 bg-transparent">
+	<div style="--d:flex;--w: 100%;--m:0.8em;	--mb:2em">
 		<div class="flex items-center w-full max-w-full">
 			<div
 				class="{$showSidebar
