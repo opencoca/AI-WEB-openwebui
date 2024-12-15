@@ -749,6 +749,7 @@
 		<div class="flex justify-center items-center flex-1 h-full w-full max-h-full">
 			{#if !camera}
 				<button
+					style="--br:50%;"
 					type="button"
 					on:click={() => {
 						if (assistantSpeaking) {
