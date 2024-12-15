@@ -503,7 +503,7 @@
 	</sidebar-new-chat>
 
 	<sidebar-user-chats
-		style="--d: flex; --fd: column; --jc: flex-start; --maxh:calc(100dvh - 10ch)"
+		style="--d: flex; --fd: column; --jc: flex-start; --maxh:calc(100dvh - 7ch)"
 		class="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 {$showSidebar
 			? ''
 			: 'invisible'}"
@@ -558,7 +558,12 @@
 				placeholder={$i18n.t('Search')}
 			/>
 
-			<div class="absolute z-40 right-3.5 top-1">
+			<div
+				style="    --w: 100%;
+							--d: flex;
+							--fd: row;
+							--jc: center;"
+			>
 				<Tooltip content={$i18n.t('New folder')}>
 					<button
 						class="p-1 rounded-lg bg-gray-50 hover:bg-gray-100 dark:bg-gray-950 dark:hover:bg-gray-900 transition"

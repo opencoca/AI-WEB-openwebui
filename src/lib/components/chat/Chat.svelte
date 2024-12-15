@@ -2189,8 +2189,9 @@
 
 {#if !chatIdProp || (loaded && chatIdProp)}
 	<div
+		style="--h:100vh; --maxh:100dvh; --d:flex; --fd:column;"
 		class="h-screen max-h-[100dvh] {$showSidebar
-			? 'md:max-w-[calc(100%-260px)]'
+			? 'md:max-w-[calc(100vw-360px)]'
 			: ''} w-full max-w-full flex flex-col"
 		id="chat-container"
 	>

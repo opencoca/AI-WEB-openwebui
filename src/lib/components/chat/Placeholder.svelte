@@ -117,6 +117,8 @@
 									on:click={() => {
 										selectedModelIdx = modelIdx;
 									}}
+
+									style="--br:50%"
 								>
 									<img
 										crossorigin="anonymous"

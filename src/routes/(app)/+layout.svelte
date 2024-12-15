@@ -231,7 +231,7 @@
 	</div>
 {/if}
 
-<div class="app relative">
+<div class="app relative" style="--w:100%">
 	<div
 		class=" text-gray-700 dark:text-gray-100 bg-white dark:bg-gray-900 h-screen max-h-[100dvh] overflow-auto flex flex-row"
 	>
