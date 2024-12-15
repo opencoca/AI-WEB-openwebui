@@ -80,7 +80,7 @@
 				{/if}
 			</div>
 
-			<div style="gap:0.1em" class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
+			<div class="self-start flex flex-none items-center text-gray-600 dark:text-gray-400">
 				<!-- <div class="md:hidden flex self-center w-[1px] h-5 mx-2 bg-gray-300 dark:bg-stone-700" /> -->
 				{#if shareEnabled && chat && (chat.id || $temporaryChatEnabled)}
 					<Menu
@@ -115,9 +115,23 @@
 							</div>
 						</button>
 					</Menu>
+				{:else if $mobile}
+					<Tooltip content={$i18n.t('Controls')}>
+						<button
+							class=" flex cursor-pointer px-2 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-850 transition"
+							on:click={async () => {
+								await showControls.set(!$showControls);
+							}}
+							aria-label="Controls"
+						>
+							<div class=" m-auto self-center">
+								<AdjustmentsHorizontal className=" size-5" strokeWidth="0.5" />
+							</div>
+						</button>
+					</Tooltip>
 				{/if}
 
-				{#if !$mobile && $user.role === 'admin'}
+				{#if !$mobile}
 					<Tooltip content={$i18n.t('Controls')}>
 						<button
 							class=" flex cursor-pointer px-2 py-2 rounded-xl hover:bg-gray-50 dark:hover:bg-gray-850 transition"
@@ -136,14 +150,13 @@
 				<Tooltip content={$i18n.t('New Chat')}>
 					<button
 						id="new-chat-button"
-						style="--b:none"
 						class=" flex {$showSidebar
 							? 'md:hidden'
 							: ''} cursor-pointer px-2 py-2 rounded-xl text-gray-600 dark:text-gray-400 hover:bg-gray-50 dark:hover:bg-gray-850 transition"
 						on:click={() => {
 							initNewChat();
 						}}
-						aria-label="Start New Chat"
+						aria-label="New Chat"
 					>
 						<div class=" m-auto self-center">
 							<PencilSquare className=" size-5" strokeWidth="2" />

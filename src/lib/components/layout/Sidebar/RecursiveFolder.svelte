@@ -408,6 +408,7 @@
 							}}
 							on:keydown={(e) => {
 								if (e.key === 'Enter') {
+									nameUpdateHandler();
 									edit = false;
 								}
 							}}
@@ -419,7 +420,6 @@
 				</div>
 
 				<button
-					style="--mr:2em"
 					class="absolute z-10 right-2 invisible group-hover:visible self-center flex items-center dark:text-gray-300"
 					on:pointerup={(e) => {
 						e.stopPropagation();

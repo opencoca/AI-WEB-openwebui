@@ -5,11 +5,7 @@
 
 	import { models, settings } from '$lib/stores';
 	import { user as _user } from '$lib/stores';
-	import {
-		copyToClipboard as _copyToClipboard,
-		processResponseContent,
-		replaceTokens
-	} from '$lib/utils';
+	import { copyToClipboard as _copyToClipboard } from '$lib/utils';
 
 	import Name from './Name.svelte';
 	import ProfileImage from './ProfileImage.svelte';
@@ -83,7 +79,7 @@
 	};
 
 	onMount(() => {
-		console.log('UserMessage mounted');
+		// console.log('UserMessage mounted');
 	});
 </script>
 
@@ -129,7 +125,7 @@
 					{#each message.files as file}
 						<div class={($settings?.chatBubble ?? true) ? 'self-end' : ''}>
 							{#if file.type === 'image'}
-								<Image src={file.url} imageClassName=" max-h-96 rounded-lg"  />
+								<Image src={file.url} imageClassName=" max-h-96 rounded-lg" />
 							{:else}
 								<FileItem
 									item={file}

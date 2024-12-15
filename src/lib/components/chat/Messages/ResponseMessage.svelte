@@ -64,7 +64,7 @@
 		};
 		done: boolean;
 		error?: boolean | { content: string };
-		citations?: string[];
+		sources?: string[];
 		code_executions?: {
 			uuid: string;
 			name: string;
@@ -340,19 +340,16 @@
 
 	let feedbackLoading = false;
 
-	const feedbackHandler = async (
-		rating: number | null = null,
-		annotation: object | null = null
-	) => {
+	const feedbackHandler = async (rating: number | null = null, details: object | null = null) => {
 		feedbackLoading = true;
-		console.log('Feedback', rating, annotation);
+		console.log('Feedback', rating, details);
 
 		const updatedMessage = {
 			...message,
 			annotation: {
 				...(message?.annotation ?? {}),
 				...(rating !== null ? { rating: rating } : {}),
-				...(annotation ? annotation : {})
+				...(details ? details : {})
 			}
 		};
 
@@ -429,7 +426,7 @@
 
 		await tick();
 
-		if (!annotation) {
+		if (!details) {
 			showRateComment = true;
 
 			if (!updatedMessage.annotation?.tags) {
@@ -468,7 +465,7 @@
 	}
 
 	onMount(async () => {
-		console.log('ResponseMessage mounted');
+		// console.log('ResponseMessage mounted');
 
 		await tick();
 	});
@@ -520,7 +517,7 @@
 							{@const status = (
 								message?.statusHistory ?? [...(message?.status ? [message?.status] : [])]
 							).at(-1)}
-							<div class="status-description flex items-center gap-2 pt-0.5 pb-1">
+							<div class="status-description flex items-center gap-2 py-0.5">
 								{#if status?.done === false}
 									<div class="">
 										<Spinner className="size-4" />
@@ -624,9 +621,18 @@
 									<ContentRenderer
 										id={message.id}
 										content={message.content}
+										sources={message.sources}
 										floatingButtons={message?.done}
 										save={!readOnly}
 										{model}
+										onSourceClick={(e) => {
+											console.log(e);
+											const sourceButton = document.getElementById(`source-${e}`);
+
+											if (sourceButton) {
+												sourceButton.click();
+											}
+										}}
 										on:update={(e) => {
 											const { raw, oldContent, newContent } = e.detail;
 
@@ -652,12 +658,12 @@
 									/>
 								{/if}
 
-								{#if message.error}
+								{#if message?.error}
 									<Error content={message?.error?.content ?? message.content} />
 								{/if}
 
-								{#if message.citations}
-									<Citations citations={message.citations} />
+								{#if (message?.sources || message?.citations) && (model?.info?.meta?.capabilities?.citations ?? true)}
+									<Citations sources={message?.sources ?? message?.citations} />
 								{/if}
 
 								{#if message.code_executions}
@@ -671,12 +677,11 @@
 				{#if !edit}
 					{#if message.done || siblings.length > 1}
 						<div
-							class="message-actions"
-							style="--d:flex;--mt:0.1rem; gap:0.1rem; "
+							class=" flex justify-start overflow-x-auto buttons text-gray-600 dark:text-gray-500 mt-0.5"
 						>
 							{#if siblings.length > 1}
 								<div class="flex self-center min-w-fit" dir="ltr">
-									<button style="--b:none; --shadow:none; --p:0.1rem;"
+									<button
 										class="self-center p-1 hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
 										on:click={() => {
 											showPreviousMessage(message);
@@ -704,7 +709,7 @@
 										{siblings.indexOf(message.id) + 1}/{siblings.length}
 									</div>
 
-									<button  style="--b:none; --shadow:none; --p:0.1rem;"
+									<button
 										class="self-center p-1 hover:bg-black/5 dark:hover:bg-white/5 dark:hover:text-white hover:text-black rounded-md transition"
 										on:click={() => {
 											showNextMessage(message);
@@ -730,7 +735,7 @@
 
 							{#if message.done}
 								{#if !readOnly}
-									{#if $user.role === 'user' ? ($config?.permissions?.chat?.editing ?? true) : true}
+									{#if $user.role === 'user' ? ($user?.permissions?.chat?.edit ?? true) : true}
 										<Tooltip content={$i18n.t('Edit')} placement="bottom">
 											<button
 												class="{isLastMessage
@@ -1126,19 +1131,17 @@
 												showRateComment = false;
 												regenerateResponse(message);
 
-												(model?.actions ?? [])
-													.filter((action) => action?.__webui__ ?? false)
-													.forEach((action) => {
-														dispatch('action', {
-															id: action.id,
-															event: {
-																id: 'regenerate-response',
-																data: {
-																	messageId: message.id
-																}
+												(model?.actions ?? []).forEach((action) => {
+													dispatch('action', {
+														id: action.id,
+														event: {
+															id: 'regenerate-response',
+															data: {
+																messageId: message.id
 															}
-														});
+														}
 													});
+												});
 											}}
 										>
 											<svg
@@ -1167,7 +1170,7 @@
 														? 'visible'
 														: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
 													on:click={() => {
-														actionMessage(action.id);
+														actionMessage(action.id, message);
 													}}
 												>
 													{#if action.icon_url}
@@ -1197,9 +1200,7 @@
 							bind:show={showRateComment}
 							on:save={async (e) => {
 								await feedbackHandler(null, {
-									tags: e.detail.tags,
-									comment: e.detail.comment,
-									reason: e.detail.reason
+									...e.detail
 								});
 							}}
 						/>

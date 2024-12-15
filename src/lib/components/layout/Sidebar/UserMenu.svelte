@@ -36,11 +36,6 @@
 			side="bottom"
 			align="start"
 			transition={(e) => fade(e, { duration: 100 })}
-			style="
-			    --d: flex;
-				--fd: column;
-				gap: 0.2em;
-				"
 		>
 			<button
 				class="flex rounded-md py-2 px-3 w-full hover:bg-gray-50 dark:hover:bg-gray-800 transition"
@@ -95,10 +90,10 @@
 			</button>
 
 			{#if role === 'admin'}
-				<button
+				<a
 					class="flex rounded-md py-2 px-3 w-full hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+					href="/playground"
 					on:click={() => {
-						goto('/playground');
 						show = false;
 
 						if ($mobile) {
@@ -123,12 +118,12 @@
 						</svg>
 					</div>
 					<div class=" self-center truncate">{$i18n.t('Playground')}</div>
-				</button>
+				</a>
 
-				<button
+				<a
 					class="flex rounded-md py-2 px-3 w-full hover:bg-gray-50 dark:hover:bg-gray-800 transition"
+					href="/admin"
 					on:click={() => {
-						goto('/admin');
 						show = false;
 
 						if ($mobile) {
@@ -153,7 +148,7 @@
 						</svg>
 					</div>
 					<div class=" self-center truncate">{$i18n.t('Admin Panel')}</div>
-				</button>
+				</a>
 			{/if}
 
 			<hr class=" border-gray-50 dark:border-gray-850 my-1 p-0" />

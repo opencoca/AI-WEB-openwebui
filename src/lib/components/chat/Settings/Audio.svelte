@@ -98,7 +98,7 @@
 		dispatch('save');
 	}}
 >
-	<div class=" space-y-3 pr-1.5 overflow-y-scroll max-h-[25rem]">
+	<div class=" space-y-3 overflow-y-scroll max-h-[28rem] lg:max-h-full">
 		<div>
 			<div class=" mb-1 text-sm font-medium">{$i18n.t('STT Settings')}</div>
 
@@ -131,9 +131,9 @@
 					type="button"
 				>
 					{#if speechAutoSend === true}
-						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
+						<span class="ml-2 self-center">{$i18n.t('On')}</span>
 					{:else}
-						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
+						<span class="ml-2 self-center">{$i18n.t('Off')}</span>
 					{/if}
 				</button>
 			</div>
@@ -153,9 +153,9 @@
 					type="button"
 				>
 					{#if responseAutoPlayback === true}
-						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('On')}</span>
+						<span class="ml-2 self-center">{$i18n.t('On')}</span>
 					{:else}
-						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Off')}</span>
+						<span class="ml-2 self-center">{$i18n.t('Off')}</span>
 					{/if}
 				</button>
 			</div>

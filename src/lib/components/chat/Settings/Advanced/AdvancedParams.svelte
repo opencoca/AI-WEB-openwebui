@@ -1151,9 +1151,9 @@
 					}}
 				>
 					{#if (params?.template ?? null) === null}
-						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Default')}</span>
+						<span class="ml-2 self-center">{$i18n.t('Default')}</span>
 					{:else}
-						<span style="--ff: 'Cormorant', serif; --weight: 400;">{$i18n.t('Custom')}</span>
+						<span class="ml-2 self-center">{$i18n.t('Custom')}</span>
 					{/if}
 				</button>
 			</div>

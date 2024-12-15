@@ -3,17 +3,16 @@
 	export let placeholder = '';
 	export let required = true;
 	export let readOnly = false;
-	export let outerClassName = 'flex flex-1';
+	export let outerClassName = 'flex flex-1 bg-transparent';
 	export let inputClassName =
-		'w-full rounded-l-lg py-2 pl-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none';
-	export let showButtonClassName = '';
+		'w-full text-sm py-0.5 placeholder:text-gray-300 dark:placeholder:text-gray-700 bg-transparent outline-none';
+	export let showButtonClassName = 'pl-1.5  transition bg-transparent';
 
 	let show = false;
 </script>
 
 <div class={outerClassName}>
 	<input
-		style="--m:0.6em"
 		class={`${inputClassName} ${show ? '' : 'password'}`}
 		{placeholder}
 		bind:value
@@ -23,7 +22,6 @@
 		type="text"
 	/>
 	<button
-		style="--shadow:0; --b:none"
 		class={showButtonClassName}
 		on:click={(e) => {
 			e.preventDefault();
@@ -35,7 +33,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 16 16"
 				fill="currentColor"
-				class="w-4 h-4"
+				class="size-4"
 			>
 				<path
 					fill-rule="evenodd"
@@ -51,7 +49,7 @@
 				xmlns="http://www.w3.org/2000/svg"
 				viewBox="0 0 16 16"
 				fill="currentColor"
-				class="w-4 h-4"
+				class="size-4"
 			>
 				<path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z" />
 				<path

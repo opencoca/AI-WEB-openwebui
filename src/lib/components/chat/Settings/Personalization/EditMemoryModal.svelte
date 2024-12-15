@@ -101,7 +101,7 @@
 							{$i18n.t('Update')}
 
 							{#if loading}
-								<div style="--ff: 'Cormorant', serif; --weight: 400;">
+								<div class="ml-2 self-center">
 									<svg
 										class=" w-4 h-4"
 										viewBox="0 0 24 24"

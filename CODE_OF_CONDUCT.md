@@ -35,9 +35,9 @@ Community leaders will enforce these rules. They will act on bad behavior.
 
 These rules apply everywhere in our community. If you represent us, they apply to you.
 
-## Enforcement
+## Reporting Violations
 
-Report issues to hello@openwebui.com. We will act promptly.
+Report issues to hello@startr.cloud – We will act.
 
 We will protect your privacy.
 

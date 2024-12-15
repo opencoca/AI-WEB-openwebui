@@ -19,7 +19,7 @@
 	} from '$lib/apis/retrieval';
 
 	import { knowledge, models } from '$lib/stores';
-	import { getKnowledgeItems } from '$lib/apis/knowledge';
+	import { getKnowledgeBases } from '$lib/apis/knowledge';
 	import { uploadDir, deleteAllFiles, deleteFileById } from '$lib/apis/files';
 
 	import ResetUploadDirConfirmDialog from '$lib/components/common/ConfirmDialog.svelte';
@@ -56,8 +56,11 @@
 	let chunkOverlap = 0;
 	let pdfExtractImages = true;
 
-	let OpenAIKey = '';
 	let OpenAIUrl = '';
+	let OpenAIKey = '';
+
+	let OllamaUrl = '';
+	let OllamaKey = '';
 
 	let querySettings = {
 		template: '',
@@ -104,19 +107,15 @@
 		const res = await updateEmbeddingConfig(localStorage.token, {
 			embedding_engine: embeddingEngine,
 			embedding_model: embeddingModel,
-			...(embeddingEngine === 'openai' || embeddingEngine === 'ollama'
-				? {
-						embedding_batch_size: embeddingBatchSize
-					}
-				: {}),
-			...(embeddingEngine === 'openai'
-				? {
-						openai_config: {
-							key: OpenAIKey,
-							url: OpenAIUrl
-						}
-					}
-				: {})
+			embedding_batch_size: embeddingBatchSize,
+			ollama_config: {
+				key: OllamaKey,
+				url: OllamaUrl
+			},
+			openai_config: {
+				key: OpenAIKey,
+				url: OpenAIUrl
+			}
 		}).catch(async (error) => {
 			toast.error(error);
 			await setEmbeddingConfig();
@@ -206,6 +205,9 @@
 
 			OpenAIKey = embeddingConfig.openai_config.key;
 			OpenAIUrl = embeddingConfig.openai_config.url;
+
+			OllamaKey = embeddingConfig.ollama_config.key;
+			OllamaUrl = embeddingConfig.ollama_config.url;
 		}
 	};
 
@@ -310,9 +312,9 @@
 			</div>
 
 			{#if embeddingEngine === 'openai'}
-				<div class="my-0.5 flex gap-2">
+				<div class="my-0.5 flex gap-2 pr-2">
 					<input
-						class="flex-1 w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
+						class="flex-1 w-full rounded-lg text-sm bg-transparent outline-none"
 						placeholder={$i18n.t('API Base URL')}
 						bind:value={OpenAIUrl}
 						required
@@ -320,7 +322,23 @@
 
 					<SensitiveInput placeholder={$i18n.t('API Key')} bind:value={OpenAIKey} />
 				</div>
+			{:else if embeddingEngine === 'ollama'}
+				<div class="my-0.5 flex gap-2 pr-2">
+					<input
+						class="flex-1 w-full rounded-lg text-sm bg-transparent outline-none"
+						placeholder={$i18n.t('API Base URL')}
+						bind:value={OllamaUrl}
+						required
+					/>
+
+					<SensitiveInput
+						placeholder={$i18n.t('API Key')}
+						bind:value={OllamaKey}
+						required={false}
+					/>
+				</div>
 			{/if}
+
 			{#if embeddingEngine === 'ollama' || embeddingEngine === 'openai'}
 				<div class="flex mt-0.5 space-x-2">
 					<div class=" self-center text-xs font-medium">{$i18n.t('Embedding Batch Size')}</div>
@@ -359,9 +377,9 @@
 					type="button"
 				>
 					{#if querySettings.hybrid === true}
-						<span style="--weight: 400;">{$i18n.t('On')}</span>
+						<span class="ml-2 self-center">{$i18n.t('On')}</span>
 					{:else}
-						<span style="--weight: 400;">{$i18n.t('Off')}</span>
+						<span class="ml-2 self-center">{$i18n.t('Off')}</span>
 					{/if}
 				</button>
 			</div>
@@ -376,19 +394,12 @@
 			{#if embeddingEngine === 'ollama'}
 				<div class="flex w-full">
 					<div class="flex-1 mr-2">
-						<select
+						<input
 							class="w-full rounded-lg py-2 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
 							bind:value={embeddingModel}
-							placeholder={$i18n.t('select an Assistant')}
+							placeholder={$i18n.t('Set embedding model')}
 							required
-						>
-							{#if !embeddingModel}
-								<option value="" disabled selected>{$i18n.t('select an Assistant')}</option>
-							{/if}
-							{#each $models.filter((m) => m.id && m.ollama && !(m?.preset ?? false)) as model}
-								<option value={model.id} class="bg-gray-50 dark:bg-gray-700">{model.name}</option>
-							{/each}
-						</select>
+						/>
 					</div>
 				</div>
 			{:else}
@@ -751,128 +762,6 @@
 							/>
 						</Tooltip>
 					</div>
-				</div>
-			</div>
-		</div>
-
-		<hr class=" dark:border-gray-850" />
-
-		<div class=" ">
-			<div class=" text-sm font-medium">{$i18n.t('Query Params')}</div>
-
-			<div class=" flex gap-1">
-				<div class="  flex w-full justify-between">
-					<div class="self-center text-xs font-medium min-w-fit">{$i18n.t('Top K')}</div>
-
-					<div class="self-center p-3">
-						<input
-							class=" w-full rounded-lg py-1.5 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
-							type="number"
-							placeholder={$i18n.t('Enter Top K')}
-							bind:value={querySettings.k}
-							autocomplete="off"
-							min="0"
-						/>
-					</div>
-				</div>
-
-				{#if querySettings.hybrid === true}
-					<div class="  flex w-full justify-between">
-						<div class=" self-center text-xs font-medium min-w-fit">
-							{$i18n.t('Minimum Score')}
-						</div>
-
-						<div class="self-center p-3">
-							<input
-								class=" w-full rounded-lg py-1.5 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
-								type="number"
-								step="0.01"
-								placeholder={$i18n.t('Enter Score')}
-								bind:value={querySettings.r}
-								autocomplete="off"
-								min="0.0"
-								title={$i18n.t('The score should be a value between 0.0 (0%) and 1.0 (100%).')}
-							/>
-						</div>
-					</div>
-				{/if}
-			</div>
-
-			{#if querySettings.hybrid === true}
-				<div class="mt-2 mb-1 text-xs text-gray-400 dark:text-gray-500">
-					{$i18n.t(
-						'Note: If you set a minimum score, the search will only return documents with a score greater than or equal to the minimum score.'
-					)}
-				</div>
-
-				<hr class=" dark:border-gray-850 my-3" />
-			{/if}
-
-			<div>
-				<div class=" mb-2.5 text-sm font-medium">{$i18n.t('RAG Template')}</div>
-				<Tooltip
-					content={$i18n.t('Leave empty to use the default prompt, or enter a custom prompt')}
-					placement="top-start"
-				>
-					<textarea
-						bind:value={querySettings.template}
-						placeholder={$i18n.t('Leave empty to use the default prompt, or enter a custom prompt')}
-						class="w-full rounded-lg px-4 py-3 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none resize-none"
-						rows="4"
-					/>
-				</Tooltip>
-			</div>
-		</div>
-
-		<hr class=" dark:border-gray-850" />
-
-		<div class=" ">
-			<div class=" text-sm font-medium">{$i18n.t('Chunk Params')}</div>
-
-			<div class=" my-2 flex gap-1.5">
-				<div class="  w-full justify-between">
-					<div class="self-center text-xs font-medium min-w-fit mb-1">{$i18n.t('Chunk Size')}</div>
-					<div class="self-center">
-						<input
-							class=" w-full rounded-lg py-1.5 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
-							type="number"
-							placeholder={$i18n.t('Enter Chunk Size')}
-							bind:value={chunkSize}
-							autocomplete="off"
-							min="0"
-						/>
-					</div>
-				</div>
-
-				<div class="w-full">
-					<div class=" self-center text-xs font-medium min-w-fit mb-1">
-						{$i18n.t('Chunk Overlap')}
-					</div>
-
-					<div class="self-center">
-						<input
-							class="w-full rounded-lg py-1.5 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-none"
-							type="number"
-							placeholder={$i18n.t('Enter Chunk Overlap')}
-							bind:value={chunkOverlap}
-							autocomplete="off"
-							min="0"
-						/>
-					</div>
-				</div>
-			</div>
-
-			<div class="my-3">
-				<div class="flex justify-between items-center text-xs">
-					<div class=" text-xs font-medium">{$i18n.t('PDF Extract Images (OCR)')}</div>
-
-					<button
-						style="--p: 0.6em 1em; --d: flex; --br:1em; --b:none"	
-						type="button"
-						on:click={() => {
-							pdfExtractImages = !pdfExtractImages;
-						}}><span style="--weight: 400;">{pdfExtractImages ? $i18n.t('On') : $i18n.t('Off')}</span></button
-					>
 				</div>
 			</div>
 		</div>

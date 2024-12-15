@@ -51,7 +51,10 @@
 						>
 							<img
 								crossorigin="anonymous"
-								src="/static/favicon.png"
+								src={model?.info?.meta?.profile_image_url ??
+									($i18n.language === 'dg-DG'
+										? `/doge.png`
+										: `${WEBUI_BASE_URL}/static/favicon.png`)}
 								class=" size-[2.7rem] rounded-full border-[1px] border-gray-200 dark:border-none"
 								alt="logo"
 								draggable="false"
@@ -82,7 +85,7 @@
 					{#if models[selectedModelIdx]?.name}
 						{models[selectedModelIdx]?.name}
 					{:else}
-						{$i18n.t('Hello {{name}}', { name: $user.name })}
+						{$i18n.t('Hello, {{name}}', { name: $user.name })}
 					{/if}
 				</div>
 
@@ -100,7 +103,7 @@
 								By
 								{#if models[selectedModelIdx]?.info?.meta?.user.community}
 									<a
-										href="https://Sage.Education/m/{models[selectedModelIdx]?.info?.meta?.user
+										href="https://openwebui.com/m/{models[selectedModelIdx]?.info?.meta?.user
 											.username}"
 										>{models[selectedModelIdx]?.info?.meta?.user.name
 											? models[selectedModelIdx]?.info?.meta?.user.name

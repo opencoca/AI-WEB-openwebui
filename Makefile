@@ -74,6 +74,7 @@ it_build:
 	            -t $(IMAGE_NAME):$(IMAGE_TAG)-$(SAFE_GIT_BRANCH) \
 	            -t $(IMAGE_NAME):$(SAFE_GIT_BRANCH) \
 	            .
+	afplay /System/Library/Sounds/Glass.aiff
 
 # Build Docker Image without Cache and with Branch Name
 it_build_no_cache:
@@ -84,6 +85,7 @@ it_build_no_cache:
 	                     -t $(IMAGE_NAME):$(IMAGE_TAG)-$(SAFE_GIT_BRANCH) \
 	                     -t $(IMAGE_NAME):$(SAFE_GIT_BRANCH) \
 	                     .
+	afplay /System/Library/Sounds/Glass.aiff
 
 
 build_slim:
@@ -106,6 +108,7 @@ it_run:
 
 # Combine build and dev run targets
 it_build_n_dev_run: it_build
+	afplay /System/Library/Sounds/Glass.aiff
 	@make dev_run
 
 # Combined build and run targets
