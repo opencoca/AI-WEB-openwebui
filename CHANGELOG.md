@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.9] - 2024-12-15
+
+- **🔒 Enhanced Security**: Improved security measures for user authentication and data protection.
+- **Major UI Refinements**: Redesigned interface for a more intuitive and visually appealing user experience.
+- 
+
 ## [0.3.39] - 2024-10-23
 
 ### Changed

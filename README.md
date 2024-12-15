@@ -1,5 +1,7 @@
 # Sage : Open WebUI (Formerly Ollama WebUI) 👋
 
+v0.4.9 - Major update with new features and improvements! Check out the [CHANGELOG](./CHANGELOG.md) for more details.
+
 v0.3.40 - Optimized for performance and stability! Check out the [CHANGELOG](./CHANGELOG.md) for more details.
 
 v0.3.39 - Check out the new features and improvements in the [CHANGELOG](./CHANGELOG.md)!
