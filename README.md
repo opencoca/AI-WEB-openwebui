@@ -1,20 +1,6 @@
 # Sage : Open WebUI (Formerly Ollama WebUI) 👋
 
-v0.4.9 - Major update with new features and improvements! Check out the [CHANGELOG](./CHANGELOG.md) for more details.
-
-v0.3.40 - Optimized for performance and stability! Check out the [CHANGELOG](./CHANGELOG.md) for more details.
-
-v0.3.39 - Check out the new features and improvements in the [CHANGELOG](./CHANGELOG.md)!
-
-v0.3.38 - Now with so much more :D See the [CHANGELOG](./CHANGELOG.md) for more details.
-
-v0.3.37 - Markdown fix
-
-v0.3.36 - Now with cleaner styles and faster Docker Builds :D
-
-v0.3.35 - Now with RCLONE support for cloud storage and more! :D
-
-v0.3.34 - Now with simple multi arch deployment to docker :D
+## v0.5.4 See [CHANGELOG](./CHANGELOG.md) for more details.
 
 [![GitHub license](https://img.shields.io/github/license/opencoca/AI-WEB-openwebui)](
 
@@ -31,9 +17,9 @@ v0.3.34 - Now with simple multi arch deployment to docker :D
 
 Open WebUI is an [extensible](https://github.com/open-webui/pipelines), feature-rich, and user-friendly self-hosted WebUI designed to operate entirely offline. It supports various LLM runners, including Ollama and OpenAI-compatible APIs. For more information, be sure to check out our [Open WebUI Documentation](https://docs.openwebui.com/).
 
-![Open WebUI Demo](./demo.gif)
+![Sage Open WebUI Demo](./demo.gif)
 
-## Key Features of Sage : Open WebUI 
+## Key Features of Sage : Sage Open WebUI 
 
 - 🚀 **Effortless Setup**: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both `:ollama` and `:cuda` tagged images.
 
