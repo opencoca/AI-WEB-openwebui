@@ -548,7 +548,7 @@
 	"Light": "Luminos",
 	"Listening...": "Ascult...",
 	"LLMs can make mistakes. Verify important information.": "LLM-urile pot face greșeli. Verificați informațiile importante.",
-	"Local": ""
+	"Local": "",
 	"Local Models": "Modele Locale",
 	"Lost": "Pierdut",
 	"LTR": "LTR",
@@ -730,7 +730,7 @@
 	"Read Aloud": "Citește cu Voce Tare",
 	"Record voice": "Înregistrează vocea",
 	"Redirecting you to Sage Community": "Vă redirecționăm către Comunitatea OpenWebUI",
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": ""
+	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "",
 	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "Referiți-vă la dvs. ca \"Utilizator\" (de ex., \"Utilizatorul învață spaniolă\")",
 	"References from": "Referințe din",
 	"Refused when it shouldn't have": "Refuzat când nu ar fi trebuit",
@@ -775,7 +775,7 @@
 	"Scroll to bottom when switching between branches": "Derulați până jos când comutați între ramuri.",
 	"Search": "Caută",
 	"Search a model": "Caută un model",
-	"Search Base": ""
+	"Search Base": "",
 	"Search Chats": "Caută în Conversații",
 	"Search Collection": "Căutare Colecție",
 	"Search Filters": "",
@@ -783,7 +783,7 @@
 	"Search Functions": "Caută Funcții",
 	"Search Knowledge": "Căutare Cunoștințe",
 	"Search Models": "Caută Modele",
-	"Search options": ""
+	"Search options": "",
 	"Search Prompts": "Caută Prompturi",
 	"Search Result Count": "Număr Rezultate Căutare",
 	"Search the web": "",
