@@ -22,7 +22,7 @@
 	</div>
 {/if}
 
-<div class=" h-40 max-h-full overflow-auto scrollbar-none {className}">
+<div style="--ofy: scroll; --ofx: hidden; --h: 15ch;">
 	{#each prompts as prompt, promptIdx}
 		<button
 			class="flex flex-col flex-1 shrink-0 w-full justify-between px-3 py-2 rounded-xl bg-transparent hover:bg-black/5 dark:hover:bg-white/5 transition group"
