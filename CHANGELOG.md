@@ -1,20 +1,11 @@
 # Changelog
 
-## [0.4.9] - 2024-12-15
-
-- **🔒 Enhanced Security**: Improved security measures for user authentication and data protection.
-- **Major UI Refinements**: Redesigned interface for a more intuitive and visually appealing user experience.
-- 
-
-## [0.3.39] - 2024-10-23
+## [0.5.4] - 2025-01-06
 
 ### Changed
 
-- **🎨 UI Refactoring**: improved styling and layout for various components, including Settings, Documents, Interface, SensitiveInput, and Navbar.
-- **🔧 Dockerfile Update**:refactored Dockerfile to update paths and add Docker cleanup commands.
-- **🎨 Font Styles Update**:updated font styles and added Google Fonts preconnect with Cormorant font.
-- **📝 Chat and Message Components Update**:improved message input styling and updated assistant disclaimer.
-- **🔧 Development Environment Update**:updated Dev scripts and package.json for improved user workflow.
+- **🔧 Enhanced Tools & Functions**: Improved the Tools & Functions feature with better error handling and more robust execution, ensuring a smoother user experience
+- **🎨 Minor UI Fixes**: Addressed various UI inconsistencies and improved the overall visual appeal for a more cohesive user experience.
 
 ## [0.5.3] - 2024-12-31
 
@@ -95,6 +86,12 @@
 ### Removed
 
 - **⚠️ Legacy Functionality Clean-Up**: Deprecated outdated backend systems that were non-essential or overlapped with newer implementations, allowing for a leaner, more efficient platform.
+
+## [0.4.9] - 2024-12-15
+
+- **🔒 Enhanced Security**: Improved security measures for user authentication and data protection.
+- **Major UI Refinements**: Redesigned interface for a more intuitive and visually appealing user experience.
+- **🔧 Bug Fixes**: Addressed various bugs and issues to enhance platform stability and performance.
 
 ## [0.4.8] - 2024-12-07
 
@@ -258,6 +255,16 @@
 
 - **📂 Model List Reordering**: Temporarily removed and will be reintroduced in upcoming user group settings improvements.
 - **⚙️ Default Model Setting**: Removed the ability to set a default model for users, will be reintroduced with user group settings in the future.
+
+## [0.3.39] - 2024-10-23
+
+### Changed
+
+- **🎨 UI Refactoring**: improved styling and layout for various components, including Settings, Documents, Interface, SensitiveInput, and Navbar.
+- **🔧 Dockerfile Update**:refactored Dockerfile to update paths and add Docker cleanup commands.
+- **🎨 Font Styles Update**:updated font styles and added Google Fonts preconnect with Cormorant font.
+- **📝 Chat and Message Components Update**:improved message input styling and updated assistant disclaimer.
+- **🔧 Development Environment Update**:updated Dev scripts and package.json for improved user workflow.
 
 ## [0.3.35] - 2024-10-26
 
