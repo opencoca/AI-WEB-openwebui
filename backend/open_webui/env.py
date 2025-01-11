@@ -103,8 +103,6 @@ WEBUI_NAME = os.environ.get("WEBUI_NAME", "Sage.Education/AI")
 if WEBUI_NAME != "Sage.Education/AI":
     WEBUI_NAME += " - Sage.Education/AI"
 
-WEBUI_URL = os.environ.get("WEBUI_URL", "http://localhost:3000")
-
 WEBUI_FAVICON_URL = "https://Sage.Education/favicon.png"
 
 
@@ -313,6 +311,11 @@ RESET_CONFIG_ON_START = (
     os.environ.get("RESET_CONFIG_ON_START", "False").lower() == "true"
 )
 
+
+ENABLE_REALTIME_CHAT_SAVE = (
+    os.environ.get("ENABLE_REALTIME_CHAT_SAVE", "True").lower() == "true"
+)
+
 ####################################
 # REDIS
 ####################################
@@ -380,7 +383,7 @@ else:
         AIOHTTP_CLIENT_TIMEOUT = 300
 
 AIOHTTP_CLIENT_TIMEOUT_OPENAI_MODEL_LIST = os.environ.get(
-    "AIOHTTP_CLIENT_TIMEOUT_OPENAI_MODEL_LIST", "5"
+    "AIOHTTP_CLIENT_TIMEOUT_OPENAI_MODEL_LIST", ""
 )
 
 if AIOHTTP_CLIENT_TIMEOUT_OPENAI_MODEL_LIST == "":
@@ -398,3 +401,6 @@ else:
 ####################################
 
 OFFLINE_MODE = os.environ.get("OFFLINE_MODE", "false").lower() == "true"
+
+if OFFLINE_MODE:
+    os.environ["HF_HUB_OFFLINE"] = "1"

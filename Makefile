@@ -65,6 +65,12 @@ it_clean:
 	docker system prune -f
 	docker builder prune --force
 
+it_gone:
+	@echo "Forcefully stopping and removing $(CONTAINER_NAME)..."
+	docker stop $(CONTAINER_NAME) || true
+	docker rm -f $(CONTAINER_NAME) || true
+	@echo "Container $(CONTAINER_NAME) has been removed"
+
 # Build Docker Image with Branch Name
 it_build:
 	@echo "Building Docker image with BuildKit enabled..."
@@ -242,25 +248,24 @@ things_clean:
 	git clean --exclude=!.env -Xdf
 
 
-remove:
+it_deploy:
+	caprover deploy --default
+
+it_removed:
 	@chmod +x confirm_remove.sh
 	@./confirm_remove.sh
 
-start:
-	$(DOCKER_COMPOSE) start
-startAndBuild: 
-	$(DOCKER_COMPOSE) up -d --build
+it_start:
+	docker start $(CONTAINER_NAME)
 
-stop:
-	$(DOCKER_COMPOSE) stop
+it_start_and_build: it_build
+	docker start $(CONTAINER_NAME)
 
-update:
-	# Calls the LLM update script
-	chmod +x update_ollama_models.sh
+it_update:
+	@echo "Updating LLM models and rebuilding container..."
+	@chmod +x update_ollama_models.sh
 	@./update_ollama_models.sh
 	@git pull
-	$(DOCKER_COMPOSE) down
-	# Make sure the ollama-webui container is stopped before rebuilding
-	@docker stop open-webui || true
-	$(DOCKER_COMPOSE) up --build -d
-	$(DOCKER_COMPOSE) start
+	docker stop $(CONTAINER_NAME) || true
+	@make it_build
+	@make it_run
