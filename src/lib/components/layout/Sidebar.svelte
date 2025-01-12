@@ -509,7 +509,7 @@
 				</div>
 			</a>
 		</div>
-
+	</div>
 	<sidebar-user-chats
 		style="--d: flex; --fd: column; --jc: flex-start; --maxh:calc(100dvh - 7ch)"
 		class="py-2.5 my-auto flex flex-col justify-between h-screen max-h-[100dvh] w-[260px] overflow-x-hidden z-50 {$showSidebar
