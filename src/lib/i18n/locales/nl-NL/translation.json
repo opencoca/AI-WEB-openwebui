@@ -333,7 +333,7 @@
 	"Enable New Sign Ups": "Schakel nieuwe registraties in",
 	"Enable Web Search": "Zoeken op het web inschakelen",
 	"Enabled": "Ingeschakeld",
-	"Engine": "Engine"
+	"Engine": "Engine",
 	"Ensure your CSV file includes 4 columns in this order: Name, Email, Password, Role.": "Zorg ervoor dat uw CSV-bestand de volgende vier kolommen in deze volgorde bevat: Naam, E-mail, Wachtwoord, Rol.",
 	"Enter {{role}} message here": "Voeg {{role}} bericht hier toe",
 	"Enter a detail about yourself for your LLMs to recall": "Voer een detail over jezelf in zodat LLM's het kunnen onthouden",

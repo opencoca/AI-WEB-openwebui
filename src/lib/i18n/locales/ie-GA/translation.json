@@ -548,8 +548,8 @@
 	"Light": "Solas",
 	"Listening...": "Éisteacht...",
 	"LLMs can make mistakes. Verify important information.": "Is féidir le LLManna botúin a dhéanamh. Fíoraigh faisnéis thábhachtach.",
-	"Local": "Áitiúil""
-	"Local": """
+	"Local": "Áitiúil",
+	"Local": "",
 	"Local Models": "Múnlaí Áitiúla",
 	"Lost": "Cailleadh",
 	"LTR": "LTR",
@@ -731,8 +731,7 @@
 	"Read Aloud": "Léigh Ard",
 	"Record voice": "Taifead guth",
 	"Redirecting you to Sage Community": "Tú a atreorú chuig Sage Community",
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "Laghdaíonn sé an dóchúlacht go giniúint nonsense. Tabharfaidh luach níos airde (m.sh. 100) freagraí níos éagsúla, agus beidh luach níos ísle (m.sh. 10) níos coimeádaí. (Réamhshocrú: 40)""
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": """
+	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "",
 	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "Tagairt duit féin mar \"Úsáideoir\" (m.sh., \"Tá an úsáideoir ag foghlaim Spáinnis\")",
 	"References from": "Tagairtí ó",
 	"Refused when it shouldn't have": "Diúltaíodh nuair nár chóir dó",
@@ -757,8 +756,7 @@
 	"Response notifications cannot be activated as the website permissions have been denied. Please visit your browser settings to grant the necessary access.": "Ní féidir fógraí freagartha a ghníomhachtú toisc gur diúltaíodh ceadanna an tsuímh Ghréasáin. Tabhair cuairt ar do shocruithe brabhsálaí chun an rochtain riachtanach a dheonú.",
 	"Response splitting": "Scoilt freagartha",
 	"Result": "",
-	"RK": """
-	"RK": "RK""
+	"RK": "RK",
 	"Retrieval Query Generation": "",
 	"Rich Text Input for Chat": "Ionchur Saibhir Téacs don Chomhrá",
 	"Role": "Ról",
@@ -777,8 +775,8 @@
 	"Scroll to bottom when switching between branches": "Scrollaigh go bun agus tú ag athrú idir brainsí",
 	"Search": "Cuardaigh",
 	"Search a model": "Cuardaigh múnla",
-	"Search Base": "Bonn Cuardaigh""
-	"Search Base": """
+	"Search Base": "Bonn Cuardaigh",
+	"Search Base": "",
 	"Search Chats": "Cuardaigh Comhráite",
 	"Search Collection": "Bailiúchán Cuardaigh",
 	"Search Filters": "Scagairí Cuardaigh",
@@ -786,8 +784,7 @@
 	"Search Functions": "Feidhmeanna Cuardaigh",
 	"Search Knowledge": "Cuardaigh Eolais",
 	"Search Models": "Múnlaí Cuardaigh",
-	"Search options": "Roghanna cuardaigh""
-	"Search options": """
+	"Search options": "Roghanna cuardaigh",
 	"Search Prompts": "Leideanna Cuardaigh",
 	"Search Result Count": "Líon Torthaí Cuardaigh",
 	"Search the web": "Cuardaigh an gréasán",

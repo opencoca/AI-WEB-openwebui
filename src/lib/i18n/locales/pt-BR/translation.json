@@ -517,7 +517,7 @@
 	"Light": "Claro",
 	"Listening...": "Escutando...",
 	"LLMs can make mistakes. Verify important information.": "LLMs podem cometer erros. Verifique informações importantes.",
-	"Local": ""
+	"Local": "",
 	"Local Models": "Modelos Locais",
 	"Lost": "Perdeu",
 	"LTR": "Esquerda para Direita",
@@ -631,14 +631,7 @@
 	"Open in full screen": "Abrir em tela cheia",
 	"Open new chat": "Abrir novo chat",
 	"Open WebUI uses faster-whisper internally.": "Open WebUI usa faster-whisper internamente.",
-<<<<<<< HEAD
 	"Open WebUI uses SpeechT5 and CMU Arctic speaker embeddings.": "A Open WebUI usa os embeddings de voz do SpeechT5 e do CMU Arctic.",
-	"Open WebUI uses SpeechT5 and CMU Arctic speaker embeddings.": "",
-||||||| cdae0553f
-	"Open WebUI uses SpeechT5 and CMU Arctic speaker embeddings.": "A Open WebUI usa os embeddings de voz do SpeechT5 e do CMU Arctic.",
-=======
-	"Open WebUI uses SpeechT5 and CMU Arctic speaker embeddings.": "A Open WebUI usa os embeddings de voz do SpeechT5 e do CMU Arctic.",
->>>>>>> a9f34d938fec2bf444b584230f6e68d33cd98d2c
 	"Open WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})": "A versão do Open WebUI (v{{OPEN_WEBUI_VERSION}}) é inferior à versão necessária (v{{REQUIRED_VERSION}})",
 	"Sage AI WebUI uses faster-whisper internally.": "Open WebUI usa reconhecimento de fala rápido mais rápido internamente.",
 	"Sage AI WebUI version (v{{OPEN_WEBUI_VERSION}}) is lower than required version (v{{REQUIRED_VERSION}})": "A versão do Sage AI WebUI (v{{OPEN_WEBUI_VERSION}}) é inferior à versão necessária (v{{REQUIRED_VERSION}})",
@@ -705,14 +698,7 @@
 	"Read Aloud": "Ler em Voz Alta",
 	"Record voice": "Gravar voz",
 	"Redirecting you to Sage Community": "Redirecionando você para a Comunidade OpenWebUI",
-<<<<<<< HEAD
 	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "Reduz a probabilidade de gerar absurdos. Um valor mais alto (por exemplo, 100) dará respostas mais diversas, enquanto um valor mais baixo (por exemplo, 10) será mais conservador. (Padrão: 40)",
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "",
-||||||| cdae0553f
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "Reduz a probabilidade de gerar absurdos. Um valor mais alto (por exemplo, 100) dará respostas mais diversas, enquanto um valor mais baixo (por exemplo, 10) será mais conservador. (Padrão: 40)",
-=======
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "Reduz a probabilidade de gerar absurdos. Um valor mais alto (por exemplo, 100) dará respostas mais diversas, enquanto um valor mais baixo (por exemplo, 10) será mais conservador. (Padrão: 40)",
->>>>>>> a9f34d938fec2bf444b584230f6e68d33cd98d2c
 	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "Refira-se como \"Usuário\" (por exemplo, \"Usuário está aprendendo espanhol\")",
 	"References from": "Referências de",
 	"Refused when it shouldn't have": "Recusado quando não deveria",
@@ -754,14 +740,7 @@
 	"Scroll to bottom when switching between branches": "Rolar para baixo quando se troca entre modelos",
 	"Search": "Pesquisar",
 	"Search a model": "Pesquisar um modelo",
-<<<<<<< HEAD
 	"Search Base": "Pesquisar base",
-	"Search Base": "",
-||||||| cdae0553f
-	"Search Base": "Pesquisar base",
-=======
-	"Search Base": "Pesquisar base",
->>>>>>> a9f34d938fec2bf444b584230f6e68d33cd98d2c
 	"Search Chats": "Pesquisar Chats",
 	"Search Collection": "Pesquisar Coleção",
 	"Search Filters": "Pesquisar Filtros",
@@ -769,7 +748,7 @@
 	"Search Functions": "Pesquisar Funções",
 	"Search Knowledge": "Pesquisar Conhecimento",
 	"Search Models": "Pesquisar Modelos",
-	"Search options": "Opções de pesquisa"
+	"Search options": "Opções de pesquisa",
 	"Search Prompts": "Prompts de Pesquisa",
 	"Search Result Count": "Contagem de Resultados da Pesquisa",
 	"Search the web": "Pesquisar web",
