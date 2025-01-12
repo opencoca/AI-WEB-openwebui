@@ -448,7 +448,7 @@
 			? ''
 			: 'invisible'}"
 	>
-		<div class="px-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
+		<div style="--fd: row-reverse;" class="px-1.5 flex justify-between space-x-1 text-gray-600 dark:text-gray-400">
 			<button
 				class=" cursor-pointer p-[7px] flex rounded-xl hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 				on:click={() => {
@@ -475,6 +475,7 @@
 
 			<a
 				id="sidebar-new-chat-button"
+				style="--mt: 0.5em"
 				class="flex justify-between items-center flex-1 rounded-lg px-2 py-1 h-full text-right hover:bg-gray-100 dark:hover:bg-gray-900 transition"
 				href="/"
 				draggable="false"

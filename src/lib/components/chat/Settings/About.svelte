@@ -59,7 +59,7 @@
 						</Tooltip>
 
 						<a
-							href="https://github.com/open-webui/open-webui/releases/tag/v{version.latest}"
+							href="https://github.com/opencoca/AI-WEB-openwebui/releases/tag/v{version.latest}"
 							target="_blank"
 						>
 							{updateAvailable === null
