@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{user}} 的对话记录",
 	"{{webUIName}} Backend Required": "{{webUIName}} 需要后端服务",
 	"*Prompt node ID(s) are required for image generation": "*图片生成需要 Prompt node ID",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "新版本（v{{LATEST_VERSION}}）现已发布。",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "新版本（v{{LATEST_VERSION}}）现已发布。",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "任务模型用于执行生成对话标题和联网搜索查询等任务",
 	"a user": "用户",
 	"About": "关于",

@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{user}} のチャット",
 	"{{webUIName}} Backend Required": "{{webUIName}} バックエンドが必要です",
 	"*Prompt node ID(s) are required for image generation": "",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "新しいバージョンが利用可能です。",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "新しいバージョンが利用可能です。",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "タスクモデルは、チャットやウェブ検索クエリのタイトルの生成などのタスクを実行するときに使用されます",
 	"a user": "ユーザー",
 	"About": "概要",

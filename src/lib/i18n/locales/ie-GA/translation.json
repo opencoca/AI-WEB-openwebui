@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "Comhráite {{user}}",
 	"{{webUIName}} Backend Required": "{{webUIName}} Ceoldeireadh Riachtanach",
 	"*Prompt node ID(s) are required for image generation": "* Tá ID nód pras ag teastáil chun íomhá a ghiniúint",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "Tá leagan nua (v {{LATEST_VERSION}}) ar fáil anois.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "Tá leagan nua (v {{LATEST_VERSION}}) ar fáil anois.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "Úsáidtear samhail tasc agus tascanna á ndéanamh agat mar theidil a ghiniúint do chomhráite agus ceisteanna cuardaigh gréasáin",
 	"a user": "úsáideoir",
 	"About": "Maidir",

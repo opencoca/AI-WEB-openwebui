@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{ صارف }} کی بات چیت",
 	"{{webUIName}} Backend Required": "{{webUIName}} بیک اینڈ درکار ہے",
 	"*Prompt node ID(s) are required for image generation": "تصویر کی تخلیق کے لیے *پرومپٹ نوڈ آئی ڈی(ز) کی ضرورت ہے",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "نیا ورژن (v{{LATEST_VERSION}}) اب دستیاب ہے",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "نیا ورژن (v{{LATEST_VERSION}}) اب دستیاب ہے",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "ٹاسک ماڈل اس وقت استعمال ہوتا ہے جب چیٹس کے عنوانات اور ویب سرچ سوالات تیار کیے جا رہے ہوں",
 	"a user": "ایک صارف",
 	"About": "بارے میں",

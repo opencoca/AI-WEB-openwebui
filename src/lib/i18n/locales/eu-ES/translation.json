@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{user}}-ren Txatak",
 	"{{webUIName}} Backend Required": "{{webUIName}} Backend-a Beharrezkoa",
 	"*Prompt node ID(s) are required for image generation": "Prompt nodoaren IDa(k) beharrezkoak dira irudiak sortzeko",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "Bertsio berri bat (v{{LATEST_VERSION}}) eskuragarri dago orain.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "Bertsio berri bat (v{{LATEST_VERSION}}) eskuragarri dago orain.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "Ataza eredua erabiltzen da txatentzako izenburuak eta web bilaketa kontsultak sortzeko bezalako atazak egitean",
 	"a user": "erabiltzaile bat",
 	"About": "Honi buruz",

@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{user}} sine samtaler",
 	"{{webUIName}} Backend Required": "Backend til {{webUIName}} kreves",
 	"*Prompt node ID(s) are required for image generation": "Node-ID-er for ledetekst kreves for generering av bilder",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "En ny versjon (v{{LATEST_VERSION}}) er nå tilgjengelig.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "En ny versjon (v{{LATEST_VERSION}}) er nå tilgjengelig.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "En oppgavemodell brukes når du utfører oppgaver som å generere titler for samtaler eller utfører søkeforespørsler på nettet",
 	"a user": "en bruker",
 	"About": "Om",

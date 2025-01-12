@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{user}}s chats",
 	"{{webUIName}} Backend Required": "{{webUIName}} Backend kræves",
 	"*Prompt node ID(s) are required for image generation": "*Prompt node ID(s) er påkrævet for at kunne generere billeder",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "En ny version (v{{LATEST_VERSION}}) er nu tilgængelig.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "En ny version (v{{LATEST_VERSION}}) er nu tilgængelig.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "En 'task model' bliver brugt til at opgaver såsom at generere overskrifter til chats eller internetsøgninger",
 	"a user": "en bruger",
 	"About": "Information",

@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "Conversațiile lui {{user}}",
 	"{{webUIName}} Backend Required": "Este necesar backend-ul {{webUIName}}",
 	"*Prompt node ID(s) are required for image generation": "*Sunt necesare ID-urile nodurilor de solicitare pentru generarea imaginii*",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "O nouă versiune (v{{LATEST_VERSION}}) este acum disponibilă.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "O nouă versiune (v{{LATEST_VERSION}}) este acum disponibilă.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "Un model de sarcină este utilizat pentru realizarea unor sarcini precum generarea de titluri pentru conversații și interogări de căutare pe web",
 	"a user": "un utilizator",
 	"About": "Despre",

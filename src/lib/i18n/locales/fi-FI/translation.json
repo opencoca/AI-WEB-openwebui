@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{user}}:n keskustelut",
 	"{{webUIName}} Backend Required": "{{webUIName}}-backend vaaditaan",
 	"*Prompt node ID(s) are required for image generation": "Kuvan luomiseen vaaditaan kehote-solmun ID(t)",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "Uusi versio (v{{LATEST_VERSION}}) on nyt saatavilla.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "Uusi versio (v{{LATEST_VERSION}}) on nyt saatavilla.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "Tehtävämallia käytetään tehtävien suorittamiseen, kuten otsikoiden luomiseen keskusteluille ja verkkohakukyselyille",
 	"a user": "käyttäjä",
 	"About": "Tietoja",

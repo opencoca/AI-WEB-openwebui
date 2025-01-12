@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "Συνομιλίες του {{user}}",
 	"{{webUIName}} Backend Required": "{{webUIName}} Απαιτείται Backend",
 	"*Prompt node ID(s) are required for image generation": "*Τα αναγνωριστικά κόμβου Prompt απαιτούνται για τη δημιουργία εικόνων",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "Μια νέα έκδοση (v{{LATEST_VERSION}}) είναι τώρα διαθέσιμη.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "Μια νέα έκδοση (v{{LATEST_VERSION}}) είναι τώρα διαθέσιμη.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "Ένα μοντέλο εργασίας χρησιμοποιείται κατά την εκτέλεση εργασιών όπως η δημιουργία τίτλων για συνομιλίες και αναζητήσεις στο διαδίκτυο",
 	"a user": "ένας χρήστης",
 	"About": "Σχετικά",

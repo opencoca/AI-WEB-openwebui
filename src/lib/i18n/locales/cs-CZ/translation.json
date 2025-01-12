@@ -9,7 +9,7 @@
 	"{{user}}'s Chats": "{{user}}'s konverzace",
 	"{{webUIName}} Backend Required": "Požadován {{webUIName}} Backend",
 	"*Prompt node ID(s) are required for image generation": "*Jsou vyžadovány IDs pro prompt node pro generování obrázků",
-	"A new version (v{{LATEST_VERSION}}) is now available.": "Nová verze (v{{LATEST_VERSION}}) je nyní k dispozici.",
+	"A new version (v{{LATEST_VERSION}}) inbound.": "Nová verze (v{{LATEST_VERSION}}) je nyní k dispozici.",
 	"A task model is used when performing tasks such as generating titles for chats and web search queries": "Model úloh se používá při provádění úloh, jako je generování názvů pro chaty a vyhledávací dotazy na webu.",
 	"a user": "uživatel",
 	"About": "O programu",
