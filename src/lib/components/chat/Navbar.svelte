@@ -148,6 +148,7 @@
 
 				<Tooltip content={$i18n.t('New Chat')}>
 					<button
+						style="    --mt: 0.5em;"
 						id="new-chat-button"
 						class=" flex {$showSidebar
 							? 'md:hidden'
