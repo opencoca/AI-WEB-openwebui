@@ -3,7 +3,7 @@
 	"'s', 'm', 'h', 'd', 'w' or '-1' for no expiration.": "만료 없음은 's', 'm', 'h', 'd', 'w' 아니면 '-1' 중 하나를 사용하세요.",
 	"(e.g. `sh webui.sh --api --api-auth username_password`)": "(예: `sh webui.sh --api --api-auth 사용자이름_비밀번호`)",
 	"(e.g. `sh webui.sh --api`)": "(예: `sh webui.sh --api`)",
-	"(latest)": "(최근)"
+	"(latest)": "(최근)",
 	"{{ models }}": "{{ models }}",
 	"{{COUNT}} Replies": "",
 	"{{user}}'s Chats": "{{user}}의 채팅",
@@ -757,7 +757,7 @@
 	"Reasoning Effort": "",
 	"Record voice": "음성 녹음",
 	"Redirecting you to Sage Community": "OpenWebUI 커뮤니티로 리디렉션 중",
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": ""
+	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "",
 	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "스스로를 \"사용자\" 라고 지칭하세요. (예: \"사용자는 영어를 배우고 있습니다\")",
 	"References from": "출처",
 	"Refused when it shouldn't have": "허용되지 않았지만 허용되어야 합니다.",
@@ -783,8 +783,7 @@
 	"Response notifications cannot be activated as the website permissions have been denied. Please visit your browser settings to grant the necessary access.": "",
 	"Response splitting": "",
 	"Result": "",
-	"RK": """
-	"RK": "RK""
+	"RK": "",
 	"Retrieval Query Generation": "",
 	"Rich Text Input for Chat": "채팅을 위한 풍부한 텍스트(Rich Text) 입력",
 	"Role": "역할",
@@ -803,7 +802,7 @@
 	"Scroll to bottom when switching between branches": "브랜치 간 전환시 밑으로 스크롤 하세요",
 	"Search": "검색",
 	"Search a model": "모델 검색",
-	"Search Base": ""
+	"Search Base": "",
 	"Search Chats": "채팅 검색",
 	"Search Collection": "컬렉션 검색",
 	"Search Filters": "필터 검색",
@@ -811,7 +810,7 @@
 	"Search Functions": "함수 검색",
 	"Search Knowledge": "지식 기반 검색",
 	"Search Models": "모델 검색",
-	"Search options": ""
+	"Search options": "",
 	"Search Prompts": "프롬프트 검색",
 	"Search Result Count": "검색 결과 수",
 	"Search the internet": "",
@@ -1071,7 +1070,7 @@
 	"Why?": "이유는?",
 	"Widescreen Mode": "와이드스크린 모드",
 	"Won": "승리",
-	"Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9)": ""
+	"Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9)": "",
 	"Workspace": "워크스페이스",
 	"Workspace Permissions": "워크스페이스 권한",
 	"Write": "",
