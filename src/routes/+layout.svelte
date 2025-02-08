@@ -1,6 +1,7 @@
 <script>
 	import { io } from 'socket.io-client';
 	import { spring } from 'svelte/motion';
+	import PyodideWorker from '$lib/workers/pyodide.worker?worker';
 
 	let loadingProgress = spring(0, {
 		stiffness: 0.05
@@ -10,6 +11,7 @@
 	import {
 		config,
 		user,
+		settings,
 		theme,
 		WEBUI_NAME,
 		mobile,
@@ -20,7 +22,10 @@
 		chats,
 		currentChatPage,
 		tags,
-		temporaryChatEnabled
+		temporaryChatEnabled,
+		isLastActiveTab,
+		isApp,
+		appInfo
 	} from '$lib/stores';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
@@ -39,10 +44,14 @@
 	import { bestMatchingLanguage } from '$lib/utils';
 	import { getAllTags, getChatList } from '$lib/apis/chats';
 	import NotificationToast from '$lib/components/NotificationToast.svelte';
+	import AppSidebar from '$lib/components/app/AppSidebar.svelte';
 
 	setContext('i18n', i18n);
 
+	const bc = new BroadcastChannel('active-tab-channel');
+
 	let loaded = false;
+
 	const BREAKPOINT = 768;
 
 	const setupSocket = async (enableWebsocket) => {
@@ -92,21 +101,138 @@
 		});
 	};
 
-	const chatEventHandler = async (event) => {
+	const executePythonAsWorker = async (id, code, cb) => {
+		let result = null;
+		let stdout = null;
+		let stderr = null;
+
+		let executing = true;
+		let packages = [
+			code.includes('requests') ? 'requests' : null,
+			code.includes('bs4') ? 'beautifulsoup4' : null,
+			code.includes('numpy') ? 'numpy' : null,
+			code.includes('pandas') ? 'pandas' : null,
+			code.includes('matplotlib') ? 'matplotlib' : null,
+			code.includes('sklearn') ? 'scikit-learn' : null,
+			code.includes('scipy') ? 'scipy' : null,
+			code.includes('re') ? 'regex' : null,
+			code.includes('seaborn') ? 'seaborn' : null,
+			code.includes('sympy') ? 'sympy' : null,
+			code.includes('tiktoken') ? 'tiktoken' : null,
+			code.includes('pytz') ? 'pytz' : null
+		].filter(Boolean);
+
+		const pyodideWorker = new PyodideWorker();
+
+		pyodideWorker.postMessage({
+			id: id,
+			code: code,
+			packages: packages
+		});
+
+		setTimeout(() => {
+			if (executing) {
+				executing = false;
+				stderr = 'Execution Time Limit Exceeded';
+				pyodideWorker.terminate();
+
+				if (cb) {
+					cb(
+						JSON.parse(
+							JSON.stringify(
+								{
+									stdout: stdout,
+									stderr: stderr,
+									result: result
+								},
+								(_key, value) => (typeof value === 'bigint' ? value.toString() : value)
+							)
+						)
+					);
+				}
+			}
+		}, 60000);
+
+		pyodideWorker.onmessage = (event) => {
+			console.log('pyodideWorker.onmessage', event);
+			const { id, ...data } = event.data;
+
+			console.log(id, data);
+
+			data['stdout'] && (stdout = data['stdout']);
+			data['stderr'] && (stderr = data['stderr']);
+			data['result'] && (result = data['result']);
+
+			if (cb) {
+				cb(
+					JSON.parse(
+						JSON.stringify(
+							{
+								stdout: stdout,
+								stderr: stderr,
+								result: result
+							},
+							(_key, value) => (typeof value === 'bigint' ? value.toString() : value)
+						)
+					)
+				);
+			}
+
+			executing = false;
+		};
+
+		pyodideWorker.onerror = (event) => {
+			console.log('pyodideWorker.onerror', event);
+
+			if (cb) {
+				cb(
+					JSON.parse(
+						JSON.stringify(
+							{
+								stdout: stdout,
+								stderr: stderr,
+								result: result
+							},
+							(_key, value) => (typeof value === 'bigint' ? value.toString() : value)
+						)
+					)
+				);
+			}
+			executing = false;
+		};
+	};
+
+	const chatEventHandler = async (event, cb) => {
 		const chat = $page.url.pathname.includes(`/c/${event.chat_id}`);
 
-		if (
-			(event.chat_id !== $chatId && !$temporaryChatEnabled) ||
-			document.visibilityState !== 'visible'
-		) {
-			await tick();
-			const type = event?.data?.type ?? null;
-			const data = event?.data?.data ?? null;
+		let isFocused = document.visibilityState !== 'visible';
+		if (window.electronAPI) {
+			const res = await window.electronAPI.send({
+				type: 'window:isFocused'
+			});
+			if (res) {
+				isFocused = res.isFocused;
+			}
+		}
 
+		await tick();
+		const type = event?.data?.type ?? null;
+		const data = event?.data?.data ?? null;
+
+		if ((event.chat_id !== $chatId && !$temporaryChatEnabled) || isFocused) {
 			if (type === 'chat:completion') {
 				const { done, content, title } = data;
 
 				if (done) {
+					if ($isLastActiveTab) {
+						if ($settings?.notificationEnabled ?? false) {
+							new Notification(`${title} | Open WebUI`, {
+								body: content,
+								icon: `${WEBUI_BASE_URL}/static/favicon.png`
+							});
+						}
+					}
+
 					toast.custom(NotificationToast, {
 						componentProps: {
 							onClick: () => {
@@ -125,19 +251,47 @@
 			} else if (type === 'chat:tags') {
 				tags.set(await getAllTags(localStorage.token));
 			}
+		} else {
+			if (type === 'execute:python') {
+				console.log('execute:python', data);
+				executePythonAsWorker(data.id, data.code, cb);
+			}
 		}
 	};
 
 	const channelEventHandler = async (event) => {
+		if (event.data?.type === 'typing') {
+			return;
+		}
+
 		// check url path
 		const channel = $page.url.pathname.includes(`/channels/${event.channel_id}`);
 
-		if ((!channel || document.visibilityState !== 'visible') && event?.user?.id !== $user?.id) {
+		let isFocused = document.visibilityState !== 'visible';
+		if (window.electronAPI) {
+			const res = await window.electronAPI.send({
+				type: 'window:isFocused'
+			});
+			if (res) {
+				isFocused = res.isFocused;
+			}
+		}
+
+		if ((!channel || isFocused) && event?.user?.id !== $user?.id) {
 			await tick();
 			const type = event?.data?.type ?? null;
 			const data = event?.data?.data ?? null;
 
 			if (type === 'message') {
+				if ($isLastActiveTab) {
+					if ($settings?.notificationEnabled ?? false) {
+						new Notification(`${data?.user?.name} (#${event?.channel?.name}) | Open WebUI`, {
+							body: data?.content,
+							icon: data?.user?.profile_image_url ?? `${WEBUI_BASE_URL}/static/favicon.png`
+						});
+					}
+				}
+
 				toast.custom(NotificationToast, {
 					componentProps: {
 						onClick: () => {
@@ -154,6 +308,46 @@
 	};
 
 	onMount(async () => {
+		if (window?.electronAPI) {
+			const info = await window.electronAPI.send({
+				type: 'app:info'
+			});
+
+			if (info) {
+				isApp.set(true);
+				appInfo.set(info);
+
+				const data = await window.electronAPI.send({
+					type: 'app:data'
+				});
+
+				if (data) {
+					appData.set(data);
+				}
+			}
+		}
+
+		// Listen for messages on the BroadcastChannel
+		bc.onmessage = (event) => {
+			if (event.data === 'active') {
+				isLastActiveTab.set(false); // Another tab became active
+			}
+		};
+
+		// Set yourself as the last active tab when this tab is focused
+		const handleVisibilityChange = () => {
+			if (document.visibilityState === 'visible') {
+				isLastActiveTab.set(true); // This tab is now the active tab
+				bc.postMessage('active'); // Notify other tabs that this tab is active
+			}
+		};
+
+		// Add event listener for visibility state changes
+		document.addEventListener('visibilitychange', handleVisibilityChange);
+
+		// Call visibility change handler initially to set state on load
+		handleVisibilityChange();
+
 		theme.set(localStorage.theme);
 
 		mobile.set(window.innerWidth < BREAKPOINT);
@@ -200,7 +394,7 @@
 				if (localStorage.token) {
 					// Get Session User Info
 					const sessionUser = await getSessionUser(localStorage.token).catch((error) => {
-						toast.error(error);
+						toast.error(`${error}`);
 						return null;
 					});
 
@@ -280,7 +474,17 @@
 </svelte:head>
 
 {#if loaded}
-	<slot />
+	{#if $isApp}
+		<div class="flex flex-row h-screen">
+			<AppSidebar />
+
+			<div class="w-full flex-1 max-w-[calc(100%-4.5rem)]">
+				<slot />
+			</div>
+		</div>
+	{:else}
+		<slot />
+	{/if}
 {/if}
 
 <Toaster

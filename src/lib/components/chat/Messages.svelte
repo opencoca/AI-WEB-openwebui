@@ -16,6 +16,8 @@
 
 	const i18n = getContext('i18n');
 
+	export let className = 'h-full flex pt-8';
+
 	export let chatId = '';
 	export let user = $_user;
 
@@ -231,7 +233,7 @@
 				history.currentId = userMessageId;
 
 				await tick();
-				await sendPrompt(userPrompt, userMessageId);
+				await sendPrompt(history, userPrompt, userMessageId);
 			} else {
 				// Edit user message
 				history.messages[messageId].content = content;
@@ -333,7 +335,7 @@
 	};
 </script>
 
-<div class="h-full flex pt-8">
+<div class={className}>
 	{#if Object.keys(history?.messages ?? {}).length == 0}
 		<ChatPlaceholder
 			modelIds={selectedModels}
