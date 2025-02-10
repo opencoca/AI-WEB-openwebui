@@ -15,6 +15,7 @@
 	import WrenchSolid from '$lib/components/icons/WrenchSolid.svelte';
 	import CameraSolid from '$lib/components/icons/CameraSolid.svelte';
 	import PhotoSolid from '$lib/components/icons/PhotoSolid.svelte';
+	import YouTube from '$lib/components/icons/YouTube.svelte';
 	import CommandLineSolid from '$lib/components/icons/CommandLineSolid.svelte';
 
 	const i18n = getContext('i18n');
@@ -188,6 +189,36 @@
 					<div class="line-clamp-1">{$i18n.t('Upload Files')}</div>
 				</DropdownMenu.Item>
 			</Tooltip>
+
+			{#if $user?.role === 'admin'}
+				<Tooltip
+					content={!fileUploadEnabled ? $i18n.t('You do not have permission to upload files') : ''}
+					class="w-full"
+				>
+					<DropdownMenu.Item
+						class="flex gap-2 items-center px-3 py-2 text-sm font-medium cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800 rounded-xl {!fileUploadEnabled ? 'opacity-50' : ''}"
+						on:click={() => {
+							if (fileUploadEnabled) {
+								// Open Youtube video url using window.prompt()
+								const url = window.prompt('Enter Youtube video URL');
+								if (url) {
+									const videoId = new URL(url).searchParams.get('v');
+									if (!videoId) {
+										window.alert('Invalid Youtube video URL');
+									} else {
+										const currentUrl = new URL(window.location.href);
+										const models = currentUrl.searchParams.get('models') || '';
+										window.location.href = `/?youtube=${encodeURIComponent(videoId)}&models=${encodeURIComponent(models)}`;
+									}
+								}
+							}
+						}}
+					>
+						<YouTube />
+						<div class="line-clamp-1">{$i18n.t('Youtube')}</div>
+					</DropdownMenu.Item>
+				</Tooltip>
+			{/if}
 
 			{#if $config?.features?.enable_google_drive_integration}
 				<DropdownMenu.Item
