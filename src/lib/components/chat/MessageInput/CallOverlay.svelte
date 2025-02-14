@@ -153,7 +153,7 @@
 		const file = blobToFile(audioBlob, 'recording.wav');
 
 		const res = await transcribeAudio(localStorage.token, file).catch((error) => {
-			toast.error(error);
+			toast.error(`${error}`);
 			return null;
 		});
 
@@ -217,7 +217,13 @@
 	const startRecording = async () => {
 		if ($showCallOverlay) {
 			if (!audioStream) {
-				audioStream = await navigator.mediaDevices.getUserMedia({ audio: true });
+				audioStream = await navigator.mediaDevices.getUserMedia({
+					audio: {
+						echoCancellation: true,
+						noiseSuppression: true,
+						autoGainControl: true
+					}
+				});
 			}
 			mediaRecorder = new MediaRecorder(audioStream);
 
@@ -749,6 +755,7 @@
 		<div class="flex justify-center items-center flex-1 h-full w-full max-h-full">
 			{#if !camera}
 				<button
+					style="--br:50%;"
 					type="button"
 					on:click={() => {
 						if (assistantSpeaking) {
