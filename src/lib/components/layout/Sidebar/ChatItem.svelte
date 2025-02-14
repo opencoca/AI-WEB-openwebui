@@ -87,8 +87,14 @@
 	};
 
 	const cloneChatHandler = async (id) => {
-		const res = await cloneChatById(localStorage.token, id).catch((error) => {
-			toast.error(error);
+		const res = await cloneChatById(
+			localStorage.token,
+			id,
+			$i18n.t('Clone of {{TITLE}}', {
+				TITLE: title
+			})
+		).catch((error) => {
+			toast.error(`${error}`);
 			return null;
 		});
 
@@ -103,16 +109,17 @@
 
 	const deleteChatHandler = async (id) => {
 		const res = await deleteChatById(localStorage.token, id).catch((error) => {
-			toast.error(error);
+			toast.error(`${error}`);
 			return null;
 		});
 
 		if (res) {
 			tags.set(await getAllTags(localStorage.token));
 			if ($chatId === id) {
+				await goto('/');
+
 				await chatId.set('');
 				await tick();
-				goto('/');
 			}
 
 			dispatch('change');
@@ -233,6 +240,7 @@
 			<input
 				use:focusEdit
 				bind:value={chatTitle}
+				id="chat-title-input-{id}"
 				class=" bg-transparent w-full outline-none mr-10"
 			/>
 		</div>
@@ -361,10 +369,15 @@
 					archiveChatHandler={() => {
 						archiveChatHandler(id);
 					}}
-					renameHandler={() => {
+					renameHandler={async () => {
 						chatTitle = title;
-
 						confirmEdit = true;
+
+						await tick();
+						const input = document.getElementById(`chat-title-input-${id}`);
+						if (input) {
+							input.focus();
+						}
 					}}
 					deleteHandler={() => {
 						showDeleteConfirm = true;

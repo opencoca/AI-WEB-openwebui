@@ -32,10 +32,17 @@
 	let showUsername = false;
 	let richTextInput = true;
 	let largeTextAsFile = false;
+	let notificationSound = true;
 
 	let landingPageMode = '';
 	let chatBubble = true;
 	let chatDirection: 'LTR' | 'RTL' = 'LTR';
+
+	let imageCompression = false;
+	let imageCompressionSize = {
+		width: '',
+		height: ''
+	};
 
 	// Admin - Show Update Available Toast
 	let showUpdateToast = true;
@@ -44,6 +51,8 @@
 	let showEmojiInCall = false;
 	let voiceInterruption = false;
 	let hapticFeedback = false;
+
+	let webSearch = null;
 
 	const toggleSplitLargeChunks = async () => {
 		splitLargeChunks = !splitLargeChunks;
@@ -75,6 +84,11 @@
 		saveSettings({ showUpdateToast: showUpdateToast });
 	};
 
+	const toggleNotificationSound = async () => {
+		notificationSound = !notificationSound;
+		saveSettings({ notificationSound: notificationSound });
+	};
+
 	const toggleShowChangelog = async () => {
 		showChangelog = !showChangelog;
 		saveSettings({ showChangelog: showChangelog });
@@ -93,6 +107,11 @@
 	const toggleVoiceInterruption = async () => {
 		voiceInterruption = !voiceInterruption;
 		saveSettings({ voiceInterruption: voiceInterruption });
+	};
+
+	const toggleImageCompression = async () => {
+		imageCompression = !imageCompression;
+		saveSettings({ imageCompression });
 	};
 
 	const toggleHapticFeedback = async () => {
@@ -176,8 +195,14 @@
 
 	const updateInterfaceHandler = async () => {
 		saveSettings({
-			models: [defaultModelId]
+			models: [defaultModelId],
+			imageCompressionSize: imageCompressionSize
 		});
+	};
+
+	const toggleWebSearch = async () => {
+		webSearch = webSearch === null ? 'always' : null;
+		saveSettings({ webSearch: webSearch });
 	};
 
 	onMount(async () => {
@@ -204,7 +229,12 @@
 		chatDirection = $settings.chatDirection ?? 'LTR';
 		userLocation = $settings.userLocation ?? false;
 
+		notificationSound = $settings.notificationSound ?? true;
+
 		hapticFeedback = $settings.hapticFeedback ?? false;
+
+		imageCompression = $settings.imageCompression ?? false;
+		imageCompressionSize = $settings.imageCompressionSize ?? { width: '', height: '' };
 
 		defaultModelId = $settings?.models?.at(0) ?? '';
 		if ($config?.default_models) {
@@ -212,6 +242,7 @@
 		}
 
 		backgroundImageUrl = $settings.backgroundImageUrl ?? null;
+		webSearch = $settings.webSearch ?? null;
 	});
 </script>
 
@@ -351,6 +382,28 @@
 							<span class="ml-2 self-center">{$i18n.t('LTR')}</span>
 						{:else}
 							<span class="ml-2 self-center">{$i18n.t('RTL')}</span>
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			<div>
+				<div class=" py-0.5 flex w-full justify-between">
+					<div class=" self-center text-xs">
+						{$i18n.t('Notification Sound')}
+					</div>
+
+					<button
+						class="p-1 px-3 text-xs flex rounded transition"
+						on:click={() => {
+							toggleNotificationSound();
+						}}
+						type="button"
+					>
+						{#if notificationSound === true}
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						{:else}
+							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
 						{/if}
 					</button>
 				</div>
@@ -599,7 +652,7 @@
 				</div>
 			</div>
 
-			<div>
+			<!-- <div>
 				<div class=" py-0.5 flex w-full justify-between">
 					<div class=" self-center text-xs">
 						{$i18n.t('Fluidly stream large external response chunks')}
@@ -619,7 +672,7 @@
 						{/if}
 					</button>
 				</div>
-			</div>
+			</div> -->
 
 			<div>
 				<div class=" py-0.5 flex w-full justify-between">
@@ -638,6 +691,26 @@
 							<span class="ml-2 self-center">{$i18n.t('On')}</span>
 						{:else}
 							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			<div>
+				<div class=" py-0.5 flex w-full justify-between">
+					<div class=" self-center text-xs">{$i18n.t('Web Search in Chat')}</div>
+
+					<button
+						class="p-1 px-3 text-xs flex rounded transition"
+						on:click={() => {
+							toggleWebSearch();
+						}}
+						type="button"
+					>
+						{#if webSearch === 'always'}
+							<span class="ml-2 self-center">{$i18n.t('Always')}</span>
+						{:else}
+							<span class="ml-2 self-center">{$i18n.t('Default')}</span>
 						{/if}
 					</button>
 				</div>
@@ -684,6 +757,53 @@
 					</button>
 				</div>
 			</div>
+
+			<div class=" my-1.5 text-sm font-medium">{$i18n.t('File')}</div>
+
+			<div>
+				<div class=" py-0.5 flex w-full justify-between">
+					<div class=" self-center text-xs">{$i18n.t('Image Compression')}</div>
+
+					<button
+						class="p-1 px-3 text-xs flex rounded transition"
+						on:click={() => {
+							toggleImageCompression();
+						}}
+						type="button"
+					>
+						{#if imageCompression === true}
+							<span class="ml-2 self-center">{$i18n.t('On')}</span>
+						{:else}
+							<span class="ml-2 self-center">{$i18n.t('Off')}</span>
+						{/if}
+					</button>
+				</div>
+			</div>
+
+			{#if imageCompression}
+				<div>
+					<div class=" py-0.5 flex w-full justify-between text-xs">
+						<div class=" self-center text-xs">{$i18n.t('Image Max Compression Size')}</div>
+
+						<div>
+							<input
+								bind:value={imageCompressionSize.width}
+								type="number"
+								class="w-20 bg-transparent outline-none text-center"
+								min="0"
+								placeholder="Width"
+							/>x
+							<input
+								bind:value={imageCompressionSize.height}
+								type="number"
+								class="w-20 bg-transparent outline-none text-center"
+								min="0"
+								placeholder="Height"
+							/>
+						</div>
+					</div>
+				</div>
+			{/if}
 		</div>
 	</div>
 

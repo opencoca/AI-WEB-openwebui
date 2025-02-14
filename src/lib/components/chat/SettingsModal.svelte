@@ -118,7 +118,8 @@
 				'displayemoji',
 				'save',
 				'interfaceoptions',
-				'interfacecustomization'
+				'interfacecustomization',
+				'alwaysonwebsearch'
 			]
 		},
 		{
@@ -637,6 +638,7 @@
 					<Chats {saveSettings} />
 				{:else if selectedTab === 'account'}
 					<Account
+						{saveSettings}
 						saveHandler={() => {
 							toast.success($i18n.t('Settings saved successfully!'));
 						}}

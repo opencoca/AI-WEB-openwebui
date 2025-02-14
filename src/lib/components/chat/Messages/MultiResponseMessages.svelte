@@ -16,7 +16,9 @@
 	import Markdown from './Markdown.svelte';
 	import Name from './Name.svelte';
 	import Skeleton from './Skeleton.svelte';
+	import localizedFormat from 'dayjs/plugin/localizedFormat';
 	const i18n = getContext('i18n');
+	dayjs.extend(localizedFormat);
 
 	export let chatId;
 	export let history;
@@ -32,9 +34,13 @@
 	export let actionMessage: Function;
 
 	export let submitMessage: Function;
+	export let deleteMessage: Function;
+
 	export let continueResponse: Function;
 	export let regenerateResponse: Function;
 	export let mergeResponses: Function;
+
+	export let addMessages: Function;
 
 	export let triggerScroll: Function;
 
@@ -224,6 +230,7 @@
 									{editMessage}
 									{saveMessage}
 									{rateMessage}
+									{deleteMessage}
 									{actionMessage}
 									{submitMessage}
 									{continueResponse}
@@ -233,6 +240,7 @@
 										groupedMessageIdsIdx[modelIdx] =
 											groupedMessageIds[modelIdx].messageIds.length - 1;
 									}}
+									{addMessages}
 									{readOnly}
 								/>
 							{/if}
@@ -261,7 +269,7 @@
 										<span
 											class=" self-center invisible group-hover:visible text-gray-400 text-xs font-medium uppercase ml-0.5 -mt-0.5"
 										>
-											{dayjs(message.timestamp * 1000).format($i18n.t('h:mm a'))}
+											{dayjs(message.timestamp * 1000).format('LT')}
 										</span>
 									{/if}
 								</Name>
