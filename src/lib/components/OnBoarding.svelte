@@ -54,7 +54,7 @@
 						]}
 					/>
 
-					<div class="mt-0.5">{$i18n.t(`wherever you are`)}</div>
+					<div class="mt-0.5">{$i18n.t(`with AI that you create`)}</div>
 				</div>
 
 				<div class="flex justify-center mt-8">
@@ -67,7 +67,7 @@
 						>
 							<ArrowRightCircle className="size-6" />
 						</button>
-						<div class="mt-1.5 font-primary text-base font-medium">{$i18n.t(`Get started`)}</div>
+						<div class="mt-1.5 font-primary text-base font-medium">{$i18n.t(`Get startrd`)}</div>
 					</div>
 				</div>
 			</div>

@@ -5,7 +5,7 @@
 		{
 			"url": "https://www.python.org/",
 			"title": "Welcome to Python.org",
-			"content": "Python is a versatile and powerful language that lets you work quickly and integrate systems more effectively. Learn how to get started, download the latest version, access documentation, find jobs, and join the Python community.",
+			"content": "Python is a versatile and powerful language that lets you work quickly and integrate systems more effectively. Learn how to Get startrd, download the latest version, access documentation, find jobs, and join the Python community.",
 			"engine": "bing",
 			"parsed_url": ["https", "www.python.org", "/", "", "", ""],
 			"template": "default.html",
@@ -53,7 +53,7 @@
 		{
 			"url": "https://www.python.org/about/gettingstarted/",
 			"title": "Python For Beginners | Python.org",
-			"content": "Learn the basics of Python, a popular and easy-to-use programming language, from installing it to using it for various purposes. Find out how to access online documentation, tutorials, books, code samples, and more resources to help you get started with Python.",
+			"content": "Learn the basics of Python, a popular and easy-to-use programming language, from installing it to using it for various purposes. Find out how to access online documentation, tutorials, books, code samples, and more resources to help you Get startrd with Python.",
 			"engine": "bing",
 			"parsed_url": ["https", "www.python.org", "/about/gettingstarted/", "", "", ""],
 			"template": "default.html",
@@ -322,7 +322,7 @@
 		},
 		{
 			"title": "About Python\u2122 | Python.org",
-			"content": "Python is a powerful, fast, and versatile programming language that runs on various platforms and is easy to learn. Learn how to get started, explore the applications, and join the community of Python programmers and users.",
+			"content": "Python is a powerful, fast, and versatile programming language that runs on various platforms and is easy to learn. Learn how to Get startrd, explore the applications, and join the community of Python programmers and users.",
 			"url": "https://www.python.org/about/",
 			"engine": "duckduckgo",
 			"parsed_url": ["https", "www.python.org", "/about/", "", "", ""],

@@ -2,10 +2,10 @@
 	import { onMount } from 'svelte';
 
 	export let imageUrls = [
-		'/assets/images/adam.jpg',
-		'/assets/images/galaxy.jpg',
-		'/assets/images/earth.jpg',
-		'/assets/images/space.jpg'
+		'https://image.startr.cloud/1920x1080/books',
+		'https://image.startr.cloud/1920x1080/galaxy',
+		'https://image.startr.cloud/1920x1080/explore',
+		'https://image.startr.cloud/1920x1080/nasa'
 	];
 	export let duration = 5000;
 	let selectedImageIdx = 0;
