@@ -31,7 +31,7 @@
 		console.log('share', _chat);
 
 		toast.success($i18n.t('Redirecting you to Sage Community'));
-		const url = 'https://openwebui.com';
+		const url = 'https://sage.education';
 		// const url = 'http://localhost:5173';
 
 		const tab = await window.open(`${url}/chats/upload`, '_blank');
