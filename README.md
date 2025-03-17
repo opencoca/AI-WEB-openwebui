@@ -171,7 +171,7 @@ docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock containrrr/wa
 
 In the last part of the command, replace `open-webui` with your container name if it is different.
 
-Check our Migration Guide available in our [Sage WebUIDocumentation](https://docs.openwebui.com/tutorials/migration/).
+Check our Updating Guide available in our [Sage WebUIDocumentation](https://docs.openwebui.com/getting-started/updating).
 
 ### Using the Dev Branch 🌙
 
