@@ -251,10 +251,6 @@ things_clean:
 it_deploy:
 	caprover deploy --default
 
-it_removed:
-	@chmod +x confirm_remove.sh
-	@./confirm_remove.sh
-
 it_start:
 	docker start $(CONTAINER_NAME)
 
