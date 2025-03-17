@@ -159,10 +159,8 @@
 	"Ciphers": "Versleutelingen",
 	"Citation": "Citaat",
 	"Clear memory": "Geheugen wissen",
-	"click here": "klik hier""
-	"click here": """
-	"Click here for filter guides.": "Klik hier voor filterhulp""
-	"Click here for filter guides.": """
+	"click here": "klik hier",
+	"Click here for filter guides.": "Klik hier voor filterhulp",
 	"Click here for help.": "Klik hier voor hulp.",
 	"Click here to": "Klik hier om",
 	"Click here to download user import template file.": "",
@@ -208,15 +206,12 @@
 	"Context Length": "Contextlengte",
 	"Continue Response": "Doorgaan met antwoord",
 	"Continue with {{provider}}": "Ga verder met {{provider}}",
-	"Continue with Email": "Ga door met E-mail""
-	"Continue with Email": """
-	"Continue with LDAP": "Ga door met LDAP""
-	"Continue with LDAP": """
+	"Continue with Email": "Ga door met E-mail",
+	"Continue with LDAP": "Ga door met LDAP",
 	"Control how message text is split for TTS requests. 'Punctuation' splits into sentences, 'paragraphs' splits into paragraphs, and 'none' keeps the message as a single string.": "Bepaal hoe berichttekst wordt opgesplitst voor TTS-verzoeken. 'Leestekens' splitst op in zinnen, 'alinea's' splitst op in paragrafen en 'geen' houdt het bericht als een enkele string.",
 	"Controls": "Besturingselementen",
-	"Controls the balance between coherence and diversity of the output. A lower value will result in more focused and coherent text. (Default: 5.0)": "Regelt de balans tussen coherentie en diversiteit van de uitvoer. Een lagere waarde resulteert in meer gerichte en coherente tekst. (Standaard: 5.0)""
-	"Controls the balance between coherence and diversity of the output. A lower value will result in more focused and coherent text. (Default: 5.0)": """
-	"Copied": "Gekopieerd",
+	"Controls the balance between coherence and diversity of the output. A lower value will result in more focused and coherent text. (Default: 5.0)": "Regelt de balans tussen coherentie en diversiteit van de uitvoer. Een lagere waarde resulteert in meer gerichte en coherente tekst. (Standaard: 5.0)",
+
 	"Copied shared chat URL to clipboard!": "URL van gedeelde gesprekspagina gekopieerd naar klembord!",
 	"Copied to clipboard": "",
 	"Copy": "Kopieer",
@@ -230,8 +225,7 @@
 	"Create a knowledge base": "Maak een kennisbasis aan",
 	"Create a model": "Een model maken",
 	"Create Account": "Maak account",
-	"Create Admin Account": "Maak admin-account""
-	"Create Admin Account": """
+	"Create Admin Account": "Maak admin-account",
 	"Create Channel": "",
 	"Create Group": "Maak groep",
 	"Create Knowledge": "Creër kennis",
@@ -288,8 +282,7 @@
 	"Discover a model": "Ontdek een model",
 	"Discover a prompt": "Ontdek een prompt",
 	"Discover a tool": "Ontdek een tool",
-	"Discover wonders": "Ontdek wonderen""
-	"Discover wonders": """
+	"Discover wonders": "Ontdek wonderen",
 	"Discover, download, and explore custom functions": "Ontdek, download en verken aangepaste functies",
 	"Discover, download, and explore custom prompts": "Ontdek, download en verken aangepaste prompts",
 	"Discover, download, and explore custom tools": "Ontdek, download en verken aangepaste gereedschappen",
@@ -298,8 +291,7 @@
 	"Display": "Toon",
 	"Display Emoji in Call": "Emoji tonen tijdens gesprek",
 	"Display the username instead of You in the Chat": "Toon de gebruikersnaam in plaats van Jij in de Chat",
-	"Dive into knowledge": """
-	"Dive into knowledge": "Duik in kennis""
+	"Dive into knowledge": "Duik in kennis",
 	"Displays citations in the response": "Toon citaten in het antwoord",
 	"Do not install functions from sources you do not fully trust.": "Installeer geen functies vanuit bronnen die je niet volledig vertrouwt",
 	"Do not install tools from sources you do not fully trust.": "Installeer geen tools vanuit bronnen die je niet volledig vertrouwt.",
@@ -443,8 +435,7 @@
 	"Export Models": "Modellen exporteren",
 	"Export Presets": "Exporteer voorinstellingen",
 	"Export Prompts": "Exporteer Prompts",
-	"Export to CSV": "Exporteer naar CSV""
-	"Export to CSV": """
+	"Export to CSV": "Exporteer naar CSV",
 	"Export Tools": "Exporteer gereedschappen",
 	"External Models": "Externe modulesExterne modules",
 	"Failed to add file.": "Het is niet gelukt om het bestand toe te voegen.",
@@ -603,8 +594,7 @@
 	"Llama.cpp": "",
 	"LLMs can make mistakes. Verify important information.": "LLMs kunnen fouten maken. Verifieer belangrijke informatie.",
 	"Loading Kokoro.js...": "",
-	"Local": "Lokaal""
-	"Local": """
+	"Local": "Lokaal",
 	"Local Models": "Lokale modellenLokale modellen",
 	"Lost": "Verloren",
 	"LTR": "LNR",
@@ -791,9 +781,8 @@
 	"Reasoning Effort": "",
 	"Record voice": "Neem stem op",
 	"Redirecting you to Sage Community": "Je wordt doorgestuurd naar Sage Community",
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "Vermindert de kans op het genereren van onzin. Een hogere waarde (bijv. 100) zal meer diverse antwoorden geven, terwijl een lagere waarde (bijv. 10) conservatiever zal zijn. (Standaard: 40)""
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": """
-	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "Refereer naar jezelf als \"user\" (bv. \"User is Spaans aan het leren\"",
+	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative. (Default: 40)": "Vermindert de kans op het genereren van onzin. Een hogere waarde (bijv. 100) zal meer diverse antwoorden geven, terwijl een lagere waarde (bijv. 10) conservatiever zal zijn. (Standaard: 40)",
+"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "Refereer naar jezelf als \"user\" (bv. \"User is Spaans aan het leren\"",
 	"References from": "Referenties van",
 	"Refused when it shouldn't have": "Geweigerd terwijl het niet had moeten",
 	"Regenerate": "Regenereren",
@@ -817,18 +806,15 @@
 	"Response notifications cannot be activated as the website permissions have been denied. Please visit your browser settings to grant the necessary access.": "Antwoordmeldingen kunnen niet worden geactiveerd omdat de rechten voor de website zijn geweigerd. Ga naar de instellingen van uw browser om de benodigde toegang te verlenen.",
 	"Response splitting": "Antwoord splitsing",
 	"Result": "Rijke tekstinvoer voor chatten",
-	"RK": "RKResultaat""
-	"RK": "RK""
+	"RK": "RKResultaat",
 	"Retrieval Query Generation": "",
 	"Rich Text Input for Chat": "Rijke tekstinvoer voor chatten",
 	"Role": "Rol",
 	"Rosé Pine": "Rosé Pine",
 	"Rosé Pine Dawn": "Rosé Pine Dawn",
 	"RTL": "RNL",
-	"Run": "Uitvoeren""
-	"Run": """
-	"Running": "Aan het uitvoeren""
-	"Running": """
+	"Run": "Uitvoeren",
+	"Running": "Aan het uitvoeren",
 	"Run Llama 2, Code Llama, and other AI Assistants. Customize and create your own.": "",
 	"Save": "Opslaan",
 	"Save & Create": "Opslaan & Creëren",
@@ -840,18 +826,15 @@
 	"Scroll to bottom when switching between branches": "Scroll naar onderen bij het wisselen tussen takken",
 	"Search": "Zoeken",
 	"Search for an assistant": "Zoek een model",
-	"Search Base": "Zoeken naar basis""
-	"Search Base": """
+	"Search Base": "Zoeken naar basis",
 	"Search Chats": "Chats zoeken",
 	"Search Collection": "Zoek naar verzamelingen",
-	"Search Filters": "Zoek naar filters""
-	"Search Filters": """
+	"Search Filters": "Zoek naar filters",
 	"search for tags": "Zoek naar tags",
 	"Search Functions": "Zoek naar functie",
 	"Search Knowledge": "Zoek naar Kennis",
 	"Search Models": "Modellen zoeken",
-	"Search options": """
-	"Search options": "Opties zoeken""
+	"Search options": "Opties zoeken",
 	"Search Prompts": "Prompts zoeken",
 	"Search Result Count": "Aantal zoekresultaten",
 	"Search the internet": "",
@@ -957,8 +940,8 @@
 	"System Prompt": "Systeem prompt",
 	"Tags Generation": "",
 	"Tags Generation Prompt": "Prompt voor taggeneratie",
-	"Tail free sampling is used to reduce the impact of less probable tokens from the output. A higher value (e.g., 2.0) will reduce the impact more, while a value of 1.0 disables this setting. (default: 1)": """
-	"Tail free sampling is used to reduce the impact of less probable tokens from the output. A higher value (e.g., 2.0) will reduce the impact more, while a value of 1.0 disables this setting. (default: 1)": "Tail free sampling wordt gebruikt om de impact van minder waarschijnlijke tokens uit de uitvoer te verminderen. Een hogere waarde (bv. 2,0) zal de impact meer verminderen, terwijl een waarde van 1,0 deze instelling uitschakelt. (standaard: 1)""
+
+	"Tail free sampling is used to reduce the impact of less probable tokens from the output. A higher value (e.g., 2.0) will reduce the impact more, while a value of 1.0 disables this setting. (default: 1)": "Tail free sampling wordt gebruikt om de impact van minder waarschijnlijke tokens uit de uitvoer te verminderen. Een hogere waarde (bv. 2,0) zal de impact meer verminderen, terwijl een waarde van 1,0 deze instelling uitschakelt. (standaard: 1)",
 	"Tap to interrupt": "Tik om te onderbreken",
 	"Tavily API Key": "Tavily API-sleutel",
 	"Tell us more:": "Vertel ons meer:",
@@ -986,11 +969,9 @@
 	"This action cannot be undone. Do you wish to continue?": "Deze actie kan niet ongedaan worden gemaakt. Wilt u doorgaan?",
 	"This ensures that your valuable conversations are securely saved to your backend database. Thank you!": "Dit zorgt ervoor dat je waardevolle gesprekken veilig worden opgeslagen in je backend database. Dank je wel!",
 	"This is an experimental feature, it may not function as expected and is subject to change at any time.": "Dit is een experimentele functie, het kan functioneren zoals verwacht en kan op elk moment veranderen.",
-	"This option controls how many tokens are preserved when refreshing the context. For example, if set to 2, the last 2 tokens of the conversation context will be retained. Preserving context can help maintain the continuity of a conversation, but it may reduce the ability to respond to new topics. (Default: 24)": """
-	"This option controls how many tokens are preserved when refreshing the context. For example, if set to 2, the last 2 tokens of the conversation context will be retained. Preserving context can help maintain the continuity of a conversation, but it may reduce the ability to respond to new topics. (Default: 24)": "Deze optie bepaalt hoeveel tokens bewaard blijven bij het verversen van de context. Als deze bijvoorbeeld op 2 staat, worden de laatste 2 tekens van de context van het gesprek bewaard. Het behouden van de context kan helpen om de continuïteit van een gesprek te behouden, maar het kan de mogelijkheid om te reageren op nieuwe onderwerpen verminderen. (Standaard: 24)""
-	"This option sets the maximum number of tokens the model can generate in its response. Increasing this limit allows the model to provide longer answers, but it may also increase the likelihood of unhelpful or irrelevant content being generated.  (Default: 128)": """
-	"This option sets the maximum number of tokens the model can generate in its response. Increasing this limit allows the model to provide longer answers, but it may also increase the likelihood of unhelpful or irrelevant content being generated.  (Default: 128)": "Deze optie stelt het maximum aantal tokens in dat het model kan genereren in zijn antwoord. Door deze limiet te verhogen, kan het model langere antwoorden geven, maar het kan ook de kans vergroten dat er onbehulpzame of irrelevante inhoud wordt gegenereerd.  (Standaard: 128)""
-	"This option will delete all existing files in the collection and replace them with newly uploaded files.": "Deze optie verwijdert alle bestaande bestanden in de collectie en vervangt ze door nieuw geüploade bestanden.",
+	"This option controls how many tokens are preserved when refreshing the context. For example, if set to 2, the last 2 tokens of the conversation context will be retained. Preserving context can help maintain the continuity of a conversation, but it may reduce the ability to respond to new topics. (Default: 24)": "Deze optie bepaalt hoeveel tokens bewaard blijven bij het verversen van de context. Als deze bijvoorbeeld op 2 staat, worden de laatste 2 tekens van de context van het gesprek bewaard. Het behouden van de context kan helpen om de continuïteit van een gesprek te behouden, maar het kan de mogelijkheid om te reageren op nieuwe onderwerpen verminderen. (Standaard: 24)",
+
+	"This option sets the maximum number of tokens the model can generate in its response. Increasing this limit allows the model to provide longer answers, but it may also increase the likelihood of unhelpful or irrelevant content being generated.  (Default: 128)": "Deze optie stelt het maximum aantal tokens in dat het model kan genereren in zijn antwoord. Door deze limiet te verhogen, kan het model langere antwoorden geven, maar het kan ook de kans vergroten dat er onbehulpzame of irrelevante inhoud wordt gegenereerd.  (Standaard: 128)",
 	"This response was generated by \"{{model}}\"": "Dit antwoord is gegenereerd door  \"{{model}}\"",
 	"This will delete": "Dit zal verwijderen",
 	"This will delete <strong>{{NAME}}</strong> and <strong>all its contents</strong>.": "Dit zal <strong>{{NAME}}</strong> verwijderen en <strong>al zijn inhoud</strong>.",
@@ -1118,16 +1099,14 @@
 	"What are you trying to achieve?": "Wat probeer je te bereiken?",
 	"What are you working on?": "Waar werk je aan?",
 	"What’s New in": "Wat is nieuw in",
-	"When enabled, the model will respond to each chat message in real-time, generating a response as soon as the user sends a message. This mode is useful for live chat applications, but may impact performance on slower hardware.": "Als dit is ingeschakeld, reageert het model op elk chatbericht in real-time, waarbij een reactie wordt gegenereerd zodra de gebruiker een bericht stuurt. Deze modus is handig voor live chat-toepassingen, maar kan de prestaties op langzamere hardware beïnvloeden.""
-	"When enabled, the model will respond to each chat message in real-time, generating a response as soon as the user sends a message. This mode is useful for live chat applications, but may impact performance on slower hardware.": """
-	"wherever you are": "waar je ook bent""
-	"wherever you are": """
+	
+	"When enabled, the model will respond to each chat message in real-time, generating a response as soon as the user sends a message. This mode is useful for live chat applications, but may impact performance on slower hardware.": "",
+	"wherever you are": "waar je ook bent",
 	"Whisper (Local)": "Whisper (Lokaal)",
 	"Why?": "Waarom?",
 	"Widescreen Mode": "Breedschermmodus",
 	"Won": "Gewonnen",
-	"Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9)": """
-	"Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9)": "Werkt samen met top-k. Een hogere waarde (bijv. 0,95) zal leiden tot meer diverse tekst, terwijl een lagere waarde (bijv. 0,5) meer gerichte en conservatieve tekst zal genereren. (Standaard: 0,9)""
+	"Works together with top-k. A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9)": "Werkt samen met top-k. Een hogere waarde (bijv. 0,95) zal leiden tot meer diverse tekst, terwijl een lagere waarde (bijv. 0,5) meer gerichte en conservatieve tekst zal genereren. (Standaard: 0,9)",
 	"Workspace": "Werkruimte",
 	"Workspace Permissions": "Werkruimtemachtigingen",
 	"Write": "",

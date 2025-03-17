@@ -596,8 +596,7 @@
 	"Llama.cpp": "Llama.cpp",
 	"LLMs can make mistakes. Verify important information.": "Is féidir le LLManna botúin a dhéanamh. Fíoraigh faisnéis thábhachtach.",
 	"Loading Kokoro.js...": "",
-	"Local": "Áitiúil""
-	"Local": """
+	"Local": "Áitiúil",
 	"Local Models": "Múnlaí Áitiúla",
 	"Lost": "Cailleadh",
 	"LTR": "LTR",
@@ -827,8 +826,7 @@
 	"Scroll to bottom when switching between branches": "Scrollaigh go bun agus tú ag athrú idir brainsí",
 	"Search": "Cuardaigh",
 	"Search a model": "Cuardaigh múnla",
-	"Search Base": "Bonn Cuardaigh""
-	"Search Base": """
+	"Search Base": "Bonn Cuardaigh",
 	"Search Chats": "Cuardaigh Comhráite",
 	"Search Collection": "Bailiúchán Cuardaigh",
 	"Search Filters": "Scagairí Cuardaigh",
