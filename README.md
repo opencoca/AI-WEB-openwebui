@@ -1,6 +1,6 @@
-# Sage : Sage WebUI(Formerly Ollama WebUI) 👋
+# Sage : Sage Open WebUI 👋
 
-## v0.5.10.1 See [CHANGELOG](./CHANGELOG.md) for more details.
+## v0.5.13 See [CHANGELOG](./CHANGELOG.md) for more details.
 
 [![GitHub license](https://img.shields.io/github/license/opencoca/AI-WEB-openwebui)](
 
