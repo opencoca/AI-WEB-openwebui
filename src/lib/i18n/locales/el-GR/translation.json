@@ -827,7 +827,7 @@
 	"Record voice": "Εγγραφή φωνής",
 	"Redirecting you to Sage Community": "Μετακατεύθυνση στην Κοινότητα OpenWebUI",
 	"Redirecting you to Open WebUI Community": "Μετακατεύθυνση στην Κοινότητα OpenWebUI"
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative.": "",
+	,"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative.": "",
 	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "Αναφέρεστε στον εαυτό σας ως \"User\" (π.χ., \"User μαθαίνει Ισπανικά\")",
 	"References from": "Αναφορές από",
 	"Refused when it shouldn't have": "Αρνήθηκε όταν δεν έπρεπε",

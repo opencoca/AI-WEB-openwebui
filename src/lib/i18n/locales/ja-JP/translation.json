@@ -827,7 +827,7 @@
 	"Record voice": "音声を録音",
 	"Redirecting you to Sage Community": "OpenWebUI コミュニティにリダイレクトしています",
 	"Redirecting you to Open WebUI Community": "OpenWebUI コミュニティにリダイレクトしています"
-	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative.": "",
+	,"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative.": "",
 	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "",
 	"References from": "",
 	"Refused when it shouldn't have": "拒否すべきでないのに拒否した",

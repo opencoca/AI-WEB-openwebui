@@ -826,7 +826,7 @@
 	"Reasoning Effort": "Resonneringsinnsats",
 	"Record voice": "Ta opp tale",
 	"Redirecting you to Sage Community": "Omdirigerer deg til OpenWebUI-fellesskapet",
-	"Redirecting you to Open WebUI Community": "Omdirigerer deg til OpenWebUI-fellesskapet"
+	"Redirecting you to Open WebUI Community": "Omdirigerer deg til OpenWebUI-fellesskapet",
 	"Reduces the probability of generating nonsense. A higher value (e.g. 100) will give more diverse answers, while a lower value (e.g. 10) will be more conservative.": "",
 	"Refer to yourself as \"User\" (e.g., \"User is learning Spanish\")": "Omtal deg selv som \"Bruker\" (f.eks. \"Bruker lærer spansk\")",
 	"References from": "Henviser fra",
