@@ -267,7 +267,7 @@
 						shareHandler();
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">
+					<div >
 						{$i18n.t('Share to Sage Community')}
 					</div>
 

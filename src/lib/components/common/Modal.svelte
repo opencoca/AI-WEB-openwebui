@@ -73,6 +73,7 @@
 		}}
 	>
 		<div
+			style="--h: 60vh; --of:scroll; --w: 80vw; --d:flex; --p:2em;"
 			class="m-auto max-w-full {sizeToWidth(size)} {size !== 'full'
 				? 'mx-2'
 				: ''} shadow-3xl min-h-fit scrollbar-hidden {className}"

@@ -360,7 +360,7 @@
 							modelsImportInputElement.click();
 						}}
 					>
-						<div class=" self-center mr-2 font-medium line-clamp-1">
+						<div >
 							{$i18n.t('Import Presets')}
 						</div>
 
@@ -386,7 +386,7 @@
 							downloadModels(models);
 						}}
 					>
-						<div class=" self-center mr-2 font-medium line-clamp-1">
+						<div >
 							{$i18n.t('Export Presets')}
 						</div>
 

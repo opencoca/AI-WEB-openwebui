@@ -453,7 +453,7 @@
 						modelsImportInputElement.click();
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Import Models')}</div>
+					<div >{$i18n.t('Import Models')}</div>
 
 					<div class=" self-center">
 						<svg
@@ -477,7 +477,7 @@
 						downloadModels($_models);
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Export Models')}</div>
+					<div >{$i18n.t('Export Models')}</div>
 
 					<div class=" self-center">
 						<svg

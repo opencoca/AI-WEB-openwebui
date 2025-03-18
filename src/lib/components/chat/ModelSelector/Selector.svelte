@@ -324,14 +324,20 @@
 				</div>
 			{/if}
 
-			<div class="px-3 mb-2 max-h-64 overflow-y-auto scrollbar-hidden group relative">
+			<div style="--d: inline-flex; 
+						--fd: column; gap: 0.2em;
+						--max-h: 24rem; --w: 100%;
+						--jc: center; --ai: center; --mb: 1.5;" 
+				class="overflow-y-auto scrollbar-hidden group relative">
 				{#if tags}
-					<div class=" flex w-full sticky">
+					<div style="--d:flex; --jc:center; --mb:1.5; --fd: column;" 
+						class=" flex w-full sticky">
 						<div
 							class="flex gap-1 scrollbar-none overflow-x-auto w-fit text-center text-sm font-medium rounded-full bg-transparent px-1.5 pb-0.5"
 							bind:this={tagsContainerElement}
 						>
 							<button
+								style="--w:100%"
 								class="min-w-fit outline-none p-1.5 {selectedTag === ''
 									? ''
 									: 'text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'} transition capitalize"
@@ -361,10 +367,10 @@
 				{#each filteredItems as item, index}
 					<button
 						aria-label="model-item"
-						class="flex w-full text-left font-medium line-clamp-1 select-none items-center rounded-button py-2 pl-3 pr-1.5 text-sm text-gray-700 dark:text-gray-100 outline-hidden transition-all duration-75 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer data-highlighted:bg-muted {index ===
-						selectedModelIdx
-							? 'bg-gray-100 dark:bg-gray-800 group-hover:bg-transparent'
-							: ''}"
+						style="--w:100%;
+								--d:flex;
+								--fd:row;"
+		
 						data-arrow-selected={index === selectedModelIdx}
 						on:click={() => {
 							value = item.value;
@@ -635,7 +641,7 @@
 			{#if showTemporaryChatControl}
 				<hr class="border-gray-100 dark:border-gray-800" />
 
-				<div class="flex items-center mx-2 my-2">
+				<div>
 					<button
 						class="flex justify-between w-full font-medium line-clamp-1 select-none items-center rounded-button py-2 px-3 text-sm text-gray-700 dark:text-gray-100 outline-hidden transition-all duration-75 hover:bg-gray-100 dark:hover:bg-gray-800 rounded-lg cursor-pointer data-highlighted:bg-muted"
 						on:click={async () => {

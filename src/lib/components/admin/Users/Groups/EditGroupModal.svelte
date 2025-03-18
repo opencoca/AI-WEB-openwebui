@@ -146,7 +146,7 @@
 									}}
 									type="button"
 								>
-									<div class=" self-center mr-2">
+									<div>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 16 16"
@@ -175,7 +175,7 @@
 									}}
 									type="button"
 								>
-									<div class=" self-center mr-2">
+									<div>
 										<WrenchSolid />
 									</div>
 									<div class=" self-center">{$i18n.t('Permissions')}</div>
@@ -193,7 +193,7 @@
 									}}
 									type="button"
 								>
-									<div class=" self-center mr-2">
+									<div>
 										<UserPlusSolid />
 									</div>
 									<div class=" self-center">{$i18n.t('Users')} ({userIds.length})</div>

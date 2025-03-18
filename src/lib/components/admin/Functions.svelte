@@ -412,7 +412,7 @@
 				functionsImportInputElement.click();
 			}}
 		>
-			<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Import Functions')}</div>
+			<div >{$i18n.t('Import Functions')}</div>
 
 			<div class=" self-center">
 				<svg
@@ -446,7 +446,7 @@
 				}
 			}}
 		>
-			<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Export Functions')}</div>
+			<div >{$i18n.t('Export Functions')}</div>
 
 			<div class=" self-center">
 				<svg

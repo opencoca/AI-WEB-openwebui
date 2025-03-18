@@ -414,7 +414,7 @@
 									selectedTab = 'general';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
@@ -440,7 +440,7 @@
 									selectedTab = 'interface';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -459,7 +459,7 @@
 						{:else if tabId === 'connections'}
 							{#if $user.role === 'admin' || ($user.role === 'user' && $config?.features?.enable_direct_connections)}
 								<button
-									class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+									class=" {selectedTab ===
 									'connections'
 										? ''
 										: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -467,7 +467,7 @@
 										selectedTab = 'connections';
 									}}
 								>
-									<div class=" self-center mr-2">
+									<div>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 16 16"
@@ -492,7 +492,7 @@
 									selectedTab = 'personalization';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<User />
 								</div>
 								<div class=" self-center">{$i18n.t('Personalization')}</div>
@@ -507,7 +507,7 @@
 									selectedTab = 'audio';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -534,7 +534,7 @@
 									selectedTab = 'chats';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -560,7 +560,7 @@
 									selectedTab = 'account';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -586,7 +586,7 @@
 									selectedTab = 'about';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
@@ -614,7 +614,7 @@
 										show = false;
 									}}
 								>
-									<div class=" self-center mr-2">
+									<div>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 24 24"

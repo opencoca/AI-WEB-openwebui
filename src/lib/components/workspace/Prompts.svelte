@@ -267,7 +267,7 @@
 						promptsImportInputElement.click();
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Import Prompts')}</div>
+					<div >{$i18n.t('Import Prompts')}</div>
 
 					<div class=" self-center">
 						<svg
@@ -295,7 +295,7 @@
 						saveAs(blob, `prompts-export-${Date.now()}.json`);
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Export Prompts')}</div>
+					<div >{$i18n.t('Export Prompts')}</div>
 
 					<div class=" self-center">
 						<svg
