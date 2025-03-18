@@ -56,7 +56,7 @@
 			{$i18n.t("{{user}}'s Chats", { user: user.name })}
 		</div>
 		<button
-			class="self-center"
+			
 			on:click={() => {
 				show = false;
 			}}

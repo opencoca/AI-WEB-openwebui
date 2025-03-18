@@ -19,7 +19,7 @@
 				{$i18n.t('Access Control')}
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}

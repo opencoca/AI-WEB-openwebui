@@ -53,7 +53,7 @@
 				{$i18n.t('Citation')}
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}

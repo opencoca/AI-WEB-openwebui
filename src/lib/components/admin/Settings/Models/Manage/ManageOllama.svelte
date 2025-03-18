@@ -613,7 +613,7 @@
 							disabled={modelTransferring}
 						>
 							{#if modelTransferring}
-								<div class="self-center">
+								<div >
 									<svg
 										class=" w-4 h-4"
 										viewBox="0 0 24 24"
@@ -942,7 +942,7 @@
 									disabled={modelTransferring}
 								>
 									{#if modelTransferring}
-										<div class="self-center">
+										<div >
 											<svg
 												class=" w-4 h-4"
 												viewBox="0 0 24 24"

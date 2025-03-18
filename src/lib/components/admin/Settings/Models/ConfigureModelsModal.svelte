@@ -124,7 +124,7 @@
 				{$i18n.t('Settings')}
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}

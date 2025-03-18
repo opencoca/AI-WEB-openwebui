@@ -41,7 +41,7 @@
 				{$i18n.t('Add Memory')}
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}

@@ -269,7 +269,7 @@
 								disabled={STT_WHISPER_MODEL_LOADING}
 							>
 								{#if STT_WHISPER_MODEL_LOADING}
-									<div class="self-center">
+									<div >
 										<svg
 											class=" w-4 h-4"
 											viewBox="0 0 24 24"

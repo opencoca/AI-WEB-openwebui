@@ -126,7 +126,7 @@
 				{/if}
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}

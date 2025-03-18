@@ -43,7 +43,7 @@
 				{$i18n.t('Manage Models')}
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}

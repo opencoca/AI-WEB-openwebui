@@ -82,7 +82,7 @@
 		<div class=" flex justify-between dark:text-gray-300 px-5 pt-4 pb-1">
 			<div class=" text-lg font-medium self-center">{$i18n.t('Archived Chats')}</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}

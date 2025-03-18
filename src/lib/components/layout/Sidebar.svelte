@@ -559,7 +559,7 @@
 					}}
 					draggable="false"
 				>
-					<div class="self-center">
+					<div >
 						<Home strokeWidth="2" className="size-[1.1rem]" />
 					</div>
 
@@ -585,7 +585,7 @@
 					}}
 					draggable="false"
 				>
-					<div class="self-center">
+					<div >
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
 							fill="none"

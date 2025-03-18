@@ -415,7 +415,7 @@
 								<div class="self-center text-xs font-medium min-w-fit mb-1">
 									{$i18n.t('Chunk Size')}
 								</div>
-								<div class="self-center">
+								<div >
 									<input
 										class=" w-full rounded-lg py-1.5 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
 										type="number"
@@ -432,7 +432,7 @@
 									{$i18n.t('Chunk Overlap')}
 								</div>
 
-								<div class="self-center">
+								<div >
 									<input
 										class="w-full rounded-lg py-1.5 px-4 text-sm bg-gray-50 dark:text-gray-300 dark:bg-gray-850 outline-hidden"
 										type="number"
@@ -546,7 +546,7 @@
 											disabled={updateEmbeddingModelLoading}
 										>
 											{#if updateEmbeddingModelLoading}
-												<div class="self-center">
+												<div >
 													<svg
 														class=" w-4 h-4"
 														viewBox="0 0 24 24"
@@ -668,7 +668,7 @@
 										disabled={updateRerankingModelLoading}
 									>
 										{#if updateRerankingModelLoading}
-											<div class="self-center">
+											<div >
 												<svg
 													class=" w-4 h-4"
 													viewBox="0 0 24 24"

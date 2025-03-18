@@ -293,7 +293,7 @@
 							type="button"
 						>
 							{#if uploading}
-								<div class="self-center">
+								<div >
 									<svg
 										class=" w-4 h-4"
 										viewBox="0 0 24 24"
@@ -362,7 +362,7 @@
 							type="button"
 						>
 							{#if downloading}
-								<div class="self-center">
+								<div >
 									<svg
 										class=" w-4 h-4"
 										viewBox="0 0 24 24"

@@ -44,7 +44,7 @@
 				{$i18n.t('Add User Group')}
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}
