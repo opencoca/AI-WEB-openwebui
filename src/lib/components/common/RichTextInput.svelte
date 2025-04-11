@@ -27,6 +27,9 @@
 
 	import { PASTED_TEXT_CHARACTER_LIMIT } from '$lib/constants';
 
+	export let oncompositionstart = (e) => {};
+	export let oncompositionend = (e) => {};
+
 	// create a lowlight instance with all languages loaded
 	const lowlight = createLowlight(all);
 
@@ -53,10 +56,7 @@
 
 	// Function to find the next template in the document
 	function findNextTemplate(doc, from = 0) {
-		const patterns = [
-			{ start: '[', end: ']' },
-			{ start: '{{', end: '}}' }
-		];
+		const patterns = [{ start: '{{', end: '}}' }];
 
 		let result = null;
 
@@ -229,6 +229,14 @@
 			editorProps: {
 				attributes: { id },
 				handleDOMEvents: {
+					compositionstart: (view, event) => {
+						oncompositionstart(event);
+						return false;
+					},
+					compositionend: (view, event) => {
+						oncompositionend(event);
+						return false;
+					},
 					focus: (view, event) => {
 						eventDispatch('focus', { event });
 						return false;

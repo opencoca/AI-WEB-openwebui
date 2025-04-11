@@ -17,6 +17,7 @@
 
 **Sage WebUIis an [extensible](https://docs.openwebui.com/features/plugin/), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
 
+
 For more information, be sure to check out our [Sage WebUIDocumentation](https://docs.openwebui.com/).
 
 ![Sage Sage WebUIDemo](./demo.gif)

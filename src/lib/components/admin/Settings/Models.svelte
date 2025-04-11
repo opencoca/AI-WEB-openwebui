@@ -199,7 +199,7 @@
 						<Search className="size-3.5" />
 					</div>
 					<input
-						class=" w-full text-sm py-1 rounded-r-xl outline-none bg-transparent"
+						class=" w-full text-sm py-1 rounded-r-xl outline-hidden bg-transparent"
 						bind:value={searchValue}
 						placeholder={$i18n.t('Search Models')}
 					/>
@@ -360,7 +360,7 @@
 							modelsImportInputElement.click();
 						}}
 					>
-						<div class=" self-center mr-2 font-medium line-clamp-1">
+						<div >
 							{$i18n.t('Import Presets')}
 						</div>
 
@@ -386,7 +386,7 @@
 							downloadModels(models);
 						}}
 					>
-						<div class=" self-center mr-2 font-medium line-clamp-1">
+						<div >
 							{$i18n.t('Export Presets')}
 						</div>
 

@@ -19,7 +19,7 @@
 	import ChartBar from '../icons/ChartBar.svelte';
 	import DocumentChartBar from '../icons/DocumentChartBar.svelte';
 	import Evaluations from './Settings/Evaluations.svelte';
-	import CodeInterpreter from './Settings/CodeInterpreter.svelte';
+	import CodeExecution from './Settings/CodeExecution.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -42,10 +42,10 @@
 <div class="flex flex-col lg:flex-row w-full h-full pb-2 lg:space-x-4">
 	<div
 		id="admin-settings-tabs-container"
-		class="tabs flex flex-row overflow-x-auto gap-2.5 max-w-full lg:gap-1 lg:flex-col lg:flex-none lg:w-40 dark:text-gray-200 text-sm font-medium text-left scrollbar-none"
+		style="--d:flex;--fd:column"
 	>
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 lg:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'general'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -53,7 +53,7 @@
 				selectedTab = 'general';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -71,7 +71,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'connections'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -79,7 +79,7 @@
 				selectedTab = 'connections';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -95,7 +95,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'models'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -103,7 +103,7 @@
 				selectedTab = 'models';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
@@ -121,7 +121,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'evaluations'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -129,14 +129,14 @@
 				selectedTab = 'evaluations';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<DocumentChartBar />
 			</div>
 			<div class=" self-center">{$i18n.t('Evaluations')}</div>
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'documents'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -144,7 +144,7 @@
 				selectedTab = 'documents';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -166,7 +166,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'web'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -174,7 +174,7 @@
 				selectedTab = 'web';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -190,15 +190,15 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
-			'code-interpreter'
+			class=" {selectedTab ===
+			'code-execution'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
 			on:click={() => {
-				selectedTab = 'code-interpreter';
+				selectedTab = 'code-execution';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -212,11 +212,11 @@
 					/>
 				</svg>
 			</div>
-			<div class=" self-center">{$i18n.t('Code Interpreter')}</div>
+			<div class=" self-center">{$i18n.t('Code Execution')}</div>
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'interface'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -224,7 +224,7 @@
 				selectedTab = 'interface';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -242,7 +242,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'audio'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -250,7 +250,7 @@
 				selectedTab = 'audio';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -269,7 +269,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'images'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -277,7 +277,7 @@
 				selectedTab = 'images';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -295,7 +295,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'pipelines'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -303,7 +303,7 @@
 				selectedTab = 'pipelines';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -325,7 +325,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+			class=" {selectedTab ===
 			'db'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -333,7 +333,7 @@
 				selectedTab = 'db';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div>
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -391,8 +391,8 @@
 					await config.set(await getBackendConfig());
 				}}
 			/>
-		{:else if selectedTab === 'code-interpreter'}
-			<CodeInterpreter
+		{:else if selectedTab === 'code-execution'}
+			<CodeExecution
 				saveHandler={async () => {
 					toast.success($i18n.t('Settings saved successfully!'));
 

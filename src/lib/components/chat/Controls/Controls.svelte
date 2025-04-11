@@ -21,7 +21,7 @@
 	<div class=" flex items-center justify-between dark:text-gray-100 mb-2">
 		<div class=" text-lg font-medium self-center font-primary">{$i18n.t('Chat Controls')}</div>
 		<button
-			class="self-center"
+			
 			on:click={() => {
 				dispatch('close');
 			}}
@@ -74,7 +74,7 @@
 				<div class="" slot="content">
 					<textarea
 						bind:value={params.system}
-						class="w-full text-xs py-1.5 bg-transparent outline-none resize-none"
+						class="w-full text-xs py-1.5 bg-transparent outline-hidden resize-none"
 						rows="4"
 						placeholder={$i18n.t('Enter system prompt')}
 					/>

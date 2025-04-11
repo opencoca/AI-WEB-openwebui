@@ -367,7 +367,7 @@
 		<div class=" flex justify-between dark:text-gray-300 px-5 pt-4 pb-1">
 			<div class=" text-lg font-medium self-center">{$i18n.t('Settings')}</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}
@@ -395,7 +395,7 @@
 						<Search className="size-3.5" />
 					</div>
 					<input
-						class="w-full py-1.5 text-sm bg-transparent dark:text-gray-300 outline-none"
+						class="w-full py-1.5 text-sm bg-transparent dark:text-gray-300 outline-hidden"
 						bind:value={search}
 						on:input={searchDebounceHandler}
 						placeholder={$i18n.t('Search')}
@@ -405,16 +405,8 @@
 				{#if visibleTabs.length > 0}
 					{#each visibleTabs as tabId (tabId)}
 						{#if tabId === 'general'}
-							<button
-								class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
-								'general'
-									? ''
-									: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
-								on:click={() => {
-									selectedTab = 'general';
-								}}
-							>
-								<div class=" self-center mr-2">
+							<button>
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
@@ -440,7 +432,7 @@
 									selectedTab = 'interface';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -459,7 +451,7 @@
 						{:else if tabId === 'connections'}
 							{#if $user.role === 'admin' || ($user.role === 'user' && $config?.features?.enable_direct_connections)}
 								<button
-									class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-right transition {selectedTab ===
+									class=" {selectedTab ===
 									'connections'
 										? ''
 										: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -467,7 +459,7 @@
 										selectedTab = 'connections';
 									}}
 								>
-									<div class=" self-center mr-2">
+									<div>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 16 16"
@@ -483,31 +475,15 @@
 								</button>
 							{/if}
 						{:else if tabId === 'personalization'}
-							<button
-								class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
-								'personalization'
-									? ''
-									: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
-								on:click={() => {
-									selectedTab = 'personalization';
-								}}
-							>
-								<div class=" self-center mr-2">
+							<button>
+								<div>
 									<User />
 								</div>
 								<div class=" self-center">{$i18n.t('Personalization')}</div>
 							</button>
 						{:else if tabId === 'audio'}
-							<button
-								class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
-								'audio'
-									? ''
-									: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
-								on:click={() => {
-									selectedTab = 'audio';
-								}}
-							>
-								<div class=" self-center mr-2">
+							<button>
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -534,7 +510,7 @@
 									selectedTab = 'chats';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -560,7 +536,7 @@
 									selectedTab = 'account';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 16 16"
@@ -586,7 +562,7 @@
 									selectedTab = 'about';
 								}}
 							>
-								<div class=" self-center mr-2">
+								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 20 20"
@@ -614,7 +590,7 @@
 										show = false;
 									}}
 								>
-									<div class=" self-center mr-2">
+									<div>
 										<svg
 											xmlns="http://www.w3.org/2000/svg"
 											viewBox="0 0 24 24"

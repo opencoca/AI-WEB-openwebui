@@ -83,7 +83,7 @@
 
 		const history = chat.chat.history;
 		const messages = createMessagesList(history, history.currentId);
-		const blob = await downloadChatAsPDF(chat.chat.title, messages);
+		const blob = await downloadChatAsPDF(localStorage.token, chat.chat.title, messages);
 
 		// Create a URL for the blob
 		const url = window.URL.createObjectURL(blob);
@@ -273,7 +273,33 @@
 				<div class="flex items-center">{$i18n.t('Delete')}</div>
 			</DropdownMenu.Item>
 
-			
+			<hr class="border-gray-100 dark:border-gray-850 my-0.5" />
+
+			<div class="flex p-1">
+				<Tags
+					{chatId}
+					on:add={(e) => {
+						dispatch('tag', {
+							type: 'add',
+							name: e.detail.name
+						});
+
+						show = false;
+					}}
+					on:delete={(e) => {
+						dispatch('tag', {
+							type: 'delete',
+							name: e.detail.name
+						});
+
+						show = false;
+					}}
+					on:close={() => {
+						show = false;
+						onClose();
+					}}
+				/>
+			</div>
 		</DropdownMenu.Content>
 	</div>
 </Dropdown>

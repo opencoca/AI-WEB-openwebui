@@ -357,7 +357,7 @@
 <div bind:this={folderElement} class="relative {className}" draggable="true">
 	{#if draggedOver}
 		<div
-			class="absolute top-0 left-0 w-full h-full rounded-sm bg-gray-100/50 dark:bg-gray-700/20 bg-opacity-50 dark:bg-opacity-10 z-50 pointer-events-none touch-none"
+			class="absolute top-0 left-0 w-full h-full rounded-xs bg-gray-100/50 dark:bg-gray-700/20 bg-opacity-50 dark:bg-opacity-10 z-50 pointer-events-none touch-none"
 		></div>
 	{/if}
 
@@ -380,7 +380,7 @@
 					editHandler();
 				}}
 			>
-				<div class="text-gray-300 dark:text-gray-600">
+				<div >
 					{#if open}
 						<ChevronDown className=" size-3" strokeWidth="2.5" />
 					{:else}
@@ -412,7 +412,7 @@
 									edit = false;
 								}
 							}}
-							class="w-full h-full bg-transparent text-gray-500 dark:text-gray-500 outline-none"
+							class="w-full h-full bg-transparent text-gray-500 dark:text-gray-500 outline-hidden"
 						/>
 					{:else}
 						{folders[folderId].name}

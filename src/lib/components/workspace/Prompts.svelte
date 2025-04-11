@@ -122,7 +122,7 @@
 					<Search className="size-3.5" />
 				</div>
 				<input
-					class=" w-full text-sm pr-4 py-1 rounded-r-xl outline-none bg-transparent"
+					class=" w-full text-sm pr-4 py-1 rounded-r-xl outline-hidden bg-transparent"
 					bind:value={query}
 					placeholder={$i18n.t('Search Prompts')}
 				/>
@@ -267,7 +267,7 @@
 						promptsImportInputElement.click();
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Import Prompts')}</div>
+					<div >{$i18n.t('Import Prompts')}</div>
 
 					<div class=" self-center">
 						<svg
@@ -295,7 +295,7 @@
 						saveAs(blob, `prompts-export-${Date.now()}.json`);
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Export Prompts')}</div>
+					<div >{$i18n.t('Export Prompts')}</div>
 
 					<div class=" self-center">
 						<svg

@@ -16,12 +16,12 @@
 			<div
 				class="flex w-full justify-between items-center text-lg font-medium self-center font-primary"
 			>
-				<div class=" flex-shrink-0">
+				<div class=" shrink-0">
 					{$i18n.t('Manage Ollama')}
 				</div>
 			</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}
