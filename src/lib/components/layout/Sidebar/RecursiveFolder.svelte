@@ -1,5 +1,4 @@
 <script>
-
 	import { getContext, createEventDispatcher, onMount, onDestroy, tick } from 'svelte';
 
 	const i18n = getContext('i18n');
@@ -333,7 +332,10 @@
 		deleteHandler();
 	}}
 >
-	<div style="--size:0.875rem; --lh:1.25rem; --c:#374151; --dark-c:#d1d5db; --fx:1;"  class="line-clamp-3">
+	<div
+		style="--size:0.875rem; --lh:1.25rem; --c:#374151; --dark-c:#d1d5db; --fx:1;"
+		class="line-clamp-3"
+	>
 		{@html DOMPurify.sanitize(
 			$i18n.t('This will delete <strong>{{NAME}}</strong> and <strong>all its contents</strong>.', {
 				NAME: folders[folderId].name
@@ -344,10 +346,13 @@
 
 {#if dragged && x && y}
 	<DragGhost {x} {y}>
-		<div style="--bgc:black; --pl:8px; --pr:8px; --pt:4px; --pb:4px; --radius:0.5rem; --maxw:160px;"  class="backdrop-blur-2xl w-fit">
-			<div style="--d:flex; --ai:center; --gg:4px;" >
+		<div
+			style="--bgc:black; --pl:8px; --pr:8px; --pt:4px; --pb:4px; --radius:0.5rem; --maxw:160px;"
+			class="backdrop-blur-2xl w-fit"
+		>
+			<div style="--d:flex; --ai:center; --gg:4px;">
 				<FolderOpen className="size-3.5" strokeWidth="2" />
-				<div style="--size:0.75rem; --lh:1rem; --c:#ffffff;"  class="line-clamp-1">
+				<div style="--size:0.75rem; --lh:1rem; --c:#ffffff;" class="line-clamp-1">
 					{folders[folderId].name}
 				</div>
 			</div>
@@ -355,9 +360,12 @@
 	</DragGhost>
 {/if}
 
-<div style="--pos:relative;" bind:this={folderElement}  draggable="true" class="{className}">
+<div style="--pos:relative;" bind:this={folderElement} draggable="true" class={className}>
 	{#if draggedOver}
-		<div style="--pos:absolute; --top:0; --left:0; --w:100%; --h:100%; --bgc:gray-100/50; --dark-bgc:gray-700/20; --bgc:opacity-50; --dark-bgc:opacity-10; --z:50;"  class="rounded-xs pointer-events-none touch-none"></div>
+		<div
+			style="--pos:absolute; --top:0; --left:0; --w:100%; --h:100%; --bgc:gray-100/50; --dark-bgc:gray-700/20; --bgc:opacity-50; --dark-bgc:opacity-10; --z:50;"
+			class="rounded-xs pointer-events-none touch-none"
+		></div>
 	{/if}
 
 	<Collapsible
@@ -371,15 +379,16 @@
 		}}
 	>
 		<!-- svelte-ignore a11y-no-static-element-interactions -->
-		<div style="--w:100%;"  class="group">
-			<button style="--pos:relative; --w:100%; --pt:6px; --pb:6px; --pl:8px; --pr:8px; --radius:0.375rem; --d:flex; --ai:center; --gg:6px; --size:0.75rem; --lh:1rem; --c:#6b7280; --dark-c:#6b7280; --weight:500; --tn:all 0.15s ease-in-out;" 
-			id="folder-{folderId}-button"
-			class="hover:bg-gray-100 dark:hover:bg-gray-900"
+		<div style="--w:100%;" class="group">
+			<button
+				style="--pos:relative; --w:100%; --pt:6px; --pb:6px; --pl:8px; --pr:8px; --radius:0.375rem; --d:flex; --ai:center; --gg:6px; --size:0.75rem; --lh:1rem; --c:#6b7280; --dark-c:#6b7280; --weight:500; --tn:all 0.15s ease-in-out;"
+				id="folder-{folderId}-button"
+				class="hover:bg-gray-100 dark:hover:bg-gray-900"
 				on:dblclick={() => {
 					editHandler();
 				}}
 			>
-				<div >
+				<div>
 					{#if open}
 						<ChevronDown className=" size-3" strokeWidth="2.5" />
 					{:else}
@@ -387,7 +396,7 @@
 					{/if}
 				</div>
 
-				<div style="--fx:1; --jc:start; --c:start;"  class="translate-y-[0.5px] line-clamp-1">
+				<div style="--fx:1; --jc:start; --c:start;" class="translate-y-[0.5px] line-clamp-1">
 					{#if edit}
 						<input
 							id="folder-{folderId}-input"
@@ -418,7 +427,10 @@
 					{/if}
 				</div>
 
-				<button style="--pos:absolute; --z:10; --right:8px; --as:center; --d:flex; --ai:center; --dark-c:#d1d5db;" class="invisible group-hover:visible" on:pointerup={(e) => {
+				<button
+					style="--pos:absolute; --z:10; --right:8px; --as:center; --d:flex; --ai:center; --dark-c:#d1d5db;"
+					class="invisible group-hover:visible"
+					on:pointerup={(e) => {
 						e.stopPropagation();
 					}}
 				>
@@ -433,15 +445,23 @@
 							exportHandler();
 						}}
 					>
-						<button style="--p:2px; --radius:0.5rem;" class="dark:hover:bg-gray-850 touch-auto" on:click={(e) => {}}>
-					</FolderMenu>
+						<button
+							style="--p:2px; --radius:0.5rem;"
+							class="dark:hover:bg-gray-850 touch-auto"
+							on:click={(e) => {}}
+						>
+						</button></FolderMenu
+					>
 				</button>
 			</button>
 		</div>
 
 		<div style="--w:100%;" slot="content">
 			{#if (folders[folderId]?.childrenIds ?? []).length > 0 || (folders[folderId].items?.chats ?? []).length > 0}
-				<div style="--ml:12px; --pl:4px; --mt:[1px]; --d:flex; --fd:column; --ofy:auto; --bc:s; --bc:#f3f4f6; --dark-bdc:#111827;"  class="scrollbar-hidden">
+				<div
+					style="--ml:12px; --pl:4px; --mt:[1px]; --d:flex; --fd:column; --ofy:auto; --bc:s; --bc:#f3f4f6; --dark-bdc:#111827;"
+					class="scrollbar-hidden"
+				>
 					{#if folders[folderId]?.childrenIds}
 						{@const children = folders[folderId]?.childrenIds
 							.map((id) => folders[id])

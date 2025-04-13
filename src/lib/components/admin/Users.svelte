@@ -60,7 +60,8 @@
 				selectedTab = 'overview';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -84,7 +85,8 @@
 				selectedTab = 'groups';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"

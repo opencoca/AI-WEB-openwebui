@@ -45,6 +45,7 @@
 		style="--d:flex;--fd:column"
 	>
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'general'
 				? ''
@@ -53,7 +54,8 @@
 				selectedTab = 'general';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -71,6 +73,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'connections'
 				? ''
@@ -79,7 +82,8 @@
 				selectedTab = 'connections';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -95,6 +99,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'models'
 				? ''
@@ -103,7 +108,8 @@
 				selectedTab = 'models';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 20 20"
@@ -121,6 +127,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'evaluations'
 				? ''
@@ -136,6 +143,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'documents'
 				? ''
@@ -144,7 +152,8 @@
 				selectedTab = 'documents';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -166,6 +175,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'web'
 				? ''
@@ -174,7 +184,8 @@
 				selectedTab = 'web';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -190,6 +201,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'code-execution'
 				? ''
@@ -198,7 +210,8 @@
 				selectedTab = 'code-execution';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -216,6 +229,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'interface'
 				? ''
@@ -224,7 +238,8 @@
 				selectedTab = 'interface';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -242,6 +257,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'audio'
 				? ''
@@ -250,7 +266,8 @@
 				selectedTab = 'audio';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -269,6 +286,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'images'
 				? ''
@@ -277,7 +295,8 @@
 				selectedTab = 'images';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -295,6 +314,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'pipelines'
 				? ''
@@ -303,7 +323,8 @@
 				selectedTab = 'pipelines';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 24 24"
@@ -325,6 +346,7 @@
 		</button>
 
 		<button
+                        style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'db'
 				? ''
@@ -333,7 +355,8 @@
 				selectedTab = 'db';
 			}}
 		>
-			<div>
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"

@@ -1,4 +1,13 @@
 <script lang="ts">
+
+/* Dark mode helper: Add this to your global CSS to support dark mode:
+@media (prefers-color-scheme: dark) { 
+  [style*="--dark-"] { 
+    --c: var(--dark-c, var(--c)); 
+    --bgc: var(--dark-bgc, var(--bgc)); 
+    --bdc: var(--dark-bdc, var(--bdc)); 
+  }
+} */
 	import { toast } from 'svelte-sonner';
 	import { v4 as uuidv4 } from 'uuid';
 	import { createPicker, getAuthToken } from '$lib/utils/google-drive-picker';
@@ -344,31 +353,22 @@
 <FilesOverlay show={dragged} />
 
 {#if loaded}
-	<div class="w-full font-primary">
-		<div class=" mx-auto inset-x-0 bg-transparent flex justify-center">
-			<div
-				class="flex flex-col px-3 {($settings?.widescreenMode ?? null)
+	<div style="--w:100%;"  class="font-primary">
+		<div style="--left:0; --right:0; --bgc:transparent; --d:flex; --jc:center;"  class="mx-auto">
+			<div style="--d:flex; --fd:column; --pl:12px; --pr:12px; --w:100%;"  class="{($settings?.widescreenMode ?? null)
 					? 'max-w-full'
-					: 'max-w-6xl'} w-full"
-			>
-				<div class="relative">
+					: 'max-w-6xl'}">
+				<div style="--pos:relative;" >
 					{#if autoScroll === false && history?.currentId}
-						<div
-							class=" absolute -top-12 left-0 right-0 flex justify-center z-30 pointer-events-none"
-						>
-							<button
-								class=" bg-white border border-gray-100 dark:border-none dark:bg-white/20 p-1.5 rounded-full pointer-events-auto"
-								on:click={() => {
+						<div style="--pos:absolute; --left:0; --right:0; --d:flex; --jc:center; --z:30;"  class="-top-12 pointer-events-none">
+							<button style="--bgc:#ffffff; --bw:1px; --bc:#f3f4f6; --dark-bdc:none; --dark-bgc:white/20; --p:6px; --radius:9999px;" class="pointer-events-auto" on:click={() => {
 									autoScroll = true;
 									scrollToBottom();
 								}}
 							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
+								<svg style="--w:20px; --h:20px;" xmlns="http://www.w3.org/2000/svg"
 									viewBox="0 0 20 20"
-									fill="currentColor"
-									class="w-5 h-5"
-								>
+									fill="currentColor">
 									<path
 										fill-rule="evenodd"
 										d="M10 3a.75.75 0 01.75.75v10.638l3.96-4.158a.75.75 0 111.08 1.04l-5.25 5.5a.75.75 0 01-1.08 0l-5.25-5.5a.75.75 0 111.08-1.04l3.96 4.158V3.75A.75.75 0 0110 3z"
@@ -380,23 +380,19 @@
 					{/if}
 				</div>
 
-				<div class="w-full relative">
+				<div style="--w:100%; --pos:relative;" >
 					{#if atSelectedModel !== undefined || selectedToolIds.length > 0 || webSearchEnabled || ($settings?.webSearch ?? false) === 'always' || imageGenerationEnabled || codeInterpreterEnabled}
-						<div
-							class="px-3 pb-0.5 pt-1.5 text-left w-full flex flex-col absolute bottom-0 left-0 right-0 bg-linear-to-t from-white dark:from-gray-900 z-10"
-						>
+						<div style="--pl:12px; --pr:12px; --pb:2px; --pt:6px; --ta:left; --w:100%; --d:flex; --fd:column; --pos:absolute; --bottom:0; --left:0; --right:0; --bgc:linear-to-t; --from:#ffffff; --z:10;"  class="dark:from-gray-900">
 							{#if selectedToolIds.length > 0}
-								<div class="flex items-center justify-between w-full">
-									<div class="flex items-center gap-2.5 text-sm dark:text-gray-500">
-										<div class="pl-1">
-											<span class="relative flex size-2">
-												<span
-													class="animate-ping absolute inline-flex h-full w-full rounded-full bg-yellow-400 opacity-75"
-												/>
-												<span class="relative inline-flex rounded-full size-2 bg-yellow-500" />
+								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
+									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
+										<div style="--pl:4px;" >
+											<span style="--pos:relative; --d:flex;"  class="size-2">
+												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:#facc15; --op:0.75;" class="animate-ping inline-flex">
+												<span style="--pos:relative; --radius:9999px; --bgc:#eab308;" class="inline-flex size-2">
 											</span>
 										</div>
-										<div class="  text-ellipsis line-clamp-1 flex">
+										<div style="--c:ellipsis; --d:flex;"  class="line-clamp-1">
 											{#each selectedToolIds.map((id) => {
 												return $tools ? $tools.find((t) => t.id === id) : { id: id, name: id };
 											}) as tool, toolIdx (toolIdx)}
@@ -418,74 +414,65 @@
 							{/if}
 
 							{#if webSearchEnabled || ($config?.features?.enable_web_search && ($settings?.webSearch ?? false)) === 'always'}
-								<div class="flex items-center justify-between w-full">
-									<div class="flex items-center gap-2.5 text-sm dark:text-gray-500">
-										<div class="pl-1">
-											<span class="relative flex size-2">
-												<span
-													class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"
-												/>
-												<span class="relative inline-flex rounded-full size-2 bg-blue-500" />
+								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
+									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
+										<div style="--pl:4px;" >
+											<span style="--pos:relative; --d:flex;"  class="size-2">
+												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:#60a5fa; --op:0.75;" class="animate-ping inline-flex">
+												<span style="--pos:relative; --radius:9999px; --bgc:#3b82f6;" class="inline-flex size-2">
 											</span>
 										</div>
-										<div class=" translate-y-[0.5px]">{$i18n.t('Search the internet')}</div>
+										<div  class="translate-y-[0.5px]">{$i18n.t('Search the internet')}</div>
 									</div>
 								</div>
 							{/if}
 
 							{#if imageGenerationEnabled}
-								<div class="flex items-center justify-between w-full">
-									<div class="flex items-center gap-2.5 text-sm dark:text-gray-500">
-										<div class="pl-1">
-											<span class="relative flex size-2">
-												<span
-													class="animate-ping absolute inline-flex h-full w-full rounded-full bg-teal-400 opacity-75"
-												/>
-												<span class="relative inline-flex rounded-full size-2 bg-teal-500" />
+								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
+									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
+										<div style="--pl:4px;" >
+											<span style="--pos:relative; --d:flex;"  class="size-2">
+												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:teal-400; --op:0.75;" class="animate-ping inline-flex">
+												<span style="--pos:relative; --radius:9999px; --bgc:teal-500;" class="inline-flex size-2">
 											</span>
 										</div>
-										<div class=" translate-y-[0.5px]">{$i18n.t('Generate an image')}</div>
+										<div  class="translate-y-[0.5px]">{$i18n.t('Generate an image')}</div>
 									</div>
 								</div>
 							{/if}
 
 							{#if codeInterpreterEnabled}
-								<div class="flex items-center justify-between w-full">
-									<div class="flex items-center gap-2.5 text-sm dark:text-gray-500">
-										<div class="pl-1">
-											<span class="relative flex size-2">
-												<span
-													class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"
-												/>
-												<span class="relative inline-flex rounded-full size-2 bg-green-500" />
+								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
+									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
+										<div style="--pl:4px;" >
+											<span style="--pos:relative; --d:flex;"  class="size-2">
+												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:#4ade80; --op:0.75;" class="animate-ping inline-flex">
+												<span style="--pos:relative; --radius:9999px; --bgc:#22c55e;" class="inline-flex size-2">
 											</span>
 										</div>
-										<div class=" translate-y-[0.5px]">{$i18n.t('Execute code for analysis')}</div>
+										<div  class="translate-y-[0.5px]">{$i18n.t('Execute code for analysis')}</div>
 									</div>
 								</div>
 							{/if}
 
 							{#if atSelectedModel !== undefined}
-								<div class="flex items-center justify-between w-full">
-									<div class="pl-[1px] flex items-center gap-2 text-sm dark:text-gray-500">
-										<img
-											crossorigin="anonymous"
+								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
+									<div style="--pl:[1px]; --d:flex; --ai:center; --gg:8px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
+										<img style="--maxw:28px; --objf:cover; --radius:9999px;" crossorigin="anonymous"
 											alt="model profile"
-											class="size-3.5 max-w-[28px] object-cover rounded-full"
+											class="size-3.5"
 											src={$models.find((model) => model.id === atSelectedModel.id)?.info?.meta
 												?.profile_image_url ??
 												($i18n.language === 'dg-DG'
 													? `/doge.png`
 													: `${WEBUI_BASE_URL}/static/favicon.png`)}
 										/>
-										<div class="translate-y-[0.5px]">
-											Talking to <span class=" font-medium">{atSelectedModel.name}</span>
+										<div  class="translate-y-[0.5px]">
+											Talking to <span style="--weight:500;" >{atSelectedModel.name}</span>
 										</div>
 									</div>
 									<div>
-										<button
-											class="flex items-center dark:text-gray-500"
-											on:click={() => {
+										<button style="--d:flex; --ai:center; --dark-c:#6b7280;" on:click={() => {
 												atSelectedModel = undefined;
 											}}
 										>
@@ -519,12 +506,10 @@
 			</div>
 		</div>
 
-		<div class="{transparentBackground ? 'bg-transparent' : 'bg-white dark:bg-gray-900'} ">
-			<div
-				class="{($settings?.widescreenMode ?? null)
+		<div  class="{transparentBackground ? 'bg-transparent' : 'bg-white dark:bg-gray-900'}">
+			<div style="--pl:10px; --pr:10px; --left:0; --right:0;"  class="mx-auto {($settings?.widescreenMode ?? null)
 					? 'max-w-full'
-					: 'max-w-6xl'} px-2.5 mx-auto inset-x-0"
-			>
+					: 'max-w-6xl'}">
 				<div class="">
 					<input
 						bind:this={filesInputElement}
@@ -568,23 +553,18 @@
 							}}
 						/>
 					{:else}
-						<form
-							class="w-full flex gap-1.5"
-							on:submit|preventDefault={() => {
+						<form style="--w:100%; --d:flex; --gg:6px;" on:submit|preventDefault={() => {
 								// check if selectedModels support image input
 								dispatch('submit', prompt);
 							}}
 						>
-							<div
-								class="flex-1 flex flex-col relative w-full rounded-3xl px-1 bg-gray-600/5 dark:bg-gray-400/5 dark:text-gray-100"
-								dir={$settings?.chatDirection ?? 'LTR'}
-							>
+							<div style="--fx:1; --d:flex; --fd:column; --pos:relative; --w:100%; --radius:1.5rem; --pl:4px; --pr:4px; --bgc:gray-600/5; --dark-bgc:gray-400/5; --dark-c:#f3f4f6;" dir={$settings?.chatDirection ?? 'LTR'}>
 								{#if files.length > 0}
-									<div class="mx-2 mt-2.5 -mb-1 flex items-center flex-wrap gap-2">
+									<div style="--ml:8px; --mr:8px; --mt:10px; --d:flex; --ai:center; --fw:wrap; --gg:8px;"  class="-mb-1">
 										{#each files as file, fileIdx}
 											{#if file.type === 'image'}
-												<div class=" relative group">
-													<div class="relative flex items-center">
+												<div style="--pos:relative;"  class="group">
+													<div style="--pos:relative; --d:flex; --ai:center;" >
 														<Image
 															src={file.url}
 															alt="input"
@@ -601,12 +581,9 @@
 																		.join(', ')
 																})}
 															>
-																<svg
-																	xmlns="http://www.w3.org/2000/svg"
+																<svg xmlns="http://www.w3.org/2000/svg"
 																	viewBox="0 0 24 24"
-																	fill="currentColor"
-																	class="size-4 fill-yellow-300"
-																>
+																	fill="currentColor" class="size-4 fill-yellow-300">
 																	<path
 																		fill-rule="evenodd"
 																		d="M9.401 3.003c1.155-2 4.043-2 5.197 0l7.355 12.748c1.154 2-.29 4.5-2.599 4.5H4.645c-2.309 0-3.752-2.5-2.598-4.5L9.4 3.003ZM12 8.25a.75.75 0 0 1 .75.75v3.75a.75.75 0 0 1-1.5 0V9a.75.75 0 0 1 .75-.75Zm0 8.25a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Z"
@@ -616,21 +593,17 @@
 															</Tooltip>
 														{/if}
 													</div>
-													<div class=" absolute -top-1 -right-1">
-														<button
-															class=" bg-white text-black border border-white rounded-full group-hover:visible invisible transition"
-															type="button"
+													<div style="--pos:absolute;"  class="-top-1 -right-1">
+														<button style="--bgc:#ffffff; --c:#000000; --bw:1px; --bc:#ffffff; --radius:9999px; --tn:all 0.15s ease-in-out;" type="button"
+															class="group-hover:visible invisible"
 															on:click={() => {
 																files.splice(fileIdx, 1);
 																files = files;
 															}}
 														>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
+															<svg xmlns="http://www.w3.org/2000/svg"
 																viewBox="0 0 20 20"
-																fill="currentColor"
-																class="size-4"
-															>
+																fill="currentColor" class="size-4">
 																<path
 																	d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
 																/>
@@ -668,11 +641,9 @@
 									</div>
 								{/if}
 
-								<div class="px-2.5">
+								<div style="--pl:10px; --pr:10px;" >
 									{#if $settings?.richTextInput ?? true}
-										<div
-											class="scrollbar-hidden text-left bg-transparent dark:text-gray-100 outline-hidden w-full pt-3 px-1 resize-none h-fit max-h-80 overflow-auto"
-										>
+										<div style="--ta:left; --bgc:transparent; --dark-c:#f3f4f6; --w:100%; --pt:12px; --pl:4px; --pr:4px; --maxh:80; --of:auto;"  class="scrollbar-hidden outline-hidden resize-none h-fit">
 											<RichTextInput
 												bind:this={chatInputElement}
 												bind:value={prompt}
@@ -884,10 +855,9 @@
 											/>
 										</div>
 									{:else}
-										<textarea
-											id="chat-input"
+										<textarea style="--bgc:transparent; --dark-c:#f3f4f6; --w:100%; --pt:12px; --pl:4px; --pr:4px;" id="chat-input"
 											bind:this={chatInputElement}
-											class="scrollbar-hidden bg-transparent dark:text-gray-100 outline-hidden w-full pt-3 px-1 resize-none"
+											class="scrollbar-hidden outline-hidden resize-none"
 											placeholder={placeholder ? placeholder : $i18n.t('Send a Message')}
 											bind:value={prompt}
 											on:compositionstart={() => (isComposing = true)}
@@ -1099,8 +1069,8 @@
 									{/if}
 								</div>
 
-								<div class=" flex justify-between mt-1.5 mb-2.5 mx-0.5 max-w-full">
-									<div class="ml-1 self-end gap-0.5 flex items-center flex-1 max-w-[80%]">
+								<div style="--d:flex; --jc:space-between; --mt:6px; --mb:10px; --ml:2px; --mr:2px; --maxw:100%;" >
+									<div style="--ml:4px; --as:end; --gg:2px; --d:flex; --ai:center; --fx:1; --maxw:80%;" >
 										<InputMenu
 											bind:selectedToolIds
 											{screenCaptureHandler}
@@ -1150,17 +1120,11 @@
 												chatInput?.focus();
 											}}
 										>
-											<button
-												class="bg-transparent hover:bg-gray-100 text-gray-800 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-1.5 outline-hidden focus:outline-hidden"
-												type="button"
-												aria-label="More"
-											>
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
+											<button style="--bgc:transparent; --c:#1f2937; --dark-c:#ffffff; --tn:all 0.15s ease-in-out; --radius:9999px; --p:6px;" type="button"
+												aria-label="More" class="hover:bg-gray-100 dark:hover:bg-gray-800 outline-hidden focus:outline-hidden">
+												<svg xmlns="http://www.w3.org/2000/svg"
 													viewBox="0 0 20 20"
-													fill="currentColor"
-													class="size-5"
-												>
+													fill="currentColor" class="size-5">
 													<path
 														d="M10.75 4.75a.75.75 0 0 0-1.5 0v4.5h-4.5a.75.75 0 0 0 0 1.5h4.5v4.5a.75.75 0 0 0 1.5 0v-4.5h4.5a.75.75 0 0 0 0-1.5h-4.5v-4.5Z"
 													/>
@@ -1168,7 +1132,7 @@
 											</button>
 										</InputMenu>
 
-										<div class="flex gap-0.5 items-center overflow-x-auto scrollbar-none flex-1">
+										<div style="--d:flex; --gg:2px; --ai:center; --ofx:auto; --fx:1;"  class="scrollbar-none">
 											{#if $_user}
 												{#if $config?.features?.enable_web_search && ($_user.role === 'admin' || $_user?.permissions?.features?.web_search)}
 													<Tooltip content={$i18n.t('Search the internet')} placement="top">
@@ -1181,9 +1145,7 @@
 																: 'bg-transparent text-gray-600 dark:text-gray-300 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}"
 														>
 															<GlobeAlt className="size-5" strokeWidth="1.75" />
-															<span
-																class="hidden @sm:block whitespace-nowrap overflow-hidden text-ellipsis translate-y-[0.5px] mr-0.5"
-																>{$i18n.t('Web Search')}</span
+															<span style="--d:none; --ws:nowrap; --of:hidden; --c:ellipsis; --mr:2px;"  class="@sm:block translate-y-[0.5px]">{$i18n.t('Web Search')}</span
 															>
 														</button>
 													</Tooltip>
@@ -1200,9 +1162,7 @@
 																: 'bg-transparent text-gray-600 dark:text-gray-300 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 '}"
 														>
 															<Photo className="size-5" strokeWidth="1.75" />
-															<span
-																class="hidden @sm:block whitespace-nowrap overflow-hidden text-ellipsis translate-y-[0.5px] mr-0.5"
-																>{$i18n.t('Image')}</span
+															<span style="--d:none; --ws:nowrap; --of:hidden; --c:ellipsis; --mr:2px;"  class="@sm:block translate-y-[0.5px]">{$i18n.t('Image')}</span
 															>
 														</button>
 													</Tooltip>
@@ -1219,9 +1179,7 @@
 																: 'bg-transparent text-gray-600 dark:text-gray-300 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 '}"
 														>
 															<CommandLine className="size-5" strokeWidth="1.75" />
-															<span
-																class="hidden @sm:block whitespace-nowrap overflow-hidden text-ellipsis translate-y-[0.5px] mr-0.5"
-																>{$i18n.t('Code Interpreter')}</span
+															<span style="--d:none; --ws:nowrap; --of:hidden; --c:ellipsis; --mr:2px;"  class="@sm:block translate-y-[0.5px]">{$i18n.t('Code Interpreter')}</span
 															>
 														</button>
 													</Tooltip>
@@ -1230,12 +1188,11 @@
 										</div>
 									</div>
 
-									<div class="self-end flex space-x-1 mr-1 shrink-0">
+									<div style="--as:end; --d:flex; --mr:4px;"  class="space-x-1 shrink-0">
 										{#if !history?.currentId || history.messages[history.currentId]?.done == true}
 											<Tooltip content={$i18n.t('Record voice')}>
-												<button
-													id="voice-input-button"
-													class=" text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 transition rounded-full p-1.5 mr-0.5 self-center"
+												<button style="--c:#4b5563; --dark-c:#d1d5db; --tn:all 0.15s ease-in-out; --radius:9999px; --p:6px; --mr:2px; --as:center;" id="voice-input-button"
+													class="hover:text-gray-700 dark:hover:text-gray-200"
 													type="button"
 													on:click={async () => {
 														try {
@@ -1265,12 +1222,9 @@
 													}}
 													aria-label="Voice Input"
 												>
-													<svg
-														xmlns="http://www.w3.org/2000/svg"
+													<svg style="--w:20px; --h:20px;" xmlns="http://www.w3.org/2000/svg"
 														viewBox="0 0 20 20"
-														fill="currentColor"
-														class="w-5 h-5 translate-y-[0.5px]"
-													>
+														fill="currentColor" class="translate-y-[0.5px]">
 														<path d="M7 4a3 3 0 016 0v6a3 3 0 11-6 0V4z" />
 														<path
 															d="M5.5 9.643a.75.75 0 00-1.5 0V10c0 3.06 2.29 5.585 5.25 5.954V17.5h-1.5a.75.75 0 000 1.5h4.5a.75.75 0 000-1.5h-1.5v-1.546A6.001 6.001 0 0016 10v-.357a.75.75 0 00-1.5 0V10a4.5 4.5 0 01-9 0v-.357z"
@@ -1282,14 +1236,13 @@
 
 										{#if !history.currentId || history.messages[history.currentId]?.done == true}
 											{#if prompt === '' && files.length === 0}
-												<div class=" flex items-center">
+												<div style="--d:flex; --ai:center;" >
 													<Tooltip content={$i18n.t('Call')}>
-														<button
-															class=" {webSearchEnabled ||
+														<button style="--tn:all 0.15s ease-in-out; --radius:9999px; --p:6px; --as:center;" type="button"
+															class="{webSearchEnabled ||
 															($settings?.webSearch ?? false) === 'always'
 																? 'bg-blue-500 text-white hover:bg-blue-400 '
-																: 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100'} transition rounded-full p-1.5 self-center"
-															type="button"
+																: 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100'}"
 															on:click={async () => {
 																if (selectedModels.length > 1) {
 																	toast.error($i18n.t('Select only one model to call'));
@@ -1349,24 +1302,19 @@
 													</Tooltip>
 												</div>
 											{:else}
-												<div class=" flex items-center">
+												<div style="--d:flex; --ai:center;" >
 													<Tooltip content={$i18n.t('Send message')}>
-														<button
-															id="send-message-button"
-															class="{!(prompt === '' && files.length === 0)
+														<button style="--tn:all 0.15s ease-in-out; --radius:9999px; --p:6px; --as:center;" id="send-message-button"
+															
+															type="submit"
+															disabled={prompt === '' && files.length === 0} class="{!(prompt === '' && files.length === 0)
 																? webSearchEnabled || ($settings?.webSearch ?? false) === 'always'
 																	? 'bg-blue-500 text-white hover:bg-blue-400 '
 																	: 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 '
-																: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full p-1.5 self-center"
-															type="submit"
-															disabled={prompt === '' && files.length === 0}
-														>
-															<svg
-																xmlns="http://www.w3.org/2000/svg"
+																: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'}">
+															<svg xmlns="http://www.w3.org/2000/svg"
 																viewBox="0 0 16 16"
-																fill="currentColor"
-																class="size-5"
-															>
+																fill="currentColor" class="size-5">
 																<path
 																	fill-rule="evenodd"
 																	d="M8 14a.75.75 0 0 1-.75-.75V4.56L4.03 7.78a.75.75 0 0 1-1.06-1.06l4.5-4.5a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06L8.75 4.56v8.69A.75.75 0 0 1 8 14Z"
@@ -1378,20 +1326,15 @@
 												</div>
 											{/if}
 										{:else}
-											<div class=" flex items-center">
-												<Tooltip content={$i18n.t('Stop')}>
-													<button
-														class="bg-white hover:bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-1.5"
-														on:click={() => {
+											<div style="--d:flex; --ai:center;" >
+												<Tooltip content={$i18n.t('Stop response')}>
+													<button style="--bgc:#ffffff; --c:#1f2937; --dark-bgc:#374151; --dark-c:#ffffff; --tn:all 0.15s ease-in-out; --radius:9999px; --p:6px;" class="hover:bg-gray-100 dark:hover:bg-gray-800" on:click={() => {
 															stopResponse();
 														}}
 													>
-														<svg
-															xmlns="http://www.w3.org/2000/svg"
+														<svg xmlns="http://www.w3.org/2000/svg"
 															viewBox="0 0 24 24"
-															fill="currentColor"
-															class="size-5"
-														>
+															fill="currentColor" class="size-5">
 															<path
 																fill-rule="evenodd"
 																d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm6-2.438c0-.724.588-1.312 1.313-1.312h4.874c.725 0 1.313.588 1.313 1.313v4.874c0 .725-.588 1.313-1.313 1.313H9.564a1.312 1.312 0 01-1.313-1.313V9.564z"
