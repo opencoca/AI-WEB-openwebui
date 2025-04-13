@@ -23,44 +23,33 @@
 </script>
 
 <Modal bind:show size="lg">
-	<div style="--pl:20px; --pr:20px; --pt:16px; /* Unrecognized: dark:text-gray-300 */ --c:oklch(47.318% 0.036 262);" >
+	<Confetti x={[-1, -0.25]} y={[0, 0.5]} />
+	<div>
 		<div style="--d:flex; --jc:space-between; --ai:flex-start;" >
-			<div style="--c:xl; --weight:600;" >
-				{$i18n.t('What’s New in')}
-				{$WEBUI_NAME}
-				<Confetti x={[-1, -0.25]} y={[0, 0.5]} />
-			</div>
-			<button style="--as:center;"
+
+			<button
 				
 				on:click={() => {
 					localStorage.version = $config.version;
 					show = false;
 				}}
 			>
-				<svg style="/* Unrecognized: w-5 */ /* Unrecognized: h-5 */"
-					xmlns="http://www.w3.org/2000/svg"
-					viewBox="0 0 20 20"
-					fill="currentColor"
-					
-				>
-					<path
-						d="M6.28 5.22a.75.75 0 00-1.06 1.06L8.94 10l-3.72 3.72a.75.75 0 101.06 1.06L10 11.06l3.72 3.72a.75.75 0 101.06-1.06L11.06 10l3.72-3.72a.75.75 0 00-1.06-1.06L10 8.94 6.28 5.22z"
-					/>
-				</svg>
+				{(() => {
+					const affirmations = ["Great!", "Awesome!", "Super!", "Cool!", "Wow!"];
+					return affirmations[Math.floor(Math.random() * affirmations.length)];
+				})()}
 			</button>
-		</div>
-		<div style="--d:flex; --ai:center; /* Unrecognized: mt-1 */" >
-			<div style="--c:sm; /* Unrecognized: dark:text-gray-200 */" >{$i18n.t('Release Notes')}</div>
-			<div style="--d:flex; --as:center; --w:1px; /* Unrecognized: h-6 */ /* Unrecognized: mx-2.5 */ --bgc:oklch(91.9% 0.016 262); /* Unrecognized: dark:bg-gray-700 */"  />
-			<div style="--c:sm; /* Unrecognized: dark:text-gray-200 */" >
-				v{WEBUI_VERSION}
-			</div>
 		</div>
 	</div>
 
 	<div style="/* Unrecognized: w-full */ /* Unrecognized: p-4 */ --pl:20px; --pr:20px; --c:oklch(47.318% 0.036 262); /* Unrecognized: dark:text-gray-100 */" >
 		<div style="/* Unrecognized: overflow-y-scroll */ /* Unrecognized: max-h-96 */ /* Unrecognized: scrollbar-hidden */" >
 			<div style="/* Unrecognized: mb-3 */" >
+				<div style="--c:xl; --weight:600;" >
+					{$i18n.t('What’s New in')}
+					{$WEBUI_NAME}
+					
+				</div>
 				{#if changelog}
 					{#each Object.keys(changelog) as version}
 						<div style="/* Unrecognized: mb-3 */ /* Unrecognized: pr-2 */" >
@@ -68,7 +57,7 @@
 								v{version} - {changelog[version].date}
 							</div>
 
-							<hr style="/* Unrecognized: dark:border-gray-800 */ /* Unrecognized: my-2 */"  />
+							<hr class="border-gray-100 dark:border-gray-850 my-2" />
 
 							{#each Object.keys(changelog[version]).filter((section) => section !== 'date') as section}
 								<div class="">

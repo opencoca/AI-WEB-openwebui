@@ -68,7 +68,12 @@
 			toast.success($i18n.t(`Deleted {{name}}`, { name: model.id }));
 		}
 
-		await _models.set(await getModels(localStorage.token));
+		await _models.set(
+			await getModels(
+				localStorage.token,
+				$config?.features?.enable_direct_connections && ($settings?.directConnections ?? null)
+			)
+		);
 		models = await getWorkspaceModels(localStorage.token);
 	};
 
@@ -134,7 +139,12 @@
 			);
 		}
 
-		await _models.set(await getModels(localStorage.token));
+		await _models.set(
+			await getModels(
+				localStorage.token,
+				$config?.features?.enable_direct_connections && ($settings?.directConnections ?? null)
+			)
+		);
 		models = await getWorkspaceModels(localStorage.token);
 	};
 
@@ -177,12 +187,12 @@
 
 		window.addEventListener('keydown', onKeyDown);
 		window.addEventListener('keyup', onKeyUp);
-		window.addEventListener('blur', onBlur);
+		window.addEventListener('blur-sm', onBlur);
 
 		return () => {
 			window.removeEventListener('keydown', onKeyDown);
 			window.removeEventListener('keyup', onKeyUp);
-			window.removeEventListener('blur', onBlur);
+			window.removeEventListener('blur-sm', onBlur);
 		};
 	});
 </script>
@@ -218,7 +228,7 @@
 					<Search className="size-3.5" />
 				</div>
 				<input
-					class=" w-full text-sm py-1 rounded-r-xl outline-none bg-transparent"
+					class=" w-full text-sm py-1 rounded-r-xl outline-hidden bg-transparent"
 					bind:value={searchValue}
 					placeholder={$i18n.t('Search Models')}
 				/>
@@ -371,7 +381,13 @@
 										bind:state={model.is_active}
 										on:change={async (e) => {
 											toggleModelById(localStorage.token, model.id);
-											_models.set(await getModels(localStorage.token));
+											_models.set(
+												await getModels(
+													localStorage.token,
+													$config?.features?.enable_direct_connections &&
+														($settings?.directConnections ?? null)
+												)
+											);
 										}}
 									/>
 								</Tooltip>
@@ -417,7 +433,13 @@
 								}
 							}
 
-							await _models.set(await getModels(localStorage.token));
+							await _models.set(
+								await getModels(
+									localStorage.token,
+									$config?.features?.enable_direct_connections &&
+										($settings?.directConnections ?? null)
+								)
+							);
 							models = await getWorkspaceModels(localStorage.token);
 						};
 
@@ -431,7 +453,7 @@
 						modelsImportInputElement.click();
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Import Models')}</div>
+					<div >{$i18n.t('Import Models')}</div>
 
 					<div class=" self-center">
 						<svg
@@ -455,7 +477,7 @@
 						downloadModels($_models);
 					}}
 				>
-					<div class=" self-center mr-2 font-medium line-clamp-1">{$i18n.t('Export Models')}</div>
+					<div >{$i18n.t('Export Models')}</div>
 
 					<div class=" self-center">
 						<svg

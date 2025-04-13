@@ -52,7 +52,7 @@
 		class=" flex flex-row overflow-x-auto gap-2.5 max-w-full lg:gap-1 lg:flex-col lg:flex-none lg:w-40 dark:text-gray-200 text-sm font-medium text-left scrollbar-none"
 	>
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg lg:flex-none flex text-right transition {selectedTab ===
+			class="{selectedTab ===
 			'overview'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -60,7 +60,8 @@
 				selectedTab = 'overview';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"
@@ -76,7 +77,7 @@
 		</button>
 
 		<button
-			class="px-0.5 py-1 min-w-fit rounded-lg lg:flex-none flex text-right transition {selectedTab ===
+			class="{selectedTab ===
 			'groups'
 				? ''
 				: ' text-gray-300 dark:text-gray-600 hover:text-gray-700 dark:hover:text-white'}"
@@ -84,7 +85,8 @@
 				selectedTab = 'groups';
 			}}
 		>
-			<div class=" self-center mr-2">
+			<div
+				style="--d:flex;--fd:column; --jc: center ">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					viewBox="0 0 16 16"

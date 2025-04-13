@@ -104,7 +104,7 @@ RUN apt-get update && \
 
 # Set default values for environment variables
 
-ENV BACKUP_PATH=snapcloud-backups
+ENV BACKUP_PATH=""
 ENV BACKUP_CRON="0 2 *"  
 # 2 AM EST (7 AM UTC)
 ENV NOTIFY_URL=https://your-webhook-url.com/notify
@@ -226,15 +226,6 @@ RUN NODE_OPTIONS="--max-old-space-size=4096" npm run build
 
 
 WORKDIR /app/backend
-
-# copy embedding weight from build
-# RUN mkdir -p /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2
-# COPY --from=build /app/onnx /root/.cache/chroma/onnx_models/all-MiniLM-L6-v2/onnx
-
-# copy built frontend files
-# COPY --chown=$UID:$GID --from=build /app/build /app/build
-# COPY --chown=$UID:$GID --from=build /app/CHANGELOG.md /app/CHANGELOG.md
-# COPY --chown=$UID:$GID --from=build /app/package.json /app/package.json
 
 # copy backend files
 COPY --chown=$UID:$GID ./backend .

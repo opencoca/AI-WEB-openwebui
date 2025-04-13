@@ -3,13 +3,18 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="icon" type="image/png" href="/favicon/favicon-96x96.png" sizes="96x96" />
-		<link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg" />
-		<link rel="shortcut icon" href="/favicon/favicon.ico" />
-		<link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png" />
+		<link rel="icon" type="image/png" href="/static/favicon.png" />
+		<link rel="icon" type="image/png" href="/static/favicon-96x96.png" sizes="96x96" />
+		<link rel="icon" type="image/svg+xml" href="/static/favicon.svg" />
+		<link rel="shortcut icon" href="/static/favicon.ico" />
+		<link rel="apple-touch-icon" sizes="180x180" href="/static/apple-touch-icon.png" />
 		<meta name="apple-mobile-web-app-title" content="Open WebUI" />
-		<link rel="manifest" href="/favicon/site.webmanifest" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+
+		<link rel="manifest" href="/manifest.json" />
+		<meta
+			name="viewport"
+			content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover"
+		/>
 		<meta name="theme-color" content="#171717" />
 		<meta name="robots" content="noindex,nofollow" />
 		<meta name="description" content="Sage : Sage AI WebUI" />
@@ -18,6 +23,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Cormorant:wght@300..700&display=swap" rel="stylesheet">
 	<link rel="search" type="application/opensearchdescription+xml" title="Sage : Sage AI WebUI"
 		href="/opensearch.xml" />
+		<script src="/static/loader.js" defer></script>
 
 		<script>
 			function resizeIframe(obj) {
@@ -70,17 +76,121 @@
 						}
 					}
 				});
+
+				function setSplashImage() {
+					const logo = document.getElementById('logo');
+					const isDarkMode = document.documentElement.classList.contains('dark');
+
+					if (isDarkMode) {
+						const darkImage = new Image();
+						darkImage.src = '/static/splash-dark.png';
+
+						darkImage.onload = () => {
+							logo.src = '/static/splash-dark.png';
+							logo.style.filter = ''; // Ensure no inversion is applied if splash-dark.png exists
+						};
+
+						darkImage.onerror = () => {
+							logo.style.filter = 'invert(1)'; // Invert image if splash-dark.png is missing
+						};
+					}
+				}
+
+				// Runs after classes are assigned
+				window.onload = setSplashImage;
 			})();
 
 		</script>
 
 
 		<link rel="stylesheet" href="https://startr.style/style.css" />
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css" />
 		<style>
 			input[type="file"][hidden] {
 				display: none;
 			}
+			.hidden {
+				display: none;
+			}
 		</style>
+
+
+<style type="text/css" nonce="">
+	html {
+		overflow-y: hidden !important;
+	}
+
+	#splash-screen {
+		background: #fff;
+	}
+
+	html.dark #splash-screen {
+		background: #000;
+	}
+
+	html.dark #splash-screen img {
+		/*	filter: invert(1);*/
+	}
+
+
+	#progress-background {
+		display: none;
+	}
+
+	#progress-bar {
+		display: none;
+	}
+
+	html.her #logo {
+		display: none;
+	}
+
+	html.her #logo-her {
+		display: block;
+		/*	filter: invert(1);*/
+	}
+
+	html.her #progress-background {
+		display: block;
+	}
+
+	html.her #progress-bar {
+		display: block;
+	}
+
+	@media (max-width: 24rem) {
+		html.her #progress-background {
+			display: none;
+		}
+
+		html.her #progress-bar {
+			display: none;
+		}
+	}
+
+	@keyframes pulse {
+		50% {
+			opacity: 0.65;
+		}
+	}
+
+	.animate-pulse-fast {
+		animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+	}
+
+	button[aria-controls] {
+		border: none;
+		box-shadow: none;
+	}
+
+	a[href="https://svelteflow.dev"] {
+		/*display: none;*/
+	}
+
+	svelte-flow__controls {
+		gap: 0.2rem;
+	}
+</style>
 
 		<title>Sage.Edcuation/AI</title>
 
@@ -150,83 +260,3 @@
 
 </html>
 
-<style type="text/css" nonce="">
-	html {
-		overflow-y: hidden !important;
-	}
-
-	#splash-screen {
-		background: #fff;
-	}
-
-	html.dark #splash-screen {
-		background: #000;
-	}
-
-	html.dark #splash-screen img {
-		/*	filter: invert(1);*/
-	}
-
-
-	#progress-background {
-		display: none;
-	}
-
-	#progress-bar {
-		display: none;
-	}
-
-	html.her #logo {
-		display: none;
-	}
-
-	html.her #logo-her {
-		display: block;
-		/*	filter: invert(1);*/
-	}
-
-	html.her #progress-background {
-		display: block;
-	}
-
-	html.her #progress-bar {
-		display: block;
-	}
-
-	@media (max-width: 24rem) {
-		html.her #progress-background {
-			display: none;
-		}
-
-		html.her #progress-bar {
-			display: none;
-		}
-	}
-
-	@keyframes pulse {
-		50% {
-			opacity: 0.65;
-		}
-	}
-
-	.animate-pulse-fast {
-		animation: pulse 1.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-	}
-
-	button {
-		border-radius: 0.6rem !important;
-	}
-
-	button[aria-controls] {
-		border: none;
-		box-shadow: none;
-	}
-
-	a[href="https://svelteflow.dev"] {
-		display: none;
-	}
-
-	svelte-flow__controls {
-		gap: 0.2rem;
-	}
-</style>

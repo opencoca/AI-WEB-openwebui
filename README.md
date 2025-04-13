@@ -1,9 +1,8 @@
-# Sage : Sage Open WebUI 👋
+# Sage : Open WebUI 👋
 
-## v0.5.13 See [CHANGELOG](./CHANGELOG.md) for more details.
+## v0.5.21 See [CHANGELOG](./CHANGELOG.md) for more details.
 
 [![GitHub license](https://img.shields.io/github/license/opencoca/AI-WEB-openwebui)](
-
 ![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/opencoca/AI-WEB-openwebui?style=social)
 ![GitHub watchers](https://img.shields.io/github/watchers/opencoca/AI-WEB-openwebui?style=social)
@@ -15,186 +14,167 @@
 [![Discord](https://img.shields.io/badge/Discord-Open_WebUI-blue?logo=discord&logoColor=white)](https://discord.gg/5rJgQTnV4s)
 [![](https://img.shields.io/static/v1?label=Sponsor&message=%E2%9D%A4&logo=GitHub&color=%23fe8e86)](https://github.com/sponsors/tjbck)
 
-**Sage WebUIis an [extensible](https://docs.openwebui.com/features/plugin/), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
+**Open WebUI is an [extensible](https://docs.openwebui.com/features/plugin/), feature-rich, and user-friendly self-hosted AI platform designed to operate entirely offline.** It supports various LLM runners like **Ollama** and **OpenAI-compatible APIs**, with **built-in inference engine** for RAG, making it a **powerful AI deployment solution**.
 
-For more information, be sure to check out our [Sage WebUIDocumentation](https://docs.openwebui.com/).
+For more information, be sure to check out our [Open WebUI Documentation](https://docs.openwebui.com/).
 
-![Sage Sage WebUIDemo](./demo.gif)
+![Open WebUI Demo](./demo.gif)
 
-## Key Features of Sage : Sage WebUI
+## Architecture Overview
+
+Open WebUI follows a modular architecture that integrates various components to deliver a comprehensive AI interaction platform:
+
+```mermaid
+graph TD
+    User([User]) --- Frontend
+    
+    subgraph Frontend
+        WebInterface[Web Interface]
+        PWA[Progressive Web App]
+        Markdown[Markdown/LaTeX Support]
+    end
+    
+    subgraph Backend
+        API[REST API]
+        Auth[Authentication System]
+        ModelManager[Model Manager]
+        RAG[RAG Engine]
+        Tools[Tools & Functions]
+    end
+    
+    subgraph External
+        Ollama[Ollama]
+        OpenAIAPI[OpenAI API]
+        OtherProviders[Other LLM Providers]
+        FileStorage[Document Storage]
+        ImageGen[Image Generation]
+    end
+    
+    Frontend --- Backend
+    ModelManager --- External
+    RAG --- FileStorage
+    Tools --- RAG
+    
+    classDef primary fill:#f9f,stroke:#333,stroke-width:2px;
+    classDef secondary fill:#bbf,stroke:#333,stroke-width:1px;
+    classDef tertiary fill:#bfb,stroke:#333,stroke-width:1px;
+    
+    class Frontend,Backend primary;
+    class WebInterface,API,ModelManager secondary;
+    class External tertiary;
+```
+
+## Key Features of Open WebUI
 
 - 🚀 **Effortless Setup**: Install seamlessly using Docker or Kubernetes (kubectl, kustomize or helm) for a hassle-free experience with support for both `:ollama` and `:cuda` tagged images.
 
-- 🤝 **Ollama/OpenAI API Integration**: Effortlessly integrate OpenAI-compatible APIs for versatile conversations alongside Ollama models. Customize the OpenAI API URL to link with **LMStudio, GroqCloud, Mistral, OpenRouter, and more**.
+- 🤝 **Ollama/OpenAI API Integration**: Integrate OpenAI-compatible APIs for versatile conversations alongside Ollama models. Connect with **LMStudio, GroqCloud, Mistral, OpenRouter, and more**.
 
-- 🛡️ **Granular Permissions and User Groups**: By allowing administrators to create detailed user roles and permissions, we ensure a secure user environment. This granularity not only enhances security but also allows for customized user experiences, fostering a sense of ownership and responsibility amongst users.
+- 🛡️ **Granular Permissions and User Groups**: Create detailed user roles and permissions for a secure environment and customized user experiences.
 
-- 📱 **Responsive Design**: Enjoy a seamless experience across Desktop PC, Laptop, and Mobile devices.
+- 📱 **Responsive Design & PWA Support**: Enjoy a seamless experience across all devices with Progressive Web App support for mobile.
 
-- 📱 **Progressive Web App (PWA) for Mobile**: Enjoy a native app-like experience on your mobile device with our PWA, providing offline access on localhost and a seamless user interface.
+- ✒️🔢 **Full Markdown and LaTeX Support**: Comprehensive formatting capabilities for enriched interaction.
 
-- ✒️🔢 **Full Markdown and LaTeX Support**: Elevate your LLM experience with comprehensive Markdown and LaTeX capabilities for enriched interaction.
+- 🎤📹 **Voice/Video Call Integration**: Dynamic communication with hands-free voice and video features.
 
-- 🎤📹 **Hands-Free Voice/Video Call**: Experience seamless communication with integrated hands-free voice and video call features, allowing for a more dynamic and interactive chat environment.
+- 🛠️ **Model Builder**: Create Ollama models via the Web UI with custom characters/agents and import models through [Open WebUI Community](https://Sage.Education/).
 
-- 🛠️ **Model Builder**: Easily create Ollama models via the Web UI. Create and add custom characters/agents, customize chat elements, and import models effortlessly through [Sage WebUICommunity](https://Sage.Education/) integration.
+- 🐍 **Python Function Calling**: Built-in code editor with BYOF (Bring Your Own Function) support for seamless Python integration.
 
-- 🐍 **Native Python Function Calling Tool**: Enhance your LLMs with built-in code editor support in the tools Workshop. Bring Your Own Function (BYOF) by simply adding your pure Python functions, enabling seamless integration with LLMs.
+- 📚 **Local RAG Integration**: Load documents directly into conversations or build a document library, accessible with the `#` command.
 
-- 📚 **Local RAG Integration**: Dive into the future of chat interactions with groundbreaking Retrieval Augmented Generation (RAG) support. This feature seamlessly integrates document interactions into your chat experience. You can load documents directly into the chat or add files to your document library, effortlessly accessing them using the `#` command before a query.
+- 🔍 **Web Search for RAG**: Perform searches using various providers and inject results directly into your conversations.
 
-- 🔍 **Web Search for RAG**: Perform web searches using providers like `SearXNG`, `Google PSE`, `Brave Search`, `serpstack`, `serper`, `Serply`, `DuckDuckGo`, `TavilySearch`, `SearchApi` and `Bing` and inject the results directly into your chat experience.
+- 🌐 **Web Browsing**: Incorporate websites into chats using the `#` command followed by a URL.
 
-- 🌐 **Web Browsing Capability**: Seamlessly integrate websites into your chat experience using the `#` command followed by a URL. This feature allows you to incorporate web content directly into your conversations, enhancing the richness and depth of your interactions.
+- 🎨 **Image Generation**: Integrate with AUTOMATIC1111, ComfyUI, or DALL-E for visual content creation.
 
-- 🎨 **Image Generation Integration**: Seamlessly incorporate image generation capabilities using options such as AUTOMATIC1111 API or ComfyUI (local), and OpenAI's DALL-E (external), enriching your chat experience with dynamic visual content.
+- ⚙️ **Multi-Model Conversations**: Engage with various models simultaneously to leverage their unique strengths.
 
-- ⚙️ **Many Models Conversations**: Effortlessly engage with various models simultaneously, harnessing their unique strengths for optimal responses. Enhance your experience by leveraging a diverse set of models in parallel.
+- 🔐 **Role-Based Access Control (RBAC)**: Secure access with restricted permissions for model creation and usage.
 
-- 🔐 **Role-Based Access Control (RBAC)**: Ensure secure access with restricted permissions; only authorized individuals can access your Ollama, and exclusive model creation/pulling rights are reserved for administrators.
+- 🌐🌍 **Multilingual Support**: Experience Open WebUI in your preferred language with i18n support.
 
-- 🌐🌍 **Multilingual Support**: Experience Sage WebUIin your preferred language with our internationalization (i18n) support. Join us in expanding our supported languages! We're actively seeking contributors!
+- 🧩 **Plugin Framework**: Extend functionality with the [Pipelines Plugin Framework](https://github.com/open-webui/pipelines) for custom integrations.
 
-- 🧩 **Pipelines, Sage WebUIPlugin Support**: Seamlessly integrate custom logic and Python libraries into Sage WebUIusing [Pipelines Plugin Framework](https://github.com/open-webui/pipelines). Launch your Pipelines instance, set the OpenAI URL to the Pipelines URL, and explore endless possibilities. [Examples](https://github.com/open-webui/pipelines/tree/main/examples) include **Function Calling**, User **Rate Limiting** to control access, **Usage Monitoring** with tools like Langfuse, **Live Translation with LibreTranslate** for multilingual support, **Toxic Message Filtering** and much more.
+- 🌟 **Continuous Updates**: Regular improvements, fixes, and new features.
 
-- 🌟 **Continuous Updates**: We are committed to improving Sage WebUIwith regular updates, fixes, and new features.
+Want to learn more? Check our [documentation](https://docs.openwebui.com/features) for a comprehensive overview!
 
-Want to learn more about Open WebUI's features? Check out our [Sage WebUIdocumentation](https://docs.openwebui.com/features) for a comprehensive overview!
+## 🔗 Open WebUI Community
 
-## 🔗 Also Check Out Sage WebUICommunity!
+Explore our sibling project, [Open WebUI Community](https://Sage.Education/), to discover, download, and explore customized Modelfiles for enhancing your chat interactions! 🚀
 
-Don't forget to explore our sibling project, [Sage WebUICommunity](https://Sage.Education/), where you can discover, download, and explore customized Modelfiles. Sage WebUICommunity offers a wide range of exciting possibilities for enhancing your chat interactions with Open WebUI! 🚀
+## Installation Options 🚀
 
-## How to Install 🚀
+### Quick Start with Make
+```bash
+make it_run
+```
 
-### Installation via Python pip 🐍
+### Python pip Installation 🐍
+```bash
+pip install open-webui
+open-webui serve
+```
 
-Sage WebUIcan be installed using pip, the Python package installer. Before proceeding, ensure you're using **Python 3.11** to avoid compatibility issues.
-
-1. **Install Open WebUI**:
-   Open your terminal and run the following command to install Open WebUI:
-
-   ```bash
-   pip install open-webui
-   ```
-
-2. **Running Open WebUI**:
-   After installation, you can start Sage WebUIby executing:
-
-   ```bash
-   open-webui serve
-   ```
-
-This will start the Sage WebUIserver, which you can access at [http://localhost:8080](http://localhost:8080)
-
-### Quick Start with Docker 🐳
+### Docker Installation 🐳
 
 > [!NOTE]  
-> Please note that for certain Docker environments, additional configurations might be needed. If you encounter any connection issues, our detailed guide on [Sage WebUIDocumentation](https://docs.openwebui.com/) is ready to assist you.
+> Always include `-v open-webui:/app/backend/data` to prevent data loss.
 
-> [!WARNING]
-> When using Docker to install Open WebUI, make sure to include the `-v open-webui:/app/backend/data` in your Docker command. This step is crucial as it ensures your database is properly mounted and prevents any loss of data.
-
-> [!TIP]  
-> If you wish to utilize Sage WebUIwith Ollama included or CUDA acceleration, we recommend utilizing our official images tagged with either `:cuda` or `:ollama`. To enable CUDA, you must install the [Nvidia CUDA container toolkit](https://docs.nvidia.com/dgx/nvidia-container-runtime-upgrade/) on your Linux/WSL system.
-
-### Installation with Default Configuration
-
-- **If Ollama is on your computer**, use this command:
-
-  ```bash
- make it_run 
-  ```
-
-
-- **To run Sage WebUIwith Nvidia GPU support**, use this command:
-
-  ```bash
-  docker run -d -p 3000:8080 --gpus all --add-host=host.docker.internal:host-gateway -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:cuda
-  ```
-
-### Installation for OpenAI API Usage Only
-
-- **If you're only using OpenAI API**, use this command:
-
-  ```bash
-  docker run -d -p 3000:8080 -e OPENAI_API_KEY=your_secret_key -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:main
-  ```
-
-### Installing Sage WebUIwith Bundled Ollama Support
-
-This installation method uses a single container image that bundles Sage WebUIwith Ollama, allowing for a streamlined setup via a single command. Choose the appropriate command based on your hardware setup:
-
-- **With GPU Support**:
-  Utilize GPU resources by running the following command:
-
-  ```bash
-  docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
-  ```
-
-- **For CPU Only**:
-  If you're not using a GPU, use this command instead:
-
-  ```bash
-  docker run -d -p 3000:8080 -v ollama:/root/.ollama -v open-webui:/app/backend/data --name open-webui --restart always ghcr.io/open-webui/open-webui:ollama
-  ```
-
-Both commands facilitate a built-in, hassle-free installation of both Sage WebUIand Ollama, ensuring that you can get everything up and running swiftly.
-
-After installation, you can access Sage WebUIat [http://localhost:3000](http://localhost:3000). Enjoy! 😄
-
-### Other Installation Methods
-
-We offer various installation alternatives, including non-Docker native installation methods, Docker Compose, Kustomize, and Helm. Visit our [Sage WebUIDocumentation](https://docs.openwebui.com/getting-started/) or join our [Discord community](https://discord.gg/5rJgQTnV4s) for comprehensive guidance.
-
-### Troubleshooting
-
-Encountering connection issues? Our [Sage WebUIDocumentation](https://docs.openwebui.com/troubleshooting/) has got you covered. For further assistance and to join our vibrant community, visit the [Sage WebUIDiscord](https://discord.gg/5rJgQTnV4s).
-
-#### Open WebUI: Server Connection Error
-
-If you're experiencing connection issues, it’s often due to the WebUI docker container not being able to reach the Ollama server at 127.0.0.1:11434 (host.docker.internal:11434) inside the container . Use the `--network=host` flag in your docker command to resolve this. Note that the port changes from 3000 to 8080, resulting in the link: `http://localhost:8080`.
-
-**Example Docker Command**:
-
+**Standard Installation:**
 ```bash
-docker run -d --network=host -v open-webui:/app/backend/data -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always ghcr.io/open-webui/open-webui:main
+docker run -d -p 3000:8080 --add-host=host.docker.internal:host-gateway \
+  -v open-webui:/app/backend/data --name open-webui --restart always \
+  ghcr.io/open-webui/open-webui:main
 ```
 
-### Keeping Your Docker Installation Up-to-Date
-
-In case you want to update your local Docker installation to the latest version, you can do it with [Watchtower](https://containrrr.dev/watchtower/):
-
+**With CUDA Support:**
 ```bash
-docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock containrrr/watchtower --run-once open-webui
+docker run -d -p 3000:8080 --gpus all --add-host=host.docker.internal:host-gateway \
+  -v open-webui:/app/backend/data --name open-webui --restart always \
+  ghcr.io/open-webui/open-webui:cuda
 ```
 
-In the last part of the command, replace `open-webui` with your container name if it is different.
-
-Check our Migration Guide available in our [Sage WebUIDocumentation](https://docs.openwebui.com/tutorials/migration/).
-
-### Using the Dev Branch 🌙
-
-> [!WARNING]
-> The `:dev` branch contains the latest unstable features and changes. Use it at your own risk as it may have bugs or incomplete features.
-
-If you want to try out the latest bleeding-edge features and are okay with occasional instability, you can use the `:dev` tag like this:
-
+**OpenAI API Only:**
 ```bash
-docker run -d -p 3000:8080 -v open-webui:/app/backend/data --name open-webui --add-host=host.docker.internal:host-gateway --restart always ghcr.io/open-webui/open-webui:dev
+docker run -d -p 3000:8080 -e OPENAI_API_KEY=your_secret_key \
+  -v open-webui:/app/backend/data --name open-webui --restart always \
+  ghcr.io/open-webui/open-webui:main
 ```
 
-### Offline Mode
-
-If you are running Sage WebUIin an offline environment, you can set the `HF_HUB_OFFLINE` environment variable to `1` to prevent attempts to download models from the internet.
-
+**With Bundled Ollama:**
 ```bash
-export HF_HUB_OFFLINE=1
+docker run -d -p 3000:8080 --gpus=all -v ollama:/root/.ollama \
+  -v open-webui:/app/backend/data --name open-webui --restart always \
+  ghcr.io/open-webui/open-webui:ollama
 ```
 
-## What's Next? 🌟
+After installation, access Open WebUI at [http://localhost:3000](http://localhost:3000).
 
-Discover upcoming features on our roadmap in the [Sage WebUIDocumentation](https://docs.openwebui.com/roadmap/).
+## Troubleshooting
+
+If you encounter connection issues, try using the `--network=host` flag:
+
+```bash
+docker run -d --network=host -v open-webui:/app/backend/data \
+  -e OLLAMA_BASE_URL=http://127.0.0.1:11434 --name open-webui --restart always \
+  ghcr.io/open-webui/open-webui:main
+```
+
+Then access at [http://localhost:8080](http://localhost:8080)
+
+### Keeping Updated
+
+Update with Watchtower:
+```bash
+docker run --rm --volume /var/run/docker.sock:/var/run/docker.sock \
+  containrrr/watchtower --run-once open-webui
+```
+
+For detailed guides, visit our [documentation](https://docs.openwebui.com/getting-started/updating).
 
 ## License 📜
 
@@ -202,8 +182,8 @@ This project is licensed under the [BSD-3-Clause License](LICENSE) - see the [LI
 
 ## Support 💬
 
-If you have any questions, suggestions, or need assistance, please open an issue or join our
-[Sage WebUIDiscord community](https://discord.gg/5rJgQTnV4s) to connect with us! 🤝
+For questions, suggestions, or assistance, please open an issue or join our
+[Open WebUI Discord community](https://discord.gg/5rJgQTnV4s)! 🤝
 
 ## Star History
 
@@ -218,4 +198,3 @@ If you have any questions, suggestions, or need assistance, please open an issue
 ---
 
 Created by [Startr.Cloud](https://startr.cloud/) and our [many contributors](https://github.com/opencoca/AI-WEB-openwebui/graphs/contributors). 🚀
-```

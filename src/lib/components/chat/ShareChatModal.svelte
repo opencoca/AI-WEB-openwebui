@@ -31,7 +31,7 @@
 		console.log('share', _chat);
 
 		toast.success($i18n.t('Redirecting you to Sage Community'));
-		const url = 'https://openwebui.com';
+		const url = 'https://sage.education';
 		// const url = 'http://localhost:5173';
 
 		const tab = await window.open(`${url}/chats/upload`, '_blank');
@@ -85,7 +85,7 @@
 		<div class=" flex justify-between dark:text-gray-300 px-5 pt-4 pb-0.5">
 			<div class=" text-lg font-medium self-center">{$i18n.t('Share Chat')}</div>
 			<button
-				class="self-center"
+				
 				on:click={() => {
 					show = false;
 				}}
