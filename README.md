@@ -1,6 +1,6 @@
 # Sage : Open WebUI 👋
 
-## v0.5.13 See [CHANGELOG](./CHANGELOG.md) for more details.
+## v0.5.21 See [CHANGELOG](./CHANGELOG.md) for more details.
 
 [![GitHub license](https://img.shields.io/github/license/opencoca/AI-WEB-openwebui)](
 ![GitHub stars](https://img.shields.io/github/stars/open-webui/open-webui?style=social)
