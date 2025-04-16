@@ -147,18 +147,60 @@ enable_auto_backup_if_needed() {
 # Common function to start the application with a given command
 start_common() {
   local start_command=$1
+  APP_PID=""
+  BACKUP_PID=""
+
+  # Set up trap to catch termination signals
+  trap cleanup SIGTERM SIGINT
+
+  # Cleanup function to handle graceful shutdown
+  cleanup() {
+    echo "Received termination signal. Shutting down gracefully..."
+    
+    # Kill the backup scheduler if it's running
+    if [ -n "$BACKUP_PID" ]; then
+      echo "Stopping backup scheduler (PID: $BACKUP_PID)..."
+      kill -TERM "$BACKUP_PID" 2>/dev/null || true
+    fi
+    
+    # Kill the main application if it's running
+    if [ -n "$APP_PID" ]; then
+      echo "Stopping application (PID: $APP_PID)..."
+      kill -TERM "$APP_PID" 2>/dev/null || true
+    fi
+    
+    echo "Cleanup complete. Exiting."
+    exit 0
+  }
 
   # Restore backup if needed
   restore_if_needed
 
   # Start the application using the provided command
   $start_command &
+  APP_PID=$!
+  echo "Started application with PID: $APP_PID"
 
   # Schedule backups if needed
-  enable_auto_backup_if_needed
+  if [ "$AUTO_BACKUP" = "true" ]; then
+    echo "AUTO_BACKUP is set to true. Scheduling backups..."
+    if [ -z "$BACKUP_HOOK" ]; then
+      BACKUP_CRON="${BACKUP_CRON:-0 5 *}" # Default to '0 5 *' (5:00 AM every day)
+      schedule_backups &
+      BACKUP_PID=$!
+      echo "Started backup scheduler with PID: $BACKUP_PID"
+    else
+      # Run custom backup hook if provided
+      eval "$BACKUP_HOOK" &
+      BACKUP_PID=$!
+      echo "Started backup hook with PID: $BACKUP_PID"
+    fi
+  else
+    echo "AUTO_BACKUP is set to false. Not scheduling backups."
+  fi
 
-  # Infinite sleep to keep the container running
-  sleep infinity
+  # Wait for any process to exit
+  wait
 }
 
 # Function to start the application in production mode

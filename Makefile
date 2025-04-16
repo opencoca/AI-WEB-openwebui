@@ -1,4 +1,3 @@
-
 ifneq ($(shell which docker-compose 2>/dev/null),)
     DOCKER_COMPOSE := docker-compose
 else
@@ -195,6 +194,35 @@ create-manifest-ghcr: build-amd64-ghcr build-arm64-ghcr
 		$(GHCR_IMAGE_NAME):amd64-latest \
 		$(GHCR_IMAGE_NAME):arm64-latest
 	docker manifest push $(GHCR_IMAGE_NAME):latest
+
+# Bring down container instances on each SAGE_HOST
+it_down_sage_hosts:
+	@echo "Bringing down instances on SAGE_HOSTS from .env file..."
+	@if [ -f .env ]; then \
+		grep -E "^SAGE_HOSTS=" .env | cut -d '=' -f2 | tr ',' '\n' | while read host; do \
+			echo "Stopping containers on $$host..."; \
+			ssh "$$host" "docker stop $$(docker ps -aqf 'name=sage*') && docker rm $$(docker ps -aqf 'name=sage*')" || echo "Failed to stop containers on $$host"; \
+		done; \
+	else \
+		echo ".env file not found. Cannot read SAGE_HOSTS."; \
+		exit 1; \
+	fi
+
+# Check for running Sage instances on each SAGE_HOST
+it_check_sage_hosts:
+	@echo "Checking for running Sage instances on SAGE_HOSTS from .env file..."
+	@if [ -f .env ]; then \
+		echo "Host                 | Container ID    | Name             | Image                | Status           | Created"; \
+		echo "-------------------- | --------------- | ---------------- | -------------------- | ---------------- | ---------------"; \
+		grep -E "^SAGE_HOSTS=" .env | cut -d '=' -f2 | tr ',' '\n' | while read host; do \
+			echo "$$host:"; \
+			ssh "$$host" "docker ps --format '{{.ID}} | {{.Names}} | {{.Image}} | {{.Status}} | {{.CreatedAt}}' -f 'name=sage*'" || echo "   Failed to connect to $$host"; \
+			echo ""; \
+		done; \
+	else \
+		echo ".env file not found. Cannot read SAGE_HOSTS."; \
+		exit 1; \
+	fi
 
 # Main multi-arch build targets
 it_build_multi_arch_push_docker_hub: clean-manifests-dockerhub create-manifest-dockerhub
