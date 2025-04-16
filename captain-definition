@@ -3,7 +3,6 @@
     "dockerfileLines": [
                           "FROM ghcr.io/startr/ai-web-openwebui:latest",
                           "EXPOSE 8080",
-                          "ENTRYPOINT [ \"bash\", \"start_server.sh\" ]", 
                           "CMD [ \"bash\", \"restore_backup_start.sh\", \"server\" ]"
                       ]
    }
