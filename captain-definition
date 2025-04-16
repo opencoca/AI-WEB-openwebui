@@ -1,6 +1,6 @@
 {
     "schemaVersion": 2,
     "dockerfileLines": [
-                          "ghcr.io/startr/ai-web-openwebui:latest"
+                          "FROM ghcr.io/startr/ai-web-openwebui:latest"
                       ]
    }
