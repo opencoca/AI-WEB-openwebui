@@ -30,7 +30,12 @@
 		TTSWorker
 	} from '$lib/stores';
 
-	import { blobToFile, compressImage, createMessagesList, findWordIndices } from '$lib/utils';
+	import {
+		blobToFile,
+		compressImage,
+		createMessagesList,
+		extractCurlyBraceWords
+	} from '$lib/utils';
 	import { transcribeAudio } from '$lib/apis/audio';
 	import { uploadFile } from '$lib/apis/files';
 	import { generateAutoCompletion } from '$lib/apis';
@@ -55,6 +60,8 @@
 	import Photo from '../icons/Photo.svelte';
 	import CommandLine from '../icons/CommandLine.svelte';
 	import { KokoroWorker } from '$lib/workers/KokoroWorker';
+	import ToolServersModal from './ToolServersModal.svelte';
+	import Wrench from '../icons/Wrench.svelte';
 
 	const i18n = getContext('i18n');
 
@@ -73,9 +80,12 @@
 	$: selectedModelIds = atSelectedModel !== undefined ? [atSelectedModel.id] : selectedModels;
 
 	export let history;
+	export let taskIds = null;
 
 	export let prompt = '';
 	export let files = [];
+
+	export let toolServers = [];
 
 	export let selectedToolIds = [];
 
@@ -90,6 +100,8 @@
 		imageGenerationEnabled,
 		webSearchEnabled
 	});
+
+	let showTools = false;
 
 	let loaded = false;
 	let recording = false;
@@ -352,6 +364,8 @@
 
 <FilesOverlay show={dragged} />
 
+<ToolServersModal bind:show={showTools} {selectedToolIds} />
+
 {#if loaded}
 	<div style="--w:100%;"  class="font-primary">
 		<div style="--left:0; --right:0; --bgc:transparent; --d:flex; --jc:center;"  class="mx-auto">
@@ -382,79 +396,9 @@
 
 				<div style="--w:100%; --pos:relative;" >
 					{#if atSelectedModel !== undefined || selectedToolIds.length > 0 || webSearchEnabled || ($settings?.webSearch ?? false) === 'always' || imageGenerationEnabled || codeInterpreterEnabled}
-						<div style="--pl:12px; --pr:12px; --pb:2px; --pt:6px; --ta:left; --w:100%; --d:flex; --fd:column; --pos:absolute; --bottom:0; --left:0; --right:0; --bgc:linear-to-t; --from:#ffffff; --z:10;"  class="dark:from-gray-900">
-							{#if selectedToolIds.length > 0}
-								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
-									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
-										<div style="--pl:4px;" >
-											<span style="--pos:relative; --d:flex;"  class="size-2">
-												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:#facc15; --op:0.75;" class="animate-ping inline-flex">
-												<span style="--pos:relative; --radius:9999px; --bgc:#eab308;" class="inline-flex size-2">
-											</span>
-										</div>
-										<div style="--c:ellipsis; --d:flex;"  class="line-clamp-1">
-											{#each selectedToolIds.map((id) => {
-												return $tools ? $tools.find((t) => t.id === id) : { id: id, name: id };
-											}) as tool, toolIdx (toolIdx)}
-												<Tooltip
-													content={tool?.meta?.description ?? ''}
-													className=" {toolIdx !== 0 ? 'pl-0.5' : ''} shrink-0"
-													placement="top"
-												>
-													{tool.name}
-												</Tooltip>
-
-												{#if toolIdx !== selectedToolIds.length - 1}
-													<span>, </span>
-												{/if}
-											{/each}
-										</div>
-									</div>
-								</div>
-							{/if}
-
-							{#if webSearchEnabled || ($config?.features?.enable_web_search && ($settings?.webSearch ?? false)) === 'always'}
-								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
-									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
-										<div style="--pl:4px;" >
-											<span style="--pos:relative; --d:flex;"  class="size-2">
-												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:#60a5fa; --op:0.75;" class="animate-ping inline-flex">
-												<span style="--pos:relative; --radius:9999px; --bgc:#3b82f6;" class="inline-flex size-2">
-											</span>
-										</div>
-										<div  class="translate-y-[0.5px]">{$i18n.t('Search the internet')}</div>
-									</div>
-								</div>
-							{/if}
-
-							{#if imageGenerationEnabled}
-								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
-									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
-										<div style="--pl:4px;" >
-											<span style="--pos:relative; --d:flex;"  class="size-2">
-												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:teal-400; --op:0.75;" class="animate-ping inline-flex">
-												<span style="--pos:relative; --radius:9999px; --bgc:teal-500;" class="inline-flex size-2">
-											</span>
-										</div>
-										<div  class="translate-y-[0.5px]">{$i18n.t('Generate an image')}</div>
-									</div>
-								</div>
-							{/if}
-
-							{#if codeInterpreterEnabled}
-								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
-									<div style="--d:flex; --ai:center; --gg:10px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
-										<div style="--pl:4px;" >
-											<span style="--pos:relative; --d:flex;"  class="size-2">
-												<span style="--pos:absolute; --h:100%; --w:100%; --radius:9999px; --bgc:#4ade80; --op:0.75;" class="animate-ping inline-flex">
-												<span style="--pos:relative; --radius:9999px; --bgc:#22c55e;" class="inline-flex size-2">
-											</span>
-										</div>
-										<div  class="translate-y-[0.5px]">{$i18n.t('Execute code for analysis')}</div>
-									</div>
-								</div>
-							{/if}
-
+						<div
+							class="px-3 pb-0.5 pt-1.5 text-left w-full flex flex-col absolute bottom-0 left-0 right-0 bg-linear-to-t from-white dark:from-gray-900 z-10"
+						>
 							{#if atSelectedModel !== undefined}
 								<div style="--d:flex; --ai:center; --jc:space-between; --w:100%;" >
 									<div style="--pl:[1px]; --d:flex; --ai:center; --gg:8px; --size:0.875rem; --lh:1.25rem; --dark-c:#6b7280;" >
@@ -558,7 +502,10 @@
 								dispatch('submit', prompt);
 							}}
 						>
-							<div style="--fx:1; --d:flex; --fd:column; --pos:relative; --w:100%; --radius:1.5rem; --pl:4px; --pr:4px; --bgc:gray-600/5; --dark-bgc:gray-400/5; --dark-c:#f3f4f6;" dir={$settings?.chatDirection ?? 'LTR'}>
+							<div
+								class="flex-1 flex flex-col relative w-full shadow-lg rounded-3xl border border-gray-50 dark:border-gray-850 hover:border-gray-100 focus-within:border-gray-100 hover:dark:border-gray-800 focus-within:dark:border-gray-800 transition px-1 bg-white/90 dark:bg-gray-400/5 dark:text-gray-100"
+								dir={$settings?.chatDirection ?? 'auto'}
+							>
 								{#if files.length > 0}
 									<div style="--ml:8px; --mr:8px; --mt:10px; --d:flex; --ai:center; --fw:wrap; --gg:8px;"  class="-mb-1">
 										{#each files as file, fileIdx}
@@ -643,7 +590,10 @@
 
 								<div style="--pl:10px; --pr:10px;" >
 									{#if $settings?.richTextInput ?? true}
-										<div style="--ta:left; --bgc:transparent; --dark-c:#f3f4f6; --w:100%; --pt:12px; --pl:4px; --pr:4px; --maxh:80; --of:auto;"  class="scrollbar-hidden outline-hidden resize-none h-fit">
+										<div
+											class="scrollbar-hidden text-left bg-transparent dark:text-gray-100 outline-hidden w-full pt-3 px-1 resize-none h-fit max-h-80 overflow-auto"
+											id="chat-input-container"
+										>
 											<RichTextInput
 												bind:this={chatInputElement}
 												bind:value={prompt}
@@ -658,7 +608,8 @@
 														))}
 												placeholder={placeholder ? placeholder : $i18n.t('Send a Message')}
 												largeTextAsFile={$settings?.largeTextAsFile ?? false}
-												autocomplete={$config?.features.enable_autocomplete_generation}
+												autocomplete={$config?.features?.enable_autocomplete_generation &&
+													($settings?.promptAutocomplete ?? false)}
 												generateAutoCompletion={async (text) => {
 													if (selectedModelIds.length === 0 || !selectedModelIds.at(0)) {
 														toast.error($i18n.t('Please select a model first.'));
@@ -856,6 +807,7 @@
 										</div>
 									{:else}
 										<textarea style="--bgc:transparent; --dark-c:#f3f4f6; --w:100%; --pt:12px; --pl:4px; --pr:4px;" id="chat-input"
+											dir="auto"
 											bind:this={chatInputElement}
 											class="scrollbar-hidden outline-hidden resize-none"
 											placeholder={placeholder ? placeholder : $i18n.t('Send a Message')}
@@ -865,7 +817,6 @@
 											on:keydown={async (e) => {
 												const isCtrlPressed = e.ctrlKey || e.metaKey; // metaKey is for Cmd key on Mac
 
-												console.log('keydown', e);
 												const commandsContainerElement =
 													document.getElementById('commands-container');
 
@@ -967,7 +918,6 @@
 															return;
 														}
 
-														console.log('keypress', e);
 														// Prevent Enter key from creating a new line
 														const isCtrlPressed = e.ctrlKey || e.metaKey;
 														const enterPressed =
@@ -989,7 +939,7 @@
 												}
 
 												if (e.key === 'Tab') {
-													const words = findWordIndices(prompt);
+													const words = extractCurlyBraceWords(prompt);
 
 													if (words.length > 0) {
 														const word = words.at(0);
@@ -1069,8 +1019,8 @@
 									{/if}
 								</div>
 
-								<div style="--d:flex; --jc:space-between; --mt:6px; --mb:10px; --ml:2px; --mr:2px; --maxw:100%;" >
-									<div style="--ml:4px; --as:end; --gg:2px; --d:flex; --ai:center; --fx:1; --maxw:80%;" >
+								<div class=" flex justify-between mt-1 mb-2.5 mx-0.5 max-w-full" dir="ltr">
+									<div class="ml-1 self-end flex items-center flex-1 max-w-[80%] gap-0.5">
 										<InputMenu
 											bind:selectedToolIds
 											{screenCaptureHandler}
@@ -1132,20 +1082,45 @@
 											</button>
 										</InputMenu>
 
-										<div style="--d:flex; --gg:2px; --ai:center; --ofx:auto; --fx:1;"  class="scrollbar-none">
+										<div class="flex gap-1 items-center overflow-x-auto scrollbar-none flex-1">
+											{#if toolServers.length + selectedToolIds.length > 0}
+												<Tooltip
+													content={$i18n.t('{{COUNT}} Available Tools', {
+														COUNT: toolServers.length + selectedToolIds.length
+													})}
+												>
+													<button
+														class="translate-y-[0.5px] flex gap-1 items-center text-gray-600 dark:text-gray-300 hover:text-gray-700 dark:hover:text-gray-200 rounded-lg p-1 self-center transition"
+														aria-label="Available Tools"
+														type="button"
+														on:click={() => {
+															showTools = !showTools;
+														}}
+													>
+														<Wrench className="size-4" strokeWidth="1.75" />
+
+														<span class="text-sm font-medium text-gray-600 dark:text-gray-300">
+															{toolServers.length + selectedToolIds.length}
+														</span>
+													</button>
+												</Tooltip>
+											{/if}
+
 											{#if $_user}
 												{#if $config?.features?.enable_web_search && ($_user.role === 'admin' || $_user?.permissions?.features?.web_search)}
 													<Tooltip content={$i18n.t('Search the internet')} placement="top">
 														<button
 															on:click|preventDefault={() => (webSearchEnabled = !webSearchEnabled)}
 															type="button"
-															class="px-1.5 @sm:px-2.5 py-1.5 flex gap-1.5 items-center text-sm rounded-full font-medium transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden {webSearchEnabled ||
+															class="px-1.5 @xl:px-2.5 py-1.5 flex gap-1.5 items-center text-sm rounded-full font-medium transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden border {webSearchEnabled ||
 															($settings?.webSearch ?? false) === 'always'
-																? 'bg-blue-100 dark:bg-blue-500/20 text-blue-500 dark:text-blue-400'
-																: 'bg-transparent text-gray-600 dark:text-gray-300 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}"
+																? 'bg-blue-100 dark:bg-blue-500/20 border-blue-400/20 text-blue-500 dark:text-blue-400'
+																: 'bg-transparent border-transparent text-gray-600 dark:text-gray-300 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800'}"
 														>
 															<GlobeAlt className="size-5" strokeWidth="1.75" />
-															<span style="--d:none; --ws:nowrap; --of:hidden; --c:ellipsis; --mr:2px;"  class="@sm:block translate-y-[0.5px]">{$i18n.t('Web Search')}</span
+															<span
+																class="hidden @xl:block whitespace-nowrap overflow-hidden text-ellipsis translate-y-[0.5px]"
+																>{$i18n.t('Web Search')}</span
 															>
 														</button>
 													</Tooltip>
@@ -1157,12 +1132,14 @@
 															on:click|preventDefault={() =>
 																(imageGenerationEnabled = !imageGenerationEnabled)}
 															type="button"
-															class="px-1.5 @sm:px-2.5 py-1.5 flex gap-1.5 items-center text-sm rounded-full font-medium transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden {imageGenerationEnabled
-																? 'bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400'
-																: 'bg-transparent text-gray-600 dark:text-gray-300 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 '}"
+															class="px-1.5 @xl:px-2.5 py-1.5 flex gap-1.5 items-center text-sm rounded-full font-medium transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden border {imageGenerationEnabled
+																? 'bg-gray-50 dark:bg-gray-400/10 border-gray-100 dark:border-gray-700 text-gray-600 dark:text-gray-400'
+																: 'bg-transparent border-transparent text-gray-600 dark:text-gray-300  hover:bg-gray-100 dark:hover:bg-gray-800 '}"
 														>
 															<Photo className="size-5" strokeWidth="1.75" />
-															<span style="--d:none; --ws:nowrap; --of:hidden; --c:ellipsis; --mr:2px;"  class="@sm:block translate-y-[0.5px]">{$i18n.t('Image')}</span
+															<span
+																class="hidden @xl:block whitespace-nowrap overflow-hidden text-ellipsis translate-y-[0.5px]"
+																>{$i18n.t('Image')}</span
 															>
 														</button>
 													</Tooltip>
@@ -1174,12 +1151,14 @@
 															on:click|preventDefault={() =>
 																(codeInterpreterEnabled = !codeInterpreterEnabled)}
 															type="button"
-															class="px-1.5 @sm:px-2.5 py-1.5 flex gap-1.5 items-center text-sm rounded-full font-medium transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden {codeInterpreterEnabled
-																? 'bg-gray-100 dark:bg-gray-500/20 text-gray-600 dark:text-gray-400'
-																: 'bg-transparent text-gray-600 dark:text-gray-300 border-gray-200 hover:bg-gray-100 dark:hover:bg-gray-800 '}"
+															class="px-1.5 @xl:px-2.5 py-1.5 flex gap-1.5 items-center text-sm rounded-full font-medium transition-colors duration-300 focus:outline-hidden max-w-full overflow-hidden border {codeInterpreterEnabled
+																? 'bg-gray-50 dark:bg-gray-400/10 border-gray-100  dark:border-gray-700 text-gray-600 dark:text-gray-400  '
+																: 'bg-transparent border-transparent text-gray-600 dark:text-gray-300  hover:bg-gray-100 dark:hover:bg-gray-800 '}"
 														>
 															<CommandLine className="size-5" strokeWidth="1.75" />
-															<span style="--d:none; --ws:nowrap; --of:hidden; --c:ellipsis; --mr:2px;"  class="@sm:block translate-y-[0.5px]">{$i18n.t('Code Interpreter')}</span
+															<span
+																class="hidden @xl:block whitespace-nowrap overflow-hidden text-ellipsis translate-y-[0.5px]"
+																>{$i18n.t('Code Interpreter')}</span
 															>
 														</button>
 													</Tooltip>
@@ -1189,7 +1168,7 @@
 									</div>
 
 									<div style="--as:end; --d:flex; --mr:4px;"  class="space-x-1 shrink-0">
-										{#if !history?.currentId || history.messages[history.currentId]?.done == true}
+										{#if (!history?.currentId || history.messages[history.currentId]?.done == true) && ($_user?.role === 'admin' || ($_user?.permissions?.chat?.stt ?? true))}
 											<Tooltip content={$i18n.t('Record voice')}>
 												<button style="--c:#4b5563; --dark-c:#d1d5db; --tn:all 0.15s ease-in-out; --radius:9999px; --p:6px; --mr:2px; --as:center;" id="voice-input-button"
 													class="hover:text-gray-700 dark:hover:text-gray-200"
@@ -1234,110 +1213,112 @@
 											</Tooltip>
 										{/if}
 
-										{#if !history.currentId || history.messages[history.currentId]?.done == true}
-											{#if prompt === '' && files.length === 0}
-												<div style="--d:flex; --ai:center;" >
-													<Tooltip content={$i18n.t('Call')}>
-														<button style="--tn:all 0.15s ease-in-out; --radius:9999px; --p:6px; --as:center;" type="button"
-															class="{webSearchEnabled ||
-															($settings?.webSearch ?? false) === 'always'
-																? 'bg-blue-500 text-white hover:bg-blue-400 '
-																: 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100'}"
-															on:click={async () => {
-																if (selectedModels.length > 1) {
-																	toast.error($i18n.t('Select only one model to call'));
-
-																	return;
-																}
-
-																if ($config.audio.stt.engine === 'web') {
-																	toast.error(
-																		$i18n.t(
-																			'Call feature is not supported when using Web STT engine'
-																		)
-																	);
-
-																	return;
-																}
-																// check if user has access to getUserMedia
-																try {
-																	let stream = await navigator.mediaDevices.getUserMedia({
-																		audio: true
-																	});
-																	// If the user grants the permission, proceed to show the call overlay
-
-																	if (stream) {
-																		const tracks = stream.getTracks();
-																		tracks.forEach((track) => track.stop());
-																	}
-
-																	stream = null;
-
-																	if ($settings.audio?.tts?.engine === 'browser-kokoro') {
-																		// If the user has not initialized the TTS worker, initialize it
-																		if (!$TTSWorker) {
-																			await TTSWorker.set(
-																				new KokoroWorker({
-																					dtype: $settings.audio?.tts?.engineConfig?.dtype ?? 'fp32'
-																				})
-																			);
-
-																			await $TTSWorker.init();
-																		}
-																	}
-
-																	showCallOverlay.set(true);
-																	showControls.set(true);
-																} catch (err) {
-																	// If the user denies the permission or an error occurs, show an error message
-																	toast.error(
-																		$i18n.t('Permission denied when accessing media devices')
-																	);
-																}
-															}}
-															aria-label="Call"
-														>
-															<Headphone className="size-5" />
-														</button>
-													</Tooltip>
-												</div>
-											{:else}
-												<div style="--d:flex; --ai:center;" >
-													<Tooltip content={$i18n.t('Send message')}>
-														<button style="--tn:all 0.15s ease-in-out; --radius:9999px; --p:6px; --as:center;" id="send-message-button"
-															
-															type="submit"
-															disabled={prompt === '' && files.length === 0} class="{!(prompt === '' && files.length === 0)
-																? webSearchEnabled || ($settings?.webSearch ?? false) === 'always'
-																	? 'bg-blue-500 text-white hover:bg-blue-400 '
-																	: 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 '
-																: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'}">
-															<svg xmlns="http://www.w3.org/2000/svg"
-																viewBox="0 0 16 16"
-																fill="currentColor" class="size-5">
-																<path
-																	fill-rule="evenodd"
-																	d="M8 14a.75.75 0 0 1-.75-.75V4.56L4.03 7.78a.75.75 0 0 1-1.06-1.06l4.5-4.5a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06L8.75 4.56v8.69A.75.75 0 0 1 8 14Z"
-																	clip-rule="evenodd"
-																/>
-															</svg>
-														</button>
-													</Tooltip>
-												</div>
-											{/if}
-										{:else}
-											<div style="--d:flex; --ai:center;" >
-												<Tooltip content={$i18n.t('Stop response')}>
-													<button style="--bgc:#ffffff; --c:#1f2937; --dark-bgc:#374151; --dark-c:#ffffff; --tn:all 0.15s ease-in-out; --radius:9999px; --p:6px;" class="hover:bg-gray-100 dark:hover:bg-gray-800" on:click={() => {
+										{#if (taskIds && taskIds.length > 0) || (history.currentId && history.messages[history.currentId]?.done != true)}
+											<div class=" flex items-center">
+												<Tooltip content={$i18n.t('Stop')}>
+													<button
+														class="bg-white hover:bg-gray-100 text-gray-800 dark:bg-gray-700 dark:text-white dark:hover:bg-gray-800 transition rounded-full p-1.5"
+														on:click={() => {
 															stopResponse();
 														}}
 													>
-														<svg xmlns="http://www.w3.org/2000/svg"
+														<svg
+															xmlns="http://www.w3.org/2000/svg"
 															viewBox="0 0 24 24"
-															fill="currentColor" class="size-5">
+															fill="currentColor"
+															class="size-5"
+														>
 															<path
 																fill-rule="evenodd"
 																d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm6-2.438c0-.724.588-1.312 1.313-1.312h4.874c.725 0 1.313.588 1.313 1.313v4.874c0 .725-.588 1.313-1.313 1.313H9.564a1.312 1.312 0 01-1.313-1.313V9.564z"
+																clip-rule="evenodd"
+															/>
+														</svg>
+													</button>
+												</Tooltip>
+											</div>
+										{:else if prompt === '' && files.length === 0 && ($_user?.role === 'admin' || ($_user?.permissions?.chat?.call ?? true))}
+											<div class=" flex items-center">
+												<Tooltip content={$i18n.t('Call')}>
+													<button
+														class=" bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 transition rounded-full p-1.5 self-center"
+														type="button"
+														on:click={async () => {
+															if (selectedModels.length > 1) {
+																toast.error($i18n.t('Select only one model to call'));
+
+																return;
+															}
+
+															if ($config.audio.stt.engine === 'web') {
+																toast.error(
+																	$i18n.t('Call feature is not supported when using Web STT engine')
+																);
+
+																return;
+															}
+															// check if user has access to getUserMedia
+															try {
+																let stream = await navigator.mediaDevices.getUserMedia({
+																	audio: true
+																});
+																// If the user grants the permission, proceed to show the call overlay
+
+																if (stream) {
+																	const tracks = stream.getTracks();
+																	tracks.forEach((track) => track.stop());
+																}
+
+																stream = null;
+
+																if ($settings.audio?.tts?.engine === 'browser-kokoro') {
+																	// If the user has not initialized the TTS worker, initialize it
+																	if (!$TTSWorker) {
+																		await TTSWorker.set(
+																			new KokoroWorker({
+																				dtype: $settings.audio?.tts?.engineConfig?.dtype ?? 'fp32'
+																			})
+																		);
+
+																		await $TTSWorker.init();
+																	}
+																}
+
+																showCallOverlay.set(true);
+																showControls.set(true);
+															} catch (err) {
+																// If the user denies the permission or an error occurs, show an error message
+																toast.error(
+																	$i18n.t('Permission denied when accessing media devices')
+																);
+															}
+														}}
+														aria-label="Call"
+													>
+														<Headphone className="size-5" />
+													</button>
+												</Tooltip>
+											</div>
+										{:else}
+											<div class=" flex items-center">
+												<Tooltip content={$i18n.t('Send message')}>
+													<button
+														id="send-message-button"
+														class="{!(prompt === '' && files.length === 0)
+															? 'bg-black text-white hover:bg-gray-900 dark:bg-white dark:text-black dark:hover:bg-gray-100 '
+															: 'text-white bg-gray-200 dark:text-gray-900 dark:bg-gray-700 disabled'} transition rounded-full p-1.5 self-center"
+														type="submit"
+														disabled={prompt === '' && files.length === 0}
+													>
+														<svg
+															xmlns="http://www.w3.org/2000/svg"
+															viewBox="0 0 16 16"
+															fill="currentColor"
+															class="size-5"
+														>
+															<path
+																fill-rule="evenodd"
+																d="M8 14a.75.75 0 0 1-.75-.75V4.56L4.03 7.78a.75.75 0 0 1-1.06-1.06l4.5-4.5a.75.75 0 0 1 1.06 0l4.5 4.5a.75.75 0 0 1-1.06 1.06L8.75 4.56v8.69A.75.75 0 0 1 8 14Z"
 																clip-rule="evenodd"
 															/>
 														</svg>
