@@ -73,7 +73,7 @@
 		}}
 	>
 		<div
-			style="--h:96vh ;--h-sm: 60vh; --of:scroll; --w: 40rem; --d:flex; --p-sm:2em; --fd:column; --fd-sm:row"
+			style="--h:96vh ;--h-sm: 60vh; --of:scroll; --d:flex; --p-sm:2em; --fd:column; --fd-sm:row; --ai:center;"
 			class="m-auto max-w-full {sizeToWidth(size)} {size !== 'full'
 				? 'mx-2'
 				: ''} shadow-3xl min-h-fit scrollbar-hidden {className}"
