@@ -43,10 +43,10 @@
 <div class="flex flex-col lg:flex-row w-full h-full pb-2 lg:space-x-4">
 	<div
 		id="admin-settings-tabs-container"
-		style="--d:flex;--fd:column"
+		style="--mt:0.6em; --mt-sm:0;--d:flex;--fd-md:column; --g:0.6em; --of:scroll;;"
 	>
 		<button
-                        style="--d:flex; gap: 0.6em; --p:0.6em;"
+            style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class=" {selectedTab ===
 			'general'
 				? ''
@@ -74,6 +74,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'connections'
 				? ''
@@ -99,6 +100,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'models'
 				? ''
@@ -126,6 +128,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'evaluations'
 				? ''
@@ -141,6 +144,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'tools'
 				? ''
@@ -167,6 +171,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'documents'
 				? ''
@@ -198,6 +203,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'web'
 				? ''
@@ -223,6 +229,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'code-execution'
 				? ''
@@ -250,6 +257,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'interface'
 				? ''
@@ -277,6 +285,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'audio'
 				? ''
@@ -305,6 +314,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'images'
 				? ''
@@ -332,6 +342,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'pipelines'
 				? ''
@@ -363,6 +374,7 @@
 		</button>
 
 		<button
+			style="--d:flex; gap: 0.6em; --p:0.6em;"
 			class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 			'db'
 				? ''

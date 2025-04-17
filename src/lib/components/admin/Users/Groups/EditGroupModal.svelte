@@ -150,7 +150,7 @@
 					<div class="flex flex-col lg:flex-row w-full h-full pb-2 lg:space-x-4">
 						<div
 							id="admin-settings-tabs-container"
-							style="--d:flex;--fd:column"
+							style="--d:flex;--fd-md:column"
 						>
 							{#if tabs.includes('general')}
 								<button

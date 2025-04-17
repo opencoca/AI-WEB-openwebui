@@ -368,10 +368,11 @@
 </script>
 
 <Modal size="xl" bind:show>
-	<div class="text-gray-700 dark:text-gray-100">
+	<div 
+		class="text-gray-700 dark:text-gray-100">
 		<div class=" flex justify-between dark:text-gray-300 px-5 pt-4 pb-1">
 			<div class=" text-lg font-medium self-center">{$i18n.t('Settings')}</div>
-			<button
+			<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 				
 				on:click={() => {
 					show = false;
@@ -410,7 +411,7 @@
 				{#if visibleTabs.length > 0}
 					{#each visibleTabs as tabId (tabId)}
 						{#if tabId === 'general'}
-							<button>
+							<button style="--d: flex; gap: 0.6em; --p: 0.6em;">
 								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -428,7 +429,7 @@
 								<div class=" self-center">{$i18n.t('General')}</div>
 							</button>
 						{:else if tabId === 'interface'}
-							<button
+							<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 								class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 								'interface'
 									? ''
@@ -455,7 +456,7 @@
 							</button>
 						{:else if tabId === 'connections'}
 							{#if $user?.role === 'admin' || ($user?.role === 'user' && $config?.features?.enable_direct_connections)}
-								<button
+								<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 									class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 									'connections'
 										? ''
@@ -481,7 +482,7 @@
 							{/if}
 						{:else if tabId === 'tools'}
 							{#if $user?.role === 'admin' || ($user?.role === 'user' && $user?.permissions?.features?.direct_tool_servers)}
-								<button
+								<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 									class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 									'tools'
 										? ''
@@ -508,14 +509,14 @@
 								</button>
 							{/if}
 						{:else if tabId === 'personalization'}
-							<button>
+							<button style="--d: flex; gap: 0.6em; --p: 0.6em;">
 								<div>
 									<User />
 								</div>
 								<div class=" self-center">{$i18n.t('Personalization')}</div>
 							</button>
 						{:else if tabId === 'audio'}
-							<button>
+							<button style="--d: flex; gap: 0.6em; --p: 0.6em;">
 								<div>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -534,7 +535,7 @@
 								<div class=" self-center">{$i18n.t('Audio')}</div>
 							</button>
 						{:else if tabId === 'chats'}
-							<button
+							<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 								class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 								'chats'
 									? ''
@@ -560,7 +561,7 @@
 								<div class=" self-center">{$i18n.t('Chats')}</div>
 							</button>
 						{:else if tabId === 'account'}
-							<button
+							<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 								class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 								'account'
 									? ''
@@ -586,7 +587,7 @@
 								<div class=" self-center">{$i18n.t('Account')}</div>
 							</button>
 						{:else if tabId === 'about'}
-							<button
+							<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 								class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 								'about'
 									? ''
@@ -613,7 +614,7 @@
 							</button>
 						{:else if tabId === 'admin'}
 							{#if $user?.role === 'admin'}
-								<button
+								<button style="--d: flex; gap: 0.6em; --p: 0.6em;"
 									class="px-0.5 py-1 min-w-fit rounded-lg flex-1 md:flex-none flex text-left transition {selectedTab ===
 									'admin'
 										? ''
