@@ -42,6 +42,7 @@
 			style="--d:flex;--fd:column"
 		>
 			<button
+				style="--d: flex; --g: 0.6em; --p: 0.6em;"
 				class="{selectedTab ===
 				'leaderboard'
 					? ''
@@ -68,6 +69,7 @@
 			</button>
 
 			<button
+				style="--d: flex; --g: 0.6em; --p: 0.6em;"
 				class="{selectedTab ===
 				'feedbacks'
 					? ''

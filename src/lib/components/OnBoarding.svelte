@@ -46,7 +46,7 @@
 					<img
 						id="logo"
 						crossorigin="anonymous"
-						src="/static/favicon.png"
+						src="/static/favicon.png?{Date.now()}?{Date.now()}"
 						class=" w-6 rounded-full"
 						alt="logo"
 					/>

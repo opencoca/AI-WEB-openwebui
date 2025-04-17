@@ -52,6 +52,7 @@
 		class=" flex flex-row overflow-x-auto gap-2.5 max-w-full lg:gap-1 lg:flex-col lg:flex-none lg:w-40 dark:text-gray-200 text-sm font-medium text-left scrollbar-none"
 	>
 		<button
+			style="--d: flex; --g: 0.6em; --p: 0.6em;"
 			class="{selectedTab ===
 			'overview'
 				? ''
@@ -77,6 +78,7 @@
 		</button>
 
 		<button
+			style="--d: flex; --g: 0.6em; --p: 0.6em;"
 			class="{selectedTab ===
 			'groups'
 				? ''
