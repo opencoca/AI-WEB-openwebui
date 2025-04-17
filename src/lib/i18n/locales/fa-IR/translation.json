@@ -960,8 +960,8 @@
 	"Share": "اشتراک\u200cگذاری",
 	"Share Chat": "اشتراک\u200cگذاری چت",
 	"Share to Sage Community": "اشتراک گذاری با Sage Community",
-	"Confirm your new password": ""
-	"Connect to your own OpenAI compatible API endpoints.": ""
+	"Confirm your new password": "",
+	"Connect to your own OpenAI compatible API endpoints.": "",
 	"Enter Jupyter Password": "",
 	"Enter Jupyter Token": "",
 	"Enter Jupyter URL": "",
@@ -1172,21 +1172,21 @@
 	"Webhook URL": "نشانی وب\u200cهوک",
 	"WebUI Settings": "تنظیمات WebUI",
 	"{{COUNT}} Available Tools": "",
-	"{{COUNT}} hidden lines": ""
-	"{{COUNT}} Replies": ""
+	"{{COUNT}} hidden lines": "",
+	"{{COUNT}} Replies": "",
 	"Connect to your own OpenAPI compatible external tool servers.": "",
 	"Connection failed": "",
 	"Connection successful": "",
 	"Enter Tavily Extract Depth": "",
-	"Enter the public URL of your WebUI. This URL will be used to generate links in the notifications.": ""
+	"Enter the public URL of your WebUI. This URL will be used to generate links in the notifications.": "",
 	"Enter your name": "",
-	"Enter your new password": ""
-	"sk-1234": ""
+	"Enter your new password": "",
+	"sk-1234": "",
 	"Sougou Search API sID": "",
 	"Sougou Search API SK": "",
-	"View Replies": ""
+	"View Replies": "",
 	"View Result from **{{NAME}}**": "",
-	"WebUI URL": ""
+	"WebUI URL": "",
 	"WebUI will make requests to \"{{url}}\"": "",
 	"WebUI will make requests to \"{{url}}/api/chat\"": "",
 	"WebUI will make requests to \"{{url}}/chat/completions\"": "",

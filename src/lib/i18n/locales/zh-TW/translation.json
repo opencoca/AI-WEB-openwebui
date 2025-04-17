@@ -7,7 +7,7 @@
 	"{{ AI Assistants }}": "{{ AI Assistants }}",
 	"(Ollama)": "(Ollama)",
 	"{{COUNT}} Available Tools": "{{COUNT}} 個可用工具",
-	"{{COUNT}} hidden lines": "已隱藏 {{COUNT}} 行"
+	"{{COUNT}} hidden lines": "已隱藏 {{COUNT}} 行",
 	"{{COUNT}} Replies": "{{COUNT}} 回覆",
 	"{{user}}'s Chats": "{{user}} 的對話",
 	"{{webUIName}} Backend Required": "需要 {{webUIName}} 後端",

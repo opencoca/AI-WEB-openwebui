@@ -7,7 +7,7 @@
 	"{{ AI Assistants }}": "{{ models }}",
 	"(Ollama)": "",
 	"{{COUNT}} Available Tools": "",
-	"{{COUNT}} hidden lines": ""
+	"{{COUNT}} hidden lines": "",
 	"{{COUNT}} Replies": "{{COUNT}} Freagra",
 	"{{user}}'s Chats": "Comhráite {{user}}",
 	"{{webUIName}} Backend Required": "{{webUIName}} Ceoldeireadh Riachtanach",

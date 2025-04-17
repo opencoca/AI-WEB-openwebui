@@ -969,7 +969,7 @@
 	"Share": "Compartilhar",
 	"Share Chat": "Compartilhar Chat",
 	"Share to Sage Community": "Compartilhar com a Comunidade OpenWebUI",
-	"Connect to your own OpenAI compatible API endpoints.": ""
+	"Connect to your own OpenAI compatible API endpoints.": "",
 	"Enter Jupyter Password": "",
 	"Enter Jupyter Token": "",
 	"Enter Jupyter URL": "",
@@ -1179,21 +1179,21 @@
 	"Webhook URL": "URL do Webhook",
 	"WebUI Settings": "Configurações da WebUI",
 	"{{COUNT}} Available Tools": "",
-	"{{COUNT}} hidden lines": ""
-	"{{COUNT}} Replies": ""
+	"{{COUNT}} hidden lines": "",
+	"{{COUNT}} Replies": "",
 	"Connect to your own OpenAPI compatible external tool servers.": "",
 	"Connection failed": "",
 	"Connection successful": "",
 	"Enter Tavily Extract Depth": "",
-	"Enter the public URL of your WebUI. This URL will be used to generate links in the notifications.": ""
+	"Enter the public URL of your WebUI. This URL will be used to generate links in the notifications.": "",
 	"Enter your name": "",
-	"Enter your new password": ""
-	"sk-1234": ""
+	"Enter your new password": "",
+	"sk-1234": "",
 	"Sougou Search API sID": "",
 	"Sougou Search API SK": "",
-	"View Replies": ""
+	"View Replies": "",
 	"View Result from **{{NAME}}**": "",
-	"WebUI URL": ""
+	"WebUI URL": "",
 	"WebUI will make requests to \"{{url}}\"": "",
 	"WebUI will make requests to \"{{url}}/api/chat\"": "A WebUI fará requisições para \"{{url}}/api/chat\".",
 	"WebUI will make requests to \"{{url}}/chat/completions\"": "A WebUI fará requisições para \"{{url}}/chat/completions\".",
