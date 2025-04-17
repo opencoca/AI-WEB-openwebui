@@ -42,8 +42,8 @@
 		</div>
 	</div>
 
-	<div style="/* Unrecognized: w-full */ /* Unrecognized: p-4 */ --pl:20px; --pr:20px; --c:oklch(47.318% 0.036 262); /* Unrecognized: dark:text-gray-100 */" >
-		<div style="/* Unrecognized: overflow-y-scroll */ /* Unrecognized: max-h-96 */ /* Unrecognized: scrollbar-hidden */" >
+	<div style="--ofy:scroll; --maxh:96vh; --pl:20px; --pr:20px; --c:oklch(47.318% 0.036 262); /* Unrecognized: dark:text-gray-100 */" >
+		<div>
 			<div style="--mb: 0.6em" >
 				<div style="--c:xl; --weight:600;" >
 					{$i18n.t('What’s New in')}

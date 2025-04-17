@@ -937,6 +937,8 @@
 							<div class=" self-center mr-3">
 								<img
 									src={$user?.profile_image_url}
+									style="--w: 3em; --h: 3em"
+									loading="lazy"
 									class=" max-w-[30px] object-cover rounded-full"
 									alt="User profile"
 								/>
