@@ -250,6 +250,8 @@ show-version:
 it_install:
 	$(DOCKER_COMPOSE) up -d
 
+
+
 minor_release:
 	# Start a minor release with incremented minor version
 	git flow release start $$(git tag --sort=-v:refname | sed 's/^v//' | head -n 1 | awk -F'.' '{print $$1"."$$2+1".0"}')
