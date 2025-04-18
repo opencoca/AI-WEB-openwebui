@@ -127,7 +127,8 @@
 
 					{#if message.timestamp}
 						<div
-							class=" self-center text-xs invisible group-hover:visible text-gray-400 font-medium first-letter:capitalize ml-0.5 translate-y-[1px]"
+							style="--op: 0.3; --op-hvr: 1; --br:0.6em; --m:0.2em; --w:1.8em"
+							class=" self-center text-xs text-gray-400 font-medium first-letter:capitalize ml-0.5 translate-y-[1px]"
 						>
 							<Tooltip content={dayjs(message.timestamp * 1000).format('LLLL')}>
 								<span class="line-clamp-1">{formatDate(message.timestamp * 1000)}</span>
@@ -344,7 +345,8 @@
 							{#if !readOnly}
 								<Tooltip content={$i18n.t('Edit')} placement="bottom">
 									<button
-										class="invisible group-hover:visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition edit-user-message-button"
+										style="--op: 0.3; --op-hvr: 1; --br:0.6em; --m:0.2em; --w:1.8em"
+										class="p-1 rounded-sm dark:hover:text-white hover:text-black transition edit-user-message-button"
 										on:click={() => {
 											editMessageHandler();
 										}}
@@ -369,7 +371,8 @@
 
 							<Tooltip content={$i18n.t('Copy')} placement="bottom">
 								<button
-									class="invisible group-hover:visible p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+									style="--op: 0.3; --op-hvr: 1; --br:0.6em; --m:0.2em; --w:1.8em"
+									class="p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 									on:click={() => {
 										copyToClipboard(message.content);
 									}}
@@ -394,7 +397,8 @@
 							{#if !readOnly && (!isFirstMessage || siblings.length > 1)}
 								<Tooltip content={$i18n.t('Delete')} placement="bottom">
 									<button
-										class="invisible group-hover:visible p-1 rounded-sm dark:hover:text-white hover:text-black transition"
+										style="--op: 0.3; --op-hvr: 1; --br:0.6em; --m:0.2em; --w:1.8em"
+										class="p-1 rounded-sm dark:hover:text-white hover:text-black transition"
 										on:click={() => {
 											showDeleteConfirm = true;
 										}}

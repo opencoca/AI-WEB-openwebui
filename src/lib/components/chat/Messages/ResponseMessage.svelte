@@ -8,6 +8,25 @@
 	import type { i18n as i18nType, t } from 'i18next';
 
 	const i18n = getContext<Writable<i18nType>>('i18n');
+	
+	let shifted = false;
+	
+	function handleKeydown(e) {
+		if (e.key === 'Shift') shifted = true;
+	}
+	
+	function handleKeyup(e) {
+		if (e.key === 'Shift') shifted = false;
+	}
+	
+	onMount(() => {
+		window.addEventListener('keydown', handleKeydown);
+		window.addEventListener('keyup', handleKeyup);
+		return () => {
+			window.removeEventListener('keydown', handleKeydown);
+			window.removeEventListener('keyup', handleKeyup);
+		};
+	});
 
 	const dispatch = createEventDispatcher();
 
@@ -968,9 +987,9 @@
 									{#if $user?.role === 'user' ? ($user?.permissions?.chat?.edit ?? true) : true}
 										<Tooltip content={$i18n.t('Edit')} placement="bottom">
 											<button
-												class="{isLastMessage
+												style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+													: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 												on:click={() => {
 													editMessageHandler();
 												}}
@@ -996,9 +1015,9 @@
 
 								<Tooltip content={$i18n.t('Copy')} placement="bottom">
 									<button
-										class="{isLastMessage
+										style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 											? 'visible'
-											: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition copy-response-button"
+											: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition copy-response-button"
 										on:click={() => {
 											copyToClipboard(message.content);
 										}}
@@ -1024,9 +1043,9 @@
 									<Tooltip content={$i18n.t('Read Aloud')} placement="bottom">
 										<button
 											id="speak-button-{message.id}"
-											class="{isLastMessage
+											style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 												? 'visible'
-												: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+												: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 											on:click={() => {
 												if (!loadingSpeech) {
 													toggleSpeakMessage();
@@ -1103,9 +1122,9 @@
 								{#if $config?.features.enable_image_generation && ($user?.role === 'admin' || $user?.permissions?.features?.image_generation) && !readOnly}
 									<Tooltip content={$i18n.t('Generate Image')} placement="bottom">
 										<button
-											class="{isLastMessage
+											style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 												? 'visible'
-												: 'invisible group-hover:visible'}  p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+												: ''}  p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 											on:click={() => {
 												if (!generatingImage) {
 													generateImage(message);
@@ -1145,74 +1164,59 @@
 													<circle class="spinner_S1WN spinner_JApP" cx="20" cy="12" r="3" />
 												</svg>
 											{:else}
-												<svg
-													xmlns="http://www.w3.org/2000/svg"
-													fill="none"
-													viewBox="0 0 24 24"
-													stroke-width="2.3"
-													stroke="currentColor"
-													class="w-4 h-4"
-												>
-													<path
-														stroke-linecap="round"
-														stroke-linejoin="round"
-														d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z"
-													/>
-												</svg>
-											{/if}
+													<Tooltip
+														content={shifted 
+															? `<pre>${sanitizeResponseContent(
+																	JSON.stringify(message.usage, null, 2)
+																		.replace(/"([^(")"]+)":/g, '$1:')
+																		.slice(1, -1)
+																		.split('\n')
+																		.map((line) => line.slice(2))
+																		.map((line) => (line.endsWith(',') ? line.slice(0, -1) : line))
+																		.join('\n')
+																)}</pre>`
+															: $i18n.t('Hold shift key to view usage details')
+														}
+														placement="bottom"
+													>
+														<button
+															style=" --op:0.3;--op-hvr:1;" 
+															class=" {isLastMessage
+																? 'visible'
+																: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition whitespace-pre-wrap"
+															on:click={() => {
+																console.log(message);
+															}}
+															id="info-{message.id}"
+														>
+															<svg
+																xmlns="http://www.w3.org/2000/svg"
+																fill="none"
+																viewBox="0 0 24 24"
+																stroke-width="2.3"
+																stroke="currentColor"
+																class="w-4 h-4"
+															>
+																<path
+																	stroke-linecap="round"
+																	stroke-linejoin="round"
+																	d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
+																/>
+															</svg>
+														</button>
+													</Tooltip>
+											{/if} <!-- ADD THIS LINE: Closes {:else} from generatingImage -->
 										</button>
 									</Tooltip>
-								{/if}
-
-								{#if message.usage}
-									<Tooltip
-										content={message.usage
-											? `<pre>${sanitizeResponseContent(
-													JSON.stringify(message.usage, null, 2)
-														.replace(/"([^(")"]+)":/g, '$1:')
-														.slice(1, -1)
-														.split('\n')
-														.map((line) => line.slice(2))
-														.map((line) => (line.endsWith(',') ? line.slice(0, -1) : line))
-														.join('\n')
-												)}</pre>`
-											: ''}
-										placement="bottom"
-									>
-										<button
-											class=" {isLastMessage
-												? 'visible'
-												: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition whitespace-pre-wrap"
-											on:click={() => {
-												console.log(message);
-											}}
-											id="info-{message.id}"
-										>
-											<svg
-												xmlns="http://www.w3.org/2000/svg"
-												fill="none"
-												viewBox="0 0 24 24"
-												stroke-width="2.3"
-												stroke="currentColor"
-												class="w-4 h-4"
-											>
-												<path
-													stroke-linecap="round"
-													stroke-linejoin="round"
-													d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z"
-												/>
-											</svg>
-										</button>
-									</Tooltip>
-								{/if}
+								{/if} <!-- Closes #if $config?.features.enable_image_generation ... -->
 
 								{#if !readOnly}
 									{#if !$temporaryChatEnabled && ($config?.features.enable_message_rating ?? true)}
 										<Tooltip content={$i18n.t('Good Response')} placement="bottom">
 											<button
-												class="{isLastMessage
+												style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
+													: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
 													message?.annotation?.rating ?? ''
 												).toString() === '1'
 													? 'bg-gray-100 dark:bg-gray-800'
@@ -1246,9 +1250,9 @@
 
 										<Tooltip content={$i18n.t('Bad Response')} placement="bottom">
 											<button
-												class="{isLastMessage
+												style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
+													: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg {(
 													message?.annotation?.rating ?? ''
 												).toString() === '-1'
 													? 'bg-gray-100 dark:bg-gray-800'
@@ -1286,9 +1290,9 @@
 											<button
 												type="button"
 												id="continue-response-button"
-												class="{isLastMessage
+												style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
+													: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
 												on:click={() => {
 													continueResponse();
 												}}
@@ -1319,9 +1323,9 @@
 									<Tooltip content={$i18n.t('Regenerate')} placement="bottom">
 										<button
 											type="button"
-											class="{isLastMessage
+											style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 												? 'visible'
-												: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
+												: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
 											on:click={() => {
 												showRateComment = false;
 												regenerateResponse(message);
@@ -1361,9 +1365,9 @@
 											<button
 												type="button"
 												id="delete-response-button"
-												class="{isLastMessage
+												style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 													? 'visible'
-													: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
+													: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition regenerate-response-button"
 												on:click={() => {
 													showDeleteConfirm = true;
 												}}
@@ -1391,9 +1395,9 @@
 											<Tooltip content={action.name} placement="bottom">
 												<button
 													type="button"
-													class="{isLastMessage
+													style=" --op:0.3;--op-hvr:1;" class="{isLastMessage
 														? 'visible'
-														: 'invisible group-hover:visible'} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
+														: ''} p-1.5 hover:bg-black/5 dark:hover:bg-white/5 rounded-lg dark:hover:text-white hover:text-black transition"
 													on:click={() => {
 														actionMessage(action.id, message);
 													}}
@@ -1416,10 +1420,10 @@
 											</Tooltip>
 										{/each}
 									{/if}
-								{/if}
-							{/if}
-						{/if}
-					</div>
+								{/if} <!-- Closes second #if !readOnly -->
+							{/if} <!-- Closes #if message.done -->
+						{/if} <!-- Closes #if message.done || siblings.length > 1 -->
+					</div> <!-- Closes buttons container -->
 
 					{#if message.done && showRateComment}
 						<RateComment
@@ -1432,7 +1436,7 @@
 							}}
 						/>
 					{/if}
-				{/if}
+				{/if} <!-- Closes #if !edit -->
 			</div>
 		</div>
 	</div>

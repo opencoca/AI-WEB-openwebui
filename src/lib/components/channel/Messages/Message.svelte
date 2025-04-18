@@ -69,7 +69,8 @@
 	>
 		{#if !edit}
 			<div
-				class=" absolute {showButtons ? '' : 'invisible group-hover:visible'} right-1 -top-2 z-10"
+				style=" --op:0.3;--op-hvr:1;"
+				class=" absolute {showButtons ? '' : ''} right-1 -top-2 z-10"
 			>
 				<div
 					class="flex gap-1 rounded-lg bg-white dark:bg-gray-850 shadow-md p-0.5 border border-gray-100 dark:border-gray-850"
@@ -172,6 +173,7 @@
 
 						{#if message.created_at}
 							<div
+								style=" --op:0.3;--op-hvr:1;" 
 								class=" self-center text-xs invisible group-hover:visible text-gray-400 font-medium first-letter:capitalize ml-0.5 translate-y-[1px]"
 							>
 								<Tooltip content={dayjs(message.created_at / 1000000).format('LLLL')}>

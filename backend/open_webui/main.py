@@ -76,6 +76,7 @@ from open_webui.routers import (
     tools,
     users,
     utils,
+    theme,
 )
 
 from open_webui.routers.retrieval import (
@@ -437,9 +438,9 @@ async def lifespan(app: FastAPI):
 
 
 app = FastAPI(
-    title="Open WebUI",
-    docs_url="/docs" if ENV == "dev" else None,
-    openapi_url="/openapi.json" if ENV == "dev" else None,
+    title="Sage Open WebUI",
+    docs_url="/docs",
+    openapi_url="/openapi.json",
     redoc_url=None,
     lifespan=lifespan,
 )
@@ -970,6 +971,7 @@ app.include_router(
     evaluations.router, prefix="/api/v1/evaluations", tags=["evaluations"]
 )
 app.include_router(utils.router, prefix="/api/v1/utils", tags=["utils"])
+app.include_router(theme.router, prefix="/api/v1/theme", tags=["theme"])
 
 
 try:
