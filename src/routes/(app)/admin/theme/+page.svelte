@@ -1,13 +1,19 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { WEBUI_API_BASE_URL } from '$lib/constants';
 
     let cssContent = '';
     let logoUrl = '';
     let isUploading = false;
 
+    function handleCssInput(event: Event) {
+        const target = event.target as HTMLTextAreaElement;
+        cssContent = target.value;
+    }
+
     async function loadThemeSettings() {
         try {
-            const response = await fetch('/api/v1/theme');
+            const response = await fetch(`${WEBUI_API_BASE_URL}/theme/theme`);
             if (response.ok) {
                 const data = await response.json();
                 cssContent = data.css || '';
@@ -19,7 +25,7 @@
 
     async function loadLogo() {
         try {
-            const response = await fetch('/api/v1/theme/logo');
+            const response = await fetch(`${WEBUI_API_BASE_URL}/theme/theme/logo`);
             if (response.ok) {
                 const blob = await response.blob();
                 logoUrl = URL.createObjectURL(blob);
@@ -31,7 +37,7 @@
 
     async function saveThemeSettings() {
         try {
-            const response = await fetch('/api/v1/theme', {
+            const response = await fetch(`${WEBUI_API_BASE_URL}/theme/theme`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -65,7 +71,7 @@
             const formData = new FormData();
             formData.append('file', file);
 
-            const response = await fetch('/api/v1/theme/logo', {
+            const response = await fetch(`${WEBUI_API_BASE_URL}/theme/theme/logo`, {
                 method: 'POST',
                 body: formData
             });
@@ -86,7 +92,7 @@
 
     async function deleteLogo() {
         try {
-            const response = await fetch('/api/v1/theme/logo', {
+            const response = await fetch(`${WEBUI_API_BASE_URL}/theme/theme/logo`, {
                 method: 'DELETE'
             });
 

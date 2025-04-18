@@ -5,11 +5,15 @@ import os
 import shutil
 from typing import Optional
 from pathlib import Path
+import logging
 
-from open_webui.utils.auth import get_admin_user
+from open_webui.utils.auth import get_admin_user, get_verified_user
 from open_webui.config import get_config, save_config
+from open_webui.env import SRC_LOG_LEVELS
 
 router = APIRouter()
+log = logging.getLogger(__name__)
+log.setLevel(SRC_LOG_LEVELS["MAIN"])
 
 # Define paths for theme files
 THEME_DIR = Path("backend/open_webui/static/theme")
@@ -23,8 +27,8 @@ class ThemeSettings(BaseModel):
     css: Optional[str] = None
 
 @router.get("/theme", response_model=ThemeSettings)
-async def get_theme_settings(user=Depends(get_admin_user)):
-    """Get current theme settings"""
+async def get_theme_settings():
+    """Get current theme settings - public endpoint"""
     try:
         css_content = ""
         if CSS_PATH.exists():
@@ -33,6 +37,7 @@ async def get_theme_settings(user=Depends(get_admin_user)):
         
         return ThemeSettings(css=css_content)
     except Exception as e:
+        log.error(f"Error getting theme settings: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/theme", response_model=ThemeSettings)
@@ -40,7 +45,7 @@ async def update_theme_settings(
     settings: ThemeSettings,
     user=Depends(get_admin_user)
 ):
-    """Update theme settings"""
+    """Update theme settings - admin only"""
     try:
         # Save CSS content
         with open(CSS_PATH, "w") as f:
@@ -48,6 +53,7 @@ async def update_theme_settings(
         
         return ThemeSettings(css=settings.css)
     except Exception as e:
+        log.error(f"Error updating theme settings: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.post("/theme/logo")
@@ -55,7 +61,7 @@ async def upload_logo(
     file: UploadFile = File(...),
     user=Depends(get_admin_user)
 ):
-    """Upload logo"""
+    """Upload logo - admin only"""
     try:
         # Validate file type
         if not file.content_type.startswith("image/"):
@@ -67,26 +73,29 @@ async def upload_logo(
         
         return {"message": "Logo uploaded successfully"}
     except Exception as e:
+        log.error(f"Error uploading logo: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.get("/theme/logo")
-async def get_logo(user=Depends(get_admin_user)):
-    """Get current logo"""
+async def get_logo():
+    """Get current logo - public endpoint"""
     try:
         if not LOGO_PATH.exists():
             raise HTTPException(status_code=404, detail="Logo not found")
         
         return FileResponse(LOGO_PATH)
     except Exception as e:
+        log.error(f"Error getting logo: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e))
 
 @router.delete("/theme/logo")
 async def delete_logo(user=Depends(get_admin_user)):
-    """Delete current logo"""
+    """Delete current logo - admin only"""
     try:
         if LOGO_PATH.exists():
             LOGO_PATH.unlink()
         
         return {"message": "Logo deleted successfully"}
     except Exception as e:
+        log.error(f"Error deleting logo: {str(e)}")
         raise HTTPException(status_code=500, detail=str(e)) 
