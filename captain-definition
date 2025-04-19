@@ -1,7 +1,7 @@
 {
     "schemaVersion": 2,
     "dockerfileLines": [
-                          "FROM ghcr.io/startr/ai-web-openwebui:latest",
+                          "FROM ghcr.io/startr/ai-web-openwebui:0.6.5",
                           "EXPOSE 8080",
                           "CMD [ \"bash\", \"restore_backup_start.sh\", \"server\" ]"
                       ]
